@@ -1731,7 +1731,11 @@ td.tr-cell.tr-off::after { display: none; }
   transition: background 0.1s;
 }
 .today-habit-item:hover { background: rgba(255,255,255,0.05); }
-.today-habit-item.done  { opacity: 0.38; }
+.today-habit-item.done      { opacity: 0.38; }
+.today-habit-item.discarded { opacity: 0.22; }
+.today-habit-item.discarded .today-habit-box { background: transparent; border-color: rgba(255,255,255,0.12); }
+.today-habit-item.discarded .today-habit-box::after { content: '–'; font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1; }
+.today-habit-item.discarded .today-habit-name { text-decoration: line-through; }
 .today-habit-box {
   width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0;
   border: 1.5px solid rgba(255,255,255,0.18);
@@ -2200,23 +2204,23 @@ function renderToday() {
   const habList = document.createElement('div');
   habList.className = 'today-habits-list';
   appActs.forEach(act => {
-    const state = trGetState(todayDs, act.key);
-    if (state === 'x') return;
-    const isDone = state === '1';
+    const state      = trGetState(todayDs, act.key);
+    const isDone     = state === '1';
+    const isDiscard  = state === 'x';
     const item = document.createElement('div');
-    item.className = 'today-habit-item' + (isDone ? ' done' : '');
+    item.className = 'today-habit-item' + (isDone ? ' done' : isDiscard ? ' discarded' : '');
     const box  = document.createElement('div');  box.className = 'today-habit-box';
     const name = document.createElement('span'); name.className = 'today-habit-name'; name.textContent = act.label;
     item.append(box, name);
     item.addEventListener('click', () => {
       const cur  = trGetState(todayDs, act.key);
-      const next = cur === '1' ? null : '1';
+      const next = cur === null ? '1' : cur === '1' ? 'x' : null;
       trSetState(todayDs, act.key, next);
       renderToday();
     });
     habList.appendChild(item);
   });
-  if (!habList.children.length) {
+  if (appActs.every(a => trGetState(todayDs, a.key) === '1')) {
     const d = document.createElement('div');
     d.className = 'today-habits-done'; d.textContent = 'All habits done!';
     habList.appendChild(d);
@@ -2383,7 +2387,8 @@ function switchTab(name) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(`panel-${name}`).classList.add('active');
   document.getElementById(`btn-${name}`).classList.add('active');
-  if (name === 'today') renderToday();
+  if (name === 'today')   renderToday();
+  if (name === 'tracker') buildTracker();
 }
 
 // ═══════════════════════════════════════════════════
@@ -2694,9 +2699,9 @@ function buildTracker() {
   const now     = new Date();
   const todayDs = now.toISOString().split('T')[0];
 
-  // 30-day window: 29 days ago → today (oldest at top, today at bottom)
+  // 30-day window: today at top, going backwards
   const dates = [];
-  for (let i = 29; i >= 0; i--) {
+  for (let i = 0; i <= 29; i++) {
     const d = new Date(now); d.setDate(now.getDate() - i); dates.push(d);
   }
 
@@ -2768,11 +2773,6 @@ function buildTracker() {
     });
   });
 
-  // Scroll today into view
-  setTimeout(() => {
-    const r = table.querySelector('.tr-today');
-    if (r) r.scrollIntoView({ block: 'center' });
-  }, 30);
 }
 
 // ═══════════════════════════════════════════════════
