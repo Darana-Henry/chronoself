@@ -1630,6 +1630,24 @@ td.tr-cell.tr-off::after { display: none; }
 .chronicle-entry.rating-3 { box-shadow: inset 3px 0 0 rgba(255,139,175,0.60); }
 .chronicle-entry.rating-4 { box-shadow: inset 3px 0 0 rgba(192,132,252,0.65); }
 
+.chronicle-entry-body { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.chronicle-entry-foot { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+.chronicle-save-btn {
+  padding: 4px 12px; border-radius: 8px;
+  border: 1px solid rgba(255,139,175,0.22); background: rgba(255,139,175,0.06);
+  color: rgba(255,139,175,0.70); font-size: 11px; font-weight: 600;
+  cursor: pointer; font-family: inherit; letter-spacing: 0.3px;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+.chronicle-save-btn:hover {
+  background: rgba(255,139,175,0.14); border-color: rgba(255,139,175,0.45); color: #ff8fab;
+}
+.chronicle-saved-ok {
+  font-size: 11px; color: #4ddd8e; opacity: 0;
+  transition: opacity 0.3s; pointer-events: none;
+}
+.chronicle-saved-ok.visible { opacity: 1; }
+
 /* ── TODAY DASHBOARD ──────────────────────────────── */
 #panel-today { overflow-y: auto; }
 .today-wrap {
@@ -1823,6 +1841,20 @@ td.tr-cell.tr-off::after { display: none; }
 .today-chron-textarea:focus { border-color: rgba(255,139,175,0.35); }
 .today-chron-textarea::placeholder { color: var(--txt-dim); }
 .today-chron-bottom { display: flex; align-items: center; gap: 10px; }
+.today-chron-save-btn {
+  padding: 4px 14px; border-radius: 8px;
+  border: 1px solid rgba(255,139,175,0.22); background: rgba(255,139,175,0.06);
+  color: rgba(255,139,175,0.70); font-size: 11px; font-weight: 600;
+  cursor: pointer; font-family: inherit; letter-spacing: 0.3px;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+.today-chron-save-btn:hover {
+  background: rgba(255,139,175,0.14); border-color: rgba(255,139,175,0.45); color: #ff8fab;
+}
+.today-chron-saved-ok {
+  font-size: 11px; color: #4ddd8e; margin-left: auto; opacity: 0; transition: opacity 0.3s;
+}
+.today-chron-saved-ok.visible { opacity: 1; }
 </style>
 
 <!-- Firebase config (placeholders replaced by scripts/inject.js at build time) -->
@@ -2380,7 +2412,21 @@ function renderToday() {
     saveChronicleRating(todayDs, next);
     renderToday();
   });
-  bottom.appendChild(rBtn);
+
+  const todaySavedOk = document.createElement('span');
+  todaySavedOk.className = 'today-chron-saved-ok';
+  todaySavedOk.textContent = 'Saved ✓';
+
+  const todaySaveBtn = document.createElement('button');
+  todaySaveBtn.className = 'today-chron-save-btn';
+  todaySaveBtn.textContent = 'Save';
+  todaySaveBtn.addEventListener('click', () => {
+    saveChronicleText(todayDs, ta.value);
+    todaySavedOk.classList.add('visible');
+    setTimeout(() => todaySavedOk.classList.remove('visible'), 2000);
+  });
+
+  bottom.append(rBtn, todaySaveBtn, todaySavedOk);
   inputRow.appendChild(bottom);
   chronCard.appendChild(inputRow);
 }
@@ -2390,8 +2436,9 @@ function switchTab(name) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(`panel-${name}`).classList.add('active');
   document.getElementById(`btn-${name}`).classList.add('active');
-  if (name === 'today')   renderToday();
-  if (name === 'tracker') buildTracker();
+  if (name === 'today')     renderToday();
+  if (name === 'tracker')   buildTracker();
+  if (name === 'chronicle') { renderChronicle(); renderChronicleCalendar(); }
 }
 
 // ═══════════════════════════════════════════════════
@@ -5507,7 +5554,7 @@ function renderChronicle() {
   const now     = new Date();
   const todayDs = now.toISOString().split('T')[0];
 
-  for (let i = 0; i < 90; i++) {
+  for (let i = 0; i <= 5; i++) {
     const d = new Date(now);
     d.setDate(now.getDate() - i);
     const ds      = d.toISOString().split('T')[0];
@@ -5531,7 +5578,7 @@ function renderChronicle() {
     wdEl.className = 'chronicle-date-wd';
     wdEl.textContent = d.toLocaleDateString('en-US', { weekday: 'long' });
 
-    // ── Rating button (cycles: 0→1→2→3→0) ───
+    // ── Rating button (cycles: 0→1→2→3→4→0) ─
     const ratingBtn = document.createElement('button');
     ratingBtn.className = 'chronicle-rating-btn' + (rating ? ` r${rating}` : '');
     ratingBtn.textContent = rating ? CHRONICLE_LEVELS[rating].label : 'Rate';
@@ -5548,7 +5595,10 @@ function renderChronicle() {
 
     dateCol.append(dayEl, wdEl, ratingBtn);
 
-    // ── Textarea ─────────────────────────────
+    // ── Entry body: textarea + footer ────────
+    const body = document.createElement('div');
+    body.className = 'chronicle-entry-body';
+
     const ta = document.createElement('textarea');
     ta.className   = 'chronicle-textarea';
     ta.value       = stored.text || '';
@@ -5562,7 +5612,25 @@ function renderChronicle() {
       saveChronicleText(ds, this.value);
     });
 
-    entry.append(dateCol, ta);
+    const foot = document.createElement('div');
+    foot.className = 'chronicle-entry-foot';
+
+    const savedOk = document.createElement('span');
+    savedOk.className = 'chronicle-saved-ok';
+    savedOk.textContent = 'Saved ✓';
+
+    const saveBtn = document.createElement('button');
+    saveBtn.className = 'chronicle-save-btn';
+    saveBtn.textContent = 'Save';
+    saveBtn.addEventListener('click', () => {
+      saveChronicleText(ds, ta.value);
+      savedOk.classList.add('visible');
+      setTimeout(() => savedOk.classList.remove('visible'), 2000);
+    });
+
+    foot.append(savedOk, saveBtn);
+    body.append(ta, foot);
+    entry.append(dateCol, body);
     list.appendChild(entry);
   }
 
