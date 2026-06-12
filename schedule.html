@@ -368,6 +368,9 @@ tr.tr-today td.tr-date {
   color: #ff8fab; background: rgba(255,139,175,0.06);
   font-weight: 600;
 }
+tr.tr-future td.tr-date { color: rgba(255,255,255,0.22); }
+tr.tr-future td.tr-cell { opacity: 0.28; }
+tr.tr-future td.tr-pct  { opacity: 0.28; }
 
 /* % cell */
 td.tr-pct {
@@ -2699,9 +2702,9 @@ function buildTracker() {
   const now     = new Date();
   const todayDs = now.toISOString().split('T')[0];
 
-  // 30-day window: today at top, going backwards
+  // 5 future + today + 29 past = 35 rows; future rows let you pre-fill upcoming days
   const dates = [];
-  for (let i = 0; i <= 29; i++) {
+  for (let i = -5; i <= 29; i++) {
     const d = new Date(now); d.setDate(now.getDate() - i); dates.push(d);
   }
 
@@ -2727,9 +2730,11 @@ function buildTracker() {
   const tbody = table.createTBody();
   dates.forEach(date => {
     const ds      = date.toISOString().split('T')[0];
-    const isToday = ds === todayDs;
-    const row     = tbody.insertRow();
-    if (isToday) row.classList.add('tr-today');
+    const isToday  = ds === todayDs;
+    const isFuture = ds > todayDs;
+    const row      = tbody.insertRow();
+    if (isToday)  row.classList.add('tr-today');
+    if (isFuture) row.classList.add('tr-future');
 
     // Date cell
     const tdDate = row.insertCell();
