@@ -1,0 +1,5 @@
+.env.qa
+.env.prod
+node_modules/
+dist/
+.firebase/
