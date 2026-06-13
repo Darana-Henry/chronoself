@@ -181,6 +181,59 @@ body::before {
   color: #2a2d35;
   letter-spacing: 0.5px;
 }
+
+/* ── Sync bar ─────────────────────────────────── */
+.sync-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+  width: 100%;
+  max-width: 560px;
+}
+
+.sync-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  background: #4a4f5a;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.sync-dot.ok      { background: #4ddd8e; box-shadow: 0 0 6px rgba(77,221,142,0.5); }
+.sync-dot.syncing { background: #888; }
+.sync-dot.err     { background: #ff5f5f; box-shadow: 0 0 8px rgba(255,95,95,0.6); }
+
+.sync-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.10);
+  color: #e8eaed;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.sync-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.16);
+  border-color: rgba(255,255,255,0.38);
+}
+.sync-btn:disabled { opacity: 0.55; cursor: default; }
+
+.sync-msg {
+  font-size: 12px;
+  color: #9aa0a6;
+  flex: 1;
+}
+.sync-msg.ok  { color: #4ddd8e; }
+.sync-msg.err { color: #ff6b6b; }
 </style>
 </head>
 <body>
@@ -321,8 +374,132 @@ body::before {
 
   </div>
 
+  <div class="sync-bar">
+    <span id="sync-dot" class="sync-dot" title="Firebase sync status"></span>
+    <button id="sync-btn" class="sync-btn" onclick="runSync()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/>
+        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+      </svg>
+      Sync to Firebase
+    </button>
+    <span id="sync-msg" class="sync-msg"></span>
+  </div>
+
   <footer class="footer">CHRONOSELF</footer>
 
 </div>
+
+<!-- Firebase config (placeholders replaced by scripts/inject.js at build time) -->
+<script>
+const FIREBASE_CONFIG = {
+  apiKey:            "__FIREBASE_API_KEY__",
+  authDomain:        "__FIREBASE_AUTH_DOMAIN__",
+  projectId:         "__FIREBASE_PROJECT_ID__",
+  storageBucket:     "__FIREBASE_STORAGE_BUCKET__",
+  messagingSenderId: "__FIREBASE_MESSAGING_SENDER_ID__",
+  appId:             "__FIREBASE_APP_ID__"
+};
+const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
+</script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<script>
+const _fbOk = FIREBASE_CONFIG.apiKey && !FIREBASE_CONFIG.apiKey.startsWith('__');
+let _fsDb = null, _fsUid = null;
+
+const syncDot = document.getElementById('sync-dot');
+const syncBtn = document.getElementById('sync-btn');
+const syncMsg = document.getElementById('sync-msg');
+
+function setSync(state, msg) {
+  syncDot.className = 'sync-dot' + (state ? ' ' + state : '');
+  syncMsg.className = 'sync-msg'  + (state ? ' ' + state : '');
+  syncMsg.textContent = msg;
+}
+
+if (_fbOk) {
+  firebase.initializeApp(FIREBASE_CONFIG);
+  const auth = firebase.auth();
+  syncBtn.disabled = true;
+  setSync('', 'Checking sign-in…');
+  auth.onAuthStateChanged(user => {
+    if (user && user.email === ALLOWED_EMAIL) {
+      _fsDb = firebase.firestore();
+      _fsUid = user.uid;
+      syncBtn.disabled = false;
+      setSync('', 'Ready — click to sync all data to Firebase.');
+    } else if (user) {
+      setSync('err', 'Wrong account signed in.');
+    } else {
+      setSync('', 'Open any module and sign in first.');
+    }
+  });
+} else {
+  syncBtn.disabled = true;
+  setSync('', 'Open the deployed app to use sync.');
+}
+
+async function runSync() {
+  if (!_fsDb || !_fsUid) return;
+
+  syncBtn.disabled = true;
+  setSync('syncing', 'Syncing…');
+
+  const userDoc = _fsDb.collection('users').doc(_fsUid);
+  let saved = 0, skipped = 0;
+
+  try {
+    // ── Tracker daily dates ──────────────────────
+    const dateMap = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k) continue;
+      const match = k.match(/^chrono_(\d{4}-\d{2}-\d{2})_(.+)$/);
+      if (!match) continue;
+      const [, date, habit] = match;
+      if (!dateMap[date]) dateMap[date] = {};
+      dateMap[date][habit] = localStorage.getItem(k);
+    }
+    for (const date of Object.keys(dateMap)) {
+      const ref  = userDoc.collection('tracker').doc(date);
+      const snap = await ref.get();
+      if (!snap.exists || !Object.keys(snap.data()).length) {
+        await ref.set(dateMap[date]); saved++;
+      } else { skipped++; }
+    }
+
+    // ── Backlog, Goals, Chronicle ────────────────
+    const blobs = [
+      { lsKey: 'chrono_backlog',   fsId: 'backlog',   field: 'items'   },
+      { lsKey: 'chrono_goals_v3',  fsId: 'goals',     field: 'goals'   },
+      { lsKey: 'chrono_chronicle', fsId: 'chronicle', field: 'entries' },
+    ];
+    for (const { lsKey, fsId, field } of blobs) {
+      const raw = localStorage.getItem(lsKey);
+      if (!raw) continue;
+      const ref  = userDoc.collection('data').doc(fsId);
+      const snap = await ref.get();
+      if (!snap.exists || !snap.data()[field]?.length) {
+        await ref.set({ [field]: JSON.parse(raw) }); saved++;
+      } else { skipped++; }
+    }
+
+    const total = saved + skipped;
+    if (saved === 0) {
+      setSync('ok', `All up to date — ${total} item${total !== 1 ? 's' : ''} already in Firebase.`);
+    } else {
+      setSync('ok', `${saved} item${saved !== 1 ? 's' : ''} saved to Firebase.` +
+        (skipped ? ` ${skipped} already existed.` : ''));
+    }
+  } catch (err) {
+    console.error('Sync failed:', err);
+    setSync('err', `Sync failed: ${err.message}`);
+  }
+
+  syncBtn.disabled = false;
+}
+</script>
 </body>
 </html>
