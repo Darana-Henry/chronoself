@@ -34,15 +34,13 @@ if (missing.length) {
   process.exit(1);
 }
 
-const src  = path.join(__dirname, '..', 'schedule.html');
-const dest = path.join(__dirname, '..', 'dist', 'schedule.html');
+fs.mkdirSync(path.join(__dirname, '..', 'dist'), { recursive: true });
 
-fs.mkdirSync(path.dirname(dest), { recursive: true });
-
-let html = fs.readFileSync(src, 'utf8');
-required.forEach(k => {
-  html = html.replaceAll(`__${k}__`, process.env[k]);
-});
-
-fs.writeFileSync(dest, html);
-console.log(`Built → ${dest}`);
+for (const file of ['schedule.html', 'index.html']) {
+  const src  = path.join(__dirname, '..', file);
+  const dest = path.join(__dirname, '..', 'dist', file);
+  let html = fs.readFileSync(src, 'utf8');
+  required.forEach(k => { html = html.replaceAll(`__${k}__`, process.env[k]); });
+  fs.writeFileSync(dest, html);
+  console.log(`Built → ${dest}`);
+}

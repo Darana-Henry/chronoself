@@ -329,6 +329,7 @@ html, body {
 .tr-tab-btn:hover:not(.active) { color: var(--txt-mid); }
 .tr-tab-btn.active { color: var(--txt); border-bottom-color: rgba(255,255,255,0.55); }
 
+
 .tr-panel { display: none; flex: 1; min-height: 0; flex-direction: column; }
 .tr-panel.active { display: flex; }
 
@@ -430,6 +431,7 @@ td.tr-cell.tr-off::after { display: none; }
 .tr-month-card {
   background: rgba(255,255,255,0.02); border: 1px solid var(--line);
   border-radius: 12px; overflow: hidden;
+  display: flex; flex-direction: column; height: 232px;
 }
 .tr-month-card.is-current { border-color: rgba(255,139,175,0.28); background: rgba(255,139,175,0.025); }
 .tr-month-card.is-past    { opacity: 0.58; }
@@ -438,7 +440,7 @@ td.tr-cell.tr-off::after { display: none; }
   border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 8px;
 }
 .tr-month-name.cur { color: #ff8fab; }
-.tr-month-items { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 4px; }
+.tr-month-items { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 4px; flex: 1; overflow: hidden; }
 .tr-month-item {
   display: flex; align-items: center; gap: 9px; padding: 7px 8px;
   border-radius: 7px; cursor: pointer; transition: background 0.12s;
@@ -2841,6 +2843,14 @@ function buildTrackerMonthly() {
   const MONTHS = ['January','February','March','April','May','June',
                   'July','August','September','October','November','December'];
 
+  // Count how many months already have each travel type checked (year budget)
+  const CAR_MAX = 3, FLIGHT_MAX = 1;
+  let carUsed = 0, flightUsed = 0;
+  for (let i = 0; i < 12; i++) {
+    if (trMonthGet(year, i, 'travel_car'))    carUsed++;
+    if (trMonthGet(year, i, 'travel_flight')) flightUsed++;
+  }
+
   for (let q = 0; q < 4; q++) {
     const section = document.createElement('div');
     section.className = 'tr-quarter-section';
@@ -2856,18 +2866,22 @@ function buildTrackerMonthly() {
     for (let m = q*3; m < q*3+3; m++) {
       const isCur  = m === curM;
       const isPast = m < curM;
-      const travelOn = trMonthGet(year, m, 'travel');
+
+      const carOn    = trMonthGet(year, m, 'travel_car');
+      const flightOn = trMonthGet(year, m, 'travel_flight');
+      const anyTravelOn = carOn || flightOn;
 
       const card = document.createElement('div');
       card.className = 'tr-month-card' + (isCur ? ' is-current' : '') + (isPast ? ' is-past' : '');
 
+      // Month name + travel badge
       const nameRow = document.createElement('div');
       nameRow.className = 'tr-month-name' + (isCur ? ' cur' : '');
       nameRow.textContent = MONTHS[m];
-      if (travelOn) {
+      if (carOn || flightOn) {
         const tBadge = document.createElement('span');
         tBadge.style.cssText = 'font-size:11px;color:rgba(255,200,77,0.70);';
-        tBadge.textContent = '✈';
+        tBadge.textContent = carOn ? '🚗' : '✈';
         nameRow.appendChild(tBadge);
       }
       card.appendChild(nameRow);
@@ -2877,24 +2891,36 @@ function buildTrackerMonthly() {
 
       const isOddMonth  = (m + 1) % 2 === 1;
       const isEvenMonth = (m + 1) % 2 === 0;
+
+      // Travel rows only appear on past months if they were actually checked
       const monthItems = [
-        { key:'dinner',   label:'Dinner'        },
-        { key:'activity', label:'Activity'       },
-        { key:'bathroom', label:'Bathroom'       },
-        ...(isOddMonth  ? [{ key:'haircut',  label:'Haircut'  }] : []),
-        ...(isEvenMonth ? [{ key:'carwash',  label:'Car Wash' }] : []),
-        { key:'travel',   label:'Travel ✈', isTravel:true     },
+        { key:'event_dinner', label:'Event + Dinner'                          },
+        { key:'bathroom',     label:'Bathroom'                                },
+        ...(isOddMonth  ? [{ key:'haircut', label:'Haircut'  }] : []),
+        ...(isEvenMonth ? [{ key:'carwash', label:'Car Wash' }] : []),
+        ...(!isPast || carOn    ? [{ key:'travel_car',    label:'Travel 🚗', travelType:'car'    }] : []),
+        ...(!isPast || flightOn ? [{ key:'travel_flight', label:'Travel ✈',  travelType:'flight' }] : []),
       ];
 
-      monthItems.forEach(({ key, label, isTravel = false }) => {
-        const isDone    = trMonthGet(year, m, key);
-        const disabled  = !isTravel && travelOn;
+      monthItems.forEach(({ key, label, travelType = null }) => {
+        const isTravel = !!travelType;
+        const isDone   = trMonthGet(year, m, key);
+
+        let disabled = false;
+        if (!isTravel) {
+          disabled = anyTravelOn;
+        } else if (travelType === 'car') {
+          // Locked if the other type is on this month, or year budget is full
+          disabled = flightOn || (carUsed >= CAR_MAX && !carOn);
+        } else {
+          disabled = carOn || (flightUsed >= FLIGHT_MAX && !flightOn);
+        }
 
         const row = document.createElement('div');
         row.className = 'tr-month-item' +
-          (isDone   ? ' done'     : '') +
-          (disabled ? ' disabled' : '') +
-          (isTravel ? ' travel'   : '');
+          (isDone   ? ' done'    : '') +
+          (disabled ? ' disabled': '') +
+          (isTravel ? ' travel'  : '');
 
         const box = document.createElement('div'); box.className = 'tr-mi-box';
         const lbl = document.createElement('div'); lbl.className = 'tr-mi-lbl'; lbl.textContent = label;
@@ -5660,7 +5686,8 @@ function fsPushTracker(dateStr) {
       data[k.replace(`chrono_${dateStr}_`, '')] = localStorage.getItem(k);
     }
   }
-  fsUserDoc().collection('tracker').doc(dateStr).set(data).catch(console.error);
+  fsUserDoc().collection('tracker').doc(dateStr).set(data)
+    .catch(err => console.error('Tracker sync failed:', err));
 }
 
 function fsPushBacklog(items) {
