@@ -2692,8 +2692,12 @@ const ACTIVITIES = [
   { key:'europa', label:'Europa/Conf',  cat:'sports', days:null, seasonStart:'2026-09-18', seasonEnd:'2027-05-21' },
   { key:'mls',    label:'MLS',          cat:'sports', days:null, seasonStart:'2026-02-21', seasonEnd:'2026-11-22' },
   // ── Periodic ───────────────────────────────────────
-  { key:'shave',    label:'Shave',         cat:'hygiene',  days:'biweeksat'       },
-  { key:'jobs',     label:'Job Hunt',      cat:'work',     days:[5]               },
+  { key:'shave',        label:'Shave',           cat:'hygiene',  days:'biweeksat' },
+  { key:'nails',        label:'Nails',           cat:'hygiene',  days:[5]         },
+  { key:'hair_oil',     label:'Oil Hair',         cat:'hygiene',  days:[2,5]       },
+  { key:'hair_wash',    label:'Hair Bath',        cat:'hygiene',  days:[3,6]       },
+  { key:'hair_straighten', label:'Straighten Hair', cat:'hygiene', days:[6]       },
+  { key:'jobs',         label:'Job Hunt',         cat:'work',     days:[5]         },
   { key:'xxx',      label:'Coupling',      cat:'special',  days:'div3'            },
 ];
 
@@ -2896,6 +2900,8 @@ function buildTrackerMonthly() {
       const monthItems = [
         { key:'event_dinner', label:'Event + Dinner'                          },
         { key:'bathroom',     label:'Bathroom'                                },
+        { key:'desk_clean',   label:'Desk Deep Clean'                         },
+        { key:'hair_sweep',   label:'Full Surface Hair Clearout'               },
         ...(isOddMonth  ? [{ key:'haircut', label:'Haircut'  }] : []),
         ...(isEvenMonth ? [{ key:'carwash', label:'Car Wash' }] : []),
         ...(!isPast || carOn    ? [{ key:'travel_car',    label:'Travel 🚗', travelType:'car'    }] : []),
