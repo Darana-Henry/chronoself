@@ -114,6 +114,7 @@ body::before {
 .card-goals::before       { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,200,77,0.10), transparent); }
 .card-freeletics::before  { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,107,53,0.12), transparent); }
 .card-chronicle::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,139,175,0.10), transparent); }
+.card-classes::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,122,255,0.10), transparent); }
 
 .card:hover {
   transform: translateY(-4px);
@@ -126,6 +127,7 @@ body::before {
 .card-goals:hover       { border-color: rgba(255,200,77,0.45);  box-shadow: 0 8px 40px rgba(255,200,77,0.12); }
 .card-freeletics:hover  { border-color: rgba(255,107,53,0.45);  box-shadow: 0 8px 40px rgba(255,107,53,0.14); }
 .card-chronicle:hover   { border-color: rgba(255,139,175,0.45); box-shadow: 0 8px 40px rgba(255,139,175,0.12); }
+.card-classes:hover     { border-color: rgba(201,122,255,0.45); box-shadow: 0 8px 40px rgba(201,122,255,0.14); }
 
 .card:active { transform: translateY(-1px); }
 
@@ -140,6 +142,7 @@ body::before {
 .card-goals      .card-icon { background: rgba(255,200,77,0.12); }
 .card-freeletics .card-icon { background: rgba(255,107,53,0.12); }
 .card-chronicle  .card-icon { background: rgba(255,139,175,0.12); }
+.card-classes    .card-icon { background: rgba(201,122,255,0.12); }
 
 .card-icon svg { width: 24px; height: 24px; }
 
@@ -173,6 +176,7 @@ body::before {
 .card-goals      .card-arrow { color: #ffc84d; }
 .card-freeletics .card-arrow { color: #ff8050; }
 .card-chronicle  .card-arrow { color: #ff8fab; }
+.card-classes    .card-arrow { color: #c97aff; }
 .card:hover .card-arrow    { gap: 10px; }
 
 /* ── Footer ───────────────────────────────────── */
@@ -353,6 +357,26 @@ body::before {
       </div>
     </a>
 
+    <!-- Classes -->
+    <a class="card card-classes" href="schedule.html?tab=classes">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c97aff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+      </div>
+      <div class="card-title">Classes</div>
+      <div class="card-desc">Track your music and gymnastics sessions. Log Vocals, Piano, and Gymnastics attendance — with makeup dates for missed music classes.</div>
+      <div class="card-arrow">
+        Open Classes
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </a>
+
     <!-- Tracker -->
     <a class="card card-tracker" href="schedule.html?tab=tracker">
       <div class="card-icon">
@@ -467,6 +491,25 @@ async function runSync() {
       const snap = await ref.get();
       if (!snap.exists || !Object.keys(snap.data()).length) {
         await ref.set(dateMap[date]); saved++;
+      } else { skipped++; }
+    }
+
+    // ── Classes ──────────────────────────────────
+    const clsDateMap = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k) continue;
+      const match = k.match(/^chrono_cls_(\d{4}-\d{2}-\d{2})_(.+)$/);
+      if (!match) continue;
+      const [, date, key] = match;
+      if (!clsDateMap[date]) clsDateMap[date] = {};
+      clsDateMap[date][key] = localStorage.getItem(k);
+    }
+    for (const date of Object.keys(clsDateMap)) {
+      const ref  = userDoc.collection('classes').doc(date);
+      const snap = await ref.get();
+      if (!snap.exists || !Object.keys(snap.data()).length) {
+        await ref.set(clsDateMap[date]); saved++;
       } else { skipped++; }
     }
 
