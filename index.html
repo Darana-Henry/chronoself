@@ -115,6 +115,7 @@ body::before {
 .card-freeletics::before  { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,107,53,0.12), transparent); }
 .card-chronicle::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,139,175,0.10), transparent); }
 .card-classes::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,122,255,0.10), transparent); }
+.card-hub::before         { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(56,210,220,0.10), transparent); }
 
 .card:hover {
   transform: translateY(-4px);
@@ -128,6 +129,7 @@ body::before {
 .card-freeletics:hover  { border-color: rgba(255,107,53,0.45);  box-shadow: 0 8px 40px rgba(255,107,53,0.14); }
 .card-chronicle:hover   { border-color: rgba(255,139,175,0.45); box-shadow: 0 8px 40px rgba(255,139,175,0.12); }
 .card-classes:hover     { border-color: rgba(201,122,255,0.45); box-shadow: 0 8px 40px rgba(201,122,255,0.14); }
+.card-hub:hover         { border-color: rgba(56,210,220,0.45);  box-shadow: 0 8px 40px rgba(56,210,220,0.10); }
 
 .card:active { transform: translateY(-1px); }
 
@@ -143,6 +145,7 @@ body::before {
 .card-freeletics .card-icon { background: rgba(255,107,53,0.12); }
 .card-chronicle  .card-icon { background: rgba(255,139,175,0.12); }
 .card-classes    .card-icon { background: rgba(201,122,255,0.12); }
+.card-hub        .card-icon { background: rgba(56,210,220,0.12); }
 
 .card-icon svg { width: 24px; height: 24px; }
 
@@ -177,6 +180,7 @@ body::before {
 .card-freeletics .card-arrow { color: #ff8050; }
 .card-chronicle  .card-arrow { color: #ff8fab; }
 .card-classes    .card-arrow { color: #c97aff; }
+.card-hub        .card-arrow { color: #38d2dc; }
 .card:hover .card-arrow    { gap: 10px; }
 
 /* ── Footer ───────────────────────────────────── */
@@ -350,6 +354,27 @@ body::before {
       <div class="card-desc">A daily log of what was new. One line, one moment — keep your life novel and never forget it.</div>
       <div class="card-arrow">
         Open Chronicle
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- Hub -->
+    <a class="card card-hub" href="portals.html">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#38d2dc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+        </svg>
+      </div>
+      <div class="card-title">Hub</div>
+      <div class="card-desc">All your personal portals in one place. Ballpark, Fantasy IPL, Travel Planner, Streaming Tracker, and more.</div>
+      <div class="card-arrow">
+        Open Hub
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"/>
           <polyline points="12 5 19 12 12 19"/>
