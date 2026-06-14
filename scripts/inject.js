@@ -36,7 +36,7 @@ if (missing.length) {
 
 fs.mkdirSync(path.join(__dirname, '..', 'dist'), { recursive: true });
 
-for (const file of ['schedule.html', 'index.html']) {
+for (const file of ['schedule.html', 'index.html', 'portals.html']) {
   const src  = path.join(__dirname, '..', file);
   const dest = path.join(__dirname, '..', 'dist', file);
   let html = fs.readFileSync(src, 'utf8');
