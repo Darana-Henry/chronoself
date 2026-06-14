@@ -415,6 +415,71 @@ td.tr-cell.na::after { display: none; }
 td.tr-cell.tr-off { cursor: default; opacity: 0.18; }
 td.tr-cell.tr-off::after { display: none; }
 
+/* ══════════════════════════════════════════════════
+   CLASSES PANEL
+══════════════════════════════════════════════════ */
+.cls-wrap { flex: 1; overflow: auto; }
+
+#cls-table { border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+
+#cls-table thead th {
+  position: sticky; top: 0; background: #161616; z-index: 10;
+  padding: 10px 16px; text-align: left;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.7px; text-transform: uppercase;
+  color: var(--txt-dim); border-bottom: 1px solid rgba(255,255,255,0.10);
+  white-space: nowrap; width: 210px;
+}
+#cls-table thead th:first-child { width: 120px; }
+
+#cls-table tbody tr { border-bottom: 1px solid var(--line); }
+#cls-table tbody tr:last-child { border-bottom: none; }
+#cls-table tbody tr:hover { background: rgba(255,255,255,0.018); }
+#cls-table tbody tr.cls-today { background: rgba(201,122,255,0.05); }
+#cls-table tbody tr.cls-future { opacity: 0.42; }
+
+td.cls-date {
+  padding: 0 16px; height: 48px; white-space: nowrap;
+  font-size: 12px; color: var(--txt-mid); vertical-align: middle;
+  border-right: 1px solid var(--line);
+}
+tr.cls-today td.cls-date { color: #c97aff; font-weight: 600; }
+
+td.cls-session { padding: 0 16px; vertical-align: middle; }
+td.cls-na {
+  padding: 0 16px; vertical-align: middle;
+  font-size: 11px; color: rgba(255,255,255,0.16);
+}
+td.cls-adj { padding: 0 16px; vertical-align: middle; }
+
+.cls-session-row {
+  display: flex; align-items: center; gap: 10px;
+  cursor: pointer; user-select: none; padding: 4px 0;
+}
+.cls-session-row:hover .cls-box { border-color: rgba(201,122,255,0.5); }
+
+.cls-box {
+  width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0;
+  border: 1.5px solid rgba(255,255,255,0.16);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.12s, border-color 0.12s;
+}
+.cls-box.checked { background: #c97aff; border-color: #c97aff; }
+.cls-box.checked::after { content: '✓'; font-size: 11px; color: #1a0030; font-weight: 800; }
+
+.cls-session-label { font-size: 13px; color: var(--txt-mid); }
+.cls-session-row:hover .cls-session-label { color: var(--txt); }
+
+.cls-adj-input {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 7px; color: var(--txt-mid); font-size: 12px; font-family: inherit;
+  padding: 6px 10px; width: 168px; cursor: pointer;
+  transition: border-color 0.15s;
+}
+.cls-adj-input:focus { outline: none; border-color: rgba(201,122,255,0.45); }
+.cls-adj-input:hover { border-color: rgba(255,255,255,0.22); }
+.cls-adj-input.has-date { border-color: rgba(201,122,255,0.40); background: rgba(201,122,255,0.07); color: var(--txt); }
+.cls-adj-input::-webkit-calendar-picker-indicator { filter: invert(0.55); cursor: pointer; }
+
 /* ── Monthly panel ── */
 .tracker-monthly-wrap {
   flex: 1; overflow-y: auto; padding: 24px 28px 40px;
@@ -1926,6 +1991,7 @@ const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
     <button class="tab-btn"        id="btn-goals"       onclick="switchTab('goals')">Goals</button>
     <button class="tab-btn"        id="btn-freeletics"  onclick="switchTab('freeletics')">Freeletics</button>
     <button class="tab-btn"        id="btn-chronicle"   onclick="switchTab('chronicle')">Chronicle</button>
+    <button class="tab-btn"        id="btn-classes"     onclick="switchTab('classes')">Classes</button>
   </nav>
 
   <!-- ── Today panel ─────────────────── -->
@@ -2102,6 +2168,11 @@ const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
     </div>
   </div>
 
+  <!-- ── Classes panel ───────────────── -->
+  <div id="panel-classes" class="panel">
+    <div class="cls-wrap"><table id="cls-table"></table></div>
+  </div>
+
   <!-- ── Chronicle panel ─────────────── -->
   <div id="panel-chronicle" class="panel">
     <div class="chronicle-wrap">
@@ -2263,6 +2334,53 @@ function renderToday() {
     habList.appendChild(d);
   }
   habCard.appendChild(habList);
+
+  // ══ CLASSES TODAY ═══════════════════════════════
+  const clsCard      = card('Classes Today', col2);
+  const todayMusic   = clsMusicLabel(now);
+  const todayHasGym  = clsHasGym(now);
+
+  if (!todayMusic && !todayHasGym) {
+    const e = document.createElement('div');
+    e.style.cssText = 'font-size:12px;color:var(--txt-dim);padding:4px 0;';
+    e.textContent = 'No classes today.';
+    clsCard.appendChild(e);
+  } else {
+    const clsList = document.createElement('div');
+    clsList.className = 'today-habits-list';
+
+    if (todayMusic) {
+      const musicDone = clsGet(todayDs, 'music') === '1';
+      const item = document.createElement('div');
+      item.className = 'today-habit-item' + (musicDone ? ' done' : '');
+      const box  = document.createElement('div');  box.className = 'today-habit-box';
+      const name = document.createElement('span'); name.className = 'today-habit-name';
+      name.textContent = todayMusic;
+      item.append(box, name);
+      item.addEventListener('click', () => {
+        clsSet(todayDs, 'music', clsGet(todayDs, 'music') === '1' ? null : '1');
+        renderToday();
+      });
+      clsList.appendChild(item);
+    }
+
+    if (todayHasGym) {
+      const gymDone = clsGet(todayDs, 'gym') === '1';
+      const item = document.createElement('div');
+      item.className = 'today-habit-item' + (gymDone ? ' done' : '');
+      const box  = document.createElement('div');  box.className = 'today-habit-box';
+      const name = document.createElement('span'); name.className = 'today-habit-name';
+      name.textContent = 'Gymnastics';
+      item.append(box, name);
+      item.addEventListener('click', () => {
+        clsSet(todayDs, 'gym', clsGet(todayDs, 'gym') === '1' ? null : '1');
+        renderToday();
+      });
+      clsList.appendChild(item);
+    }
+
+    clsCard.appendChild(clsList);
+  }
 
   // ══ GOALS ═══════════════════════════════════════
   const goalsCard = card('Goals', col3);
@@ -2440,6 +2558,7 @@ function switchTab(name) {
   document.getElementById(`btn-${name}`).classList.add('active');
   if (name === 'today')     renderToday();
   if (name === 'tracker')   buildTracker();
+  if (name === 'classes')   buildClasses();
   if (name === 'chronicle') { renderChronicle(); renderChronicleCalendar(); }
 }
 
@@ -2722,6 +2841,147 @@ function trMonthGet(year, month, key) {
 function trMonthSet(year, month, key, val) {
   val ? localStorage.setItem(trMonthKey(year, month, key), '1')
       : localStorage.removeItem(trMonthKey(year, month, key));
+}
+
+// ═══════════════════════════════════════════════════
+//  CLASSES — STORAGE & HELPERS
+// ═══════════════════════════════════════════════════
+function clsGet(dateStr, key) {
+  return localStorage.getItem(`chrono_cls_${dateStr}_${key}`);
+}
+function clsSet(dateStr, key, val) {
+  val ? localStorage.setItem(`chrono_cls_${dateStr}_${key}`, val)
+      : localStorage.removeItem(`chrono_cls_${dateStr}_${key}`);
+  fsPushClasses(dateStr);
+}
+
+function clsMusicLabel(date) {
+  const d = trDayIdx(date);
+  if (d === 0 || d === 2 || d === 5) return 'Vocals';
+  if (d === 1 || d === 3)            return 'Piano';
+  return null; // Fri, Sun — no music class
+}
+function clsHasGym(date) {
+  return trDayIdx(date) <= 4; // Mon–Fri
+}
+
+// ═══════════════════════════════════════════════════
+//  CLASSES — BUILD TABLE
+// ═══════════════════════════════════════════════════
+function buildClasses() {
+  const table = document.getElementById('cls-table');
+  if (!table) return;
+  table.innerHTML = '';
+
+  const now     = new Date();
+  const todayDs = now.toISOString().split('T')[0];
+
+  // 5 future + today + 29 past, filtered to Mon–Sat
+  const dates = [];
+  for (let i = -5; i <= 29; i++) {
+    const d = new Date(now);
+    d.setDate(now.getDate() - i);
+    if (trDayIdx(d) !== 6) dates.push(d); // skip Sunday
+  }
+
+  // ── Header ──────────────────────────────────────
+  const thead = table.createTHead();
+  const hrow  = thead.insertRow();
+  ['Date', 'Session 1 — Music', 'Session 2 — Gymnastics', 'Adjusted Day'].forEach(text => {
+    const th = document.createElement('th');
+    th.textContent = text;
+    hrow.appendChild(th);
+  });
+
+  // ── Body ────────────────────────────────────────
+  const tbody = table.createTBody();
+  dates.forEach(date => {
+    const ds         = date.toISOString().split('T')[0];
+    const isToday    = ds === todayDs;
+    const isFuture   = ds > todayDs;
+    const musicLabel = clsMusicLabel(date);
+    const hasGym     = clsHasGym(date);
+
+    const row = tbody.insertRow();
+    if (isToday)  row.classList.add('cls-today');
+    if (isFuture) row.classList.add('cls-future');
+
+    // ── Date ──────────────────────────────────────
+    const tdDate = row.insertCell();
+    tdDate.className   = 'cls-date';
+    tdDate.textContent = date.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' });
+
+    // ── Session 1 (Music) ─────────────────────────
+    const td1 = row.insertCell();
+    if (musicLabel) {
+      td1.className = 'cls-session';
+      const inner = document.createElement('div');
+      inner.className = 'cls-session-row';
+
+      const box = document.createElement('div');
+      box.className = 'cls-box' + (clsGet(ds, 'music') === '1' ? ' checked' : '');
+
+      const lbl = document.createElement('span');
+      lbl.className   = 'cls-session-label';
+      lbl.textContent = musicLabel;
+
+      inner.append(box, lbl);
+      inner.addEventListener('click', () => {
+        const next = clsGet(ds, 'music') === '1' ? null : '1';
+        clsSet(ds, 'music', next);
+        box.className = 'cls-box' + (next === '1' ? ' checked' : '');
+      });
+      td1.appendChild(inner);
+    } else {
+      td1.className   = 'cls-na';
+      td1.textContent = '—';
+    }
+
+    // ── Session 2 (Gym) ───────────────────────────
+    const td2 = row.insertCell();
+    if (hasGym) {
+      td2.className = 'cls-session';
+      const inner = document.createElement('div');
+      inner.className = 'cls-session-row';
+
+      const box = document.createElement('div');
+      box.className = 'cls-box' + (clsGet(ds, 'gym') === '1' ? ' checked' : '');
+
+      const lbl = document.createElement('span');
+      lbl.className   = 'cls-session-label';
+      lbl.textContent = 'Gymnastics';
+
+      inner.append(box, lbl);
+      inner.addEventListener('click', () => {
+        const next = clsGet(ds, 'gym') === '1' ? null : '1';
+        clsSet(ds, 'gym', next);
+        box.className = 'cls-box' + (next === '1' ? ' checked' : '');
+      });
+      td2.appendChild(inner);
+    } else {
+      td2.className   = 'cls-na';
+      td2.textContent = '—';
+    }
+
+    // ── Adjusted Day (music days only) ────────────
+    const td3 = row.insertCell();
+    if (musicLabel) {
+      td3.className = 'cls-adj';
+      const input   = document.createElement('input');
+      const adjVal  = clsGet(ds, 'music_adj') || '';
+      input.type      = 'date';
+      input.className = 'cls-adj-input' + (adjVal ? ' has-date' : '');
+      input.value     = adjVal;
+      input.addEventListener('change', () => {
+        clsSet(ds, 'music_adj', input.value || null);
+        input.className = 'cls-adj-input' + (input.value ? ' has-date' : '');
+      });
+      td3.appendChild(input);
+    } else {
+      td3.className   = 'cls-na';
+      td3.textContent = '—';
+    }
+  });
 }
 
 // ═══════════════════════════════════════════════════
@@ -5711,6 +5971,19 @@ function fsPushChronicle(entries) {
   fsUserDoc().collection('data').doc('chronicle').set({ entries }).catch(console.error);
 }
 
+function fsPushClasses(dateStr) {
+  if (!fsDb || !fsUid) return;
+  const data = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith(`chrono_cls_${dateStr}_`)) {
+      data[k.replace(`chrono_cls_${dateStr}_`, '')] = localStorage.getItem(k);
+    }
+  }
+  fsUserDoc().collection('classes').doc(dateStr).set(data)
+    .catch(err => console.error('Classes sync failed:', err));
+}
+
 // ── Pull on sign-in ──────────────────────────────────
 async function fsPull() {
   const userDoc = fsUserDoc();
@@ -5722,6 +5995,16 @@ async function fsPull() {
     Object.entries(doc.data()).forEach(([key, val]) => {
       val ? localStorage.setItem(`chrono_${dateStr}_${key}`, val)
           : localStorage.removeItem(`chrono_${dateStr}_${key}`);
+    });
+  });
+
+  // Classes — one doc per date
+  const classesSnap = await userDoc.collection('classes').get();
+  classesSnap.forEach(doc => {
+    const dateStr = doc.id;
+    Object.entries(doc.data()).forEach(([key, val]) => {
+      val ? localStorage.setItem(`chrono_cls_${dateStr}_${key}`, val)
+          : localStorage.removeItem(`chrono_cls_${dateStr}_${key}`);
     });
   });
 
@@ -5772,7 +6055,7 @@ function initApp() {
   renderToday();
   setInterval(renderToday, 60_000);
   const urlTab = new URLSearchParams(window.location.search).get('tab');
-  if (urlTab && ['today','tracker','backlog','goals','freeletics','chronicle'].includes(urlTab)) switchTab(urlTab);
+  if (urlTab && ['today','tracker','backlog','goals','freeletics','chronicle','classes'].includes(urlTab)) switchTab(urlTab);
 }
 
 if (_fbConfigured) {
