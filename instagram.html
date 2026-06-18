@@ -285,7 +285,7 @@ body::before {
     }
     if (data.length) {
       const current = data[data.length - 1].count;
-      setEl(`${pfx}-current`, fmtN(current), '');
+      setEl(`${pfx}-current`, current.toLocaleString(), '');
       setEl(`${pfx}-days`, String(data.length), '');
       const c7 = countDaysAgo(7);
       const d7 = fmtDelta(c7 != null ? current - c7 : null);
@@ -414,7 +414,7 @@ body::before {
         row.innerHTML =
           `<span class="recent-date">${label}</span>` +
           `<span class="recent-right">` +
-          `<span class="recent-count">${fmtN(entry.count)}</span>` +
+          `<span class="recent-count">${entry.count.toLocaleString()}</span>` +
           `<span class="recent-delta ${dd.cls}">${dd.text}</span>` +
           `</span>`;
         recentEl.appendChild(row);
