@@ -21,8 +21,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install instaloader
-        run: pip install instaloader==4.13.1
+      - name: Install Playwright
+        run: pip install playwright && python -m playwright install chromium --with-deps
 
       - name: Fetch follower count
         run: python scripts/fetch_instagram.py
