@@ -3118,7 +3118,7 @@ async function buildInstagram() {
     }
     if (data.length) {
       const current = data[data.length - 1].count;
-      setEl(`ig-cur-${pfx}`, fmtN(current), '');
+      setEl(`ig-cur-${pfx}`, current.toLocaleString(), '');
       setEl(`ig-days-${pfx}`, String(data.length), '');
       const c7 = countDaysAgo(7);
       const d7 = fmtDelta(c7 != null ? current - c7 : null);
@@ -3245,7 +3245,7 @@ async function buildInstagram() {
         row.innerHTML =
           `<span class="ig-recent-date">${label}</span>` +
           `<span class="ig-recent-right">` +
-          `<span class="ig-recent-count">${fmtN(entry.count)}</span>` +
+          `<span class="ig-recent-count">${entry.count.toLocaleString()}</span>` +
           `<span class="ig-recent-delta ${dd.cls}">${dd.text}</span>` +
           `</span>`;
         recentEl.appendChild(row);
