@@ -10,7 +10,7 @@ import json
 import os
 import re
 import sys
-from datetime import date
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 try:
@@ -102,7 +102,8 @@ def fetch_followers(account):
 
 
 def main():
-    today = str(date.today())
+    IST = timezone(timedelta(hours=5, minutes=30))
+    today = datetime.now(IST).strftime("%Y-%m-%d")
 
     if DATA_FILE.exists():
         with open(DATA_FILE) as f:
