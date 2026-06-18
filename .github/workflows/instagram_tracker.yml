@@ -21,13 +21,36 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: pip3 install requests
+      - name: Install Playwright
+        run: pip3 install playwright
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-v1
+
+      - name: Install Chromium
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: python3 -m playwright install chromium --with-deps
+
+      - name: Install Chromium system deps only
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: python3 -m playwright install-deps chromium
 
       - name: Fetch follower count
         run: python3 scripts/fetch_instagram.py
         env:
           INSTAGRAM_SESSION_ID: ${{ secrets.INSTAGRAM_SESSION_ID }}
+
+      - name: Upload debug screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshots
+          path: /tmp/debug_*.png
+          if-no-files-found: ignore
 
       # ── 2. Build dist and deploy ─────────────────────────
       - uses: actions/setup-node@v4
