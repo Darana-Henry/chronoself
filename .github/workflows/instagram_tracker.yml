@@ -1,0 +1,56 @@
+name: Instagram Follower Tracker
+
+on:
+  schedule:
+    # 00:05 IST daily (IST = UTC+5:30, so 18:35 UTC previous day)
+    - cron: '35 18 * * *'
+  workflow_dispatch:  # allows manual trigger from the GitHub Actions UI
+
+permissions:
+  contents: write  # needed to commit the updated data file back
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── 1. Fetch follower count ──────────────────────────
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install instaloader
+        run: pip install instaloader==4.13.1
+
+      - name: Fetch follower count
+        run: python scripts/fetch_instagram.py
+
+      # ── 2. Build dist and deploy ─────────────────────────
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build dist
+        run: node scripts/inject.js
+        env:
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+          FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          ALLOWED_EMAIL: ${{ secrets.ALLOWED_EMAIL }}
+
+      - name: Deploy to Firebase Hosting
+        run: npx --yes firebase-tools@13 deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
+
+      # ── 3. Persist updated data back to repo ─────────────
+      - name: Commit updated follower data
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add data/instagram.json
+          git diff --staged --quiet || git commit -m "chore: instagram followers $(date -u +%Y-%m-%d)"
+          git push

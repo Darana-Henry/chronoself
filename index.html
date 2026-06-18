@@ -116,6 +116,7 @@ body::before {
 .card-chronicle::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,139,175,0.10), transparent); }
 .card-classes::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,122,255,0.10), transparent); }
 .card-hub::before         { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(56,210,220,0.10), transparent); }
+.card-instagram::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(192,132,252,0.10), transparent); }
 
 .card:hover {
   transform: translateY(-4px);
@@ -130,6 +131,7 @@ body::before {
 .card-chronicle:hover   { border-color: rgba(255,139,175,0.45); box-shadow: 0 8px 40px rgba(255,139,175,0.12); }
 .card-classes:hover     { border-color: rgba(201,122,255,0.45); box-shadow: 0 8px 40px rgba(201,122,255,0.14); }
 .card-hub:hover         { border-color: rgba(56,210,220,0.45);  box-shadow: 0 8px 40px rgba(56,210,220,0.10); }
+.card-instagram:hover   { border-color: rgba(192,132,252,0.45); box-shadow: 0 8px 40px rgba(192,132,252,0.12); }
 
 .card:active { transform: translateY(-1px); }
 
@@ -146,6 +148,7 @@ body::before {
 .card-chronicle  .card-icon { background: rgba(255,139,175,0.12); }
 .card-classes    .card-icon { background: rgba(201,122,255,0.12); }
 .card-hub        .card-icon { background: rgba(56,210,220,0.12); }
+.card-instagram  .card-icon { background: rgba(192,132,252,0.12); }
 
 .card-icon svg { width: 24px; height: 24px; }
 
@@ -181,6 +184,7 @@ body::before {
 .card-chronicle  .card-arrow { color: #ff8fab; }
 .card-classes    .card-arrow { color: #c97aff; }
 .card-hub        .card-arrow { color: #38d2dc; }
+.card-instagram  .card-arrow { color: #c084fc; }
 .card:hover .card-arrow    { gap: 10px; }
 
 /* ── Footer ───────────────────────────────────── */
@@ -398,6 +402,25 @@ body::before {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"/>
           <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- Instagram -->
+    <a class="card card-instagram" href="instagram.html">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1.2" fill="#c084fc" stroke="none"/>
+        </svg>
+      </div>
+      <div class="card-title">Instagram</div>
+      <div class="card-desc">Daily follower count for hankcuratesfilms, tracked automatically and charted over time.</div>
+      <div class="card-arrow">
+        Open Instagram
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>
       </div>
     </a>
