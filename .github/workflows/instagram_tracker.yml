@@ -42,6 +42,14 @@ jobs:
       - name: Fetch follower count
         run: python3 scripts/fetch_instagram.py
 
+      - name: Upload debug screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshots
+          path: /tmp/debug_*.png
+          if-no-files-found: ignore
+
       # ── 2. Build dist and deploy ─────────────────────────
       - uses: actions/setup-node@v4
         with:
@@ -68,4 +76,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git add data/instagram.json
           git diff --staged --quiet || git commit -m "chore: instagram followers $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main
           git push

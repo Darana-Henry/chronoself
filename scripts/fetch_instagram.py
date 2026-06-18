@@ -84,6 +84,8 @@ def fetch_followers(account):
                 return parse_count(m.group(1))
 
             print(f"@{account}: follower count not found in page", file=sys.stderr)
+            page.screenshot(path=f"/tmp/debug_{account}.png", full_page=True)
+            print(f"@{account}: screenshot saved to /tmp/debug_{account}.png", file=sys.stderr)
             return None
         finally:
             browser.close()
@@ -104,14 +106,13 @@ def main():
 
     for account in ACCOUNTS:
         acc_history = history[account]
-        if acc_history and acc_history[-1]["date"] == today:
-            print(f"@{account}: overwriting existing entry for {today} ({acc_history[-1]['count']:,})...")
-            acc_history.pop()
-
         print(f"Fetching @{account}...")
         count = fetch_followers(account)
         if count is not None:
             print(f"@{account}: {count:,} followers")
+            if acc_history and acc_history[-1]["date"] == today:
+                print(f"@{account}: overwriting existing entry for {today} ({acc_history[-1]['count']:,})...")
+                acc_history.pop()
             acc_history.append({"date": today, "count": count})
         else:
             print(f"@{account}: skipping — could not read count", file=sys.stderr)
