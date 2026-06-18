@@ -1,4 +1,14 @@
 {
-  "hankcuratesfilms": [],
-  "hanklosesweight": []
+  "hankcuratesfilms": [
+    {
+      "date": "2026-06-18",
+      "count": 1836
+    }
+  ],
+  "hanklosesweight": [
+    {
+      "date": "2026-06-18",
+      "count": 22
+    }
+  ]
 }

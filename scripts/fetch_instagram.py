@@ -3,7 +3,7 @@
 Fetches follower counts for both Instagram accounts using a headless Chromium
 browser (Playwright) and appends them to data/instagram.json.
 
-Install: pip install playwright && python -m playwright install chromium
+Install: pip3 install playwright && python3 -m playwright install chromium
 """
 import json
 import re
@@ -14,7 +14,7 @@ from pathlib import Path
 try:
     from playwright.sync_api import sync_playwright
 except ImportError:
-    print("Error: playwright not installed. Run: pip install playwright && python -m playwright install chromium")
+    print("Error: playwright not installed. Run: pip3 install playwright && python3 -m playwright install chromium")
     sys.exit(1)
 
 ACCOUNTS  = ["hankcuratesfilms", "hanklosesweight"]
@@ -51,15 +51,33 @@ def fetch_followers(account):
             )
             page.wait_for_timeout(4_000)  # let JS finish rendering
 
-            # Try meta description first — Instagram often puts the count there
-            meta = page.query_selector('meta[name="description"]')
-            if meta:
-                content = meta.get_attribute("content") or ""
-                m = re.search(r"([\d,\.]+[KMBkmb]?)\s+[Ff]ollowers", content)
-                if m:
-                    return parse_count(m.group(1))
+            # Dismiss the login modal if present — it sets aria-hidden on the
+            # background content, making inner_text() miss the follower count
+            page.keyboard.press("Escape")
+            page.wait_for_timeout(800)
 
-            # Fall back: scan all visible body text
+            # Strategy 1: span with title attribute on the followers link
+            # (Instagram puts the exact unabbreviated number in title="1,883")
+            link = page.query_selector(f'a[href="/{account}/followers/"]')
+            if link:
+                span = link.query_selector("span[title]")
+                if span:
+                    title = span.get_attribute("title") or ""
+                    if title:
+                        return parse_count(title.replace(",", ""))
+                # fall through to inner_text of the link itself
+                raw = link.inner_text().strip().splitlines()[0]
+                if raw:
+                    return parse_count(raw)
+
+            # Strategy 2: meta description
+            meta = page.query_selector('meta[name="description"]')
+            desc = meta.get_attribute("content") if meta else ""
+            m = re.search(r"([\d,\.]+[KMBkmb]?)\s+[Ff]ollowers", desc)
+            if m:
+                return parse_count(m.group(1))
+
+            # Strategy 3: full body text (modal should be gone by now)
             text = page.inner_text("body")
             m = re.search(r"([\d,\.]+[KMBkmb]?)\s+[Ff]ollowers", text)
             if m:

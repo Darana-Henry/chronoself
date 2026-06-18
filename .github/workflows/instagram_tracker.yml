@@ -22,10 +22,10 @@ jobs:
           python-version: '3.11'
 
       - name: Install Playwright
-        run: pip install playwright && python -m playwright install chromium --with-deps
+        run: pip3 install playwright && python3 -m playwright install chromium --with-deps
 
       - name: Fetch follower count
-        run: python scripts/fetch_instagram.py
+        run: python3 scripts/fetch_instagram.py
 
       # ── 2. Build dist and deploy ─────────────────────────
       - uses: actions/setup-node@v4
