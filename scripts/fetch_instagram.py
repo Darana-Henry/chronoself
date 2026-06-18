@@ -105,8 +105,8 @@ def main():
     for account in ACCOUNTS:
         acc_history = history[account]
         if acc_history and acc_history[-1]["date"] == today:
-            print(f"@{account}: already have data for {today} ({acc_history[-1]['count']:,}). Skipping.")
-            continue
+            print(f"@{account}: overwriting existing entry for {today} ({acc_history[-1]['count']:,})...")
+            acc_history.pop()
 
         print(f"Fetching @{account}...")
         count = fetch_followers(account)
