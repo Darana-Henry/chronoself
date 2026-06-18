@@ -36,11 +36,22 @@ if (missing.length) {
 
 fs.mkdirSync(path.join(__dirname, '..', 'dist'), { recursive: true });
 
-for (const file of ['schedule.html', 'index.html', 'portals.html']) {
+for (const file of ['schedule.html', 'index.html', 'portals.html', 'instagram.html']) {
   const src  = path.join(__dirname, '..', file);
   const dest = path.join(__dirname, '..', 'dist', file);
   let html = fs.readFileSync(src, 'utf8');
   required.forEach(k => { html = html.replaceAll(`__${k}__`, process.env[k]); });
   fs.writeFileSync(dest, html);
   console.log(`Built → ${dest}`);
+}
+
+// Copy data/ → dist/data/ so the Instagram JSON is served as a static asset
+const dataSrc  = path.join(__dirname, '..', 'data');
+const dataDest = path.join(__dirname, '..', 'dist', 'data');
+if (fs.existsSync(dataSrc)) {
+  fs.mkdirSync(dataDest, { recursive: true });
+  for (const file of fs.readdirSync(dataSrc)) {
+    fs.copyFileSync(path.join(dataSrc, file), path.join(dataDest, file));
+    console.log(`Copied → dist/data/${file}`);
+  }
 }

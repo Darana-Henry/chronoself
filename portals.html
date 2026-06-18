@@ -122,6 +122,7 @@ body::before {
 .card-ipl::before         { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,200,77,0.12), transparent); }
 .card-travel::before      { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(56,210,220,0.10), transparent); }
 .card-streaming::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,107,138,0.12), transparent); }
+.card-instagram::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(192,132,252,0.12), transparent); }
 
 .card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.055); }
 .card:hover::before { opacity: 1; }
@@ -132,6 +133,7 @@ body::before {
 .card-ipl:hover        { border-color: rgba(255,200,77,0.45);  box-shadow: 0 8px 40px rgba(255,200,77,0.12); }
 .card-travel:hover     { border-color: rgba(56,210,220,0.45);  box-shadow: 0 8px 40px rgba(56,210,220,0.10); }
 .card-streaming:hover  { border-color: rgba(255,107,138,0.45); box-shadow: 0 8px 40px rgba(255,107,138,0.12); }
+.card-instagram:hover  { border-color: rgba(192,132,252,0.45); box-shadow: 0 8px 40px rgba(192,132,252,0.12); }
 
 /* Icons */
 .card-icon {
@@ -144,6 +146,7 @@ body::before {
 .card-ipl        .card-icon { background: rgba(255,200,77,0.12); }
 .card-travel     .card-icon { background: rgba(56,210,220,0.12); }
 .card-streaming  .card-icon { background: rgba(255,107,138,0.12); }
+.card-instagram  .card-icon { background: rgba(192,132,252,0.12); }
 .card-icon svg { width: 24px; height: 24px; }
 
 .card-title {
@@ -167,6 +170,7 @@ body::before {
 .card-ipl        .card-arrow { color: #ffc84d; }
 .card-travel     .card-arrow { color: #38d2dc; }
 .card-streaming  .card-arrow { color: #ff6b8a; }
+.card-instagram  .card-arrow { color: #c084fc; }
 .card:hover .card-arrow { gap: 10px; }
 
 /* ── Footer ─────────────────────────────────── */
@@ -279,6 +283,25 @@ body::before {
       <div class="card-desc">Log what you're watching across every platform. Keep your watchlist, ratings, and history in one spot.</div>
       <div class="card-arrow">
         Open Streaming Tracker
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- Instagram Follower Tracker -->
+    <a class="card card-instagram" href="instagram.html">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1.2" fill="#c084fc" stroke="none"/>
+        </svg>
+      </div>
+      <div class="card-title">Instagram</div>
+      <div class="card-desc">Daily follower count for hankcuratesfilms, tracked automatically and charted over time.</div>
+      <div class="card-arrow">
+        View tracker
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>

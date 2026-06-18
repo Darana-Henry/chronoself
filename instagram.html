@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram — Follower Tracker</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  min-height: 100%;
+  background: #0a0a0a;
+  color: #e8eaed;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── Back link ──────────────────────────────── */
+.back-link {
+  position: fixed;
+  top: 20px; left: 24px;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+  color: #5f6368; text-decoration: none;
+  transition: color 0.15s;
+  z-index: 10;
+}
+.back-link:hover { color: #9aa0a6; }
+.back-link svg { width: 14px; height: 14px; }
+
+/* ── Page ───────────────────────────────────── */
+.page {
+  position: relative; z-index: 1;
+  max-width: 1380px; margin: 0 auto;
+  padding: 80px 24px 64px;
+  display: flex; flex-direction: column; gap: 32px;
+}
+
+/* ── Two-column accounts grid ───────────────── */
+.accounts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.account-col {
+  display: flex; flex-direction: column; gap: 16px;
+}
+@media (max-width: 800px) {
+  .accounts-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Header ─────────────────────────────────── */
+.header {
+  display: flex; align-items: center; gap: 16px;
+}
+
+.header-icon {
+  width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+  background: rgba(192,132,252,0.10);
+  border: 1px solid rgba(192,132,252,0.20);
+  display: flex; align-items: center; justify-content: center;
+}
+.header-icon svg { width: 26px; height: 26px; }
+
+.header-text h1 {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.4px;
+  color: #e8eaed;
+}
+.header-text p { font-size: 12px; color: #5f6368; margin-top: 4px; letter-spacing: 0.3px; }
+
+/* ── Account label ──────────────────────────── */
+.account-handle {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.1px;
+  color: #c084fc;
+}
+.account-handle::before { content: '@'; opacity: 0.6; }
+
+/* ── Stats row ──────────────────────────────── */
+.stats {
+  display: flex; gap: 14px; flex-wrap: wrap;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 18px 22px;
+  flex: 1; min-width: 130px;
+}
+
+.stat-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.8px;
+  text-transform: uppercase; color: #5f6368;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 26px; font-weight: 700; letter-spacing: -0.8px;
+  color: #e8eaed; line-height: 1;
+}
+.stat-value.pos { color: #34a853; }
+.stat-value.neg { color: #ea4335; }
+.stat-value.muted { color: #5f6368; }
+
+/* ── Chart card ─────────────────────────────── */
+.chart-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 24px 24px 18px;
+}
+
+.card-heading {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.8px;
+  text-transform: uppercase; color: #5f6368;
+  margin-bottom: 18px;
+}
+
+.chart-empty {
+  text-align: center;
+  padding: 48px 0;
+  color: #3c4043;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ── Recent table ───────────────────────────── */
+.recent-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.recent-card .card-heading {
+  padding: 18px 24px 0;
+  margin-bottom: 12px;
+}
+
+.recent-row {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 11px 24px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  font-size: 13px;
+}
+
+.recent-date { color: #9aa0a6; }
+.recent-right { display: flex; align-items: center; gap: 16px; }
+.recent-count { font-weight: 600; color: #e8eaed; }
+.recent-delta { font-size: 12px; font-weight: 500; min-width: 40px; text-align: right; }
+.recent-delta.pos { color: #34a853; }
+.recent-delta.neg { color: #ea4335; }
+.recent-delta.muted { color: #5f6368; }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="portals.html">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"/>
+    <polyline points="12 19 5 12 12 5"/>
+  </svg>
+  Hub
+</a>
+
+<div class="page">
+
+  <header class="header">
+    <div class="header-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="#c084fc" stroke="none"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>Instagram Tracker</h1>
+      <p>FOLLOWER HISTORY · TWO ACCOUNTS</p>
+    </div>
+  </header>
+
+  <div class="accounts-grid">
+
+    <!-- ── Account A: hankcuratesfilms ── -->
+    <div class="account-col">
+      <div class="account-handle">hankcuratesfilms</div>
+      <div class="stats">
+        <div class="stat-card"><div class="stat-label">Followers</div><div class="stat-value muted" id="a-current">—</div></div>
+        <div class="stat-card"><div class="stat-label">7-day change</div><div class="stat-value muted" id="a-7d">—</div></div>
+        <div class="stat-card"><div class="stat-label">30-day change</div><div class="stat-value muted" id="a-30d">—</div></div>
+        <div class="stat-card"><div class="stat-label">Days tracked</div><div class="stat-value muted" id="a-days">—</div></div>
+      </div>
+      <div class="chart-card">
+        <div class="card-heading">Follower history</div>
+        <div id="a-chart"></div>
+      </div>
+      <div class="recent-card">
+        <div class="card-heading">Recent entries</div>
+        <div id="a-recent"></div>
+      </div>
+    </div>
+
+    <!-- ── Account B: hanklosesweight ── -->
+    <div class="account-col">
+      <div class="account-handle">hanklosesweight</div>
+      <div class="stats">
+        <div class="stat-card"><div class="stat-label">Followers</div><div class="stat-value muted" id="b-current">—</div></div>
+        <div class="stat-card"><div class="stat-label">7-day change</div><div class="stat-value muted" id="b-7d">—</div></div>
+        <div class="stat-card"><div class="stat-label">30-day change</div><div class="stat-value muted" id="b-30d">—</div></div>
+        <div class="stat-card"><div class="stat-label">Days tracked</div><div class="stat-value muted" id="b-days">—</div></div>
+      </div>
+      <div class="chart-card">
+        <div class="card-heading">Follower history</div>
+        <div id="b-chart"></div>
+      </div>
+      <div class="recent-card">
+        <div class="card-heading">Recent entries</div>
+        <div id="b-recent"></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+(async function () {
+
+  // ── Load data ─────────────────────────────────────────
+  let allData = {};
+  try {
+    const res = await fetch('/data/instagram.json');
+    if (res.ok) allData = await res.json();
+  } catch (_) {}
+
+  // ── Shared helpers ────────────────────────────────────
+  function fmtN(n) {
+    if (n == null) return '—';
+    if (Math.abs(n) >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M';
+    if (Math.abs(n) >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, '') + 'k';
+    return Math.round(n).toLocaleString();
+  }
+
+  function fmtDelta(d) {
+    if (d == null) return { text: '—', cls: 'muted' };
+    if (d > 0) return { text: '+' + fmtN(d), cls: 'pos' };
+    if (d < 0) return { text: fmtN(d), cls: 'neg' };
+    return { text: '±0', cls: 'muted' };
+  }
+
+  function parseDate(s) {
+    const [y, m, d] = s.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  // ── Render one account ────────────────────────────────
+  function renderAccount(data, pfx, gradId) {
+
+    // Stats
+    function countDaysAgo(n) {
+      if (!data.length) return null;
+      const t = new Date(); t.setDate(t.getDate() - n);
+      const limit = t.toISOString().slice(0, 10);
+      for (let i = data.length - 1; i >= 0; i--) {
+        if (data[i].date <= limit) return data[i].count;
+      }
+      return null;
+    }
+    function setEl(id, text, cls) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = text;
+      el.className = 'stat-value' + (cls ? ' ' + cls : '');
+    }
+    if (data.length) {
+      const current = data[data.length - 1].count;
+      setEl(`${pfx}-current`, fmtN(current), '');
+      setEl(`${pfx}-days`, String(data.length), '');
+      const c7 = countDaysAgo(7);
+      const d7 = fmtDelta(c7 != null ? current - c7 : null);
+      setEl(`${pfx}-7d`, d7.text, d7.cls);
+      const c30 = countDaysAgo(30);
+      const d30 = fmtDelta(c30 != null ? current - c30 : null);
+      setEl(`${pfx}-30d`, d30.text, d30.cls);
+    }
+
+    // Chart
+    const chartEl = document.getElementById(`${pfx}-chart`);
+    if (!chartEl) return;
+    chartEl.innerHTML = '';
+
+    if (data.length < 2) {
+      chartEl.innerHTML = '<div class="chart-empty">No data yet.<br>Trigger the GitHub Action manually to record the first reading,<br>then it will run automatically every day at 12:05 am IST.</div>';
+    } else {
+      const NS = 'http://www.w3.org/2000/svg';
+      const W = 660, H = 200, pL = 52, pR = 16, pT = 14, pB = 34;
+      const cW = W - pL - pR, cH = H - pT - pB;
+      const counts = data.map(d => d.count);
+      const rawMin = Math.min(...counts), rawMax = Math.max(...counts);
+      const spread = rawMax - rawMin || 1;
+      const yMin = rawMin - spread * 0.15, yMax = rawMax + spread * 0.15;
+      function niceStep(rng, n) {
+        const raw = rng / n, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+        return Math.ceil(raw / mag) * mag;
+      }
+      const step = niceStep(yMax - yMin, 4);
+      const tickMin = Math.floor(yMin / step) * step;
+      const yTicks = [];
+      for (let v = tickMin; v <= yMax + step * 0.01; v += step) yTicks.push(v);
+      const toY = v => pT + (1 - (v - yMin) / (yMax - yMin)) * cH;
+      const toX = i => pL + (i / (data.length - 1)) * cW;
+
+      const svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      svg.style.cssText = 'width:100%;height:auto;display:block;overflow:visible;';
+
+      const defs = document.createElementNS(NS, 'defs');
+      const grad = document.createElementNS(NS, 'linearGradient');
+      grad.id = gradId; grad.setAttribute('x1','0'); grad.setAttribute('y1','0');
+      grad.setAttribute('x2','0'); grad.setAttribute('y2','1');
+      [['0%','0.30'],['100%','0.02']].forEach(([off, op]) => {
+        const s = document.createElementNS(NS, 'stop');
+        s.setAttribute('offset', off); s.setAttribute('stop-color','#c084fc'); s.setAttribute('stop-opacity', op);
+        grad.appendChild(s);
+      });
+      defs.appendChild(grad); svg.appendChild(defs);
+
+      yTicks.forEach(v => {
+        const y = toY(v);
+        if (y < pT - 4 || y > pT + cH + 4) return;
+        const gl = document.createElementNS(NS, 'line');
+        gl.setAttribute('x1', pL); gl.setAttribute('x2', W - pR);
+        gl.setAttribute('y1', y); gl.setAttribute('y2', y);
+        gl.setAttribute('stroke','rgba(255,255,255,0.055)'); gl.setAttribute('stroke-width','1');
+        svg.appendChild(gl);
+        const gt = document.createElementNS(NS, 'text');
+        gt.setAttribute('x', pL - 6); gt.setAttribute('y', y + 3.5);
+        gt.setAttribute('text-anchor','end'); gt.setAttribute('font-size','9');
+        gt.setAttribute('fill','rgba(255,255,255,0.22)'); gt.setAttribute('font-family','inherit');
+        gt.textContent = fmtN(Math.round(v));
+        svg.appendChild(gt);
+      });
+
+      const pts = data.map((d, i) => ({ x: toX(i), y: toY(d.count) }));
+      function smoothPath(ps) {
+        let d = `M${ps[0].x.toFixed(1)},${ps[0].y.toFixed(1)}`;
+        for (let i = 0; i < ps.length - 1; i++) {
+          const p0 = ps[Math.max(0,i-1)], p1 = ps[i], p2 = ps[i+1], p3 = ps[Math.min(ps.length-1,i+2)];
+          const cp1x = p1.x+(p2.x-p0.x)/6, cp1y = p1.y+(p2.y-p0.y)/6;
+          const cp2x = p2.x-(p3.x-p1.x)/6, cp2y = p2.y-(p3.y-p1.y)/6;
+          d += ` C${cp1x.toFixed(1)},${cp1y.toFixed(1)} ${cp2x.toFixed(1)},${cp2y.toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
+        }
+        return d;
+      }
+      const linePath = smoothPath(pts);
+      const bot = pT + cH;
+      const area = document.createElementNS(NS, 'path');
+      area.setAttribute('d', `${linePath} L${pts[pts.length-1].x},${bot} L${pts[0].x},${bot} Z`);
+      area.setAttribute('fill', `url(#${gradId})`);
+      svg.appendChild(area);
+      const line = document.createElementNS(NS, 'path');
+      line.setAttribute('d', linePath);
+      line.setAttribute('stroke','#c084fc'); line.setAttribute('stroke-width','1.8');
+      line.setAttribute('fill','none'); line.setAttribute('stroke-linejoin','round');
+      svg.appendChild(line);
+      const dot = document.createElementNS(NS, 'circle');
+      dot.setAttribute('cx', pts[pts.length-1].x); dot.setAttribute('cy', pts[pts.length-1].y);
+      dot.setAttribute('r','3.5'); dot.setAttribute('fill','#c084fc');
+      svg.appendChild(dot);
+
+      const maxLabels = 6;
+      const xStep = Math.max(1, Math.floor((data.length-1)/(maxLabels-1)));
+      const labelIdxs = new Set();
+      for (let i = 0; i < data.length; i += xStep) labelIdxs.add(i);
+      labelIdxs.add(data.length - 1);
+      [...labelIdxs].forEach(i => {
+        const xt = document.createElementNS(NS, 'text');
+        xt.setAttribute('x', pts[i].x); xt.setAttribute('y', H - 4);
+        xt.setAttribute('text-anchor', i === 0 ? 'start' : i === data.length-1 ? 'end' : 'middle');
+        xt.setAttribute('font-size','9'); xt.setAttribute('fill','rgba(255,255,255,0.28)');
+        xt.setAttribute('font-family','inherit');
+        xt.textContent = parseDate(data[i].date).toLocaleDateString('en-GB', { day:'numeric', month:'short' });
+        svg.appendChild(xt);
+      });
+      chartEl.appendChild(svg);
+    }
+
+    // Recent
+    const recentEl = document.getElementById(`${pfx}-recent`);
+    if (!recentEl) return;
+    recentEl.innerHTML = '';
+    if (!data.length) {
+      recentEl.innerHTML = '<div class="recent-row"><span class="recent-date">No entries yet</span></div>';
+    } else {
+      data.slice(-10).reverse().forEach(entry => {
+        const idx = data.findIndex(d => d.date === entry.date);
+        const prev = idx > 0 ? data[idx - 1] : null;
+        const dd = fmtDelta(prev ? entry.count - prev.count : null);
+        const row = document.createElement('div');
+        row.className = 'recent-row';
+        const label = parseDate(entry.date).toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+        row.innerHTML =
+          `<span class="recent-date">${label}</span>` +
+          `<span class="recent-right">` +
+          `<span class="recent-count">${fmtN(entry.count)}</span>` +
+          `<span class="recent-delta ${dd.cls}">${dd.text}</span>` +
+          `</span>`;
+        recentEl.appendChild(row);
+      });
+    }
+  }
+
+  // ── Render both accounts ──────────────────────────────
+  renderAccount(allData.hankcuratesfilms || [], 'a', 'ig_grad_a');
+  renderAccount(allData.hanklosesweight  || [], 'b', 'ig_grad_b');
+
+})();
+</script>
+</body>
+</html>
