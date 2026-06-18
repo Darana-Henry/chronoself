@@ -17,12 +17,17 @@ except ImportError:
 ACCOUNTS  = ["hankcuratesfilms", "hanklosesweight"]
 DATA_FILE = Path(__file__).parent.parent / "data" / "instagram.json"
 
+import os
+
+SESSION_ID = os.environ.get("INSTAGRAM_SESSION_ID", "")
+
 HEADERS = {
     "x-ig-app-id": "936619743392459",
     "user-agent": (
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
     ),
+    "cookie": f"sessionid={SESSION_ID}",
 }
 
 

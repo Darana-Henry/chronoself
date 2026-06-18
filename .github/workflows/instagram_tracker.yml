@@ -26,6 +26,8 @@ jobs:
 
       - name: Fetch follower count
         run: python3 scripts/fetch_instagram.py
+        env:
+          INSTAGRAM_SESSION_ID: ${{ secrets.INSTAGRAM_SESSION_ID }}
 
       # ── 2. Build dist and deploy ─────────────────────────
       - uses: actions/setup-node@v4
