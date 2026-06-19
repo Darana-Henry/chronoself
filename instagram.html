@@ -24,7 +24,6 @@ body::before {
   background-size: 48px 48px;
 }
 
-/* ── Back link ──────────────────────────────── */
 .back-link {
   position: fixed;
   top: 20px; left: 24px;
@@ -37,7 +36,6 @@ body::before {
 .back-link:hover { color: #9aa0a6; }
 .back-link svg { width: 14px; height: 14px; }
 
-/* ── Page ───────────────────────────────────── */
 .page {
   position: relative; z-index: 1;
   max-width: 1380px; margin: 0 auto;
@@ -45,25 +43,18 @@ body::before {
   display: flex; flex-direction: column; gap: 32px;
 }
 
-/* ── Two-column accounts grid ───────────────── */
 .accounts-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 28px;
   align-items: start;
 }
-.account-col {
-  display: flex; flex-direction: column; gap: 16px;
-}
+.account-col { display: flex; flex-direction: column; gap: 16px; }
 @media (max-width: 800px) {
   .accounts-grid { grid-template-columns: 1fr; }
 }
 
-/* ── Header ─────────────────────────────────── */
-.header {
-  display: flex; align-items: center; gap: 16px;
-}
-
+.header { display: flex; align-items: center; gap: 16px; }
 .header-icon {
   width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
   background: rgba(192,132,252,0.10);
@@ -71,25 +62,15 @@ body::before {
   display: flex; align-items: center; justify-content: center;
 }
 .header-icon svg { width: 26px; height: 26px; }
-
-.header-text h1 {
-  font-size: 22px; font-weight: 700; letter-spacing: -0.4px;
-  color: #e8eaed;
-}
+.header-text h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.4px; color: #e8eaed; }
 .header-text p { font-size: 12px; color: #5f6368; margin-top: 4px; letter-spacing: 0.3px; }
 
-/* ── Account label ──────────────────────────── */
 .account-handle {
-  font-size: 13px; font-weight: 700; letter-spacing: 0.1px;
-  color: #c084fc;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.1px; color: #c084fc;
 }
 .account-handle::before { content: '@'; opacity: 0.6; }
 
-/* ── Stats row ──────────────────────────────── */
-.stats {
-  display: flex; gap: 14px; flex-wrap: wrap;
-}
-
+.stats { display: flex; gap: 14px; flex-wrap: wrap; }
 .stat-card {
   background: rgba(255,255,255,0.035);
   border: 1px solid rgba(255,255,255,0.07);
@@ -97,56 +78,68 @@ body::before {
   padding: 18px 22px;
   flex: 1; min-width: 130px;
 }
-
 .stat-label {
   font-size: 10px; font-weight: 600; letter-spacing: 0.8px;
-  text-transform: uppercase; color: #5f6368;
-  margin-bottom: 8px;
+  text-transform: uppercase; color: #5f6368; margin-bottom: 8px;
 }
-
-.stat-value {
-  font-size: 26px; font-weight: 700; letter-spacing: -0.8px;
-  color: #e8eaed; line-height: 1;
-}
+.stat-value { font-size: 26px; font-weight: 700; letter-spacing: -0.8px; color: #e8eaed; line-height: 1; }
 .stat-value.pos { color: #34a853; }
 .stat-value.neg { color: #ea4335; }
 .stat-value.muted { color: #5f6368; }
 
-/* ── Chart card ─────────────────────────────── */
+/* ── Milestone card ─────────────────────────────── */
+.milestone-card {
+  background: rgba(192,132,252,0.06);
+  border: 1px solid rgba(192,132,252,0.18);
+  border-radius: 20px;
+  padding: 20px 24px;
+}
+.milestone-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.8px;
+  text-transform: uppercase; color: #9f7aea; margin-bottom: 6px;
+}
+.milestone-target {
+  font-size: 28px; font-weight: 700; letter-spacing: -0.8px;
+  color: #c084fc; line-height: 1; margin-bottom: 14px;
+}
+.milestone-bar-track {
+  height: 6px; background: rgba(255,255,255,0.08);
+  border-radius: 3px; overflow: hidden; margin-bottom: 10px;
+}
+.milestone-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #a855f7, #c084fc);
+  border-radius: 3px;
+}
+.milestone-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #9aa0a6;
+}
+.milestone-eta { color: #c084fc; font-weight: 600; }
+
+/* ── Chart card ─────────────────────────────────── */
 .chart-card {
   background: rgba(255,255,255,0.025);
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 20px;
   padding: 24px 24px 18px;
 }
-
 .card-heading {
   font-size: 10px; font-weight: 600; letter-spacing: 0.8px;
-  text-transform: uppercase; color: #5f6368;
-  margin-bottom: 18px;
+  text-transform: uppercase; color: #5f6368; margin-bottom: 18px;
 }
-
 .chart-empty {
-  text-align: center;
-  padding: 48px 0;
-  color: #3c4043;
-  font-size: 13px;
-  line-height: 1.7;
+  text-align: center; padding: 48px 0;
+  color: #3c4043; font-size: 13px; line-height: 1.7;
 }
 
-/* ── Recent table ───────────────────────────── */
+/* ── Recent table ───────────────────────────────── */
 .recent-card {
   background: rgba(255,255,255,0.025);
   border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 20px;
-  overflow: hidden;
+  border-radius: 20px; overflow: hidden;
 }
-
-.recent-card .card-heading {
-  padding: 18px 24px 0;
-  margin-bottom: 12px;
-}
-
+.recent-card .card-heading { padding: 18px 24px 0; margin-bottom: 12px; }
 .recent-row {
   display: flex; align-items: center;
   justify-content: space-between;
@@ -154,7 +147,6 @@ body::before {
   border-top: 1px solid rgba(255,255,255,0.04);
   font-size: 13px;
 }
-
 .recent-date { color: #9aa0a6; }
 .recent-right { display: flex; align-items: center; gap: 16px; }
 .recent-count { font-weight: 600; color: #e8eaed; }
@@ -162,6 +154,7 @@ body::before {
 .recent-delta.pos { color: #34a853; }
 .recent-delta.neg { color: #ea4335; }
 .recent-delta.muted { color: #5f6368; }
+.recent-eta { font-size: 11px; font-weight: 500; min-width: 48px; text-align: right; color: #9aa0a6; }
 </style>
 </head>
 <body>
@@ -201,9 +194,14 @@ body::before {
         <div class="stat-card"><div class="stat-label">30-day change</div><div class="stat-value muted" id="a-30d">—</div></div>
         <div class="stat-card"><div class="stat-label">Days tracked</div><div class="stat-value muted" id="a-days">—</div></div>
       </div>
+      <div id="a-milestone"></div>
       <div class="chart-card">
         <div class="card-heading">Follower history</div>
         <div id="a-chart"></div>
+      </div>
+      <div class="chart-card">
+        <div class="card-heading">Days to goal</div>
+        <div id="a-eta-chart"></div>
       </div>
       <div class="recent-card">
         <div class="card-heading">Recent entries</div>
@@ -220,9 +218,14 @@ body::before {
         <div class="stat-card"><div class="stat-label">30-day change</div><div class="stat-value muted" id="b-30d">—</div></div>
         <div class="stat-card"><div class="stat-label">Days tracked</div><div class="stat-value muted" id="b-days">—</div></div>
       </div>
+      <div id="b-milestone"></div>
       <div class="chart-card">
         <div class="card-heading">Follower history</div>
         <div id="b-chart"></div>
+      </div>
+      <div class="chart-card">
+        <div class="card-heading">Days to goal</div>
+        <div id="b-eta-chart"></div>
       </div>
       <div class="recent-card">
         <div class="card-heading">Recent entries</div>
@@ -237,14 +240,12 @@ body::before {
 <script>
 (async function () {
 
-  // ── Load data ─────────────────────────────────────────
   let allData = {};
   try {
     const res = await fetch('/data/instagram.json');
     if (res.ok) allData = await res.json();
   } catch (_) {}
 
-  // ── Shared helpers ────────────────────────────────────
   function fmtN(n) {
     if (n == null) return '—';
     if (Math.abs(n) >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M';
@@ -264,10 +265,121 @@ body::before {
     return new Date(y, m - 1, d);
   }
 
-  // ── Render one account ────────────────────────────────
-  function renderAccount(data, pfx, gradId) {
+  function nextMilestone(count) {
+    return Math.floor(count / 1000) * 1000 + 1000;
+  }
 
-    // Stats
+  function calcEtaDays(data, idx, goal) {
+    const entry = data[idx];
+    const first = data[0];
+    const daysFromStart = (parseDate(entry.date) - parseDate(first.date)) / 86400000;
+    if (daysFromStart <= 0) return null;
+    const rate = (entry.count - first.count) / daysFromStart;
+    if (rate <= 0) return null;
+    return Math.max(0, Math.round((goal - entry.count) / rate));
+  }
+
+  function drawChart(containerEl, points, gradId, color, fmtYLabel) {
+    containerEl.innerHTML = '';
+    if (points.length < 2) {
+      containerEl.innerHTML = '<div class="chart-empty">Not enough data yet — check back once more days are tracked.</div>';
+      return;
+    }
+    const NS = 'http://www.w3.org/2000/svg';
+    const W = 660, H = 200, pL = 52, pR = 16, pT = 14, pB = 34;
+    const cW = W - pL - pR, cH = H - pT - pB;
+    const vals = points.map(p => p.value);
+    const rawMin = Math.min(...vals), rawMax = Math.max(...vals);
+    const spread = rawMax - rawMin || 1;
+    const yMin = rawMin - spread * 0.15, yMax = rawMax + spread * 0.15;
+    function niceStep(rng, n) {
+      const raw = rng / n, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+      return Math.ceil(raw / mag) * mag;
+    }
+    const step = niceStep(yMax - yMin, 4);
+    const tickMin = Math.floor(yMin / step) * step;
+    const yTicks = [];
+    for (let v = tickMin; v <= yMax + step * 0.01; v += step) yTicks.push(v);
+    const toY = v => pT + (1 - (v - yMin) / (yMax - yMin)) * cH;
+    const toX = i => pL + (i / (points.length - 1)) * cW;
+
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svg.style.cssText = 'width:100%;height:auto;display:block;overflow:visible;';
+
+    const defs = document.createElementNS(NS, 'defs');
+    const grad = document.createElementNS(NS, 'linearGradient');
+    grad.id = gradId; grad.setAttribute('x1','0'); grad.setAttribute('y1','0');
+    grad.setAttribute('x2','0'); grad.setAttribute('y2','1');
+    [['0%','0.30'],['100%','0.02']].forEach(([off, op]) => {
+      const s = document.createElementNS(NS, 'stop');
+      s.setAttribute('offset', off); s.setAttribute('stop-color', color); s.setAttribute('stop-opacity', op);
+      grad.appendChild(s);
+    });
+    defs.appendChild(grad); svg.appendChild(defs);
+
+    yTicks.forEach(v => {
+      const y = toY(v);
+      if (y < pT - 4 || y > pT + cH + 4) return;
+      const gl = document.createElementNS(NS, 'line');
+      gl.setAttribute('x1', pL); gl.setAttribute('x2', W - pR);
+      gl.setAttribute('y1', y); gl.setAttribute('y2', y);
+      gl.setAttribute('stroke','rgba(255,255,255,0.055)'); gl.setAttribute('stroke-width','1');
+      svg.appendChild(gl);
+      const gt = document.createElementNS(NS, 'text');
+      gt.setAttribute('x', pL - 6); gt.setAttribute('y', y + 3.5);
+      gt.setAttribute('text-anchor','end'); gt.setAttribute('font-size','9');
+      gt.setAttribute('fill','rgba(255,255,255,0.22)'); gt.setAttribute('font-family','inherit');
+      gt.textContent = fmtYLabel(Math.round(v));
+      svg.appendChild(gt);
+    });
+
+    const pts = points.map((_, i) => ({ x: toX(i), y: toY(points[i].value) }));
+    function smoothPath(ps) {
+      let d = `M${ps[0].x.toFixed(1)},${ps[0].y.toFixed(1)}`;
+      for (let i = 0; i < ps.length - 1; i++) {
+        const p0 = ps[Math.max(0,i-1)], p1 = ps[i], p2 = ps[i+1], p3 = ps[Math.min(ps.length-1,i+2)];
+        const cp1x = p1.x+(p2.x-p0.x)/6, cp1y = p1.y+(p2.y-p0.y)/6;
+        const cp2x = p2.x-(p3.x-p1.x)/6, cp2y = p2.y-(p3.y-p1.y)/6;
+        d += ` C${cp1x.toFixed(1)},${cp1y.toFixed(1)} ${cp2x.toFixed(1)},${cp2y.toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
+      }
+      return d;
+    }
+    const linePath = smoothPath(pts);
+    const bot = pT + cH;
+    const area = document.createElementNS(NS, 'path');
+    area.setAttribute('d', `${linePath} L${pts[pts.length-1].x},${bot} L${pts[0].x},${bot} Z`);
+    area.setAttribute('fill', `url(#${gradId})`);
+    svg.appendChild(area);
+    const line = document.createElementNS(NS, 'path');
+    line.setAttribute('d', linePath);
+    line.setAttribute('stroke', color); line.setAttribute('stroke-width','1.8');
+    line.setAttribute('fill','none'); line.setAttribute('stroke-linejoin','round');
+    svg.appendChild(line);
+    const dot = document.createElementNS(NS, 'circle');
+    dot.setAttribute('cx', pts[pts.length-1].x); dot.setAttribute('cy', pts[pts.length-1].y);
+    dot.setAttribute('r','3.5'); dot.setAttribute('fill', color);
+    svg.appendChild(dot);
+
+    const maxLabels = 6;
+    const xStep = Math.max(1, Math.floor((points.length-1)/(maxLabels-1)));
+    const labelIdxs = new Set();
+    for (let i = 0; i < points.length; i += xStep) labelIdxs.add(i);
+    labelIdxs.add(points.length - 1);
+    [...labelIdxs].forEach(i => {
+      const xt = document.createElementNS(NS, 'text');
+      xt.setAttribute('x', pts[i].x); xt.setAttribute('y', H - 4);
+      xt.setAttribute('text-anchor', i === 0 ? 'start' : i === points.length-1 ? 'end' : 'middle');
+      xt.setAttribute('font-size','9'); xt.setAttribute('fill','rgba(255,255,255,0.28)');
+      xt.setAttribute('font-family','inherit');
+      xt.textContent = points[i].label;
+      svg.appendChild(xt);
+    });
+    containerEl.appendChild(svg);
+  }
+
+  function renderAccount(data, pfx, gradId) {
     function countDaysAgo(n) {
       if (!data.length) return null;
       const t = new Date(); t.setDate(t.getDate() - n);
@@ -283,8 +395,11 @@ body::before {
       el.textContent = text;
       el.className = 'stat-value' + (cls ? ' ' + cls : '');
     }
+
+    const current = data.length ? data[data.length - 1].count : 0;
+    const goal = nextMilestone(current);
+
     if (data.length) {
-      const current = data[data.length - 1].count;
       setEl(`${pfx}-current`, current.toLocaleString(), '');
       setEl(`${pfx}-days`, String(data.length), '');
       const c7 = countDaysAgo(7);
@@ -295,119 +410,63 @@ body::before {
       setEl(`${pfx}-30d`, d30.text, d30.cls);
     }
 
-    // Chart
-    const chartEl = document.getElementById(`${pfx}-chart`);
-    if (!chartEl) return;
-    chartEl.innerHTML = '';
-
-    if (data.length < 2) {
-      chartEl.innerHTML = '<div class="chart-empty">No data yet.<br>Trigger the GitHub Action manually to record the first reading,<br>then it will run automatically every day at 12:05 am IST.</div>';
-    } else {
-      const NS = 'http://www.w3.org/2000/svg';
-      const W = 660, H = 200, pL = 52, pR = 16, pT = 14, pB = 34;
-      const cW = W - pL - pR, cH = H - pT - pB;
-      const counts = data.map(d => d.count);
-      const rawMin = Math.min(...counts), rawMax = Math.max(...counts);
-      const spread = rawMax - rawMin || 1;
-      const yMin = rawMin - spread * 0.15, yMax = rawMax + spread * 0.15;
-      function niceStep(rng, n) {
-        const raw = rng / n, mag = Math.pow(10, Math.floor(Math.log10(raw)));
-        return Math.ceil(raw / mag) * mag;
-      }
-      const step = niceStep(yMax - yMin, 4);
-      const tickMin = Math.floor(yMin / step) * step;
-      const yTicks = [];
-      for (let v = tickMin; v <= yMax + step * 0.01; v += step) yTicks.push(v);
-      const toY = v => pT + (1 - (v - yMin) / (yMax - yMin)) * cH;
-      const toX = i => pL + (i / (data.length - 1)) * cW;
-
-      const svg = document.createElementNS(NS, 'svg');
-      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-      svg.style.cssText = 'width:100%;height:auto;display:block;overflow:visible;';
-
-      const defs = document.createElementNS(NS, 'defs');
-      const grad = document.createElementNS(NS, 'linearGradient');
-      grad.id = gradId; grad.setAttribute('x1','0'); grad.setAttribute('y1','0');
-      grad.setAttribute('x2','0'); grad.setAttribute('y2','1');
-      [['0%','0.30'],['100%','0.02']].forEach(([off, op]) => {
-        const s = document.createElementNS(NS, 'stop');
-        s.setAttribute('offset', off); s.setAttribute('stop-color','#c084fc'); s.setAttribute('stop-opacity', op);
-        grad.appendChild(s);
-      });
-      defs.appendChild(grad); svg.appendChild(defs);
-
-      yTicks.forEach(v => {
-        const y = toY(v);
-        if (y < pT - 4 || y > pT + cH + 4) return;
-        const gl = document.createElementNS(NS, 'line');
-        gl.setAttribute('x1', pL); gl.setAttribute('x2', W - pR);
-        gl.setAttribute('y1', y); gl.setAttribute('y2', y);
-        gl.setAttribute('stroke','rgba(255,255,255,0.055)'); gl.setAttribute('stroke-width','1');
-        svg.appendChild(gl);
-        const gt = document.createElementNS(NS, 'text');
-        gt.setAttribute('x', pL - 6); gt.setAttribute('y', y + 3.5);
-        gt.setAttribute('text-anchor','end'); gt.setAttribute('font-size','9');
-        gt.setAttribute('fill','rgba(255,255,255,0.22)'); gt.setAttribute('font-family','inherit');
-        gt.textContent = fmtN(Math.round(v));
-        svg.appendChild(gt);
-      });
-
-      const pts = data.map((d, i) => ({ x: toX(i), y: toY(d.count) }));
-      function smoothPath(ps) {
-        let d = `M${ps[0].x.toFixed(1)},${ps[0].y.toFixed(1)}`;
-        for (let i = 0; i < ps.length - 1; i++) {
-          const p0 = ps[Math.max(0,i-1)], p1 = ps[i], p2 = ps[i+1], p3 = ps[Math.min(ps.length-1,i+2)];
-          const cp1x = p1.x+(p2.x-p0.x)/6, cp1y = p1.y+(p2.y-p0.y)/6;
-          const cp2x = p2.x-(p3.x-p1.x)/6, cp2y = p2.y-(p3.y-p1.y)/6;
-          d += ` C${cp1x.toFixed(1)},${cp1y.toFixed(1)} ${cp2x.toFixed(1)},${cp2y.toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
-        }
-        return d;
-      }
-      const linePath = smoothPath(pts);
-      const bot = pT + cH;
-      const area = document.createElementNS(NS, 'path');
-      area.setAttribute('d', `${linePath} L${pts[pts.length-1].x},${bot} L${pts[0].x},${bot} Z`);
-      area.setAttribute('fill', `url(#${gradId})`);
-      svg.appendChild(area);
-      const line = document.createElementNS(NS, 'path');
-      line.setAttribute('d', linePath);
-      line.setAttribute('stroke','#c084fc'); line.setAttribute('stroke-width','1.8');
-      line.setAttribute('fill','none'); line.setAttribute('stroke-linejoin','round');
-      svg.appendChild(line);
-      const dot = document.createElementNS(NS, 'circle');
-      dot.setAttribute('cx', pts[pts.length-1].x); dot.setAttribute('cy', pts[pts.length-1].y);
-      dot.setAttribute('r','3.5'); dot.setAttribute('fill','#c084fc');
-      svg.appendChild(dot);
-
-      const maxLabels = 6;
-      const xStep = Math.max(1, Math.floor((data.length-1)/(maxLabels-1)));
-      const labelIdxs = new Set();
-      for (let i = 0; i < data.length; i += xStep) labelIdxs.add(i);
-      labelIdxs.add(data.length - 1);
-      [...labelIdxs].forEach(i => {
-        const xt = document.createElementNS(NS, 'text');
-        xt.setAttribute('x', pts[i].x); xt.setAttribute('y', H - 4);
-        xt.setAttribute('text-anchor', i === 0 ? 'start' : i === data.length-1 ? 'end' : 'middle');
-        xt.setAttribute('font-size','9'); xt.setAttribute('fill','rgba(255,255,255,0.28)');
-        xt.setAttribute('font-family','inherit');
-        xt.textContent = parseDate(data[i].date).toLocaleDateString('en-GB', { day:'numeric', month:'short' });
-        svg.appendChild(xt);
-      });
-      chartEl.appendChild(svg);
+    // Milestone card
+    const milestoneEl = document.getElementById(`${pfx}-milestone`);
+    if (milestoneEl && data.length) {
+      const prevMilestone = goal - 1000;
+      const progress = Math.min(100, Math.max(0, (current - prevMilestone) / (goal - prevMilestone) * 100));
+      const toGo = goal - current;
+      const etaDays = calcEtaDays(data, data.length - 1, goal);
+      const etaText = etaDays != null ? `~${etaDays.toLocaleString()} days to go` : '—';
+      milestoneEl.className = 'milestone-card';
+      milestoneEl.innerHTML =
+        `<div class="milestone-label">Next milestone</div>` +
+        `<div class="milestone-target">${goal.toLocaleString()}</div>` +
+        `<div class="milestone-bar-track"><div class="milestone-bar-fill" style="width:${progress.toFixed(1)}%"></div></div>` +
+        `<div class="milestone-footer">` +
+        `<span>${current.toLocaleString()} / ${goal.toLocaleString()} · ${toGo.toLocaleString()} to go</span>` +
+        `<span class="milestone-eta">${etaText}</span>` +
+        `</div>`;
     }
 
-    // Recent
+    // Follower history chart
+    const chartEl = document.getElementById(`${pfx}-chart`);
+    if (chartEl) {
+      const followerPts = data.map(d => ({
+        label: parseDate(d.date).toLocaleDateString('en-GB', { day:'numeric', month:'short' }),
+        value: d.count
+      }));
+      drawChart(chartEl, followerPts, gradId, '#c084fc', fmtN);
+    }
+
+    // Days-to-goal chart
+    const etaChartEl = document.getElementById(`${pfx}-eta-chart`);
+    if (etaChartEl) {
+      const etaPts = [];
+      for (let i = 1; i < data.length; i++) {
+        const days = calcEtaDays(data, i, goal);
+        if (days == null) continue;
+        etaPts.push({
+          label: parseDate(data[i].date).toLocaleDateString('en-GB', { day:'numeric', month:'short' }),
+          value: days
+        });
+      }
+      drawChart(etaChartEl, etaPts, `${gradId}_eta`, '#4ddd8e', n => Math.round(n) + 'd');
+    }
+
+    // Recent entries
     const recentEl = document.getElementById(`${pfx}-recent`);
     if (!recentEl) return;
     recentEl.innerHTML = '';
     if (!data.length) {
       recentEl.innerHTML = '<div class="recent-row"><span class="recent-date">No entries yet</span></div>';
     } else {
-      data.slice(-10).reverse().forEach(entry => {
+      data.slice(-10).reverse().forEach((entry, _, arr) => {
         const idx = data.findIndex(d => d.date === entry.date);
         const prev = idx > 0 ? data[idx - 1] : null;
         const dd = fmtDelta(prev ? entry.count - prev.count : null);
+        const etaDays = calcEtaDays(data, idx, goal);
+        const etaText = etaDays != null ? `~${etaDays.toLocaleString()}d` : '—';
         const row = document.createElement('div');
         row.className = 'recent-row';
         const label = parseDate(entry.date).toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short', year:'numeric' });
@@ -416,13 +475,13 @@ body::before {
           `<span class="recent-right">` +
           `<span class="recent-count">${entry.count.toLocaleString()}</span>` +
           `<span class="recent-delta ${dd.cls}">${dd.text}</span>` +
+          `<span class="recent-eta">${etaText}</span>` +
           `</span>`;
         recentEl.appendChild(row);
       });
     }
   }
 
-  // ── Render both accounts ──────────────────────────────
   renderAccount(allData.hankcuratesfilms || [], 'a', 'ig_grad_a');
   renderAccount(allData.hanklosesweight  || [], 'b', 'ig_grad_b');
 

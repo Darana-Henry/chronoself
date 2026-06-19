@@ -1,6 +1,10 @@
 {
   "hankcuratesfilms": [
     {
+      "date": "2026-01-02",
+      "count": 0
+    },
+    {
       "date": "2026-06-18",
       "count": 1836
     },
@@ -10,6 +14,10 @@
     }
   ],
   "hanklosesweight": [
+    {
+      "date": "2026-03-05",
+      "count": 0
+    },
     {
       "date": "2026-06-18",
       "count": 22
