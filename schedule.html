@@ -1672,9 +1672,10 @@ td.cls-adj { padding: 0 16px; vertical-align: middle; }
 .chron-day.future { color: rgba(255,255,255,0.10); }
 
 .chron-day.r1 { background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.75); }
-.chron-day.r2 { background: rgba(255,200,77,0.22);  color: #ffc84d; }
-.chron-day.r3 { background: rgba(255,139,175,0.22); color: #ff8fab; }
-.chron-day.r4 { background: rgba(192,132,252,0.22); color: #c084fc; }
+.chron-day.r2 { background: rgba(77,221,142,0.22);  color: #4ddd8e; }
+.chron-day.r3 { background: rgba(255,200,77,0.22);  color: #ffc84d; }
+.chron-day.r4 { background: rgba(255,128,80,0.22);  color: #ff8050; }
+.chron-day.r5 { background: rgba(255,77,106,0.22);  color: #ff4d6a; }
 
 .chronicle-entry {
   display: flex; align-items: flex-start; gap: 20px;
@@ -1737,14 +1738,16 @@ td.cls-adj { padding: 0 16px; vertical-align: middle; }
   color: rgba(255,255,255,0.40);
 }
 .chronicle-rating-btn.r1 { color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.05); }
-.chronicle-rating-btn.r2 { color: #ffc84d; border-color: rgba(255,200,77,0.45); background: rgba(255,200,77,0.07); }
-.chronicle-rating-btn.r3 { color: #ff8fab; border-color: rgba(255,139,175,0.50); background: rgba(255,139,175,0.08); }
-.chronicle-rating-btn.r4 { color: #c084fc; border-color: rgba(192,132,252,0.50); background: rgba(192,132,252,0.08); }
+.chronicle-rating-btn.r2 { color: #4ddd8e; border-color: rgba(77,221,142,0.45);  background: rgba(77,221,142,0.07); }
+.chronicle-rating-btn.r3 { color: #ffc84d; border-color: rgba(255,200,77,0.45); background: rgba(255,200,77,0.07); }
+.chronicle-rating-btn.r4 { color: #ff8050; border-color: rgba(255,128,80,0.45);  background: rgba(255,128,80,0.07); }
+.chronicle-rating-btn.r5 { color: #ff4d6a; border-color: rgba(255,77,106,0.50);  background: rgba(255,77,106,0.08); }
 
 .chronicle-entry.rating-1 { box-shadow: inset 3px 0 0 rgba(255,255,255,0.18); }
-.chronicle-entry.rating-2 { box-shadow: inset 3px 0 0 rgba(255,200,77,0.55); }
-.chronicle-entry.rating-3 { box-shadow: inset 3px 0 0 rgba(255,139,175,0.60); }
-.chronicle-entry.rating-4 { box-shadow: inset 3px 0 0 rgba(192,132,252,0.65); }
+.chronicle-entry.rating-2 { box-shadow: inset 3px 0 0 rgba(77,221,142,0.55); }
+.chronicle-entry.rating-3 { box-shadow: inset 3px 0 0 rgba(255,200,77,0.55); }
+.chronicle-entry.rating-4 { box-shadow: inset 3px 0 0 rgba(255,128,80,0.60); }
+.chronicle-entry.rating-5 { box-shadow: inset 3px 0 0 rgba(255,77,106,0.65); }
 
 .chronicle-entry-body { flex: 1; display: flex; flex-direction: column; gap: 6px; }
 .chronicle-entry-foot { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
@@ -1934,9 +1937,10 @@ td.cls-adj { padding: 0 16px; vertical-align: middle; }
   line-height: 1.5;
 }
 .today-chron-yesterday.r1 { border-color: rgba(255,255,255,0.35); }
-.today-chron-yesterday.r2 { border-color: rgba(255,200,77,0.55); }
-.today-chron-yesterday.r3 { border-color: rgba(255,139,175,0.60); }
-.today-chron-yesterday.r4 { border-color: rgba(192,132,252,0.65); }
+.today-chron-yesterday.r2 { border-color: rgba(77,221,142,0.55); }
+.today-chron-yesterday.r3 { border-color: rgba(255,200,77,0.55); }
+.today-chron-yesterday.r4 { border-color: rgba(255,128,80,0.60); }
+.today-chron-yesterday.r5 { border-color: rgba(255,77,106,0.65); }
 .today-chron-yd-label { font-size: 10px; color: var(--txt-dim); margin-bottom: 4px; letter-spacing: 0.4px; }
 .today-chron-yd-text  { color: var(--txt-mid); font-style: italic; }
 .today-chron-input-row { display: flex; flex-direction: column; gap: 8px; }
@@ -2613,7 +2617,7 @@ function renderToday() {
   rBtn.className   = 'chronicle-rating-btn' + (curR ? ` r${curR}` : '');
   rBtn.textContent = curR ? CHRONICLE_LEVELS[curR].label : 'Rate';
   rBtn.addEventListener('click', () => {
-    const next = curR >= 4 ? 0 : curR + 1;
+    const next = curR >= 5 ? 0 : curR + 1;
     saveChronicleRating(todayDs, next);
     renderToday();
   });
@@ -5995,10 +5999,11 @@ function flSessionDone(session, log) {
 // ═══════════════════════════════════════════════════
 const CHRONICLE_LEVELS = [
   null,
-  { label: 'Trivial',  color: 'rgba(255,255,255,0.50)' },
-  { label: 'Notable',  color: '#ffc84d' },
-  { label: 'Rare',     color: '#ff8fab' },
-  { label: 'Epic',     color: '#c084fc' },
+  { label: 'Level 1', color: 'rgba(255,255,255,0.50)' },
+  { label: 'Level 2', color: '#4ddd8e' },
+  { label: 'Level 3', color: '#ffc84d' },
+  { label: 'Level 4', color: '#ff8050' },
+  { label: 'Level 5', color: '#ff4d6a' },
 ];
 
 function loadChronicle() {
@@ -6143,14 +6148,14 @@ function renderChronicle() {
     wdEl.className = 'chronicle-date-wd';
     wdEl.textContent = d.toLocaleDateString('en-US', { weekday: 'long' });
 
-    // ── Rating button (cycles: 0→1→2→3→4→0) ─
+    // ── Rating button (cycles: 0→1→2→3→4→5→0) ─
     const ratingBtn = document.createElement('button');
     ratingBtn.className = 'chronicle-rating-btn' + (rating ? ` r${rating}` : '');
     ratingBtn.textContent = rating ? CHRONICLE_LEVELS[rating].label : 'Rate';
     ratingBtn.addEventListener('click', () => {
       const cur  = parseInt(entry.dataset.rating) || 0;
-      const next = cur >= 4 ? 0 : cur + 1;
-      entry.classList.remove('rating-1', 'rating-2', 'rating-3', 'rating-4');
+      const next = cur >= 5 ? 0 : cur + 1;
+      entry.classList.remove('rating-1', 'rating-2', 'rating-3', 'rating-4', 'rating-5');
       if (next) entry.classList.add(`rating-${next}`);
       entry.dataset.rating = next;
       ratingBtn.className  = 'chronicle-rating-btn' + (next ? ` r${next}` : '');
