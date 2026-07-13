@@ -2945,8 +2945,16 @@ function clsSet(dateStr, key, val) {
   fsPushClasses(dateStr);
 }
 
+const CLS_MUSIC_SCHEDULE_CHANGE = '2026-07-14';
+
 function clsMusicLabel(date) {
-  const d = trDayIdx(date);
+  const d  = trDayIdx(date);
+  const ds = date.toISOString().split('T')[0];
+  if (ds >= CLS_MUSIC_SCHEDULE_CHANGE) {
+    if (d === 0 || d === 2) return 'Piano';  // Mon, Wed
+    if (d === 1)            return 'Vocals'; // Tue
+    return null;                             // Thu, Fri, Sat, Sun — no music class
+  }
   if (d === 0 || d === 2 || d === 5) return 'Vocals';
   if (d === 1 || d === 3)            return 'Piano';
   return null; // Fri, Sun — no music class
