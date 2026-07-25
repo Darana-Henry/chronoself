@@ -133,6 +133,16 @@ body::before {
   color: #3c4043; font-size: 13px; line-height: 1.7;
 }
 
+.range-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
+.range-tab {
+  padding: 4px 14px; border-radius: 7px; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.3px; cursor: pointer; font-family: inherit;
+  border: 1px solid rgba(255,255,255,0.10); background: transparent; color: #5f6368;
+  transition: all 0.15s;
+}
+.range-tab:hover { border-color: rgba(255,255,255,0.22); color: #9aa0a6; }
+.range-tab.active { border-color: rgba(192,132,252,0.40); background: rgba(192,132,252,0.10); color: #c084fc; }
+
 /* ── Recent table ───────────────────────────────── */
 .recent-card {
   background: rgba(255,255,255,0.025);
@@ -197,6 +207,13 @@ body::before {
       <div id="a-milestone"></div>
       <div class="chart-card">
         <div class="card-heading">Follower history</div>
+        <div class="range-tabs" data-acct="a" data-chart="history">
+          <button class="range-tab active" data-days="30">30</button>
+          <button class="range-tab" data-days="60">60</button>
+          <button class="range-tab" data-days="90">90</button>
+          <button class="range-tab" data-days="180">180</button>
+          <button class="range-tab" data-days="365">365</button>
+        </div>
         <div id="a-chart"></div>
       </div>
       <div class="chart-card">
@@ -206,6 +223,21 @@ body::before {
       <div class="recent-card">
         <div class="card-heading">Recent entries</div>
         <div id="a-recent"></div>
+      </div>
+      <div class="recent-card">
+        <div class="card-heading">Milestones</div>
+        <div id="a-milestones"></div>
+      </div>
+      <div class="chart-card">
+        <div class="card-heading">Daily follower gain</div>
+        <div class="range-tabs" data-acct="a" data-chart="gain">
+          <button class="range-tab active" data-days="30">30</button>
+          <button class="range-tab" data-days="60">60</button>
+          <button class="range-tab" data-days="90">90</button>
+          <button class="range-tab" data-days="180">180</button>
+          <button class="range-tab" data-days="365">365</button>
+        </div>
+        <div id="a-gain-chart"></div>
       </div>
     </div>
 
@@ -221,6 +253,13 @@ body::before {
       <div id="b-milestone"></div>
       <div class="chart-card">
         <div class="card-heading">Follower history</div>
+        <div class="range-tabs" data-acct="b" data-chart="history">
+          <button class="range-tab active" data-days="30">30</button>
+          <button class="range-tab" data-days="60">60</button>
+          <button class="range-tab" data-days="90">90</button>
+          <button class="range-tab" data-days="180">180</button>
+          <button class="range-tab" data-days="365">365</button>
+        </div>
         <div id="b-chart"></div>
       </div>
       <div class="chart-card">
@@ -230,6 +269,21 @@ body::before {
       <div class="recent-card">
         <div class="card-heading">Recent entries</div>
         <div id="b-recent"></div>
+      </div>
+      <div class="recent-card">
+        <div class="card-heading">Milestones</div>
+        <div id="b-milestones"></div>
+      </div>
+      <div class="chart-card">
+        <div class="card-heading">Daily follower gain</div>
+        <div class="range-tabs" data-acct="b" data-chart="gain">
+          <button class="range-tab active" data-days="30">30</button>
+          <button class="range-tab" data-days="60">60</button>
+          <button class="range-tab" data-days="90">90</button>
+          <button class="range-tab" data-days="180">180</button>
+          <button class="range-tab" data-days="365">365</button>
+        </div>
+        <div id="b-gain-chart"></div>
       </div>
     </div>
 
@@ -267,6 +321,36 @@ body::before {
 
   function nextMilestone(count) {
     return Math.floor(count / 1000) * 1000 + 1000;
+  }
+
+  // Goal each entry was actually chasing at the time — stays fixed to the
+  // milestone in play on that day, only advancing the day *after* it's hit,
+  // so past rows never get rewritten once a new milestone is crossed.
+  function rowGoals(data) {
+    const goals = [];
+    if (!data.length) return goals;
+    let goal = nextMilestone(data[0].count);
+    for (let i = 0; i < data.length; i++) {
+      goals.push(goal);
+      if (data[i].count >= goal) goal += 1000;
+    }
+    return goals;
+  }
+
+  function milestoneHistory(data) {
+    const result = [];
+    if (!data.length) return result;
+    const highest = data[data.length - 1].count;
+    let prevDate = data[0].date;
+    for (let m = 1000; m <= highest; m += 1000) {
+      const hit = data.find(d => d.count >= m);
+      if (hit) {
+        const days = Math.round((parseDate(hit.date) - parseDate(prevDate)) / 86400000);
+        result.push({ milestone: m, date: hit.date, count: hit.count, days });
+        prevDate = hit.date;
+      }
+    }
+    return result.reverse();
   }
 
   function calcEtaDays(data, idx, goal) {
@@ -379,6 +463,86 @@ body::before {
     containerEl.appendChild(svg);
   }
 
+  function drawBarChart(containerEl, points) {
+    containerEl.innerHTML = '';
+    if (!points.length) {
+      containerEl.innerHTML = '<div class="chart-empty">Not enough data yet — check back once more days are tracked.</div>';
+      return;
+    }
+    const NS = 'http://www.w3.org/2000/svg';
+    const W = 660, H = 200, pL = 46, pR = 16, pT = 14, pB = 30;
+    const cW = W - pL - pR, cH = H - pT - pB;
+    const vals = points.map(p => p.value);
+    const rawMax = Math.max(...vals, 0), rawMin = Math.min(...vals, 0);
+    const spread = (rawMax - rawMin) || 1;
+    const yMax = rawMax + spread * 0.15;
+    const yMin = rawMin - spread * 0.15;
+    function niceStep(rng, n) {
+      const raw = rng / n, mag = Math.pow(10, Math.floor(Math.log10(raw || 1)));
+      return Math.ceil(raw / mag) * mag || 1;
+    }
+    const step = niceStep(yMax - yMin, 4);
+    const tickMin = Math.ceil(yMin / step) * step;
+    const yTicks = [];
+    for (let v = tickMin; v <= yMax + step * 0.01; v += step) yTicks.push(v);
+    const toY = v => pT + (1 - (v - yMin) / (yMax - yMin)) * cH;
+    const n = points.length;
+    const slot = cW / n;
+    const toX = i => pL + slot * i + slot / 2;
+
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svg.style.cssText = 'width:100%;height:auto;display:block;overflow:visible;';
+
+    yTicks.forEach(v => {
+      const y = toY(v);
+      const gl = document.createElementNS(NS, 'line');
+      gl.setAttribute('x1', pL); gl.setAttribute('x2', W - pR);
+      gl.setAttribute('y1', y); gl.setAttribute('y2', y);
+      gl.setAttribute('stroke', Math.abs(v) < 1e-9 ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.055)');
+      gl.setAttribute('stroke-width','1');
+      svg.appendChild(gl);
+      const gt = document.createElementNS(NS, 'text');
+      gt.setAttribute('x', pL - 6); gt.setAttribute('y', y + 3.5);
+      gt.setAttribute('text-anchor','end'); gt.setAttribute('font-size','9');
+      gt.setAttribute('fill','rgba(255,255,255,0.22)'); gt.setAttribute('font-family','inherit');
+      gt.textContent = Math.round(v).toLocaleString();
+      svg.appendChild(gt);
+    });
+
+    const zeroY = toY(0);
+    const barW = Math.max(1, slot * 0.62);
+    points.forEach((p, i) => {
+      const barY = p.value >= 0 ? toY(p.value) : zeroY;
+      const h = Math.max(0.6, Math.abs(toY(p.value) - zeroY));
+      const rect = document.createElementNS(NS, 'rect');
+      rect.setAttribute('x', (toX(i) - barW / 2).toFixed(1));
+      rect.setAttribute('y', barY.toFixed(1));
+      rect.setAttribute('width', barW.toFixed(1));
+      rect.setAttribute('height', h.toFixed(1));
+      rect.setAttribute('rx', '1.5');
+      rect.setAttribute('fill', p.value >= 0 ? '#34a853' : '#ea4335');
+      rect.setAttribute('fill-opacity', '0.85');
+      svg.appendChild(rect);
+    });
+
+    const maxLabels = 6;
+    const xStep = Math.max(1, Math.floor((n - 1) / (maxLabels - 1)) || 1);
+    const labelIdxs = new Set();
+    for (let i = 0; i < n; i += xStep) labelIdxs.add(i);
+    labelIdxs.add(n - 1);
+    [...labelIdxs].forEach(i => {
+      const xt = document.createElementNS(NS, 'text');
+      xt.setAttribute('x', toX(i)); xt.setAttribute('y', H - 6);
+      xt.setAttribute('text-anchor', 'middle'); xt.setAttribute('font-size','9');
+      xt.setAttribute('fill','rgba(255,255,255,0.28)'); xt.setAttribute('font-family','inherit');
+      xt.textContent = points[i].label;
+      svg.appendChild(xt);
+    });
+    containerEl.appendChild(svg);
+  }
+
   function renderAccount(data, pfx, gradId) {
     function countDaysAgo(n) {
       if (!data.length) return null;
@@ -398,6 +562,7 @@ body::before {
 
     const current = data.length ? data[data.length - 1].count : 0;
     const goal = nextMilestone(current);
+    const goalsPerRow = rowGoals(data);
 
     if (data.length) {
       setEl(`${pfx}-current`, current.toLocaleString(), '');
@@ -431,12 +596,24 @@ body::before {
 
     // Follower history chart
     const chartEl = document.getElementById(`${pfx}-chart`);
-    if (chartEl) {
+    const historyTabsEl = document.querySelector(`.range-tabs[data-acct="${pfx}"][data-chart="history"]`);
+    if (chartEl && historyTabsEl) {
       const followerPts = data.map(d => ({
         label: parseDate(d.date).toLocaleDateString('en-GB', { day:'numeric', month:'short' }),
         value: d.count
       }));
-      drawChart(chartEl, followerPts, gradId, '#c084fc', fmtN);
+      function renderHistory(days) {
+        drawChart(chartEl, followerPts.slice(-days), gradId, '#c084fc', fmtN);
+      }
+      const historyButtons = historyTabsEl.querySelectorAll('.range-tab');
+      historyButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          historyButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderHistory(parseInt(btn.dataset.days, 10));
+        });
+      });
+      renderHistory(30);
     }
 
     // Days-to-goal chart
@@ -444,7 +621,7 @@ body::before {
     if (etaChartEl) {
       const etaPts = [];
       for (let i = 1; i < data.length; i++) {
-        const days = calcEtaDays(data, i, goal);
+        const days = calcEtaDays(data, i, goalsPerRow[i]);
         if (days == null) continue;
         etaPts.push({
           label: parseDate(data[i].date).toLocaleDateString('en-GB', { day:'numeric', month:'short' }),
@@ -465,7 +642,7 @@ body::before {
         const idx = data.findIndex(d => d.date === entry.date);
         const prev = idx > 0 ? data[idx - 1] : null;
         const dd = fmtDelta(prev ? entry.count - prev.count : null);
-        const etaDays = calcEtaDays(data, idx, goal);
+        const etaDays = calcEtaDays(data, idx, goalsPerRow[idx]);
         const etaText = etaDays != null ? `~${etaDays.toLocaleString()}d` : '—';
         const row = document.createElement('div');
         row.className = 'recent-row';
@@ -479,6 +656,56 @@ body::before {
           `</span>`;
         recentEl.appendChild(row);
       });
+    }
+
+    // Milestones
+    const milestonesEl = document.getElementById(`${pfx}-milestones`);
+    if (!milestonesEl) return;
+    milestonesEl.innerHTML = '';
+    const hist = milestoneHistory(data);
+    if (!hist.length) {
+      milestonesEl.innerHTML = '<div class="recent-row"><span class="recent-date">No milestones reached yet</span></div>';
+    } else {
+      hist.forEach(h => {
+        const row = document.createElement('div');
+        row.className = 'recent-row';
+        const label = parseDate(h.date).toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+        row.innerHTML =
+          `<span class="recent-date">${h.milestone.toLocaleString()} followers</span>` +
+          `<span class="recent-right">` +
+          `<span class="recent-count">${label}</span>` +
+          `<span class="recent-delta muted">${h.count.toLocaleString()}</span>` +
+          `<span class="recent-eta">${h.days}d</span>` +
+          `</span>`;
+        milestonesEl.appendChild(row);
+      });
+    }
+
+    // Daily follower gain
+    const gainChartEl = document.getElementById(`${pfx}-gain-chart`);
+    const rangeTabsEl = document.querySelector(`.range-tabs[data-acct="${pfx}"][data-chart="gain"]`);
+    if (gainChartEl && rangeTabsEl) {
+      const dailyGains = [];
+      // start at 2, not 1 — the delta off day 0 (tracking's baseline reading) is a
+      // one-off jump, not a real daily gain, and dwarfs every other bar if included
+      for (let i = 2; i < data.length; i++) {
+        dailyGains.push({
+          label: parseDate(data[i].date).toLocaleDateString('en-GB', { day:'numeric', month:'short' }),
+          value: data[i].count - data[i - 1].count
+        });
+      }
+      function renderGain(days) {
+        drawBarChart(gainChartEl, dailyGains.slice(-days));
+      }
+      const tabButtons = rangeTabsEl.querySelectorAll('.range-tab');
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderGain(parseInt(btn.dataset.days, 10));
+        });
+      });
+      renderGain(30);
     }
   }
 

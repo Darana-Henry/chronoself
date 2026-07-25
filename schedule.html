@@ -524,6 +524,17 @@ td.cls-adj { padding: 0 16px; vertical-align: middle; }
 .ig-recent-delta.pos { color: #34a853; }
 .ig-recent-delta.neg { color: #ea4335; }
 .ig-recent-delta.muted { color: var(--txt-dim); }
+.ig-recent-eta { font-size: 10.5px; font-weight: 500; min-width: 34px; text-align: right; color: var(--txt-dim); }
+
+.ig-range-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
+.ig-range-tab {
+  padding: 4px 14px; border-radius: 7px; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.3px; cursor: pointer; font-family: inherit;
+  border: 1px solid rgba(255,255,255,0.10); background: transparent; color: var(--txt-dim);
+  transition: all 0.15s;
+}
+.ig-range-tab:hover { border-color: rgba(255,255,255,0.22); color: var(--txt-mid); }
+.ig-range-tab.active { border-color: rgba(201,122,255,0.40); background: rgba(201,122,255,0.10); color: #c084fc; }
 .ig-account-label { font-size: 11px; font-weight: 700; letter-spacing: 0.4px; color: #c084fc; padding-top: 4px; }
 .ig-account-label::before { content: '@'; opacity: 0.6; }
 .ig-accounts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
@@ -1770,12 +1781,13 @@ td.cls-adj { padding: 0 16px; vertical-align: middle; }
 /* ── TODAY DASHBOARD ──────────────────────────────── */
 #panel-today { overflow-y: auto; }
 .today-wrap {
-  max-width: 960px;
+  width: 100%;
   margin: 0 auto;
   padding: 32px 32px 48px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  box-sizing: border-box;
 }
 
 /* Header */
@@ -1793,7 +1805,13 @@ td.cls-adj { padding: 0 16px; vertical-align: middle; }
 /* Grid */
 .today-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.today-grid-left {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
   align-items: start;
 }
@@ -2241,8 +2259,30 @@ const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
             <div class="ig-stat"><div class="ig-stat-label">30-day change</div><div class="ig-stat-value muted" id="ig-30d-a">—</div></div>
             <div class="ig-stat"><div class="ig-stat-label">Days tracked</div><div class="ig-stat-value muted" id="ig-days-a">—</div></div>
           </div>
-          <div class="ig-chart-card"><div class="ig-card-label">Follower history</div><div id="ig-chart-a"></div></div>
+          <div class="ig-chart-card">
+            <div class="ig-card-label">Follower history</div>
+            <div class="ig-range-tabs" data-acct="a" data-chart="history">
+              <button class="ig-range-tab active" data-days="30">30</button>
+              <button class="ig-range-tab" data-days="60">60</button>
+              <button class="ig-range-tab" data-days="90">90</button>
+              <button class="ig-range-tab" data-days="180">180</button>
+              <button class="ig-range-tab" data-days="365">365</button>
+            </div>
+            <div id="ig-chart-a"></div>
+          </div>
           <div class="ig-recent-card"><div class="ig-card-label">Recent entries</div><div id="ig-recent-a"></div></div>
+          <div class="ig-recent-card"><div class="ig-card-label">Milestones</div><div id="ig-milestones-a"></div></div>
+          <div class="ig-chart-card">
+            <div class="ig-card-label">Daily follower gain</div>
+            <div class="ig-range-tabs" data-acct="a" data-chart="gain">
+              <button class="ig-range-tab active" data-days="30">30</button>
+              <button class="ig-range-tab" data-days="60">60</button>
+              <button class="ig-range-tab" data-days="90">90</button>
+              <button class="ig-range-tab" data-days="180">180</button>
+              <button class="ig-range-tab" data-days="365">365</button>
+            </div>
+            <div id="ig-gain-chart-a"></div>
+          </div>
         </div>
 
         <!-- Account B: hanklosesweight -->
@@ -2254,8 +2294,30 @@ const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
             <div class="ig-stat"><div class="ig-stat-label">30-day change</div><div class="ig-stat-value muted" id="ig-30d-b">—</div></div>
             <div class="ig-stat"><div class="ig-stat-label">Days tracked</div><div class="ig-stat-value muted" id="ig-days-b">—</div></div>
           </div>
-          <div class="ig-chart-card"><div class="ig-card-label">Follower history</div><div id="ig-chart-b"></div></div>
+          <div class="ig-chart-card">
+            <div class="ig-card-label">Follower history</div>
+            <div class="ig-range-tabs" data-acct="b" data-chart="history">
+              <button class="ig-range-tab active" data-days="30">30</button>
+              <button class="ig-range-tab" data-days="60">60</button>
+              <button class="ig-range-tab" data-days="90">90</button>
+              <button class="ig-range-tab" data-days="180">180</button>
+              <button class="ig-range-tab" data-days="365">365</button>
+            </div>
+            <div id="ig-chart-b"></div>
+          </div>
           <div class="ig-recent-card"><div class="ig-card-label">Recent entries</div><div id="ig-recent-b"></div></div>
+          <div class="ig-recent-card"><div class="ig-card-label">Milestones</div><div id="ig-milestones-b"></div></div>
+          <div class="ig-chart-card">
+            <div class="ig-card-label">Daily follower gain</div>
+            <div class="ig-range-tabs" data-acct="b" data-chart="gain">
+              <button class="ig-range-tab active" data-days="30">30</button>
+              <button class="ig-range-tab" data-days="60">60</button>
+              <button class="ig-range-tab" data-days="90">90</button>
+              <button class="ig-range-tab" data-days="180">180</button>
+              <button class="ig-range-tab" data-days="365">365</button>
+            </div>
+            <div id="ig-gain-chart-b"></div>
+          </div>
         </div>
 
       </div>
@@ -2307,10 +2369,12 @@ function renderToday() {
   const grid = document.getElementById('today-grid');
   grid.innerHTML = '';
 
+  const left = document.createElement('div'); left.className = 'today-grid-left';
   const col1 = document.createElement('div'); col1.className = 'today-col';
   const col2 = document.createElement('div'); col2.className = 'today-col';
   const col3 = document.createElement('div'); col3.className = 'today-col';
-  grid.append(col1, col2, col3);
+  left.append(col1, col2);
+  grid.append(left, col3);
 
   // ── Card builder ────────────────────────────────
   function card(title, col) {
@@ -2899,7 +2963,7 @@ const ACTIVITIES = [
   { key:'prem',   label:'Prem',         cat:'sports', days:null, seasonStart:'2026-08-15', seasonEnd:'2027-05-24' },
   { key:'ucl',    label:'UCL',          cat:'sports', days:null, seasonStart:'2026-09-16', seasonEnd:'2027-05-31' },
   { key:'europa', label:'Europa/Conf',  cat:'sports', days:null, seasonStart:'2026-09-18', seasonEnd:'2027-05-21' },
-  { key:'mls',    label:'MLS',          cat:'sports', days:null, seasonStart:'2026-02-21', seasonEnd:'2026-11-22' },
+  { key:'mls',    label:'MLS',          cat:'sports', days:[4], seasonStart:'2026-02-21', seasonEnd:'2026-11-22' },
   // ── Periodic ───────────────────────────────────────
   { key:'shave',        label:'Shave',           cat:'hygiene',  days:'biweeksat' },
   { key:'nails',        label:'Nails',           cat:'hygiene',  days:[5]         },
@@ -3111,6 +3175,101 @@ async function buildInstagram() {
     const [y, m, d] = s.split('-').map(Number);
     return new Date(y, m - 1, d);
   }
+  function milestoneHistory(data) {
+    const result = [];
+    if (!data.length) return result;
+    const highest = data[data.length - 1].count;
+    let prevDate = data[0].date;
+    for (let m = 1000; m <= highest; m += 1000) {
+      const hit = data.find(d => d.count >= m);
+      if (hit) {
+        const days = Math.round((parseDate(hit.date) - parseDate(prevDate)) / 86400000);
+        result.push({ milestone: m, date: hit.date, count: hit.count, days });
+        prevDate = hit.date;
+      }
+    }
+    return result.reverse();
+  }
+
+  function drawBarChart(containerEl, points) {
+    containerEl.innerHTML = '';
+    if (!points.length) {
+      containerEl.innerHTML = '<div class="ig-chart-empty">Not enough data yet.</div>';
+      return;
+    }
+    const NS = 'http://www.w3.org/2000/svg';
+    const W = 600, H = 180, pL = 42, pR = 14, pT = 12, pB = 28;
+    const cW = W - pL - pR, cH = H - pT - pB;
+    const vals = points.map(p => p.value);
+    const rawMax = Math.max(...vals, 0), rawMin = Math.min(...vals, 0);
+    const spread = (rawMax - rawMin) || 1;
+    const yMax = rawMax + spread * 0.15;
+    const yMin = rawMin - spread * 0.15;
+    function niceStep(rng, n) {
+      const raw = rng / n, mag = Math.pow(10, Math.floor(Math.log10(raw || 1)));
+      return Math.ceil(raw / mag) * mag || 1;
+    }
+    const step = niceStep(yMax - yMin, 4);
+    const tickMin = Math.ceil(yMin / step) * step;
+    const yTicks = [];
+    for (let v = tickMin; v <= yMax + step * 0.01; v += step) yTicks.push(v);
+    const toY = v => pT + (1 - (v - yMin) / (yMax - yMin)) * cH;
+    const n = points.length;
+    const slot = cW / n;
+    const toX = i => pL + slot * i + slot / 2;
+
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svg.style.cssText = 'width:100%;height:auto;display:block;overflow:visible;';
+
+    yTicks.forEach(v => {
+      const y = toY(v);
+      const gl = document.createElementNS(NS, 'line');
+      gl.setAttribute('x1', pL); gl.setAttribute('x2', W - pR);
+      gl.setAttribute('y1', y); gl.setAttribute('y2', y);
+      gl.setAttribute('stroke', Math.abs(v) < 1e-9 ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.055)');
+      gl.setAttribute('stroke-width','1');
+      svg.appendChild(gl);
+      const gt = document.createElementNS(NS, 'text');
+      gt.setAttribute('x', pL - 5); gt.setAttribute('y', y + 3.5);
+      gt.setAttribute('text-anchor','end'); gt.setAttribute('font-size','8.5');
+      gt.setAttribute('fill','rgba(255,255,255,0.22)'); gt.setAttribute('font-family','inherit');
+      gt.textContent = Math.round(v).toLocaleString();
+      svg.appendChild(gt);
+    });
+
+    const zeroY = toY(0);
+    const barW = Math.max(1, slot * 0.62);
+    points.forEach((p, i) => {
+      const barY = p.value >= 0 ? toY(p.value) : zeroY;
+      const h = Math.max(0.6, Math.abs(toY(p.value) - zeroY));
+      const rect = document.createElementNS(NS, 'rect');
+      rect.setAttribute('x', (toX(i) - barW / 2).toFixed(1));
+      rect.setAttribute('y', barY.toFixed(1));
+      rect.setAttribute('width', barW.toFixed(1));
+      rect.setAttribute('height', h.toFixed(1));
+      rect.setAttribute('rx', '1.5');
+      rect.setAttribute('fill', p.value >= 0 ? '#34a853' : '#ea4335');
+      rect.setAttribute('fill-opacity', '0.85');
+      svg.appendChild(rect);
+    });
+
+    const maxLabels = 6;
+    const xStep = Math.max(1, Math.floor((n - 1) / (maxLabels - 1)) || 1);
+    const labelIdxs = new Set();
+    for (let i = 0; i < n; i += xStep) labelIdxs.add(i);
+    labelIdxs.add(n - 1);
+    [...labelIdxs].forEach(i => {
+      const xt = document.createElementNS(NS, 'text');
+      xt.setAttribute('x', toX(i)); xt.setAttribute('y', H - 3);
+      xt.setAttribute('text-anchor', 'middle'); xt.setAttribute('font-size','8.5');
+      xt.setAttribute('fill','rgba(255,255,255,0.28)'); xt.setAttribute('font-family','inherit');
+      xt.textContent = points[i].label;
+      svg.appendChild(xt);
+    });
+    containerEl.appendChild(svg);
+  }
 
   function renderAcct(data, pfx, gradId) {
     function countDaysAgo(n) {
@@ -3141,16 +3300,18 @@ async function buildInstagram() {
     }
 
     const chartEl = document.getElementById(`ig-chart-${pfx}`);
-    if (!chartEl) return;
-    chartEl.innerHTML = '';
+    const historyTabsEl = document.querySelector(`.ig-range-tabs[data-acct="${pfx}"][data-chart="history"]`);
 
-    if (data.length < 2) {
-      chartEl.innerHTML = '<div class="ig-chart-empty">No data yet.<br>Trigger the GitHub Action manually to record the first reading,<br>then it will run automatically every day at 12:05 am IST.</div>';
-    } else {
+    function drawFollowerChart(chartData) {
+      chartEl.innerHTML = '';
+      if (chartData.length < 2) {
+        chartEl.innerHTML = '<div class="ig-chart-empty">No data yet.<br>Trigger the GitHub Action manually to record the first reading,<br>then it will run automatically every day at 12:05 am IST.</div>';
+        return;
+      }
       const NS = 'http://www.w3.org/2000/svg';
       const W = 600, H = 180, pL = 50, pR = 14, pT = 12, pB = 30;
       const cW = W - pL - pR, cH = H - pT - pB;
-      const counts = data.map(d => d.count);
+      const counts = chartData.map(d => d.count);
       const rawMin = Math.min(...counts), rawMax = Math.max(...counts);
       const spread = rawMax - rawMin || 1;
       const yMin = rawMin - spread * 0.15, yMax = rawMax + spread * 0.15;
@@ -3163,7 +3324,7 @@ async function buildInstagram() {
       const yTicks = [];
       for (let v = tickMin; v <= yMax + step * 0.01; v += step) yTicks.push(v);
       const toY = v => pT + (1 - (v - yMin) / (yMax - yMin)) * cH;
-      const toX = i => pL + (i / (data.length - 1)) * cW;
+      const toX = i => pL + (i / (chartData.length - 1)) * cW;
 
       const svg = document.createElementNS(NS, 'svg');
       svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
@@ -3197,7 +3358,7 @@ async function buildInstagram() {
         svg.appendChild(gt);
       });
 
-      const pts = data.map((d, i) => ({ x: toX(i), y: toY(d.count) }));
+      const pts = chartData.map((d, i) => ({ x: toX(i), y: toY(d.count) }));
       function smoothPath(ps) {
         let d = `M${ps[0].x.toFixed(1)},${ps[0].y.toFixed(1)}`;
         for (let i = 0; i < ps.length - 1; i++) {
@@ -3225,20 +3386,41 @@ async function buildInstagram() {
       svg.appendChild(dot);
 
       const maxLabels = 6;
-      const xStep = Math.max(1, Math.floor((data.length-1)/(maxLabels-1)));
+      const xStep = Math.max(1, Math.floor((chartData.length-1)/(maxLabels-1)));
       const labelIdxs = new Set();
-      for (let i = 0; i < data.length; i += xStep) labelIdxs.add(i);
-      labelIdxs.add(data.length - 1);
+      for (let i = 0; i < chartData.length; i += xStep) labelIdxs.add(i);
+      labelIdxs.add(chartData.length - 1);
       [...labelIdxs].forEach(i => {
         const xt = document.createElementNS(NS, 'text');
         xt.setAttribute('x', pts[i].x); xt.setAttribute('y', H - 3);
-        xt.setAttribute('text-anchor', i === 0 ? 'start' : i === data.length-1 ? 'end' : 'middle');
+        xt.setAttribute('text-anchor', i === 0 ? 'start' : i === chartData.length-1 ? 'end' : 'middle');
         xt.setAttribute('font-size','8.5'); xt.setAttribute('fill','rgba(255,255,255,0.28)');
         xt.setAttribute('font-family','inherit');
-        xt.textContent = parseDate(data[i].date).toLocaleDateString('en-GB', { day:'numeric', month:'short' });
+        xt.textContent = parseDate(chartData[i].date).toLocaleDateString('en-GB', { day:'numeric', month:'short' });
         svg.appendChild(xt);
       });
       chartEl.appendChild(svg);
+    }
+
+    if (chartEl && historyTabsEl) {
+      // buildInstagram() re-runs on every tab switch — clone-replace strips any
+      // listener from a prior run instead of stacking duplicates on top of it.
+      const historyButtons = [...historyTabsEl.querySelectorAll('.ig-range-tab')].map(btn => {
+        const clone = btn.cloneNode(true);
+        btn.replaceWith(clone);
+        return clone;
+      });
+      historyButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          historyButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          drawFollowerChart(data.slice(-parseInt(btn.dataset.days, 10)));
+        });
+      });
+      const activeBtn = historyButtons.find(b => b.classList.contains('active')) || historyButtons[0];
+      drawFollowerChart(data.slice(-parseInt(activeBtn.dataset.days, 10)));
+    } else if (chartEl) {
+      drawFollowerChart(data);
     }
 
     const recentEl = document.getElementById(`ig-recent-${pfx}`);
@@ -3263,6 +3445,62 @@ async function buildInstagram() {
         recentEl.appendChild(row);
       });
     }
+
+    const milestonesEl = document.getElementById(`ig-milestones-${pfx}`);
+    if (!milestonesEl) return;
+    milestonesEl.innerHTML = '';
+    const hist = milestoneHistory(data);
+    if (!hist.length) {
+      milestonesEl.innerHTML = '<div class="ig-recent-row"><span class="ig-recent-date">No milestones reached yet</span></div>';
+    } else {
+      hist.forEach(h => {
+        const row = document.createElement('div');
+        row.className = 'ig-recent-row';
+        const label = parseDate(h.date).toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short' });
+        row.innerHTML =
+          `<span class="ig-recent-date">${h.milestone.toLocaleString()} followers</span>` +
+          `<span class="ig-recent-right">` +
+          `<span class="ig-recent-count">${label}</span>` +
+          `<span class="ig-recent-delta muted">${h.count.toLocaleString()}</span>` +
+          `<span class="ig-recent-eta">${h.days}d</span>` +
+          `</span>`;
+        milestonesEl.appendChild(row);
+      });
+    }
+
+    const gainChartEl = document.getElementById(`ig-gain-chart-${pfx}`);
+    const rangeTabsEl = document.querySelector(`.ig-range-tabs[data-acct="${pfx}"][data-chart="gain"]`);
+    if (gainChartEl && rangeTabsEl) {
+      const dailyGains = [];
+      // start at 2, not 1 — the delta off day 0 (tracking's baseline reading) is a
+      // one-off jump, not a real daily gain, and dwarfs every other bar if included
+      for (let i = 2; i < data.length; i++) {
+        dailyGains.push({
+          label: parseDate(data[i].date).toLocaleDateString('en-GB', { day:'numeric', month:'short' }),
+          value: data[i].count - data[i - 1].count
+        });
+      }
+      function renderGain(days) {
+        drawBarChart(gainChartEl, dailyGains.slice(-days));
+      }
+      // buildInstagram() re-runs on every tab switch, but the range buttons are
+      // static markup — clone-replace strips any listener bound by a prior run
+      // instead of stacking duplicates on top of it.
+      const tabButtons = [...rangeTabsEl.querySelectorAll('.ig-range-tab')].map(btn => {
+        const clone = btn.cloneNode(true);
+        btn.replaceWith(clone);
+        return clone;
+      });
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderGain(parseInt(btn.dataset.days, 10));
+        });
+      });
+      const activeBtn = tabButtons.find(b => b.classList.contains('active')) || tabButtons[0];
+      renderGain(parseInt(activeBtn.dataset.days, 10));
+    }
   }
 
   renderAcct(_igData.hankcuratesfilms || [], 'a', 'ig_sg_a');
@@ -3284,7 +3522,9 @@ function isoWeek(date) {
 function trApplicable(act, date) {
   if (act.seasonStart) {
     const d = date.toISOString().split('T')[0];
-    return d >= act.seasonStart && d <= act.seasonEnd;
+    if (d < act.seasonStart || d > act.seasonEnd) return false;
+    if (Array.isArray(act.days)) return act.days.includes(trDayIdx(date));
+    return true;
   }
   if (act.days === null) return true;
   if (act.days === 'div3')      return date.getDate() % 3 === 0;
