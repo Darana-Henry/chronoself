@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minute Cryptic — ChronoSelf</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --txt: #e8eaed;
+  --txt-mid: #9aa0a6;
+  --txt-dim: #5f6368;
+  --line: rgba(255,255,255,0.08);
+  --acc: #2dd4bf;
+  --acc-soft: rgba(45,212,191,0.12);
+  --bad: #ff6b6b;
+  --tile: 44px;
+}
+
+html, body {
+  min-height: 100%;
+  background: #0a0a0a;
+  color: var(--txt);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.back-link {
+  position: fixed;
+  top: 20px; left: 24px;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+  color: var(--txt-dim); text-decoration: none;
+  transition: color 0.15s;
+  z-index: 10;
+}
+.back-link:hover { color: var(--txt-mid); }
+.back-link svg { width: 14px; height: 14px; }
+
+.page {
+  position: relative; z-index: 1;
+  max-width: 760px; margin: 0 auto;
+  padding: 72px 16px 64px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+
+.header { display: flex; align-items: center; gap: 16px; }
+.header-icon {
+  width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+  background: var(--acc-soft);
+  display: flex; align-items: center; justify-content: center;
+}
+.header-icon svg { width: 26px; height: 26px; }
+.header-title { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+.header-sub { font-size: 13px; color: var(--txt-dim); margin-top: 2px; }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.stat {
+  background: rgba(255,255,255,0.03); border: 1px solid var(--line);
+  border-radius: 12px; padding: 12px 14px;
+}
+.stat-val { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat-lbl { font-size: 11px; color: var(--txt-dim); text-transform: uppercase; letter-spacing: 0.6px; margin-top: 2px; }
+@media (max-width: 560px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+.views { display: flex; gap: 6px; border-bottom: 1px solid var(--line); }
+.view-btn {
+  background: none; border: none; cursor: pointer;
+  color: var(--txt-dim); font: inherit; font-size: 13px; font-weight: 600;
+  padding: 10px 14px; border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.view-btn.active { color: var(--acc); border-bottom-color: var(--acc); }
+.view-btn:hover:not(.active) { color: var(--txt-mid); }
+
+/* ── Game card ─────────────────────────────────── */
+.game {
+  background: #111214; border: 1px solid var(--line); border-radius: 18px;
+  padding: 22px 20px 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+.game-top { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.pill {
+  font-size: 12px; font-weight: 600; color: var(--acc);
+  background: var(--acc-soft); border-radius: 999px; padding: 5px 11px;
+  white-space: nowrap;
+}
+.pill.review { color: var(--txt-mid); background: rgba(255,255,255,0.06); }
+.game-date { font-size: 12px; color: var(--txt-dim); }
+.timer { font-size: 13px; font-weight: 600; color: var(--txt-mid); font-variant-numeric: tabular-nums; }
+
+.clue {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(21px, 4.4vw, 28px); line-height: 1.4;
+  text-align: center; max-width: 600px; padding: 6px 0;
+}
+.clue .enum { color: var(--txt-dim); white-space: nowrap; }
+.clue .fod {
+  background: rgba(255,200,77,0.14); color: #ffd98a;
+  border-radius: 4px; padding: 0 3px;
+}
+.clue .split { color: var(--acc); font-weight: 700; padding: 0 6px; }
+.hl-ind, .hl-fod, .hl-def { border-radius: 3px; padding: 0 1px; }
+.hl-ind { background: linear-gradient(transparent 55%, rgba(255,143,171,0.55) 55%); }
+.hl-fod { background: linear-gradient(transparent 55%, rgba(255,200,77,0.5) 55%); }
+.hl-def { background: linear-gradient(transparent 55%, rgba(91,142,255,0.6) 55%); }
+.hl-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: center; font-size: 12px; color: var(--txt-mid); margin-top: -8px; }
+.hl-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.hl-legend i { width: 14px; height: 6px; border-radius: 2px; display: inline-block; }
+
+.tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px; }
+.word { display: flex; gap: 4px; }
+.tile {
+  width: var(--tile); height: calc(var(--tile) * 1.15);
+  border: 2px solid rgba(255,255,255,0.14); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: calc(var(--tile) * 0.5); font-weight: 700; text-transform: uppercase;
+  background: rgba(255,255,255,0.02);
+  transition: border-color 0.12s, background 0.2s;
+}
+.tile.filled { border-color: rgba(255,255,255,0.32); }
+.tile { cursor: pointer; }
+.tile.cursor { border-color: var(--acc); background: rgba(45,212,191,0.10); }
+.tile.given  { color: #ffd98a; border-color: rgba(255,200,77,0.4); background: rgba(255,200,77,0.06); }
+.tile.ok     { background: var(--acc); border-color: var(--acc); color: #062b26; }
+.tile.gave   { background: rgba(255,107,107,0.16); border-color: rgba(255,107,107,0.5); color: #ffb3b3; }
+.tiles.shake { animation: shake 0.35s; }
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); } 40% { transform: translateX(7px); }
+  60% { transform: translateX(-5px); } 80% { transform: translateX(3px); }
+}
+
+.msg { min-height: 18px; font-size: 13px; color: var(--txt-mid); text-align: center; }
+.msg.bad { color: var(--bad); }
+.msg.good { color: var(--acc); }
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.btn {
+  font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  border-radius: 10px; padding: 10px 18px; border: 1px solid var(--line);
+  background: rgba(255,255,255,0.05); color: var(--txt);
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn:hover:not(:disabled) { background: rgba(255,255,255,0.09); }
+.btn:disabled { opacity: 0.35; cursor: default; }
+.btn.primary { background: var(--acc); border-color: var(--acc); color: #062b26; }
+.btn.primary:hover:not(:disabled) { background: #5ee6d4; }
+.btn.ghost { background: none; border-color: transparent; color: var(--txt-dim); }
+.btn.ghost:hover:not(:disabled) { color: var(--bad); background: none; }
+
+.actions { position: relative; }
+.hint-menu {
+  position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+  width: min(280px, calc(100vw - 48px)); z-index: 20;
+  background: #1a1b1e; border: 1px solid rgba(255,255,255,0.14); border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+  padding: 8px; display: flex; flex-direction: column;
+}
+.hint-menu-h { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--txt-dim); padding: 6px 10px 8px; }
+.hint-menu-h button { background: none; border: none; color: var(--txt-dim); font-size: 18px; line-height: 1; cursor: pointer; }
+.hint-item {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  background: none; border: none; border-radius: 9px; cursor: pointer;
+  color: var(--txt); font: inherit; font-size: 14px; font-weight: 600; text-align: left;
+  padding: 10px 10px;
+}
+.hint-item:hover:not(:disabled) { background: rgba(255,255,255,0.06); }
+.hint-item:disabled { color: var(--txt-dim); cursor: default; }
+.hint-item .sw { width: 16px; height: 6px; border-radius: 2px; flex-shrink: 0; }
+.hint-item .lbl { flex: 1; }
+.hint-item .tick { color: var(--acc); font-size: 12px; }
+.hint-item .sub { color: var(--txt-dim); font-size: 11px; font-weight: 500; }
+.hint-sep { height: 1px; background: var(--line); margin: 6px 4px; }
+.hints { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+.hint {
+  border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px;
+  background: rgba(255,255,255,0.025); font-size: 14px; line-height: 1.5;
+}
+.hint-h { font-size: 11px; font-weight: 700; color: var(--acc); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+.hint .gl { color: var(--txt-mid); font-size: 13px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font-size: 12px; font-weight: 600; border-radius: 999px; padding: 3px 10px;
+  background: rgba(255,255,255,0.06); color: var(--txt);
+}
+
+.steps { display: flex; flex-direction: column; gap: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+.step { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
+.step .fod { color: #ffd98a; }
+.step .note { color: var(--txt-dim); font-style: italic; }
+.step .arrow { color: var(--txt-dim); }
+.step .res { color: var(--acc); font-weight: 700; letter-spacing: 1px; }
+.step .res.final { color: #fff; background: rgba(45,212,191,0.18); border-radius: 4px; padding: 0 5px; }
+
+/* ── Keyboard ──────────────────────────────────── */
+.kb { width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 6px; user-select: none; }
+.kb-row { display: flex; gap: 5px; justify-content: center; }
+.key {
+  flex: 1; max-width: 44px; height: 48px; border-radius: 7px; border: none;
+  background: rgba(255,255,255,0.09); color: var(--txt);
+  font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+  touch-action: manipulation;
+}
+.key:active { background: rgba(255,255,255,0.18); }
+.key.wide { max-width: 68px; flex: 1.5; font-size: 12px; }
+
+/* ── Result ────────────────────────────────────── */
+.result { width: 100%; display: flex; flex-direction: column; gap: 14px; }
+.result-line { text-align: center; font-size: 14px; color: var(--txt-mid); }
+.result-line b { color: var(--txt); }
+.links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: var(--txt); text-decoration: none;
+  border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px;
+  background: rgba(255,255,255,0.04);
+}
+.link:hover { background: rgba(255,255,255,0.08); }
+.link svg { width: 15px; height: 15px; color: #ff4e45; }
+
+/* ── Archive ───────────────────────────────────── */
+.archive { display: flex; flex-direction: column; gap: 18px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--txt-dim); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.month-h { font-size: 12px; font-weight: 700; color: var(--txt-mid); margin-bottom: 8px; letter-spacing: 0.3px; }
+.month-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(34px, 1fr)); gap: 4px; }
+.cell {
+  height: 34px; border-radius: 6px; border: 1px solid transparent;
+  font: inherit; font-size: 10px; font-weight: 600; font-variant-numeric: tabular-nums;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.03); color: var(--txt-dim);
+}
+.cell.locked { opacity: 0.45; }
+.cell.clean { background: var(--acc); color: #062b26; cursor: pointer; }
+.cell.hinted { background: rgba(45,212,191,0.35); color: #d6fbf6; cursor: pointer; }
+.cell.revealed { background: rgba(255,107,107,0.3); color: #ffd0d0; cursor: pointer; }
+.cell.current { border-color: var(--acc); color: var(--acc); cursor: pointer; }
+
+.loading, .error { text-align: center; color: var(--txt-dim); font-size: 14px; padding: 48px 0; }
+.error { color: var(--bad); }
+.foot { font-size: 11px; color: var(--txt-dim); text-align: center; line-height: 1.6; }
+.foot a { color: var(--txt-mid); }
+.hidden { display: none !important; }
+
+#auth-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0d0d12;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 20px;
+}
+#auth-overlay.hidden { display: none; }
+.auth-title  { font-size: 24px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+.auth-sub    { font-size: 13px; color: rgba(255,255,255,0.4); }
+.auth-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 24px; border-radius: 8px; border: none; cursor: pointer;
+  background: #fff; color: #111; font-size: 14px; font-weight: 600;
+}
+.auth-btn:hover { background: #e8e8e8; }
+.auth-btn svg   { width: 18px; height: 18px; }
+.auth-error { font-size: 12px; color: #ff6b5b; }
+</style>
+</head>
+<body>
+
+<div id="auth-overlay">
+  <div class="auth-title">ChronoSelf</div>
+  <div class="auth-sub">Sign in to continue</div>
+  <button class="auth-btn" id="google-signin-btn">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+    </svg>
+    Sign in with Google
+  </button>
+  <div class="auth-error" id="auth-error"></div>
+</div>
+
+<a class="back-link" href="/">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+  </svg>
+  ChronoSelf
+</a>
+
+<div class="page">
+  <div class="header">
+    <div class="header-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 14.5 15"/><line x1="10" y1="2.5" x2="14" y2="2.5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="header-title">Minute Cryptic</div>
+      <div class="header-sub" id="header-sub">Every daily clue, from day one</div>
+    </div>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="views">
+    <button class="view-btn active" data-view="play">Play</button>
+    <button class="view-btn" data-view="archive">Archive</button>
+  </div>
+
+  <div id="view-play"><div class="loading">Loading clues…</div></div>
+  <div id="view-archive" class="hidden"></div>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const FIREBASE_CONFIG = {
+  apiKey:            "__FIREBASE_API_KEY__",
+  authDomain:        "__FIREBASE_AUTH_DOMAIN__",
+  projectId:         "__FIREBASE_PROJECT_ID__",
+  storageBucket:     "__FIREBASE_STORAGE_BUCKET__",
+  messagingSenderId: "__FIREBASE_MESSAGING_SENDER_ID__",
+  appId:             "__FIREBASE_APP_ID__"
+};
+const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
+</script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<script>
+const LS_KEY = 'chrono_cryptic';
+const KB_ROWS = ['QWERTYUIOP', 'ASDFGHJKL', '⏎ZXCVBNM⌫'];
+const TYPE_LABEL = {
+  alias: 'Alias / synonym', start: 'First letters', middle: 'Middle / hidden', end: 'Last letters',
+  outer: 'Outer letters', numbered: 'Numbered letters', fraction: 'Fraction', 'odd/even': 'Odd / even letters',
+  homophone: 'Homophone', deletion: 'Deletion', anagram: 'Anagram', reversal: 'Reversal',
+  letterform: 'Letter shapes', infixation: 'Insertion', substitution: 'Substitution', postposition: 'Placement',
+};
+
+let DATA = null, CLUES = [], state = null;
+let fsDb = null, fsUid = null;
+let game = null, timerId = null, reviewN = null;
+
+// ── Persistence ─────────────────────────────────────
+function loadState() {
+  try { state = JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch { state = {}; }
+  state.results = Array.isArray(state.results) ? state.results : [];
+  state.wip = state.wip || null;
+}
+
+function saveState(push) {
+  localStorage.setItem(LS_KEY, JSON.stringify(state));
+  if (push && fsDb && fsUid) {
+    fsDb.collection('users').doc(fsUid).collection('data').doc('cryptic')
+      .set({ results: state.results, wip: state.wip }).catch(console.error);
+  }
+}
+
+async function fsPull() {
+  const snap = await fsDb.collection('users').doc(fsUid).collection('data').doc('cryptic').get();
+  const remote = snap.exists ? snap.data() : null;
+  if (remote && (remote.results || []).length > state.results.length) {
+    state.results = remote.results;
+    state.wip = remote.wip || null;
+    saveState(false);
+  } else if (state.results.length) {
+    saveState(true);
+  }
+}
+
+// ── Helpers ─────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const letters = s => s.toUpperCase().replace(/[^A-Z]/g, '');
+const fmtTime = secs => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`;
+const fmtDate = iso => new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+const currentN = () => state.results.length + 1;
+const resultFor = n => state.results[n - 1] || null;
+const clueFor = n => CLUES[n - 1];
+
+function wordLengths(enumStr) { return enumStr.split(/[,\s-]+/).map(Number).filter(Boolean); }
+
+function isDouble(c) { return c.parts.some(p => /\(double definition\)/i.test(p.text)); }
+
+const HL = [
+  { id: 'ind', label: 'show indicators', name: 'indicators', color: 'rgba(255,143,171,0.8)' },
+  { id: 'fod', label: 'show fodder',     name: 'fodder',     color: 'rgba(255,200,77,0.8)' },
+  { id: 'def', label: 'show definition', name: 'definition', color: 'rgba(91,142,255,0.9)' },
+];
+
+function clueHtml(c, show) {
+  const t = c.clue, marks = Array(t.length).fill(null);
+  HL.forEach(({ id }) => {
+    if (show.has(id)) (c.hl[id] || []).forEach(([a, b]) => { for (let i = a; i < b; i++) marks[i] = id; });
+  });
+  let out = '', cur = null;
+  for (let i = 0; i < t.length; i++) {
+    if (marks[i] !== cur) {
+      if (cur) out += '</span>';
+      if (marks[i]) out += `<span class="hl-${marks[i]}">`;
+      cur = marks[i];
+    }
+    out += esc(t[i]);
+  }
+  return out + (cur ? '</span>' : '');
+}
+
+function legendHtml(c, show) {
+  const items = HL.filter(h => show.has(h.id)).map(h => (c.hl[h.id] || []).length
+    ? `<span><i style="background:${h.color}"></i>${h.name}</span>`
+    : `<span style="color:var(--txt-dim)">no ${h.name} marked for this clue</span>`);
+  return items.length ? `<div class="hl-legend">${items.join('')}</div>` : '';
+}
+
+function stepSegments(c) {
+  const segs = [];
+  for (const p of c.parts) {
+    const splitter = /\(double definition\)/i.test(p.text) ? /;\s+|:\s+/ : /;\s+/;
+    for (const raw of p.text.split(splitter)) {
+      const i = raw.lastIndexOf(' = ');
+      if (i < 0) { segs.push({ lhs: raw, rhs: '', type: p.type }); continue; }
+      segs.push({ lhs: raw.slice(0, i), rhs: raw.slice(i + 3), type: p.type });
+    }
+  }
+  const ans = letters(c.answer);
+  return segs.sort((a, b) => (letters(a.rhs) === ans) - (letters(b.rhs) === ans));
+}
+
+function stepsHtml(c, maskFinal) {
+  const ans = letters(c.answer);
+  return '<div class="steps">' + stepSegments(c).map(s => {
+    const lhs = esc(s.lhs)
+      .replace(/\[([^\]]*)\]/g, '<span class="fod">$1</span>')
+      .replace(/\(([^)]*)\)/g, '<span class="note">($1)</span>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    if (!s.rhs) return `<div class="step">${lhs}</div>`;
+    const final = letters(s.rhs) === ans;
+    const rhs = final && maskFinal ? '?'.repeat(letters(s.rhs).length) : esc(s.rhs.toUpperCase());
+    return `<div class="step">${lhs}<span class="arrow">→</span><span class="res${final ? ' final' : ''}">${rhs}</span></div>`;
+  }).join('') + '</div>';
+}
+
+function typesHtml(c) {
+  const types = [...new Set(c.parts.map(p => p.type))];
+  const chips = [];
+  if (isDouble(c)) chips.push('Double definition');
+  if (c.lit) chips.push('&amp;lit (whole clue is the definition)');
+  types.forEach(t => { if (!(t === 'alias' && isDouble(c) && c.parts.length === 1)) chips.push(esc(TYPE_LABEL[t] || t)); });
+  const gloss = types.map(t => DATA.glossary[t] ? `<div class="gl"><b>${esc(TYPE_LABEL[t] || t)}:</b> ${esc(DATA.glossary[t])}</div>` : '').join('');
+  return `<div class="chips">${chips.map(x => `<span class="chip">${x}</span>`).join('')}</div><div style="margin-top:8px">${gloss}</div>`;
+}
+
+// ── Stats ───────────────────────────────────────────
+function renderStats() {
+  const r = state.results;
+  const solved = r.filter(x => x.status === 'solved');
+  const clean = solved.filter(x => !x.hints && !x.letters);
+  let streak = 0;
+  for (let i = r.length - 1; i >= 0 && r[i].status === 'solved'; i--) streak++;
+  const avg = solved.length ? Math.round(solved.reduce((a, x) => a + x.secs, 0) / solved.length) : 0;
+  $('stats').innerHTML = [
+    [`${r.length}<span style="color:var(--txt-dim);font-size:13px"> / ${CLUES.length}</span>`, 'Done'],
+    [clean.length, 'No-hint solves'],
+    [streak, 'Solve streak'],
+    [solved.length ? fmtTime(avg) : '–', 'Avg solve time'],
+  ].map(([v, l]) => `<div class="stat"><div class="stat-val">${v}</div><div class="stat-lbl">${l}</div></div>`).join('');
+}
+
+// ── Play ────────────────────────────────────────────
+function startGame(n) {
+  const c = clueFor(n);
+  const ans = letters(c.answer);
+  const w = state.wip && state.wip.n === n ? state.wip : null;
+  game = {
+    n, c,
+    typed: w ? w.typed.split('').map(x => x === ' ' ? '' : x).concat(Array(ans.length).fill('')).slice(0, ans.length) : Array(ans.length).fill(''),
+    given: new Set(w ? w.given : []),
+    used: new Set(w && Array.isArray(w.used) ? w.used : []),
+    wrong: w ? w.wrong : 0,
+    secs: w ? w.secs : 0,
+    menu: false,
+  };
+  game.given.forEach(i => { game.typed[i] = ans[i]; });
+  game.cursor = firstOpen(0);
+  saveWip();
+}
+
+function firstOpen(from, dir = 1) {
+  const len = game.typed.length;
+  for (let i = from; i >= 0 && i < len; i += dir) if (!game.given.has(i) && !game.typed[i]) return i;
+  for (let i = from; i >= 0 && i < len; i += dir) if (!game.given.has(i)) return i;
+  return game.cursor ?? 0;
+}
+
+function nextEditable(from, dir) {
+  for (let i = from + dir; i >= 0 && i < game.typed.length; i += dir) if (!game.given.has(i)) return i;
+  return from;
+}
+
+function hintCount(g) { return g.used.size + g.given.size; }
+
+function saveWip(push) {
+  if (!game) return;
+  state.wip = {
+    n: game.n, typed: game.typed.map(x => x || ' ').join(''), given: [...game.given],
+    used: [...game.used], wrong: game.wrong, secs: game.secs,
+  };
+  saveState(push);
+}
+
+function renderPlay() {
+  stopTimer();
+  const view = $('view-play');
+  if (reviewN) return renderReview(reviewN);
+  const n = currentN();
+  if (n > CLUES.length) {
+    view.innerHTML = `<div class="game"><div class="clue">You're all caught up 🎉</div>
+      <div class="result-line">All ${CLUES.length} clues done. Run <code>scripts/fetch_cryptic.py</code> to pull newer ones.</div></div>`;
+    return;
+  }
+  if (!game || game.n !== n) startGame(n);
+  const c = game.c;
+  const len = game.typed.length;
+  const count = hintCount(game);
+  const letterOk = !game.given.has(game.cursor) && game.given.size < len - 1;
+
+  const menu = game.menu ? `
+    <div class="hint-menu" id="hint-menu">
+      <div class="hint-menu-h">Select a hint <button data-close aria-label="Close">×</button></div>
+      ${HL.map(h => `<button class="hint-item" data-hint="${h.id}" ${game.used.has(h.id) ? 'disabled' : ''}>
+        <span class="sw" style="background:${h.color}"></span><span class="lbl">${h.label}</span>${game.used.has(h.id) ? '<span class="tick">✓</span>' : ''}</button>`).join('')}
+      <button class="hint-item" data-hint="type" ${game.used.has('type') ? 'disabled' : ''}>
+        <span class="sw" style="background:var(--acc)"></span><span class="lbl">show wordplay type</span>${game.used.has('type') ? '<span class="tick">✓</span>' : ''}</button>
+      <div class="hint-sep"></div>
+      <button class="hint-item" data-hint="letter" ${letterOk ? '' : 'disabled'}>
+        <span class="sw" style="background:#fff"></span><span class="lbl">show letter<div class="sub">${letterOk ? `box ${game.cursor + 1} · tap a box to choose` : 'pick an empty box first'}</div></span></button>
+    </div>` : '';
+
+  view.innerHTML = `
+    <div class="game">
+      <div class="game-top">
+        <span class="pill">#${c.n}</span>
+        <span class="game-date">${fmtDate(c.date)}</span>
+        <span class="timer" id="timer">${fmtTime(game.secs)}</span>
+      </div>
+      <div class="clue">${clueHtml(c, game.used)} <span class="enum">(${esc(c.enum)})</span></div>
+      ${legendHtml(c, game.used)}
+      <div class="tiles" id="tiles"></div>
+      <div class="msg" id="msg"></div>
+      <div class="actions">
+        <div class="hint-wrap">
+          <button class="btn" id="hint-btn">hints${count ? ` · ${count}` : ''}</button>
+          ${menu}
+        </div>
+        <button class="btn primary" id="check-btn">Check</button>
+      </div>
+      ${game.used.has('type') ? `<div class="hints"><div class="hint"><div class="hint-h">Wordplay type</div>${typesHtml(c)}</div></div>` : ''}
+      <div class="kb" id="kb">${KB_ROWS.map(row => `<div class="kb-row">${[...row].map(k =>
+        `<button class="key${k === '⏎' || k === '⌫' ? ' wide' : ''}" data-k="${k}">${k === '⏎' ? 'Enter' : k}</button>`).join('')}</div>`).join('')}</div>
+      <button class="btn ghost" id="give-btn">Give up and show answer</button>
+    </div>`;
+
+  renderTiles();
+  $('hint-btn').onclick = e => { e.stopPropagation(); toggleMenu(); };
+  $('check-btn').onclick = check;
+  $('give-btn').onclick = giveUp;
+  $('kb').onclick = e => { const k = e.target.closest('.key'); if (k) press(k.dataset.k); };
+  $('tiles').onclick = e => {
+    const t = e.target.closest('.tile');
+    if (!t || game.given.has(+t.dataset.i)) return;
+    game.cursor = +t.dataset.i;
+    if (game.menu) renderPlay(); else renderTiles();
+  };
+  const m = $('hint-menu');
+  if (m) m.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  if (m) m.onclick = e => {
+    e.stopPropagation();
+    if (e.target.closest('[data-close]')) return toggleMenu(false);
+    const b = e.target.closest('[data-hint]');
+    if (b && !b.disabled) useHint(b.dataset.hint);
+  };
+  startTimer();
+}
+
+function toggleMenu(open) {
+  if (!game) return;
+  game.menu = open ?? !game.menu;
+  renderPlay();
+}
+
+function renderTiles() {
+  const el = $('tiles');
+  if (!el) return;
+  const lens = wordLengths(game.c.enum);
+  sizeTiles(el, lens);
+  let i = 0;
+  el.innerHTML = lens.map(l => '<div class="word">' + Array.from({ length: l }, () => {
+    const idx = i++;
+    const cls = ['tile', game.typed[idx] ? 'filled' : '', game.given.has(idx) ? 'given' : '', idx === game.cursor && !game.given.has(idx) ? 'cursor' : ''].join(' ');
+    return `<div class="${cls}" data-i="${idx}">${esc(game.typed[idx] || '')}</div>`;
+  }).join('') + '</div>').join('');
+}
+
+function sizeTiles(el, lens) {
+  const avail = Math.min(el.parentElement.clientWidth - 8, 640);
+  const fit = Math.floor((avail + 4) / (Math.max(...lens) * 1.1));
+  el.style.setProperty('--tile', `${Math.max(20, Math.min(46, fit))}px`);
+}
+
+function press(k) {
+  if (!game || reviewN) return;
+  if (k === '⏎') return check();
+  const cur = game.cursor;
+  if (k === '⌫') {
+    if (game.typed[cur] && !game.given.has(cur)) game.typed[cur] = '';
+    else {
+      const prev = nextEditable(cur, -1);
+      if (prev !== cur) { game.typed[prev] = ''; game.cursor = prev; }
+    }
+  } else if (k === '←' || k === '→') {
+    game.cursor = nextEditable(cur, k === '←' ? -1 : 1);
+  } else if (/^[A-Z]$/.test(k)) {
+    if (game.given.has(cur)) return;
+    game.typed[cur] = k;
+    game.cursor = nextEditable(cur, 1);
+  } else return;
+  setMsg('');
+  renderTiles();
+  saveWip();
+}
+
+function setMsg(text, cls) { const m = $('msg'); if (m) { m.textContent = text; m.className = 'msg' + (cls ? ' ' + cls : ''); } }
+
+function check() {
+  if (game.typed.some(x => !x)) return setMsg('Fill every letter first.');
+  if (game.typed.join('') === letters(game.c.answer)) return finish('solved');
+  game.wrong++;
+  saveWip();
+  setMsg('Not quite — try again.', 'bad');
+  const t = $('tiles');
+  t.classList.remove('shake'); void t.offsetWidth; t.classList.add('shake');
+}
+
+function useHint(id) {
+  if (id === 'letter') {
+    const i = game.cursor;
+    if (game.given.has(i) || game.given.size >= game.typed.length - 1) return;
+    game.given.add(i);
+    game.typed[i] = letters(game.c.answer)[i];
+    game.cursor = firstOpen(i);
+  } else {
+    game.used.add(id);
+  }
+  game.menu = false;
+  saveWip();
+  renderPlay();
+}
+
+function giveUp() {
+  if (!confirm('Show the answer? This clue will be marked as revealed.')) return;
+  finish('revealed');
+}
+
+function finish(status) {
+  stopTimer();
+  const n = game.n;
+  state.results[n - 1] = {
+    n, status, hints: game.used.size, used: [...game.used], letters: game.given.size, wrong: game.wrong, secs: game.secs,
+    at: new Date().toISOString(),
+  };
+  state.wip = null;
+  game = null;
+  saveState(true);
+  renderStats();
+  renderReview(n, true);
+}
+
+const ALL_HL = new Set(['ind', 'fod', 'def']);
+
+function renderReview(n, justFinished) {
+  stopTimer();
+  const c = clueFor(n), r = resultFor(n);
+  const ans = letters(c.answer), lens = wordLengths(c.enum);
+  let i = 0;
+  const tileCls = r.status === 'solved' ? 'ok' : 'gave';
+  const tiles = lens.map(l => '<div class="word">' + Array.from({ length: l }, () =>
+    `<div class="tile ${tileCls}">${ans[i++]}</div>`).join('') + '</div>').join('');
+  const helped = [r.hints && `${r.hints} hint${r.hints > 1 ? 's' : ''}`, r.letters && `${r.letters} letter${r.letters > 1 ? 's' : ''}`,
+    r.wrong && `${r.wrong} wrong guess${r.wrong > 1 ? 'es' : ''}`].filter(Boolean).join(' · ');
+  const headline = r.status === 'solved'
+    ? `<b>Solved</b> in ${fmtTime(r.secs)}${helped ? ' · ' + helped : ' · no hints 🎯'}`
+    : `<b>Revealed</b> after ${fmtTime(r.secs)}${helped ? ' · ' + helped : ''}`;
+  const yt = () => `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>`;
+  const links = [
+    c.video && `<a class="link" href="https://www.youtube.com/watch?v=${c.video}" target="_blank" rel="noopener">${yt()}Official walkthrough</a>`,
+    c.editor && `<a class="link" href="https://www.youtube.com/watch?v=${c.editor}" target="_blank" rel="noopener">${yt()}The Editor Solves</a>`,
+  ].filter(Boolean).join('');
+  const nextBtn = currentN() <= CLUES.length
+    ? `<button class="btn primary" id="next-btn">${reviewN ? `Back to #${currentN()}` : `Next clue · #${currentN()} →`}</button>` : '';
+
+  $('view-play').innerHTML = `
+    <div class="game">
+      <div class="game-top">
+        <span class="pill${reviewN ? ' review' : ''}">#${c.n}${reviewN ? ' · review' : ''}</span>
+        <span class="game-date">${fmtDate(c.date)}</span>
+        <span class="timer">${fmtTime(r.secs)}</span>
+      </div>
+      <div class="clue">${clueHtml(c, ALL_HL)} <span class="enum">(${esc(c.enum)})</span></div>
+      ${legendHtml(c, ALL_HL)}
+      <div class="tiles" id="tiles">${tiles}</div>
+      <div class="result">
+        <div class="result-line">${headline}</div>
+        <div class="hint"><div class="hint-h">How it works</div>${stepsHtml(c, false)}</div>
+        <div class="hint"><div class="hint-h">Wordplay used</div>${typesHtml(c)}</div>
+        ${links ? `<div class="links">${links}</div>` : ''}
+      </div>
+      <div class="actions">${nextBtn}</div>
+    </div>`;
+  sizeTiles($('tiles'), lens);
+  const nb = $('next-btn');
+  if (nb) nb.onclick = () => { reviewN = null; renderPlay(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  if (justFinished) setTimeout(() => nb && nb.focus(), 50);
+}
+
+function startTimer() {
+  stopTimer();
+  timerId = setInterval(() => {
+    if (document.hidden || !game) return;
+    game.secs++;
+    const t = $('timer');
+    if (t) t.textContent = fmtTime(game.secs);
+    if (game.secs % 5 === 0) saveWip();
+  }, 1000);
+}
+function stopTimer() { if (timerId) clearInterval(timerId); timerId = null; }
+
+// ── Archive ─────────────────────────────────────────
+function renderArchive() {
+  const cur = currentN();
+  const months = new Map();
+  CLUES.forEach(c => {
+    const key = c.date.slice(0, 7);
+    if (!months.has(key)) months.set(key, []);
+    months.get(key).push(c);
+  });
+  const cell = c => {
+    const r = resultFor(c.n);
+    let cls = 'locked';
+    if (r) cls = r.status === 'revealed' ? 'revealed' : (r.hints || r.letters) ? 'hinted' : 'clean';
+    else if (c.n === cur) cls = 'current';
+    return `<button class="cell ${cls}" data-n="${c.n}" title="#${c.n} · ${fmtDate(c.date)}" ${cls === 'locked' ? 'disabled' : ''}>${c.n}</button>`;
+  };
+  $('view-archive').innerHTML = `
+    <div class="archive">
+      <div class="legend">
+        <span><i style="background:var(--acc)"></i>Solved, no hints</span>
+        <span><i style="background:rgba(45,212,191,0.35)"></i>Solved with help</span>
+        <span><i style="background:rgba(255,107,107,0.3)"></i>Revealed</span>
+        <span><i style="border:1px solid var(--acc)"></i>Up next</span>
+        <span><i style="background:rgba(255,255,255,0.03)"></i>Locked</span>
+      </div>
+      ${[...months].map(([key, cs]) => `
+        <div>
+          <div class="month-h">${new Date(key + '-01T00:00:00').toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}</div>
+          <div class="month-grid">${cs.map(cell).join('')}</div>
+        </div>`).join('')}
+    </div>`;
+  $('view-archive').onclick = e => {
+    const b = e.target.closest('.cell');
+    if (!b || b.disabled) return;
+    const n = +b.dataset.n;
+    reviewN = n === cur ? null : n;
+    switchView('play');
+  };
+}
+
+function switchView(v) {
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.dataset.view === v));
+  $('view-play').classList.toggle('hidden', v !== 'play');
+  $('view-archive').classList.toggle('hidden', v !== 'archive');
+  if (v === 'play') { renderPlay(); window.scrollTo({ top: 0 }); }
+  else { stopTimer(); if (game) saveWip(true); renderArchive(); }
+}
+
+// ── Init ────────────────────────────────────────────
+async function initApp() {
+  loadState();
+  if (fsDb) { try { await fsPull(); } catch (e) { console.error('Cryptic pull failed:', e); } }
+  try {
+    const res = await fetch('data/minute-cryptic.json', { cache: 'no-cache' });
+    DATA = await res.json();
+    CLUES = DATA.clues;
+  } catch (e) {
+    $('view-play').innerHTML = '<div class="error">Couldn\'t load clues. Run scripts/fetch_cryptic.py and rebuild.</div>';
+    return;
+  }
+  $('header-sub').textContent = `${CLUES.length} daily clues · ${fmtDate(CLUES[0].date)} → ${fmtDate(CLUES[CLUES.length - 1].date)}`;
+  $('foot').innerHTML = `Clues by <a href="https://www.minutecryptic.com" target="_blank" rel="noopener">Minute Cryptic</a>, wording from their
+    <a href="${DATA.sources.youtube}" target="_blank" rel="noopener">YouTube channel</a>, breakdowns from the community
+    <a href="${DATA.sources.sheet}" target="_blank" rel="noopener">clue chart</a>. Data updated ${esc(DATA.updated)}.`;
+  document.querySelectorAll('.view-btn').forEach(b => b.onclick = () => { reviewN = null; switchView(b.dataset.view); });
+  document.addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey || $('view-play').classList.contains('hidden')) return;
+    if (e.key === 'Enter' && !game && $('next-btn')) { e.preventDefault(); return $('next-btn').click(); }
+    if (!game || reviewN) return;
+    if (e.key === 'Escape' && game.menu) return toggleMenu(false);
+    if (e.key === 'ArrowLeft') return press('←');
+    if (e.key === 'ArrowRight') return press('→');
+    if (e.key === 'Enter') { e.preventDefault(); press('⏎'); }
+    else if (e.key === 'Backspace') { e.preventDefault(); press('⌫'); }
+    else if (/^[a-z]$/i.test(e.key)) press(e.key.toUpperCase());
+  });
+  document.addEventListener('click', () => { if (game && game.menu) toggleMenu(false); });
+  window.addEventListener('resize', () => { if (game && !reviewN) renderTiles(); });
+  window.addEventListener('pagehide', () => { if (game) saveWip(true); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && game) saveWip(true); });
+  renderStats();
+  renderPlay();
+}
+
+const _fbConfigured = FIREBASE_CONFIG.apiKey && !FIREBASE_CONFIG.apiKey.startsWith('__');
+
+if (_fbConfigured) {
+  firebase.initializeApp(FIREBASE_CONFIG);
+  const auth      = firebase.auth();
+  const overlay   = $('auth-overlay');
+  const errEl     = $('auth-error');
+
+  $('google-signin-btn').addEventListener('click', () => {
+    errEl.textContent = '';
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({ login_hint: ALLOWED_EMAIL });
+    auth.signInWithPopup(provider).catch(() => { errEl.textContent = 'Sign-in failed. Please try again.'; });
+  });
+
+  auth.onAuthStateChanged(async user => {
+    if (user && user.email === ALLOWED_EMAIL) {
+      overlay.classList.add('hidden');
+      if (!document.body.dataset.init) {
+        document.body.dataset.init = '1';
+        fsDb  = firebase.firestore();
+        fsUid = user.uid;
+        initApp();
+      }
+    } else if (user) {
+      errEl.textContent = `Access restricted. Sign in as ${ALLOWED_EMAIL}.`;
+      auth.signOut();
+    } else {
+      overlay.classList.remove('hidden');
+    }
+  });
+} else {
+  $('auth-overlay').classList.add('hidden');
+  initApp();
+}
+</script>
+</body>
+</html>

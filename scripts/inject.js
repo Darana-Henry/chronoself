@@ -36,7 +36,7 @@ if (missing.length) {
 
 fs.mkdirSync(path.join(__dirname, '..', 'dist'), { recursive: true });
 
-for (const file of ['schedule.html', 'index.html', 'portals.html', 'instagram.html']) {
+for (const file of ['schedule.html', 'index.html', 'portals.html', 'instagram.html', 'cryptic.html']) {
   const src  = path.join(__dirname, '..', file);
   const dest = path.join(__dirname, '..', 'dist', file);
   let html = fs.readFileSync(src, 'utf8');
@@ -45,7 +45,7 @@ for (const file of ['schedule.html', 'index.html', 'portals.html', 'instagram.ht
   console.log(`Built → ${dest}`);
 }
 
-// Copy data/ → dist/data/ so the Instagram JSON is served as a static asset
+// Copy data/ → dist/data/ so the Instagram and Minute Cryptic JSON are served as static assets
 const dataSrc  = path.join(__dirname, '..', 'data');
 const dataDest = path.join(__dirname, '..', 'dist', 'data');
 if (fs.existsSync(dataSrc)) {

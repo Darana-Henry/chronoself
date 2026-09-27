@@ -12,6 +12,7 @@ Personal life-tracking dashboard hosted on Firebase. A collection of standalone 
 - Primary: `localStorage` (keys prefixed `chrono_`)
 - Optional cloud backup: Firestore under `users/{uid}/` — triggered manually via the "Sync to Firebase" button on the landing page
 - Instagram follower history: `data/instagram.json` committed to the repo, served as a static asset at `/data/instagram.json`
+- Minute Cryptic clues: `data/minute-cryptic.json`, served at `/data/minute-cryptic.json`; play progress in `chrono_cryptic` and Firestore `users/{uid}/data/cryptic`
 
 ## Build
 
@@ -47,6 +48,7 @@ node scripts/inject.js && firebase deploy --only hosting
 | `schedule.html` | `/schedule.html` | Main app — Schedule, Tracker, Backlog, Goals, Freeletics, Chronicle, Classes, Instagram tabs |
 | `portals.html` | `/portals.html` | Hub — cards linking to external projects (Ballpark, IPL, etc.) |
 | `instagram.html` | `/instagram.html` | Standalone Instagram follower tracker page |
+| `cryptic.html` | `/cryptic.html` | Minute Cryptic player — every daily clue from #1, strictly in order |
 
 `schedule.html` reads `?tab=<name>` on load to deep-link into a specific tab. Valid tab names: `today`, `schedule`, `tracker`, `backlog`, `goals`, `freeletics`, `chronicle`, `classes`, `instagram`.
 
@@ -57,7 +59,7 @@ node scripts/inject.js && firebase deploy --only hosting
 - **No comments** unless the why is non-obvious
 - **Dark theme** throughout: background `#0a0a0a`, text `#e8eaed`, grid overlay via `body::before`
 - CSS custom properties defined at the top of `schedule.html`: `--txt`, `--txt-mid`, `--txt-dim`, `--line`, `--tab-h`
-- Accent colours by feature: blue `#5b8eff` (schedule), green `#4ddd8e` (tracker), purple `#a06bff` (backlog), yellow `#ffc84d` (goals), orange `#ff8050` (freeletics), pink `#ff8fab` (chronicle), violet `#c97aff` (classes), violet `#c084fc` (Instagram)
+- Accent colours by feature: blue `#5b8eff` (schedule), green `#4ddd8e` (tracker), purple `#a06bff` (backlog), yellow `#ffc84d` (goals), orange `#ff8050` (freeletics), pink `#ff8fab` (chronicle), violet `#c97aff` (classes), violet `#c084fc` (Instagram), teal `#2dd4bf` (Minute Cryptic)
 
 ## Instagram Tracker
 
@@ -85,3 +87,19 @@ Workflow steps:
 - All seven Firebase env vars listed above
 
 **First run:** trigger manually via GitHub Actions → Actions → "Instagram Tracker" → Run workflow.
+
+## Minute Cryptic
+
+`cryptic.html` replays every daily [Minute Cryptic](https://www.minutecryptic.com) clue from #1 (2024-06-26). The next clue only unlocks once the current one is solved or revealed.
+
+**Refreshing clues** (manual, needs `yt-dlp` on PATH):
+
+```bash
+python3 scripts/fetch_cryptic.py
+```
+
+It merges two public sources by clue number:
+- Community clue-chart Google Sheet — answer, enumeration, `[fodder]`-marked clue, wordplay breakdown per type, plus its indicator-chart tab
+- Official YouTube channel titles (`Minute Cryptic <n>: <clue> (<enum>)`) — official wording, enumeration, walkthrough video ids
+
+YouTube wording wins unless the clue number is in `KEEP_SHEET_WORDING`; YouTube enumeration is ignored when it doesn't fit the answer. Dates are derived as #1 + (n−1) days. Disagreements print as `WARN` lines. Each clue's `hl` holds fodder / indicator / definition character spans over the displayed wording, powering the pick-any hint menu; the definition span is inferred (free words at the clue's start or end), so treat it as best-effort. "Cryptic Clue #N" videos are a separate pre-launch series and are deliberately not matched.

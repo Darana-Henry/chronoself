@@ -117,6 +117,7 @@ body::before {
 .card-classes::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,122,255,0.10), transparent); }
 .card-hub::before         { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(56,210,220,0.10), transparent); }
 .card-instagram::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(192,132,252,0.10), transparent); }
+.card-cryptic::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(45,212,191,0.10), transparent); }
 
 .card:hover {
   transform: translateY(-4px);
@@ -132,6 +133,7 @@ body::before {
 .card-classes:hover     { border-color: rgba(201,122,255,0.45); box-shadow: 0 8px 40px rgba(201,122,255,0.14); }
 .card-hub:hover         { border-color: rgba(56,210,220,0.45);  box-shadow: 0 8px 40px rgba(56,210,220,0.10); }
 .card-instagram:hover   { border-color: rgba(192,132,252,0.45); box-shadow: 0 8px 40px rgba(192,132,252,0.12); }
+.card-cryptic:hover     { border-color: rgba(45,212,191,0.45); box-shadow: 0 8px 40px rgba(45,212,191,0.12); }
 
 .card:active { transform: translateY(-1px); }
 
@@ -149,6 +151,7 @@ body::before {
 .card-classes    .card-icon { background: rgba(201,122,255,0.12); }
 .card-hub        .card-icon { background: rgba(56,210,220,0.12); }
 .card-instagram  .card-icon { background: rgba(192,132,252,0.12); }
+.card-cryptic    .card-icon { background: rgba(45,212,191,0.12); }
 
 .card-icon svg { width: 24px; height: 24px; }
 
@@ -185,6 +188,7 @@ body::before {
 .card-classes    .card-arrow { color: #c97aff; }
 .card-hub        .card-arrow { color: #38d2dc; }
 .card-instagram  .card-arrow { color: #c084fc; }
+.card-cryptic    .card-arrow { color: #2dd4bf; }
 .card:hover .card-arrow    { gap: 10px; }
 
 /* ── Footer ───────────────────────────────────── */
@@ -419,6 +423,23 @@ body::before {
       <div class="card-desc">Daily follower count for hankcuratesfilms, tracked automatically and charted over time.</div>
       <div class="card-arrow">
         Open Instagram
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- Minute Cryptic -->
+    <a class="card card-cryptic" href="cryptic.html">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 14.5 15"/><line x1="10" y1="2.5" x2="14" y2="2.5"/>
+        </svg>
+      </div>
+      <div class="card-title">Minute Cryptic</div>
+      <div class="card-desc">Every daily Minute Cryptic clue from day one, played in order. Hints, breakdowns and the official walkthrough after each solve.</div>
+      <div class="card-arrow">
+        Open Cryptic
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>
