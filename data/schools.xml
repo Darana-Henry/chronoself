@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Schools within ~10 km of Miyapur, Hyderabad.
+  Fees are annual INR ranges from aggregator listings (monthly figures × 12); confirm with each school.
+  saturday: off | alternate | working | unknown    sunday: off | unknown
+  distanceKm is an estimate from the area, not measured.
+-->
+<schools updated="2026-10-22" centre="Miyapur, Hyderabad" radiusKm="10">
+
+  <school id="kshatris-global">
+    <name>Kshatris Global School</name>
+    <area distanceKm="0">Miyapur</area>
+    <boards><board>State</board></boards>
+    <fee min="42000" max="52000" source="Ezyschooling"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+  </school>
+
+  <school id="triveni-talent">
+    <name>Triveni Talent School</name>
+    <area distanceKm="0">Miyapur</area>
+    <boards><board>State</board></boards>
+    <fee min="25000" max="37000" source="Ezyschooling"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+  </school>
+
+  <school id="krishnaveni-talent">
+    <name>Krishnaveni Talent School</name>
+    <area distanceKm="0">Miyapur</area>
+    <boards><board>State</board></boards>
+    <fee min="38000" max="48000" source="Ezyschooling"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+  </school>
+
+  <school id="mnr-indo-english">
+    <name>MNR Indo-English High School</name>
+    <area distanceKm="0">Miyapur</area>
+    <boards><board>State</board></boards>
+    <fee min="27950" max="45000" source="Edustoke (two listings disagree)"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+  </school>
+
+  <school id="janapriya-techno">
+    <name>Janapriya Techno School</name>
+    <area distanceKm="0">Miyapur</area>
+    <boards><board>CBSE</board><board>State</board></boards>
+    <fee min="45000" max="45000" source="Edustoke"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+    <notes>Classes up to 10th only.</notes>
+  </school>
+
+  <school id="sentia-global">
+    <name>Sentia The Global School</name>
+    <area distanceKm="0">Miyapur</area>
+    <boards><board>CBSE</board></boards>
+    <fee min="84000" max="170000" source="Ezyschooling / UniApply"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+    <notes>Nursery to Class 12.</notes>
+  </school>
+
+  <school id="surya-global">
+    <name>Surya The Global School</name>
+    <area distanceKm="5">Bachupally</area>
+    <boards><board>CBSE</board></boards>
+    <fee min="50000" max="50000" source="Edustoke"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+  </school>
+
+  <school id="unicent-bachupally">
+    <name>Unicent School</name>
+    <area distanceKm="5">Bachupally</area>
+    <boards/>
+    <fee/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings source="unicent.in (page ~4 years old)">Nursery–UKG 8:30 AM – 2:00 PM · Classes I–X 8:30 AM – 3:45 PM</timings>
+    <notes>Board and fees not found online.</notes>
+  </school>
+
+  <school id="vignan-nizampet">
+    <name>Vignan Schools</name>
+    <area distanceKm="6">Nizampet</area>
+    <boards><board>CBSE</board></boards>
+    <fee min="58560" max="108480" source="Ezyschooling"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings source="SchoolMyKids (aggregator)">9:00 AM – 4:00 PM (morning shift)</timings>
+  </school>
+
+  <school id="vikas-concept">
+    <name>Vikas The Concept School</name>
+    <area distanceKm="5">Ameenpur / Bachupally</area>
+    <boards><board>CBSE</board></boards>
+    <fee min="87000" max="96000" source="Edustoke / Ezyschooling"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+    <notes>Nursery to Class 12.</notes>
+  </school>
+
+  <school id="orchids-bachupally">
+    <name>Orchids The International School</name>
+    <area distanceKm="5">Bachupally</area>
+    <boards><board>CBSE</board></boards>
+    <fee min="105000" max="183000" source="Ezyschooling / UniApply"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings source="UniApply (aggregator)">9:30 AM – 6:00 PM listed — likely office hours, confirm</timings>
+  </school>
+
+  <school id="sanskriti-kondapur">
+    <name>Sanskriti School</name>
+    <area distanceKm="9">Kondapur</area>
+    <boards><board>CBSE</board></boards>
+    <fee min="112000" max="133100" source="Edustoke (two listings disagree)"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+  </school>
+
+  <school id="arbor-international">
+    <name>Arbor International School</name>
+    <area distanceKm="9">Kondapur</area>
+    <boards><board>IB</board><board>Cambridge</board></boards>
+    <fee min="222000" max="222000" source="Edustoke"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+  </school>
+
+  <school id="silver-oaks-bachupally">
+    <name>Silver Oaks International School</name>
+    <area distanceKm="5">Bachupally</area>
+    <boards><board>CBSE</board><board>IB</board></boards>
+    <fee min="227760" max="256800" source="Ezyschooling"/>
+    <saturday>alternate</saturday>
+    <sunday>off</sunday>
+    <timings source="silveroaks.co.in">Mon–Fri 8:00 AM – 3:00 PM · Open 1st/3rd/5th Saturdays (office and senior school only)</timings>
+  </school>
+
+  <school id="oakridge-bachupally">
+    <name>Oakridge International School</name>
+    <area distanceKm="5">Bachupally</area>
+    <boards><board>CBSE</board><board>IB</board><board>IGCSE</board></boards>
+    <fee min="240000" max="795000" source="Yellow Slate"/>
+    <saturday>unknown</saturday>
+    <sunday>unknown</sunday>
+    <timings/>
+  </school>
+
+  <school id="chirec-kondapur">
+    <name>CHIREC International School</name>
+    <area distanceKm="9">Kondapur</area>
+    <boards><board>CBSE</board><board>IB</board><board>IGCSE</board></boards>
+    <fee min="250777" max="300000" source="Edustoke (two listings disagree)"/>
+    <saturday>alternate</saturday>
+    <sunday>off</sunday>
+    <timings source="chirec.ac.in FAQ">Grades 1–5: Mon–Fri 8:10 AM – 2:50 PM, Saturdays off · Grades 6–12: half day on 1st/3rd/5th Saturdays, 2nd/4th off</timings>
+  </school>
+
+</schools>
