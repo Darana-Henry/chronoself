@@ -124,6 +124,7 @@ body::before {
 .card-streaming::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,107,138,0.12), transparent); }
 .card-instagram::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(192,132,252,0.12), transparent); }
 .card-cryptic::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(45,212,191,0.10), transparent); }
+.card-library::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(163,230,53,0.10), transparent); }
 
 .card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.055); }
 .card:hover::before { opacity: 1; }
@@ -136,6 +137,7 @@ body::before {
 .card-streaming:hover  { border-color: rgba(255,107,138,0.45); box-shadow: 0 8px 40px rgba(255,107,138,0.12); }
 .card-instagram:hover  { border-color: rgba(192,132,252,0.45); box-shadow: 0 8px 40px rgba(192,132,252,0.12); }
 .card-cryptic:hover    { border-color: rgba(45,212,191,0.45);  box-shadow: 0 8px 40px rgba(45,212,191,0.12); }
+.card-library:hover    { border-color: rgba(163,230,53,0.45);  box-shadow: 0 8px 40px rgba(163,230,53,0.12); }
 
 /* Icons */
 .card-icon {
@@ -150,6 +152,7 @@ body::before {
 .card-streaming  .card-icon { background: rgba(255,107,138,0.12); }
 .card-instagram  .card-icon { background: rgba(192,132,252,0.12); }
 .card-cryptic    .card-icon { background: rgba(45,212,191,0.12); }
+.card-library    .card-icon { background: rgba(163,230,53,0.12); }
 .card-icon svg { width: 24px; height: 24px; }
 
 .card-title {
@@ -175,7 +178,17 @@ body::before {
 .card-streaming  .card-arrow { color: #ff6b8a; }
 .card-instagram  .card-arrow { color: #c084fc; }
 .card-cryptic    .card-arrow { color: #2dd4bf; }
+.card-library    .card-arrow { color: #a3e635; }
 .card:hover .card-arrow { gap: 10px; }
+
+/* Countdown (display only) */
+.card-countdown { cursor: default; justify-content: center; align-items: center; text-align: center; }
+.card-countdown:hover { transform: none; background: rgba(255,255,255,0.035); border-color: rgba(249,168,212,0.35); }
+.card-countdown-num {
+  font-size: 72px; font-weight: 800; line-height: 1;
+  letter-spacing: -2px; color: #f9a8d4;
+  font-variant-numeric: tabular-nums;
+}
 
 /* ── Footer ─────────────────────────────────── */
 .footer {
@@ -329,10 +342,43 @@ body::before {
       </div>
     </a>
 
+    <!-- Library -->
+    <a class="card card-library" href="library.html">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#a3e635" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+      </div>
+      <div class="card-title">Library</div>
+      <div class="card-desc">Saved notes on fat loss, diet and training plans, kids' shows and calm confidence — one tab per document.</div>
+      <div class="card-arrow">
+        Open library
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- Delivery countdown -->
+    <div class="card card-countdown">
+      <div class="card-countdown-num" id="countdown-days">–</div>
+      <div class="card-title">Days to delivery</div>
+    </div>
+
   </div>
 
   <footer class="footer">HUB</footer>
 
 </div>
+<script>
+(function () {
+  // Inclusive of both today and the delivery date (2026-09-10 + 9 months).
+  const now = new Date();
+  const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+  const target = Date.UTC(2027, 5, 10);
+  const days = Math.max(0, Math.round((target - today) / 86400000) + 1);
+  document.getElementById('countdown-days').textContent = days;
+})();
+</script>
 </body>
 </html>

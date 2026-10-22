@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fetches follower counts for both Instagram accounts using a headless Chromium
+Fetches follower counts for the tracked Instagram accounts using a headless Chromium
 browser (Playwright) with a pre-set session cookie, and appends them to
 data/instagram.json.
 
@@ -19,7 +19,7 @@ except ImportError:
     print("Error: playwright not installed. Run: pip3 install playwright && python3 -m playwright install chromium")
     sys.exit(1)
 
-ACCOUNTS   = ["hankcuratesfilms", "hanklosesweight"]
+ACCOUNTS   = ["hankcuratesfilms", "hanklosesweight", "hankcuratesarchive"]
 DATA_FILE  = Path(__file__).parent.parent / "data" / "instagram.json"
 SESSION_ID = os.environ.get("INSTAGRAM_SESSION_ID", "")
 
