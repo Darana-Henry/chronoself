@@ -49,6 +49,7 @@ node scripts/inject.js && firebase deploy --only hosting
 | `portals.html` | `/portals.html` | Hub — cards linking to external projects (Ballpark, IPL, etc.) |
 | `instagram.html` | `/instagram.html` | Standalone Instagram follower tracker page |
 | `cryptic.html` | `/cryptic.html` | Minute Cryptic player — every daily clue from #1, strictly in order |
+| `library.html` | `/library.html` | Saved notes — one tab per document, each split into boxes that open a reader. Content lives in the `DOCS` array; `?doc=<id>` deep-links a tab |
 
 `schedule.html` reads `?tab=<name>` on load to deep-link into a specific tab. Valid tab names: `today`, `schedule`, `tracker`, `backlog`, `goals`, `freeletics`, `chronicle`, `classes`, `instagram`.
 
@@ -59,13 +60,14 @@ node scripts/inject.js && firebase deploy --only hosting
 - **No comments** unless the why is non-obvious
 - **Dark theme** throughout: background `#0a0a0a`, text `#e8eaed`, grid overlay via `body::before`
 - CSS custom properties defined at the top of `schedule.html`: `--txt`, `--txt-mid`, `--txt-dim`, `--line`, `--tab-h`
-- Accent colours by feature: blue `#5b8eff` (schedule), green `#4ddd8e` (tracker), purple `#a06bff` (backlog), yellow `#ffc84d` (goals), orange `#ff8050` (freeletics), pink `#ff8fab` (chronicle), violet `#c97aff` (classes), violet `#c084fc` (Instagram), teal `#2dd4bf` (Minute Cryptic)
+- Accent colours by feature: blue `#5b8eff` (schedule), green `#4ddd8e` (tracker), purple `#a06bff` (backlog), yellow `#ffc84d` (goals), orange `#ff8050` (freeletics), pink `#ff8fab` (chronicle), violet `#c97aff` (classes), violet `#c084fc` (Instagram), teal `#2dd4bf` (Minute Cryptic), lime `#a3e635` (Library)
 
 ## Instagram Tracker
 
-Tracks follower counts for two public accounts daily:
+Tracks follower counts for three public accounts daily:
 - `hankcuratesfilms`
 - `hanklosesweight`
+- `hankcuratesarchive`
 
 **Automated collection:** `.github/workflows/instagram_tracker.yml` runs at 00:05 IST (18:35 UTC) daily.
 
