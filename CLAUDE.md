@@ -12,6 +12,7 @@ Personal life-tracking dashboard hosted on Firebase. A collection of standalone 
 - Primary: `localStorage` (keys prefixed `chrono_`)
 - Optional cloud backup: Firestore under `users/{uid}/` — triggered manually via the "Sync to Firebase" button on the landing page
 - Instagram follower history: `data/instagram.json` committed to the repo, served as a static asset at `/data/instagram.json`
+- School Finder data: `data/schools.xml`, served at `/data/schools.xml`
 - Minute Cryptic clues: `data/minute-cryptic.json`, served at `/data/minute-cryptic.json`; play progress in `chrono_cryptic` and Firestore `users/{uid}/data/cryptic`
 
 ## Build
@@ -50,6 +51,7 @@ node scripts/inject.js && firebase deploy --only hosting
 | `instagram.html` | `/instagram.html` | Standalone Instagram follower tracker page |
 | `cryptic.html` | `/cryptic.html` | Minute Cryptic player — every daily clue from #1, strictly in order |
 | `library.html` | `/library.html` | Saved notes — one tab per document, each split into boxes that open a reader. Content lives in the `DOCS` array; `?doc=<id>` deep-links a tab |
+| `schools.html` | `/schools.html` | School Finder — filterable table of schools near Miyapur, loaded from `data/schools.xml` (edit that file to add or correct schools) |
 
 `schedule.html` reads `?tab=<name>` on load to deep-link into a specific tab. Valid tab names: `today`, `schedule`, `tracker`, `backlog`, `goals`, `freeletics`, `chronicle`, `classes`, `instagram`.
 
@@ -60,7 +62,7 @@ node scripts/inject.js && firebase deploy --only hosting
 - **No comments** unless the why is non-obvious
 - **Dark theme** throughout: background `#0a0a0a`, text `#e8eaed`, grid overlay via `body::before`
 - CSS custom properties defined at the top of `schedule.html`: `--txt`, `--txt-mid`, `--txt-dim`, `--line`, `--tab-h`
-- Accent colours by feature: blue `#5b8eff` (schedule), green `#4ddd8e` (tracker), purple `#a06bff` (backlog), yellow `#ffc84d` (goals), orange `#ff8050` (freeletics), pink `#ff8fab` (chronicle), violet `#c97aff` (classes), violet `#c084fc` (Instagram), teal `#2dd4bf` (Minute Cryptic), lime `#a3e635` (Library)
+- Accent colours by feature: blue `#5b8eff` (schedule), green `#4ddd8e` (tracker), purple `#a06bff` (backlog), yellow `#ffc84d` (goals), orange `#ff8050` (freeletics), pink `#ff8fab` (chronicle), violet `#c97aff` (classes), violet `#c084fc` (Instagram), teal `#2dd4bf` (Minute Cryptic), lime `#a3e635` (Library), sky `#38bdf8` (School Finder)
 
 ## Instagram Tracker
 
