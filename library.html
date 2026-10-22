@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library — ChronoSelf</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #a3e635;
+  --accent-soft: rgba(163,230,53,0.10);
+  --accent-line: rgba(163,230,53,0.40);
+}
+
+html, body {
+  min-height: 100%;
+  background: #0a0a0a;
+  color: #e8eaed;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.page {
+  position: relative; z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 72px 24px 56px;
+}
+
+/* ── Back link ──────────────────────────────── */
+.back-link {
+  position: fixed;
+  top: 20px; left: 24px;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+  color: #5f6368; text-decoration: none;
+  transition: color 0.15s;
+  z-index: 10;
+}
+.back-link:hover { color: #9aa0a6; }
+.back-link svg { width: 14px; height: 14px; }
+
+/* ── Header ─────────────────────────────────── */
+.header { text-align: center; margin-bottom: 36px; }
+.title {
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 700; letter-spacing: -1px;
+  background: linear-gradient(135deg, #e8eaed 30%, #9aa0a6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.subtitle { font-size: 14px; color: #5f6368; letter-spacing: 0.3px; }
+
+/* ── Tabs ───────────────────────────────────── */
+.tabs {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.tab {
+  font: inherit; font-size: 13px; font-weight: 600;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  color: #9aa0a6;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.tab:hover { border-color: rgba(255,255,255,0.22); color: #e8eaed; }
+.tab.active { border-color: var(--accent-line); background: var(--accent-soft); color: var(--accent); }
+
+.doc-intro { text-align: center; font-size: 13px; color: #6b7280; margin-bottom: 24px; }
+
+/* ── Boxes ──────────────────────────────────── */
+.boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+.box {
+  font: inherit; text-align: left; color: inherit;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 22px 22px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.18s, box-shadow 0.2s;
+}
+.box:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.055);
+  border-color: var(--accent-line);
+  box-shadow: 0 8px 32px rgba(163,230,53,0.08);
+}
+.box-num { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--accent); }
+.box-title { font-size: 17px; font-weight: 700; letter-spacing: -0.2px; color: #e8eaed; }
+.box-preview {
+  font-size: 13px; color: #6b7280; line-height: 1.55;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+/* ── Reader ─────────────────────────────────── */
+.reader {
+  position: fixed; inset: 0; z-index: 20;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(6px);
+  display: none; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.reader.open { display: flex; }
+.reader-card {
+  position: relative;
+  width: 100%; max-width: 640px; max-height: 85vh; overflow-y: auto;
+  background: #121314;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 20px;
+  padding: 32px 32px 28px;
+}
+.reader-doc { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.reader-title { font-size: 24px; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 18px; padding-right: 32px; }
+.reader-body { font-size: 15px; line-height: 1.7; color: #c4c7cc; }
+.reader-body p + p, .reader-body p + ul, .reader-body ul + p, .reader-body ul + ul { margin-top: 14px; }
+.reader-body ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.reader-body li { padding-left: 18px; position: relative; }
+.reader-body li::before { content: '–'; position: absolute; left: 0; color: var(--accent); }
+.reader-close {
+  position: absolute; top: 18px; right: 18px;
+  width: 32px; height: 32px;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04); color: #9aa0a6;
+  font-size: 18px; line-height: 1; cursor: pointer;
+}
+.reader-close:hover { color: #e8eaed; border-color: rgba(255,255,255,0.25); }
+.reader-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 26px; }
+.reader-nav button {
+  font: inherit; font-size: 12px; font-weight: 600;
+  padding: 8px 14px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.03);
+  color: #9aa0a6; cursor: pointer;
+}
+.reader-nav button:hover:not(:disabled) { color: var(--accent); border-color: var(--accent-line); }
+.reader-nav button:disabled { opacity: 0.3; cursor: default; }
+
+@media (max-width: 600px) {
+  .page { padding: 64px 16px 40px; }
+  .reader { padding: 12px; }
+  .reader-card { padding: 26px 20px 22px; }
+}
+</style>
+</head>
+<body>
+
+<a class="back-link" href="portals.html">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"/>
+    <polyline points="12 19 5 12 12 5"/>
+  </svg>
+  Hub
+</a>
+
+<div class="page">
+  <header class="header">
+    <h1 class="title">Library</h1>
+    <p class="subtitle">Saved notes, one tab per document.</p>
+  </header>
+
+  <nav class="tabs" id="tabs"></nav>
+  <p class="doc-intro" id="doc-intro"></p>
+  <div class="boxes" id="boxes"></div>
+</div>
+
+<div class="reader" id="reader">
+  <div class="reader-card" role="dialog" aria-modal="true" aria-labelledby="reader-title">
+    <button class="reader-close" id="reader-close" aria-label="Close">×</button>
+    <div class="reader-doc" id="reader-doc"></div>
+    <h2 class="reader-title" id="reader-title"></h2>
+    <div class="reader-body" id="reader-body"></div>
+    <div class="reader-nav">
+      <button id="reader-prev">← Previous</button>
+      <button id="reader-next">Next →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Body text: blank line = new paragraph, lines starting with "- " = list items.
+const DOCS = [
+  {
+    id: 'fat-loss-math',
+    name: 'Fat Loss Math',
+    intro: 'How a 7,700-calorie weekly deficit adds up to 1 kg of fat loss.',
+    boxes: [
+      { title: 'The rule', body: '1 kg of fat = 7,700 calories.\n\nSo if your goal is to lose 1 kg per week, you need a calorie deficit of 7,700 calories per week.' },
+      { title: 'Cardio', body: 'Burn 300 calories per day (approx. 30 min).\n\n= 2,100 calories per week' },
+      { title: 'Steps', body: '10,000 steps = 300–400 calories per day (depends on the person).\n\n≈ 2,450 calories per week' },
+      { title: 'Strength training', body: '3 sessions per week (45 min each) = 250 calories per session.\n\n= 750 calories per week' },
+      { title: 'From movement alone', body: '2,100 + 2,450 + 750 = 5,300 calories\n\nThis means you only have 2,400 calories left to reach 7,700.' },
+      { title: 'Nutrition', body: 'Important: this does NOT mean you should starve yourself.\n\n2,400 ÷ 7 = approx. 340 calories per day through nutrition.\n\nIt’s as simple as:\n- slightly smaller portions\n- cutting out liquid calories\n- choosing leaner protein sources' },
+      { title: 'All together', body: '7,700 calories per week = 1 kg fat loss.' },
+    ],
+  },
+  {
+    id: 'body-signs-30s',
+    name: 'Body Signs in Your 30s',
+    intro: 'Five signals your body is asking for support — and what to do about each.',
+    boxes: [
+      { title: 'Your skin has lost its bounce', body: 'This is often collagen turnover slowing down — a cellular process that needs raw material.\n\nPrioritize protein at every meal (aim for a palm-sized portion) — collagen literally cannot rebuild without it.' },
+      { title: 'Your energy crashes by 3pm', body: 'This usually points to blood sugar swings, which stress your cells over time.\n\nSwap your breakfast and afternoon snack for protein + fat instead of just carbs — it keeps your energy (and cells) stable for hours.' },
+      { title: 'Wired but tired', body: 'And it’s not just work stress. Chronic stress isn’t always about your to-do list. Toxic relationships, no boundaries, people-pleasing, and overthinking keep your nervous system on high alert.\n\nStart with one boundary this week — a small “no,” a delayed reply, a pause before you say yes.\n\nPair it with 5 minutes of somatic movement daily — gentle shaking, swaying, or rolling your shoulders and neck slowly. This isn’t exercise, it’s release. It helps your nervous system physically discharge stress that’s stored in the body, not just “thought through”.' },
+      { title: 'Workouts stopped working', body: 'You have stopped seeing results from the workouts that you used to.\n\nIn your 30s your body often needs less cardio and more strength — muscle is one of the most protective tissues for longevity.\n\nAdd 2 strength training sessions a week. Even 20 minutes is better than an hour of cardio.' },
+      { title: 'More sensitive than before', body: 'You’re more sensitive to things that never used to bother you — skincare, food, fragrances.\n\nThis is often a sign your detox pathways (liver, gut) are overloaded and need support, not more products.\n\nStart reducing synthetic fragrance exposure (candles, sprays, cleaning products) — one small load off your system at a time.' },
+      { title: 'The point', body: 'None of this is about fighting your age.\n\nIt’s about giving your body what it’s been asking for — consistently, sustainably, at the root.' },
+    ],
+  },
+  {
+    id: '12-month-plan',
+    name: '12-Month Diet & Workout',
+    intro: '12 months. Every day. Locked in. Training split, exercises, cardio and a ~2,350 kcal diet.',
+    boxes: [
+      { title: 'Training split', body: '- Monday — Chest + Side delts + Triceps + Abs\n- Tuesday — Back (width) + Biceps + Rear delts\n- Wednesday — Abs + Legs\n- Thursday — Chest + Side delts + Triceps\n- Friday — Back (thickness) + Biceps + Rear delts\n- Saturday — Side delts + Arms + Abs\n- Sunday — Rest day\n\nDaily 12k steps till under 20% body fat.' },
+      { title: 'Monday & Thursday', body: 'Chest + Side delts + Triceps (+ Abs on Monday)\n\n- Incline dumbbell press\n- Machine chest press\n- Cable flys\n- Cable lateral raise\n- Dumbbell lateral raise\n- Triceps push down (1 set)\n- Triceps overhead extension (1 set)\n- Ab wheel\n- Lying leg raises\n\nThursday is the same as Monday.' },
+      { title: 'Tuesday', body: 'Back (width) + Biceps + Rear delts\n\n- Neutral grip lat pull down\n- Close grip lat pull down\n- Wide grip rowing\n- Lat prayer\n- Bayesian curl\n- Cable curl\n- Reverse pec deck' },
+      { title: 'Wednesday', body: 'Abs + Legs\n\n- Squats (full depth) or leg press\n- Leg extension\n- Cable crunches\n- Hanging leg raises' },
+      { title: 'Friday', body: 'Back (thickness) + Biceps + Rear delts\n\n- Bent over barbell rows\n- Hyperextension\n- Close grip rowing\n- Preacher curls\n- Face pulls' },
+      { title: 'Saturday', body: 'Side delts + Arms + Abs\n\n- Military press\n- Triceps cable push down\n- Cable curls\n- Cable crunches\n- Leg raises\n- Windshield wipers' },
+      { title: 'Sets, reps & failure', body: 'All exercises have 2 sets.\n- 8–12 reps for compound lifts\n- 12–15 reps for isolation movements\n\nUse the dynamic double progression model for progressive overload. Always track your lifts.\n\nHit at least 1 set of every muscle group till failure. Failure means if you don’t hit 1 last rep you will die — and you still can’t do that rep.' },
+      { title: 'Mindset', body: 'Focus on intensity — push your limits keeping form and technique intact.\n\nFocus on weight training more rather than losing weight fast. The goal is an aesthetic physique — to look good in clothes and the mirror, not a shrunk version of yourself. Don’t rely on cardio and diet only.' },
+      { title: 'Cardio', body: 'Daily incline treadmill in the morning, empty stomach.\n\n45 min | Incline 15 | Speed 4.5 km/h\n\n(Started once under 20% body fat.)' },
+      { title: 'Breakfast — 2pm', body: 'Intermittent fasting — first meal at 2pm.\n\n- 3 eggs → 225 kcal | 18g protein\n- Curd (200g) → 130 kcal | 10g protein\n- Berries (140g) → 70 kcal | 1g protein\n\nTotal: ~425 kcal | 30g protein' },
+      { title: 'Lunch — 5pm', body: '- Chicken breast (200g, air fried)\n- Sweet potato (200g, boiled)\n- 25g roasted peanuts\n\n~610 kcal | Protein ~50g | Carbs ~60g | Fat ~20g\n\nPost-workout: protein shake (30g protein) + 1 banana → 250 kcal' },
+      { title: 'Dinner — 10pm', body: '- Curd (200g) + 1 scoop protein (30g)\n- 200g air fried French fries\n- 400g papaya, or 500g strawberry, or 500g pineapple, or 500g apple\n- 2 boiled eggs\n\n~750 kcal | ~45g protein\n\n1 Magnum ice cream before bed (220 kcal) — “I like it 😄”' },
+      { title: 'Daily total & notes', body: '~2,350 calories | ~155g protein\n\nDon’t starve yourself in hope of losing weight fast — you will end up regaining the weight. Eat more, burn more.\n\nThe diet doesn’t stay the same through a transformation. It changed 5–6 times: the cut started at 2,700 calories and ended at 2,000. This version was followed from 20% to 15% body fat.' },
+    ],
+  },
+  {
+    id: '12kg-in-2-months',
+    name: '12 kg in 2 Months',
+    intro: 'Lost 12 kg in 2 months — from 82 kg to 70 kg. The diet plan.',
+    boxes: [
+      { title: 'Breakfast', body: '- 1 scoop whey protein\n- Protein oats\n- 150ml milk\n\n~35g protein | 35g carbs | 8g fats' },
+      { title: 'Lunch', body: '- 200g chicken breast (or paneer)\n- 2 rotis\n- Light gravy + salad\n\n~50g protein | 45–50g carbs | 10–12g fats' },
+      { title: 'Evening snack', body: '- 1 fruit\n- Handful of dry fruits\n- 5 egg whites\n\n~22–24g protein | 25g carbs | 8g fats' },
+      { title: 'Dinner', body: '- 200g chicken / paneer salad\n\n~45g protein | 5g carbs | 8g fats' },
+      { title: 'Totals — chicken version', body: '- ~150–155g protein\n- ~110–120g carbs\n- ~35–40g fats\n- ~1,400–1,500 kcal' },
+      { title: 'Totals — paneer version', body: '- ~130–135g protein\n- ~110–120g carbs\n- ~90–95g fats\n- ~1,700–1,800 kcal' },
+      { title: 'How it was followed', body: '- Followed with ~80–90% consistency\n- On busy days, lunch was swapped for protein-rich chicken wraps / rice bowls\n- No cheat meals — no sugar, no chips, no biscuits\n\nConsistency > perfection.' },
+    ],
+  },
+  {
+    id: 'kids-shows',
+    name: 'Kids’ Shows',
+    intro: 'Classic kids’ shows and where to stream them, grouped by platform.',
+    boxes: [
+      { title: 'All shows', body: '- Bear in the Big Blue House — Disney+\n- Karius & Bactus — YouTube\n- Moomin (Mumintrollet) — YouTube\n- Little Bear — Paramount+\n- Emil i Lönneberga — YouTube\n- Pippi Longstocking — YouTube\n- Franklin — Prime or YouTube\n- Pingu — YouTube\n- Arthur — PBS Kids or Hulu\n- Rolie Polie Olie — Prime\n- Clifford — Prime\n- Mr Tumble — YouTube\n- Teletubbies — YouTube\n- Max & Ruby — YouTube\n- Magic School Bus — Netflix\n- Berenstain Bears — Prime\n- Dragon Tales — Prime\n- Mister Rogers’ Neighborhood — Hulu or Prime' },
+      { title: 'YouTube', body: '- Karius & Bactus\n- Moomin (Mumintrollet)\n- Emil i Lönneberga\n- Pippi Longstocking\n- Franklin\n- Pingu\n- Mr Tumble\n- Teletubbies\n- Max & Ruby' },
+      { title: 'Prime Video', body: '- Franklin\n- Rolie Polie Olie\n- Clifford\n- Berenstain Bears\n- Dragon Tales\n- Mister Rogers’ Neighborhood' },
+      { title: 'Hulu', body: '- Arthur\n- Mister Rogers’ Neighborhood' },
+      { title: 'Disney+', body: '- Bear in the Big Blue House' },
+      { title: 'Paramount+', body: '- Little Bear' },
+      { title: 'Netflix', body: '- Magic School Bus' },
+      { title: 'PBS Kids', body: '- Arthur' },
+    ],
+  },
+  {
+    id: '3-month-fat-loss',
+    name: '3-Month Fat Loss Rules',
+    intro: 'Eight simple rules for three months of fat loss.',
+    boxes: [
+      { title: 'Calories', body: '1,200–1,500 per day.' },
+      { title: 'Protein', body: 'Protein at every meal — eggs / paneer / dal / sattu.' },
+      { title: 'Cut the junk', body: 'No sugar, no junk, no fried food.' },
+      { title: 'Steps', body: '10–12k steps daily.' },
+      { title: 'Workout', body: '45–60 minutes, 6 days a week — strength + cardio.' },
+      { title: 'Dinner timing', body: 'Dinner before 7:30 pm, or 16:8 fasting.' },
+      { title: 'Water', body: '3–4 litres per day.' },
+      { title: 'Sleep', body: '7–8 hours. Very important.' },
+    ],
+  },
+  {
+    id: 'calm-confidence',
+    name: 'Calm Confidence',
+    intro: 'Habits of quietly attractive people.',
+    boxes: [
+      { title: 'Body & grooming', body: '- Wake up before the world gets loud\n- Train their body 4–5× a week (strength first, ego last)\n- Keep their nails trimmed and hands clean\n- Invest in 3–4 quality outfits instead of 30 random ones\n- Iron their clothes — always\n- Wear one signature fragrance, lightly' },
+      { title: 'Presence', body: '- Sit straight, shoulders relaxed, chin level\n- Move unhurried — never frantic\n- Make eye contact when someone speaks\n- Listen fully before responding\n- Speak slower and slightly lower\n- Don’t fill silence just to feel important' },
+      { title: 'Daily habits', body: '- Keep their phone on silent during conversations\n- Read daily (even 10 pages compounds)\n- Protect their mornings like an asset\n- Schedule gym, work, and rest — not just work\n- Keep their space minimal and clean' },
+      { title: 'Boundaries', body: '- Don’t overshare\n- Don’t gossip\n- Don’t chase — they choose\n- Respond, not react\n- Leave some mystery' },
+      { title: 'Money & growth', body: '- Invest money before they spend it\n- Track progress (body, business, skills)\n- Learn one high-value skill deeply\n- Build discipline quietly' },
+      { title: 'What they avoid', body: '- No chaotic energy\n- No loud validation seeking\n- No complaining about things they can control' },
+      { title: 'The point', body: 'Attractive isn’t loud.\n\nIt’s controlled.\nIt’s intentional.\nIt’s calm confidence.' },
+    ],
+  },
+];
+
+const TAB_KEY = 'chrono_library_tab';
+const $ = id => document.getElementById(id);
+let current = DOCS[0];
+let openIdx = -1;
+
+function renderBody(el, text) {
+  el.replaceChildren();
+  for (const block of text.split('\n\n')) {
+    let list = null, para = null;
+    for (const line of block.split('\n')) {
+      if (line.startsWith('- ')) {
+        para = null;
+        if (!list) { list = document.createElement('ul'); el.append(list); }
+        const li = document.createElement('li');
+        li.textContent = line.slice(2);
+        list.append(li);
+      } else {
+        list = null;
+        if (!para) { para = document.createElement('p'); el.append(para); }
+        else para.append(document.createElement('br'));
+        para.append(line);
+      }
+    }
+  }
+}
+
+function previewOf(text) {
+  return text.replace(/^- /gm, '').replace(/\n+/g, ' · ');
+}
+
+function selectDoc(id) {
+  current = DOCS.find(d => d.id === id) || DOCS[0];
+  try { localStorage.setItem(TAB_KEY, current.id); } catch {}
+  history.replaceState(null, '', '?doc=' + current.id);
+
+  for (const btn of $('tabs').children) btn.classList.toggle('active', btn.dataset.id === current.id);
+  $('doc-intro').textContent = current.intro;
+
+  $('boxes').replaceChildren(...current.boxes.map((box, i) => {
+    const el = document.createElement('button');
+    el.className = 'box';
+    el.innerHTML = '<div class="box-num"></div><div class="box-title"></div><div class="box-preview"></div>';
+    el.querySelector('.box-num').textContent = String(i + 1).padStart(2, '0');
+    el.querySelector('.box-title').textContent = box.title;
+    el.querySelector('.box-preview').textContent = previewOf(box.body);
+    el.addEventListener('click', () => openBox(i));
+    return el;
+  }));
+}
+
+function openBox(i) {
+  openIdx = i;
+  const box = current.boxes[i];
+  $('reader-doc').textContent = current.name;
+  $('reader-title').textContent = box.title;
+  renderBody($('reader-body'), box.body);
+  $('reader-prev').disabled = i === 0;
+  $('reader-next').disabled = i === current.boxes.length - 1;
+  $('reader').classList.add('open');
+  $('reader').querySelector('.reader-card').scrollTop = 0;
+}
+
+function closeBox() {
+  openIdx = -1;
+  $('reader').classList.remove('open');
+}
+
+$('tabs').replaceChildren(...DOCS.map(doc => {
+  const btn = document.createElement('button');
+  btn.className = 'tab';
+  btn.dataset.id = doc.id;
+  btn.textContent = doc.name;
+  btn.addEventListener('click', () => selectDoc(doc.id));
+  return btn;
+}));
+
+$('reader-close').addEventListener('click', closeBox);
+$('reader').addEventListener('click', e => { if (e.target === $('reader')) closeBox(); });
+$('reader-prev').addEventListener('click', () => openIdx > 0 && openBox(openIdx - 1));
+$('reader-next').addEventListener('click', () => openIdx < current.boxes.length - 1 && openBox(openIdx + 1));
+document.addEventListener('keydown', e => {
+  if (openIdx < 0) return;
+  if (e.key === 'Escape') closeBox();
+  if (e.key === 'ArrowLeft' && openIdx > 0) openBox(openIdx - 1);
+  if (e.key === 'ArrowRight' && openIdx < current.boxes.length - 1) openBox(openIdx + 1);
+});
+
+let saved = null;
+try { saved = localStorage.getItem(TAB_KEY); } catch {}
+selectDoc(new URLSearchParams(location.search).get('doc') || saved || DOCS[0].id);
+</script>
+</body>
+</html>
