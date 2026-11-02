@@ -13,6 +13,7 @@ Personal life-tracking dashboard hosted on Firebase. A collection of standalone 
 - Optional cloud backup: Firestore under `users/{uid}/` — triggered manually via the "Sync to Firebase" button on the landing page
 - Instagram follower history: `data/instagram.json` committed to the repo, served as a static asset at `/data/instagram.json`
 - School Finder data: `data/schools.xml`, served at `/data/schools.xml`
+- Reboot 50-day plan logs: `chrono_reboot` (array of `{date, done, steps, kcal, protein, weight, note}`), Firestore `users/{uid}/data/reboot`
 - Minute Cryptic clues: `data/minute-cryptic.json`, served at `/data/minute-cryptic.json`; play progress in `chrono_cryptic` and Firestore `users/{uid}/data/cryptic`
 
 ## Build
@@ -46,14 +47,14 @@ node scripts/inject.js && firebase deploy --only hosting
 | File | URL | Purpose |
 |------|-----|---------|
 | `index.html` | `/` | Landing page — cards linking to every module |
-| `schedule.html` | `/schedule.html` | Main app — Schedule, Tracker, Backlog, Goals, Freeletics, Chronicle, Classes, Instagram tabs |
+| `schedule.html` | `/schedule.html` | Main app — Schedule, Tracker, Backlog, Goals, Freeletics, Chronicle, Classes, Reboot, Instagram tabs |
 | `portals.html` | `/portals.html` | Hub — cards linking to external projects (Ballpark, IPL, etc.) |
 | `instagram.html` | `/instagram.html` | Standalone Instagram follower tracker page |
 | `cryptic.html` | `/cryptic.html` | Minute Cryptic player — every daily clue from #1, strictly in order |
 | `library.html` | `/library.html` | Saved notes — one tab per document, each split into boxes that open a reader. Content lives in the `DOCS` array; `?doc=<id>` deep-links a tab |
 | `schools.html` | `/schools.html` | School Finder — filterable table of Hyderabad schools, loaded from `data/schools.xml` (edit that file to add or correct schools). Each school has approximate `lat`/`lon`; the page measures straight-line distance from the viewer's location (`chrono_schools_home`, set on-device via "Use my location") or the file's default centre |
 
-`schedule.html` reads `?tab=<name>` on load to deep-link into a specific tab. Valid tab names: `today`, `schedule`, `tracker`, `backlog`, `goals`, `freeletics`, `chronicle`, `classes`, `instagram`.
+`schedule.html` reads `?tab=<name>` on load to deep-link into a specific tab. Valid tab names: `today`, `schedule`, `tracker`, `backlog`, `goals`, `freeletics`, `chronicle`, `classes`, `reboot`, `instagram`.
 
 ## Coding conventions
 
@@ -62,7 +63,7 @@ node scripts/inject.js && firebase deploy --only hosting
 - **No comments** unless the why is non-obvious
 - **Dark theme** throughout: background `#0a0a0a`, text `#e8eaed`, grid overlay via `body::before`
 - CSS custom properties defined at the top of `schedule.html`: `--txt`, `--txt-mid`, `--txt-dim`, `--line`, `--tab-h`
-- Accent colours by feature: blue `#5b8eff` (schedule), green `#4ddd8e` (tracker), purple `#a06bff` (backlog), yellow `#ffc84d` (goals), orange `#ff8050` (freeletics), pink `#ff8fab` (chronicle), violet `#c97aff` (classes), violet `#c084fc` (Instagram), teal `#2dd4bf` (Minute Cryptic), lime `#a3e635` (Library), sky `#38bdf8` (School Finder)
+- Accent colours by feature: blue `#5b8eff` (schedule), green `#4ddd8e` (tracker), purple `#a06bff` (backlog), yellow `#ffc84d` (goals), orange `#ff8050` (freeletics), pink `#ff8fab` (chronicle), violet `#c97aff` (classes), red `#f87171` (Reboot), violet `#c084fc` (Instagram), teal `#2dd4bf` (Minute Cryptic), lime `#a3e635` (Library), sky `#38bdf8` (School Finder)
 
 ## Instagram Tracker
 
@@ -91,6 +92,10 @@ Workflow steps:
 - All seven Firebase env vars listed above
 
 **First run:** trigger manually via GitHub Actions → Actions → "Instagram Tracker" → Run workflow.
+
+## Reboot
+
+The `reboot` tab in `schedule.html` is a 50-day, 20-minute daily habit plan starting 2026-10-26 (`RB_START`). Days 1–49 are seven week-long blocks (`RB_BLOCKS`). Each block is the same workout all week, and the work seconds per interval rise every day (`work[0..6]`). Day 50 is a check-in that repeats Day 1. Moves live in `RB_MOVES`. A move is tagged NEW the first time a block uses it. The plan is knee- and lower-back-friendly by design: no sit-ups, no deep squats, and no jumping before block 6 (which has no-jump fallbacks). Daily targets are 10,000 steps and 1,500 kcal.
 
 ## Minute Cryptic
 

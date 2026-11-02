@@ -115,6 +115,7 @@ body::before {
 .card-freeletics::before  { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,107,53,0.12), transparent); }
 .card-chronicle::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,139,175,0.10), transparent); }
 .card-classes::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,122,255,0.10), transparent); }
+.card-reboot::before      { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(248,113,113,0.10), transparent); }
 .card-hub::before         { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(56,210,220,0.10), transparent); }
 .card-instagram::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(192,132,252,0.10), transparent); }
 .card-cryptic::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(45,212,191,0.10), transparent); }
@@ -131,6 +132,7 @@ body::before {
 .card-freeletics:hover  { border-color: rgba(255,107,53,0.45);  box-shadow: 0 8px 40px rgba(255,107,53,0.14); }
 .card-chronicle:hover   { border-color: rgba(255,139,175,0.45); box-shadow: 0 8px 40px rgba(255,139,175,0.12); }
 .card-classes:hover     { border-color: rgba(201,122,255,0.45); box-shadow: 0 8px 40px rgba(201,122,255,0.14); }
+.card-reboot:hover      { border-color: rgba(248,113,113,0.45); box-shadow: 0 8px 40px rgba(248,113,113,0.14); }
 .card-hub:hover         { border-color: rgba(56,210,220,0.45);  box-shadow: 0 8px 40px rgba(56,210,220,0.10); }
 .card-instagram:hover   { border-color: rgba(192,132,252,0.45); box-shadow: 0 8px 40px rgba(192,132,252,0.12); }
 .card-cryptic:hover     { border-color: rgba(45,212,191,0.45); box-shadow: 0 8px 40px rgba(45,212,191,0.12); }
@@ -149,6 +151,7 @@ body::before {
 .card-freeletics .card-icon { background: rgba(255,107,53,0.12); }
 .card-chronicle  .card-icon { background: rgba(255,139,175,0.12); }
 .card-classes    .card-icon { background: rgba(201,122,255,0.12); }
+.card-reboot     .card-icon { background: rgba(248,113,113,0.12); }
 .card-hub        .card-icon { background: rgba(56,210,220,0.12); }
 .card-instagram  .card-icon { background: rgba(192,132,252,0.12); }
 .card-cryptic    .card-icon { background: rgba(45,212,191,0.12); }
@@ -186,6 +189,7 @@ body::before {
 .card-freeletics .card-arrow { color: #ff8050; }
 .card-chronicle  .card-arrow { color: #ff8fab; }
 .card-classes    .card-arrow { color: #c97aff; }
+.card-reboot     .card-arrow { color: #f87171; }
 .card-hub        .card-arrow { color: #38d2dc; }
 .card-instagram  .card-arrow { color: #c084fc; }
 .card-cryptic    .card-arrow { color: #2dd4bf; }
@@ -410,6 +414,24 @@ body::before {
       </div>
     </a>
 
+    <!-- Reboot -->
+    <a class="card card-reboot" href="schedule.html?tab=reboot">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+      <div class="card-title">Reboot</div>
+      <div class="card-desc">50 days, 20 minutes a day. Seven week-long blocks that climb daily, with a built-in interval timer and steps, calorie and weight logging.</div>
+      <div class="card-arrow">
+        Open Reboot
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </a>
+
     <!-- Instagram -->
     <a class="card card-instagram" href="instagram.html">
       <div class="card-icon">
@@ -587,6 +609,7 @@ async function runSync() {
       { lsKey: 'chrono_backlog',   fsId: 'backlog',   field: 'items'   },
       { lsKey: 'chrono_goals_v3',  fsId: 'goals',     field: 'goals'   },
       { lsKey: 'chrono_chronicle', fsId: 'chronicle', field: 'entries' },
+      { lsKey: 'chrono_reboot',    fsId: 'reboot',    field: 'logs'    },
     ];
     for (const { lsKey, fsId, field } of blobs) {
       const raw = localStorage.getItem(lsKey);
