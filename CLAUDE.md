@@ -31,7 +31,7 @@ FIREBASE_PROJECT_ID
 FIREBASE_STORAGE_BUCKET
 FIREBASE_MESSAGING_SENDER_ID
 FIREBASE_APP_ID
-ALLOWED_EMAIL
+OWNER_UID            # optional; only needed to build build/firestore.rules
 ```
 
 Never commit `.env.qa` — it is gitignored.
@@ -55,6 +55,16 @@ node scripts/inject.js && firebase deploy --only hosting
 | `schools.html` | `/schools.html` | School Finder — filterable table of Hyderabad schools, loaded from `data/schools.xml` (edit that file to add or correct schools). Each school has approximate `lat`/`lon`; the page measures straight-line distance from the viewer's location (`chrono_schools_home`, set on-device via "Use my location") or the file's default centre |
 
 `schedule.html` reads `?tab=<name>` on load to deep-link into a specific tab. Valid tab names: `today`, `schedule`, `tracker`, `backlog`, `goals`, `freeletics`, `chronicle`, `classes`, `reboot`, `instagram`.
+
+## Private config and access
+
+Nothing personal is hard-coded in the pages. The weekly schedules (`BLOCKS`, `BLOCKS2`), tracker habits (`ACTIVITIES`), default goals (`DEFAULT_GOALS`) and the Classes timetable (`CLASSES`) are loaded at startup from `chrono_config` in `localStorage`, which `fsPull` fills from Firestore `users/{uid}/data/config` (stored as a `json` string field). The source file is `private/chronoself-config.json` (gitignored). To change it, edit that file and open `schedule.html?setup=1` to re-import; a first visit with no config shows the same import screen.
+
+Access is enforced by Firestore rules, not by the pages: `firestore.rules` admits only the owner's uid (`__OWNER_UID__`, filled from the `OWNER_UID` env var into `build/firestore.rules` by `inject.js`). Pages sign in with Google and treat a `permission-denied` on their first Firestore read as "not the owner". Deploy rules manually:
+
+```bash
+node scripts/inject.js && firebase deploy --only firestore:rules
+```
 
 ## Coding conventions
 
@@ -89,7 +99,7 @@ Workflow steps:
 
 **GitHub secrets required** (one-time setup):
 - `FIREBASE_TOKEN` — from `firebase login:ci`
-- All seven Firebase env vars listed above
+- The six Firebase env vars listed above
 
 **First run:** trigger manually via GitHub Actions → Actions → "Instagram Tracker" → Run workflow.
 

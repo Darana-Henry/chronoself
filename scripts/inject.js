@@ -25,7 +25,6 @@ const required = [
   'FIREBASE_STORAGE_BUCKET',
   'FIREBASE_MESSAGING_SENDER_ID',
   'FIREBASE_APP_ID',
-  'ALLOWED_EMAIL',
 ];
 
 const missing = required.filter(k => !process.env[k] || process.env[k] === 'REPLACE_ME');
@@ -54,4 +53,14 @@ if (fs.existsSync(dataSrc)) {
     fs.copyFileSync(path.join(dataSrc, file), path.join(dataDest, file));
     console.log(`Copied → dist/data/${file}`);
   }
+}
+
+// Firestore rules: only built when OWNER_UID is set (deployed manually with
+// `firebase deploy --only firestore:rules`; CI deploys hosting only)
+if (process.env.OWNER_UID) {
+  const rules = fs.readFileSync(path.join(__dirname, '..', 'firestore.rules'), 'utf8')
+    .replaceAll('__OWNER_UID__', process.env.OWNER_UID);
+  fs.mkdirSync(path.join(__dirname, '..', 'build'), { recursive: true });
+  fs.writeFileSync(path.join(__dirname, '..', 'build', 'firestore.rules'), rules);
+  console.log('Built → build/firestore.rules');
 }

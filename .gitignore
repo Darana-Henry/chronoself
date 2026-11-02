@@ -5,3 +5,5 @@ dist/
 .firebase/
 __pycache__/
 *.pyc
+private/
+build/

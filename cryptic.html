@@ -333,7 +333,6 @@ const FIREBASE_CONFIG = {
   messagingSenderId: "__FIREBASE_MESSAGING_SENDER_ID__",
   appId:             "__FIREBASE_APP_ID__"
 };
-const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
 </script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
@@ -840,22 +839,28 @@ if (_fbConfigured) {
   $('google-signin-btn').addEventListener('click', () => {
     errEl.textContent = '';
     const provider = new firebase.auth.GoogleAuthProvider();
-    provider.setCustomParameters({ login_hint: ALLOWED_EMAIL });
     auth.signInWithPopup(provider).catch(() => { errEl.textContent = 'Sign-in failed. Please try again.'; });
   });
 
   auth.onAuthStateChanged(async user => {
-    if (user && user.email === ALLOWED_EMAIL) {
-      overlay.classList.add('hidden');
-      if (!document.body.dataset.init) {
-        document.body.dataset.init = '1';
-        fsDb  = firebase.firestore();
-        fsUid = user.uid;
-        initApp();
+    if (user) {
+      if (document.body.dataset.init) return;
+      const db = firebase.firestore();
+      try {
+        await db.collection('users').doc(user.uid).collection('data').doc('cryptic').get();
+      } catch (err) {
+      // Firestore rules only admit the owner's uid; anyone else is denied here
+        if (err.code === 'permission-denied') {
+          errEl.textContent = 'Access restricted. This account is not allowed.';
+          auth.signOut();
+          return;
+        }
       }
-    } else if (user) {
-      errEl.textContent = `Access restricted. Sign in as ${ALLOWED_EMAIL}.`;
-      auth.signOut();
+      overlay.classList.add('hidden');
+      document.body.dataset.init = '1';
+      fsDb  = db;
+      fsUid = user.uid;
+      initApp();
     } else {
       overlay.classList.remove('hidden');
     }

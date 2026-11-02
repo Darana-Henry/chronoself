@@ -515,7 +515,6 @@ const FIREBASE_CONFIG = {
   messagingSenderId: "__FIREBASE_MESSAGING_SENDER_ID__",
   appId:             "__FIREBASE_APP_ID__"
 };
-const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
 </script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
@@ -539,14 +538,19 @@ if (_fbOk) {
   const auth = firebase.auth();
   syncBtn.disabled = true;
   setSync('', 'Checking sign-in…');
-  auth.onAuthStateChanged(user => {
-    if (user && user.email === ALLOWED_EMAIL) {
-      _fsDb = firebase.firestore();
+  auth.onAuthStateChanged(async user => {
+    if (user) {
+      const db = firebase.firestore();
+      try {
+        await db.collection('users').doc(user.uid).collection('data').doc('config').get();
+      } catch (err) {
+        // Firestore rules only admit the owner's uid; anyone else is denied here
+        if (err.code === 'permission-denied') { setSync('err', 'Wrong account signed in.'); return; }
+      }
+      _fsDb = db;
       _fsUid = user.uid;
       syncBtn.disabled = false;
       setSync('', 'Ready — click to sync all data to Firebase.');
-    } else if (user) {
-      setSync('err', 'Wrong account signed in.');
     } else {
       setSync('', 'Open any module and sign in first.');
     }
