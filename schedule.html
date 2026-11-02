@@ -626,6 +626,11 @@ td.cls-adj { padding: 0 16px; vertical-align: middle; }
 }
 
 /* ══════════════════════════════════════════════════════
+   SCHOOL FINDER TAB  (embeds schools.html)
+══════════════════════════════════════════════════════ */
+.sf-frame { flex: 1; width: 100%; border: 0; background: #0a0a0a; }
+
+/* ══════════════════════════════════════════════════════
    INSTAGRAM TAB
 ══════════════════════════════════════════════════════ */
 .ig-wrap { flex: 1; overflow-y: auto; padding: 28px 28px 48px; display: flex; flex-direction: column; gap: 24px; }
@@ -2225,6 +2230,7 @@ const FIREBASE_CONFIG = {
     <button class="tab-btn"        id="btn-chronicle"   onclick="switchTab('chronicle')">Chronicle</button>
     <button class="tab-btn"        id="btn-classes"     onclick="switchTab('classes')">Classes</button>
     <button class="tab-btn"        id="btn-reboot"      onclick="switchTab('reboot')">Reboot</button>
+    <button class="tab-btn"        id="btn-schools"     onclick="switchTab('schools')">Schools</button>
     <button class="tab-btn"        id="btn-instagram"   onclick="switchTab('instagram')">Instagram</button>
   </nav>
 
@@ -2465,6 +2471,11 @@ const FIREBASE_CONFIG = {
         <button onclick="rbTimerStop()">Stop</button>
       </div>
     </div>
+  </div>
+
+  <!-- ── School Finder panel ─────────── -->
+  <div id="panel-schools" class="panel">
+    <iframe class="sf-frame" id="sf-frame" title="School Finder"></iframe>
   </div>
 
   <!-- ── Instagram panel ─────────────── -->
@@ -2971,6 +2982,7 @@ function switchTab(name) {
   if (name === 'classes')   buildClasses();
   if (name === 'instagram') buildInstagram();
   if (name === 'reboot')    renderReboot();
+  if (name === 'schools' && !document.getElementById('sf-frame').src) document.getElementById('sf-frame').src = 'schools.html';
   if (name === 'chronicle') { renderChronicle(); renderChronicleCalendar(); }
 }
 
@@ -7333,7 +7345,7 @@ function initApp() {
   renderToday();
   setInterval(renderToday, 60_000);
   const urlTab = new URLSearchParams(window.location.search).get('tab');
-  if (urlTab && ['today','tracker','backlog','goals','freeletics','chronicle','classes','reboot','instagram'].includes(urlTab)) switchTab(urlTab);
+  if (urlTab && ['today','tracker','backlog','goals','freeletics','chronicle','classes','reboot','schools','instagram'].includes(urlTab)) switchTab(urlTab);
 }
 
 if (_fbConfigured) {

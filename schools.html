@@ -47,6 +47,8 @@ body::before {
   z-index: 10;
 }
 .back-link:hover { color: #9aa0a6; }
+.embedded .back-link { display: none; }
+.embedded .page { padding-top: 28px; }
 .back-link svg { width: 14px; height: 14px; }
 
 .header { text-align: center; margin-bottom: 32px; }
@@ -301,6 +303,7 @@ tbody tr:hover td { background: rgba(255,255,255,0.025); }
 </div>
 
 <script>
+if (window.self !== window.top) document.documentElement.classList.add('embedded');
 const $ = id => document.getElementById(id);
 const FILTER_KEY = 'chrono_schools_filters';
 const HOME_KEY = 'chrono_schools_home';
