@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Finder — ChronoSelf</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #38bdf8;
+  --accent-soft: rgba(56,189,248,0.10);
+  --accent-line: rgba(56,189,248,0.40);
+}
+
+html, body {
+  min-height: 100%;
+  background: #0a0a0a;
+  color: #e8eaed;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.page {
+  position: relative; z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 72px 24px 56px;
+}
+
+.back-link {
+  position: fixed;
+  top: 20px; left: 24px;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+  color: #5f6368; text-decoration: none;
+  transition: color 0.15s;
+  z-index: 10;
+}
+.back-link:hover { color: #9aa0a6; }
+.back-link svg { width: 14px; height: 14px; }
+
+.header { text-align: center; margin-bottom: 32px; }
+.title {
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 700; letter-spacing: -1px;
+  background: linear-gradient(135deg, #e8eaed 30%, #9aa0a6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.subtitle { font-size: 14px; color: #5f6368; letter-spacing: 0.3px; }
+
+/* ── Filters ────────────────────────────────── */
+.filters {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px 20px;
+  margin-bottom: 18px;
+}
+.filter-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase;
+  color: #6b7280; margin-bottom: 8px;
+}
+.filter-wide { grid-column: 1 / -1; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: inherit; font-size: 12px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  color: #9aa0a6; cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.chip:hover { border-color: rgba(255,255,255,0.22); color: #e8eaed; }
+.chip.active { border-color: var(--accent-line); background: var(--accent-soft); color: var(--accent); }
+
+.input, .select {
+  width: 100%;
+  font: inherit; font-size: 13px;
+  padding: 8px 12px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: #111213; color: #e8eaed;
+}
+.input:focus, .select:focus { outline: none; border-color: var(--accent-line); }
+
+.bar {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  font-size: 12px; color: #6b7280; margin-bottom: 12px;
+}
+.reset {
+  font: inherit; font-size: 12px; font-weight: 600;
+  background: none; border: none; color: var(--accent); cursor: pointer;
+}
+
+/* ── Table ──────────────────────────────────── */
+.table-wrap {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+}
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th {
+  text-align: left;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase;
+  color: #6b7280;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap;
+}
+th.sortable { cursor: pointer; user-select: none; }
+th.sortable:hover { color: #9aa0a6; }
+th.sorted { color: var(--accent); }
+td {
+  padding: 13px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  vertical-align: top;
+  color: #c4c7cc;
+  line-height: 1.5;
+}
+tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: rgba(255,255,255,0.025); }
+
+.s-name { font-weight: 700; color: #e8eaed; }
+.s-note { font-size: 11.5px; color: #6b7280; margin-top: 3px; }
+.s-dist { font-size: 11.5px; color: #6b7280; }
+.board {
+  display: inline-block;
+  font-size: 11px; font-weight: 700;
+  padding: 2px 8px; border-radius: 6px; margin: 0 4px 4px 0;
+  background: rgba(255,255,255,0.06); color: #c4c7cc;
+}
+.fee { font-weight: 700; color: #e8eaed; white-space: nowrap; }
+.src { font-size: 11px; color: #5f6368; margin-top: 2px; }
+.tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 700;
+  padding: 2px 8px; border-radius: 6px; white-space: nowrap;
+}
+.tag-off       { background: rgba(77,221,142,0.12); color: #4ddd8e; }
+.tag-alternate { background: rgba(255,200,77,0.12); color: #ffc84d; }
+.tag-working   { background: rgba(255,128,80,0.12); color: #ff8050; }
+.tag-unknown   { background: rgba(255,255,255,0.05); color: #6b7280; }
+.muted { color: #5f6368; }
+.rating { font-weight: 700; color: #e8eaed; white-space: nowrap; }
+.rating .stars { color: #ffc84d; letter-spacing: 1px; margin-right: 6px; }
+.rating-note { font-size: 11.5px; color: #6b7280; margin-top: 2px; max-width: 220px; }
+.dir { font-size: 11.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.dir:hover { text-decoration: underline; }
+.lists { margin-top: 5px; }
+.list-tag {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.3px;
+  padding: 1px 7px; border-radius: 6px; margin: 0 4px 4px 0;
+  background: var(--accent-soft); color: var(--accent);
+}
+
+.home {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+  font-size: 12px; color: #9aa0a6; margin-bottom: 14px;
+}
+.home b { color: #e8eaed; font-weight: 600; }
+.home-btn {
+  font: inherit; font-size: 12px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px;
+  border: 1px solid var(--accent-line); background: var(--accent-soft); color: var(--accent); cursor: pointer;
+}
+.home-btn.plain { border-color: rgba(255,255,255,0.10); background: none; color: #9aa0a6; }
+.home-msg { color: #6b7280; }
+
+.empty { padding: 40px; text-align: center; color: #6b7280; font-size: 13px; }
+.disclaimer { margin-top: 16px; font-size: 11.5px; color: #5f6368; line-height: 1.6; text-align: center; }
+
+@media (max-width: 760px) {
+  .page { padding: 64px 16px 40px; }
+  .table-wrap { border: none; background: none; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  thead { display: none; }
+  tr {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 6px 4px;
+    margin-bottom: 12px;
+  }
+  td { border: none; padding: 6px 14px; }
+  td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase;
+    color: #5f6368; margin-bottom: 2px;
+  }
+}
+</style>
+</head>
+<body>
+
+<a class="back-link" href="portals.html">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"/>
+    <polyline points="12 19 5 12 12 5"/>
+  </svg>
+  Hub
+</a>
+
+<div class="page">
+  <header class="header">
+    <h1 class="title">School Finder</h1>
+    <p class="subtitle" id="subtitle">Schools near Miyapur, Hyderabad</p>
+  </header>
+
+  <section class="filters">
+    <div class="filter-wide">
+      <div class="filter-label">Search</div>
+      <input class="input" id="f-search" type="search" placeholder="School name or notes…">
+    </div>
+    <div>
+      <div class="filter-label">Max distance</div>
+      <select class="select" id="f-dist">
+        <option value="">Any</option>
+        <option value="5">Within 5 km</option>
+        <option value="10">Within 10 km</option>
+        <option value="15">Within 15 km</option>
+        <option value="20">Within 20 km</option>
+        <option value="30">Within 30 km</option>
+      </select>
+    </div>
+    <div>
+      <div class="filter-label">Featured in</div>
+      <div class="chips" id="f-list"></div>
+    </div>
+    <div>
+      <div class="filter-label">Board</div>
+      <div class="chips" id="f-board"></div>
+    </div>
+    <div>
+      <div class="filter-label">Max annual fee</div>
+      <select class="select" id="f-fee">
+        <option value="">Any</option>
+        <option value="50000">Up to ₹50K</option>
+        <option value="100000">Up to ₹1L</option>
+        <option value="150000">Up to ₹1.5L</option>
+        <option value="250000">Up to ₹2.5L</option>
+        <option value="400000">Up to ₹4L</option>
+      </select>
+    </div>
+    <div>
+      <div class="filter-label">Saturday</div>
+      <div class="chips" id="f-sat"></div>
+    </div>
+    <div>
+      <div class="filter-label">Timings</div>
+      <div class="chips" id="f-time"></div>
+    </div>
+  </section>
+
+  <div class="home">
+    <span>Distances from <b id="home-label"></b></span>
+    <button class="home-btn" id="home-me">Use my location</button>
+    <button class="home-btn plain" id="home-reset" hidden>Reset</button>
+    <span class="home-msg" id="home-msg"></span>
+  </div>
+
+  <div class="bar">
+    <span id="count"></span>
+    <button class="reset" id="reset">Reset filters</button>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="sortable" data-sort="name">School</th>
+          <th class="sortable" data-sort="distance">Area · distance</th>
+          <th>Board</th>
+          <th class="sortable" data-sort="rating">Our rating</th>
+          <th class="sortable" data-sort="fee">Annual fee</th>
+          <th>Saturday</th>
+          <th>Timings</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>No schools match these filters.</div>
+  </div>
+
+  <p class="disclaimer" id="disclaimer"></p>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const FILTER_KEY = 'chrono_schools_filters';
+const HOME_KEY = 'chrono_schools_home';
+const LIST_LABEL = { leading: 'Leading', value: 'Value for money', tier15: 'Tier 1.5' };
+const DAY_LABEL = { off: 'Off', alternate: 'Alternate', working: 'Working', unknown: 'Not confirmed' };
+
+let schools = [];
+let state = defaultState();
+let centre = null;
+let home = null;
+
+function defaultState() {
+  return { search: '', maxDist: '', lists: [], boards: [], maxFee: '', sat: 'any', time: 'any', sort: 'distance', dir: 1 };
+}
+
+function text(el, sel) {
+  const n = el.querySelector(sel);
+  return n ? n.textContent.trim() : '';
+}
+
+function parseXml(xml) {
+  const doc = new DOMParser().parseFromString(xml, 'application/xml');
+  if (doc.querySelector('parsererror')) throw new Error('schools.xml is not valid XML');
+  const root = doc.documentElement;
+  const meta = {
+    updated: root.getAttribute('updated'), centre: root.getAttribute('centre'),
+    lat: Number(root.getAttribute('centreLat')), lon: Number(root.getAttribute('centreLon')),
+  };
+  const list = [...root.querySelectorAll('school')].map(s => {
+    const area = s.querySelector('area');
+    const fee = s.querySelector('fee');
+    const timings = s.querySelector('timings');
+    const num = v => (v == null || v === '' ? null : Number(v));
+    return {
+      id: s.getAttribute('id'),
+      name: text(s, 'name'),
+      area: area ? area.textContent.trim() : '',
+      lat: num(area && area.getAttribute('lat')),
+      lon: num(area && area.getAttribute('lon')),
+      lists: [...s.querySelectorAll('lists > list')].map(l => l.textContent.trim()),
+      boards: [...s.querySelectorAll('boards > board')].map(b => b.textContent.trim()),
+      feeMin: num(fee && fee.getAttribute('min')),
+      feeMax: num(fee && fee.getAttribute('max')),
+      feeSource: (fee && fee.getAttribute('source')) || '',
+      saturday: text(s, 'saturday') || 'unknown',
+      timings: timings ? timings.textContent.trim() : '',
+      timingsSource: (timings && timings.getAttribute('source')) || '',
+      notes: text(s, 'notes'),
+      rating: num(s.querySelector('rating') && s.querySelector('rating').getAttribute('score')),
+      ratingNote: text(s, 'rating'),
+    };
+  });
+  return { meta, list };
+}
+
+function km(a, b) {
+  const rad = d => d * Math.PI / 180;
+  const dLat = rad(b.lat - a.lat), dLon = rad(b.lon - a.lon);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2;
+  return 6371 * 2 * Math.asin(Math.sqrt(h));
+}
+
+function withDistances() {
+  const from = home || centre;
+  schools.forEach(s => { s.distance = s.lat == null ? null : km(from, s); });
+}
+
+function renderHome() {
+  $('home-label').textContent = home ? 'your location' : `${centre.label} (default)`;
+  $('home-reset').hidden = !home;
+}
+
+function inr(n) {
+  if (n >= 100000) return '₹' + parseFloat((n / 100000).toFixed(2)) + 'L';
+  return '₹' + Math.round(n / 1000) + 'K';
+}
+
+function feeText(s) {
+  if (s.feeMin == null) return null;
+  return s.feeMin === s.feeMax ? inr(s.feeMin) : `${inr(s.feeMin)} – ${inr(s.feeMax)}`;
+}
+
+function chipGroup(el, options, isActive, onToggle) {
+  el.replaceChildren(...options.map(([value, label]) => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (isActive(value) ? ' active' : '');
+    b.textContent = label;
+    b.addEventListener('click', () => { onToggle(value); render(); });
+    return b;
+  }));
+}
+
+function toggleIn(arr, v) {
+  const i = arr.indexOf(v);
+  i < 0 ? arr.push(v) : arr.splice(i, 1);
+}
+
+function matches(s) {
+  const q = state.search.toLowerCase();
+  if (q && !`${s.name} ${s.notes} ${s.area}`.toLowerCase().includes(q)) return false;
+  if (state.maxDist && (s.distance == null || s.distance > Number(state.maxDist))) return false;
+  if (state.lists.length && !s.lists.some(l => state.lists.includes(l))) return false;
+  if (state.boards.length && !s.boards.some(b => state.boards.includes(b))) return false;
+  if (state.maxFee && (s.feeMin == null || s.feeMin > Number(state.maxFee))) return false;
+  if (state.sat !== 'any' && s.saturday !== state.sat) return false;
+  if (state.time === 'known' && !s.timings) return false;
+  return true;
+}
+
+function compare(a, b) {
+  const key = { name: s => s.name, distance: s => s.distance ?? 99, fee: s => s.feeMin ?? Infinity, rating: s => -(s.rating ?? 0) }[state.sort];
+  const x = key(a), y = key(b);
+  const r = typeof x === 'string' ? x.localeCompare(y) : x - y;
+  return (r || a.name.localeCompare(b.name)) * state.dir;
+}
+
+function cell(label, ...children) {
+  const td = document.createElement('td');
+  td.dataset.label = label;
+  td.append(...children);
+  return td;
+}
+
+function div(cls, content) {
+  const d = document.createElement('div');
+  d.className = cls;
+  d.textContent = content;
+  return d;
+}
+
+function span(cls, content) {
+  const s = document.createElement('span');
+  s.className = cls;
+  s.textContent = content;
+  return s;
+}
+
+function renderRow(s) {
+  const tr = document.createElement('tr');
+
+  const nameCell = cell('School', div('s-name', s.name));
+  if (s.notes) nameCell.append(div('s-note', s.notes));
+  if (s.lists.length) {
+    const l = div('lists', '');
+    l.append(...s.lists.map(id => span('list-tag', LIST_LABEL[id] || id)));
+    nameCell.append(l);
+  }
+
+  const areaCell = cell('Area', div('', s.area));
+  if (s.distance != null) {
+    areaCell.append(div('s-dist', s.distance < 1 ? 'Under 1 km' : `~${s.distance.toFixed(1)} km`));
+    const from = home || centre;
+    const a = document.createElement('a');
+    a.className = 'dir';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.href = `https://www.google.com/maps/dir/?api=1&origin=${from.lat},${from.lon}&destination=${encodeURIComponent(s.name + ', ' + s.area + ', Hyderabad')}`;
+    a.textContent = 'Directions ↗';
+    areaCell.append(a);
+  }
+
+  const boardCell = cell('Board', ...(s.boards.length ? s.boards.map(b => span('board', b)) : [span('muted', 'Not found')]));
+
+  const ratingCell = cell('Our rating');
+  if (s.rating != null) {
+    const r = div('rating', '');
+    const full = Math.floor(s.rating), half = s.rating % 1 >= 0.5;
+    r.append(span('stars', '★'.repeat(full) + (half ? '½' : '')), document.createTextNode(s.rating.toFixed(1)));
+    ratingCell.append(r);
+    if (s.ratingNote) ratingCell.append(div('rating-note', s.ratingNote));
+  } else ratingCell.append(span('muted', '—'));
+
+  const fee = feeText(s);
+  const feeCell = cell('Annual fee', fee ? div('fee', fee) : span('muted', 'Not found'));
+  if (fee && s.feeSource) feeCell.append(div('src', s.feeSource));
+
+  const timeCell = cell('Timings', s.timings ? div('', s.timings) : span('muted', 'Not found'));
+  if (s.timingsSource) timeCell.append(div('src', s.timingsSource));
+
+  tr.append(
+    nameCell, areaCell, boardCell, ratingCell, feeCell,
+    cell('Saturday', span('tag tag-' + s.saturday, DAY_LABEL[s.saturday] || s.saturday)),
+    timeCell,
+  );
+  return tr;
+}
+
+function render() {
+  try { localStorage.setItem(FILTER_KEY, JSON.stringify(state)); } catch {}
+
+  const boards = [...new Set(schools.flatMap(s => s.boards))].sort();
+  const dayOpts = [['any', 'Any'], ['off', 'Off'], ['alternate', 'Alternate'], ['working', 'Working'], ['unknown', 'Not confirmed']];
+
+  chipGroup($('f-list'), Object.entries(LIST_LABEL), v => state.lists.includes(v), v => toggleIn(state.lists, v));
+  chipGroup($('f-board'), boards.map(b => [b, b]), v => state.boards.includes(v), v => toggleIn(state.boards, v));
+  chipGroup($('f-sat'), dayOpts, v => state.sat === v, v => { state.sat = v; });
+  chipGroup($('f-time'), [['any', 'Any'], ['known', 'Known only']], v => state.time === v, v => { state.time = v; });
+  $('f-fee').value = state.maxFee;
+  $('f-dist').value = state.maxDist;
+  $('f-search').value = state.search;
+
+  document.querySelectorAll('th.sortable').forEach(th => {
+    const on = th.dataset.sort === state.sort;
+    th.classList.toggle('sorted', on);
+    th.textContent = th.textContent.replace(/ [↑↓]$/, '') + (on ? (state.dir > 0 ? ' ↑' : ' ↓') : '');
+  });
+
+  const shown = schools.filter(matches).sort(compare);
+  $('rows').replaceChildren(...shown.map(renderRow));
+  $('empty').hidden = shown.length > 0;
+  $('count').textContent = `${shown.length} of ${schools.length} schools`;
+}
+
+$('f-search').addEventListener('input', e => { state.search = e.target.value; render(); });
+$('f-fee').addEventListener('change', e => { state.maxFee = e.target.value; render(); });
+$('f-dist').addEventListener('change', e => { state.maxDist = e.target.value; render(); });
+$('home-me').addEventListener('click', () => {
+  if (!navigator.geolocation) { $('home-msg').textContent = 'Location is not available in this browser.'; return; }
+  $('home-msg').textContent = 'Finding you…';
+  navigator.geolocation.getCurrentPosition(pos => {
+    home = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+    try { localStorage.setItem(HOME_KEY, JSON.stringify(home)); } catch {}
+    $('home-msg').textContent = 'Saved on this device only.';
+    withDistances(); renderHome(); render();
+  }, err => { $('home-msg').textContent = `Couldn't get your location (${err.message}).`; }, { enableHighAccuracy: true, timeout: 15000 });
+});
+$('home-reset').addEventListener('click', () => {
+  home = null;
+  try { localStorage.removeItem(HOME_KEY); } catch {}
+  $('home-msg').textContent = '';
+  withDistances(); renderHome(); render();
+});
+$('reset').addEventListener('click', () => { state = defaultState(); render(); });
+document.querySelectorAll('th.sortable').forEach(th => th.addEventListener('click', () => {
+  if (state.sort === th.dataset.sort) state.dir *= -1;
+  else { state.sort = th.dataset.sort; state.dir = 1; }
+  render();
+}));
+
+(async function () {
+  try {
+    const saved = JSON.parse(localStorage.getItem(FILTER_KEY) || 'null');
+    if (saved) state = { ...defaultState(), ...saved };
+    home = JSON.parse(localStorage.getItem(HOME_KEY) || 'null');
+  } catch {}
+
+  try {
+    const res = await fetch('data/schools.xml', { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const { meta, list } = parseXml(await res.text());
+    schools = list;
+    centre = { lat: meta.lat, lon: meta.lon, label: meta.centre.split(',')[0] };
+    withDistances();
+    renderHome();
+    $('subtitle').textContent = `${list.length} schools across Hyderabad`;
+    $('disclaimer').textContent =
+      `Fees are annual ranges from school-listing websites (updated ${meta.updated}), not from the schools themselves, and listings often disagree. ` +
+      'Saturday and timings are only marked where a source said so. Distances are straight-line from approximate school locations; ' +
+      'use Directions for real travel time. Ratings are Claude\'s judgement from public reputation, list mentions, results and value — not from visits. ' +
+      'Confirm everything with the school before deciding.';
+    render();
+  } catch (err) {
+    $('empty').hidden = false;
+    $('empty').textContent = `Couldn't load data/schools.xml (${err.message}).`;
+  }
+})();
+</script>
+</body>
+</html>
