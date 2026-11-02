@@ -156,6 +156,30 @@ tbody tr:hover td { background: rgba(255,255,255,0.025); }
 .tag-working   { background: rgba(255,128,80,0.12); color: #ff8050; }
 .tag-unknown   { background: rgba(255,255,255,0.05); color: #6b7280; }
 .muted { color: #5f6368; }
+.rating { font-weight: 700; color: #e8eaed; white-space: nowrap; }
+.rating .stars { color: #ffc84d; letter-spacing: 1px; margin-right: 6px; }
+.rating-note { font-size: 11.5px; color: #6b7280; margin-top: 2px; max-width: 220px; }
+.dir { font-size: 11.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.dir:hover { text-decoration: underline; }
+.lists { margin-top: 5px; }
+.list-tag {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.3px;
+  padding: 1px 7px; border-radius: 6px; margin: 0 4px 4px 0;
+  background: var(--accent-soft); color: var(--accent);
+}
+
+.home {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+  font-size: 12px; color: #9aa0a6; margin-bottom: 14px;
+}
+.home b { color: #e8eaed; font-weight: 600; }
+.home-btn {
+  font: inherit; font-size: 12px; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px;
+  border: 1px solid var(--accent-line); background: var(--accent-soft); color: var(--accent); cursor: pointer;
+}
+.home-btn.plain { border-color: rgba(255,255,255,0.10); background: none; color: #9aa0a6; }
+.home-msg { color: #6b7280; }
 
 .empty { padding: 40px; text-align: center; color: #6b7280; font-size: 13px; }
 .disclaimer { margin-top: 16px; font-size: 11.5px; color: #5f6368; line-height: 1.6; text-align: center; }
@@ -204,8 +228,19 @@ tbody tr:hover td { background: rgba(255,255,255,0.025); }
       <input class="input" id="f-search" type="search" placeholder="School name or notes…">
     </div>
     <div>
-      <div class="filter-label">Area</div>
-      <div class="chips" id="f-area"></div>
+      <div class="filter-label">Max distance</div>
+      <select class="select" id="f-dist">
+        <option value="">Any</option>
+        <option value="5">Within 5 km</option>
+        <option value="10">Within 10 km</option>
+        <option value="15">Within 15 km</option>
+        <option value="20">Within 20 km</option>
+        <option value="30">Within 30 km</option>
+      </select>
+    </div>
+    <div>
+      <div class="filter-label">Featured in</div>
+      <div class="chips" id="f-list"></div>
     </div>
     <div>
       <div class="filter-label">Board</div>
@@ -227,14 +262,17 @@ tbody tr:hover td { background: rgba(255,255,255,0.025); }
       <div class="chips" id="f-sat"></div>
     </div>
     <div>
-      <div class="filter-label">Sunday</div>
-      <div class="chips" id="f-sun"></div>
-    </div>
-    <div>
       <div class="filter-label">Timings</div>
       <div class="chips" id="f-time"></div>
     </div>
   </section>
+
+  <div class="home">
+    <span>Distances from <b id="home-label"></b></span>
+    <button class="home-btn" id="home-me">Use my location</button>
+    <button class="home-btn plain" id="home-reset" hidden>Reset</button>
+    <span class="home-msg" id="home-msg"></span>
+  </div>
 
   <div class="bar">
     <span id="count"></span>
@@ -246,11 +284,11 @@ tbody tr:hover td { background: rgba(255,255,255,0.025); }
       <thead>
         <tr>
           <th class="sortable" data-sort="name">School</th>
-          <th class="sortable" data-sort="distance">Area</th>
+          <th class="sortable" data-sort="distance">Area · distance</th>
           <th>Board</th>
+          <th class="sortable" data-sort="rating">Our rating</th>
           <th class="sortable" data-sort="fee">Annual fee</th>
           <th>Saturday</th>
-          <th>Sunday</th>
           <th>Timings</th>
         </tr>
       </thead>
@@ -265,13 +303,17 @@ tbody tr:hover td { background: rgba(255,255,255,0.025); }
 <script>
 const $ = id => document.getElementById(id);
 const FILTER_KEY = 'chrono_schools_filters';
+const HOME_KEY = 'chrono_schools_home';
+const LIST_LABEL = { leading: 'Leading', value: 'Value for money', tier15: 'Tier 1.5' };
 const DAY_LABEL = { off: 'Off', alternate: 'Alternate', working: 'Working', unknown: 'Not confirmed' };
 
 let schools = [];
 let state = defaultState();
+let centre = null;
+let home = null;
 
 function defaultState() {
-  return { search: '', areas: [], boards: [], maxFee: '', sat: 'any', sun: 'any', time: 'any', sort: 'distance', dir: 1 };
+  return { search: '', maxDist: '', lists: [], boards: [], maxFee: '', sat: 'any', time: 'any', sort: 'distance', dir: 1 };
 }
 
 function text(el, sel) {
@@ -283,7 +325,10 @@ function parseXml(xml) {
   const doc = new DOMParser().parseFromString(xml, 'application/xml');
   if (doc.querySelector('parsererror')) throw new Error('schools.xml is not valid XML');
   const root = doc.documentElement;
-  const meta = { updated: root.getAttribute('updated'), centre: root.getAttribute('centre'), radius: root.getAttribute('radiusKm') };
+  const meta = {
+    updated: root.getAttribute('updated'), centre: root.getAttribute('centre'),
+    lat: Number(root.getAttribute('centreLat')), lon: Number(root.getAttribute('centreLon')),
+  };
   const list = [...root.querySelectorAll('school')].map(s => {
     const area = s.querySelector('area');
     const fee = s.querySelector('fee');
@@ -293,19 +338,39 @@ function parseXml(xml) {
       id: s.getAttribute('id'),
       name: text(s, 'name'),
       area: area ? area.textContent.trim() : '',
-      distance: num(area && area.getAttribute('distanceKm')),
+      lat: num(area && area.getAttribute('lat')),
+      lon: num(area && area.getAttribute('lon')),
+      lists: [...s.querySelectorAll('lists > list')].map(l => l.textContent.trim()),
       boards: [...s.querySelectorAll('boards > board')].map(b => b.textContent.trim()),
       feeMin: num(fee && fee.getAttribute('min')),
       feeMax: num(fee && fee.getAttribute('max')),
       feeSource: (fee && fee.getAttribute('source')) || '',
       saturday: text(s, 'saturday') || 'unknown',
-      sunday: text(s, 'sunday') || 'unknown',
       timings: timings ? timings.textContent.trim() : '',
       timingsSource: (timings && timings.getAttribute('source')) || '',
       notes: text(s, 'notes'),
+      rating: num(s.querySelector('rating') && s.querySelector('rating').getAttribute('score')),
+      ratingNote: text(s, 'rating'),
     };
   });
   return { meta, list };
+}
+
+function km(a, b) {
+  const rad = d => d * Math.PI / 180;
+  const dLat = rad(b.lat - a.lat), dLon = rad(b.lon - a.lon);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2;
+  return 6371 * 2 * Math.asin(Math.sqrt(h));
+}
+
+function withDistances() {
+  const from = home || centre;
+  schools.forEach(s => { s.distance = s.lat == null ? null : km(from, s); });
+}
+
+function renderHome() {
+  $('home-label').textContent = home ? 'your location' : `${centre.label} (default)`;
+  $('home-reset').hidden = !home;
 }
 
 function inr(n) {
@@ -336,17 +401,17 @@ function toggleIn(arr, v) {
 function matches(s) {
   const q = state.search.toLowerCase();
   if (q && !`${s.name} ${s.notes} ${s.area}`.toLowerCase().includes(q)) return false;
-  if (state.areas.length && !state.areas.includes(s.area)) return false;
+  if (state.maxDist && (s.distance == null || s.distance > Number(state.maxDist))) return false;
+  if (state.lists.length && !s.lists.some(l => state.lists.includes(l))) return false;
   if (state.boards.length && !s.boards.some(b => state.boards.includes(b))) return false;
   if (state.maxFee && (s.feeMin == null || s.feeMin > Number(state.maxFee))) return false;
   if (state.sat !== 'any' && s.saturday !== state.sat) return false;
-  if (state.sun !== 'any' && s.sunday !== state.sun) return false;
   if (state.time === 'known' && !s.timings) return false;
   return true;
 }
 
 function compare(a, b) {
-  const key = { name: s => s.name, distance: s => s.distance ?? 99, fee: s => s.feeMin ?? Infinity }[state.sort];
+  const key = { name: s => s.name, distance: s => s.distance ?? 99, fee: s => s.feeMin ?? Infinity, rating: s => -(s.rating ?? 0) }[state.sort];
   const x = key(a), y = key(b);
   const r = typeof x === 'string' ? x.localeCompare(y) : x - y;
   return (r || a.name.localeCompare(b.name)) * state.dir;
@@ -378,11 +443,35 @@ function renderRow(s) {
 
   const nameCell = cell('School', div('s-name', s.name));
   if (s.notes) nameCell.append(div('s-note', s.notes));
+  if (s.lists.length) {
+    const l = div('lists', '');
+    l.append(...s.lists.map(id => span('list-tag', LIST_LABEL[id] || id)));
+    nameCell.append(l);
+  }
 
   const areaCell = cell('Area', div('', s.area));
-  if (s.distance != null) areaCell.append(div('s-dist', s.distance === 0 ? 'In Miyapur' : `~${s.distance} km`));
+  if (s.distance != null) {
+    areaCell.append(div('s-dist', s.distance < 1 ? 'Under 1 km' : `~${s.distance.toFixed(1)} km`));
+    const from = home || centre;
+    const a = document.createElement('a');
+    a.className = 'dir';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.href = `https://www.google.com/maps/dir/?api=1&origin=${from.lat},${from.lon}&destination=${encodeURIComponent(s.name + ', ' + s.area + ', Hyderabad')}`;
+    a.textContent = 'Directions ↗';
+    areaCell.append(a);
+  }
 
   const boardCell = cell('Board', ...(s.boards.length ? s.boards.map(b => span('board', b)) : [span('muted', 'Not found')]));
+
+  const ratingCell = cell('Our rating');
+  if (s.rating != null) {
+    const r = div('rating', '');
+    const full = Math.floor(s.rating), half = s.rating % 1 >= 0.5;
+    r.append(span('stars', '★'.repeat(full) + (half ? '½' : '')), document.createTextNode(s.rating.toFixed(1)));
+    ratingCell.append(r);
+    if (s.ratingNote) ratingCell.append(div('rating-note', s.ratingNote));
+  } else ratingCell.append(span('muted', '—'));
 
   const fee = feeText(s);
   const feeCell = cell('Annual fee', fee ? div('fee', fee) : span('muted', 'Not found'));
@@ -392,9 +481,8 @@ function renderRow(s) {
   if (s.timingsSource) timeCell.append(div('src', s.timingsSource));
 
   tr.append(
-    nameCell, areaCell, boardCell, feeCell,
+    nameCell, areaCell, boardCell, ratingCell, feeCell,
     cell('Saturday', span('tag tag-' + s.saturday, DAY_LABEL[s.saturday] || s.saturday)),
-    cell('Sunday', span('tag tag-' + s.sunday, DAY_LABEL[s.sunday] || s.sunday)),
     timeCell,
   );
   return tr;
@@ -403,17 +491,15 @@ function renderRow(s) {
 function render() {
   try { localStorage.setItem(FILTER_KEY, JSON.stringify(state)); } catch {}
 
-  const areas = [...new Set(schools.map(s => s.area))]
-    .sort((a, b) => (schools.find(s => s.area === a).distance ?? 99) - (schools.find(s => s.area === b).distance ?? 99));
   const boards = [...new Set(schools.flatMap(s => s.boards))].sort();
   const dayOpts = [['any', 'Any'], ['off', 'Off'], ['alternate', 'Alternate'], ['working', 'Working'], ['unknown', 'Not confirmed']];
 
-  chipGroup($('f-area'), areas.map(a => [a, a]), v => state.areas.includes(v), v => toggleIn(state.areas, v));
+  chipGroup($('f-list'), Object.entries(LIST_LABEL), v => state.lists.includes(v), v => toggleIn(state.lists, v));
   chipGroup($('f-board'), boards.map(b => [b, b]), v => state.boards.includes(v), v => toggleIn(state.boards, v));
   chipGroup($('f-sat'), dayOpts, v => state.sat === v, v => { state.sat = v; });
-  chipGroup($('f-sun'), dayOpts.filter(([v]) => v !== 'alternate' && v !== 'working'), v => state.sun === v, v => { state.sun = v; });
   chipGroup($('f-time'), [['any', 'Any'], ['known', 'Known only']], v => state.time === v, v => { state.time = v; });
   $('f-fee').value = state.maxFee;
+  $('f-dist').value = state.maxDist;
   $('f-search').value = state.search;
 
   document.querySelectorAll('th.sortable').forEach(th => {
@@ -430,6 +516,23 @@ function render() {
 
 $('f-search').addEventListener('input', e => { state.search = e.target.value; render(); });
 $('f-fee').addEventListener('change', e => { state.maxFee = e.target.value; render(); });
+$('f-dist').addEventListener('change', e => { state.maxDist = e.target.value; render(); });
+$('home-me').addEventListener('click', () => {
+  if (!navigator.geolocation) { $('home-msg').textContent = 'Location is not available in this browser.'; return; }
+  $('home-msg').textContent = 'Finding you…';
+  navigator.geolocation.getCurrentPosition(pos => {
+    home = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+    try { localStorage.setItem(HOME_KEY, JSON.stringify(home)); } catch {}
+    $('home-msg').textContent = 'Saved on this device only.';
+    withDistances(); renderHome(); render();
+  }, err => { $('home-msg').textContent = `Couldn't get your location (${err.message}).`; }, { enableHighAccuracy: true, timeout: 15000 });
+});
+$('home-reset').addEventListener('click', () => {
+  home = null;
+  try { localStorage.removeItem(HOME_KEY); } catch {}
+  $('home-msg').textContent = '';
+  withDistances(); renderHome(); render();
+});
 $('reset').addEventListener('click', () => { state = defaultState(); render(); });
 document.querySelectorAll('th.sortable').forEach(th => th.addEventListener('click', () => {
   if (state.sort === th.dataset.sort) state.dir *= -1;
@@ -441,6 +544,7 @@ document.querySelectorAll('th.sortable').forEach(th => th.addEventListener('clic
   try {
     const saved = JSON.parse(localStorage.getItem(FILTER_KEY) || 'null');
     if (saved) state = { ...defaultState(), ...saved };
+    home = JSON.parse(localStorage.getItem(HOME_KEY) || 'null');
   } catch {}
 
   try {
@@ -448,10 +552,15 @@ document.querySelectorAll('th.sortable').forEach(th => th.addEventListener('clic
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const { meta, list } = parseXml(await res.text());
     schools = list;
-    $('subtitle').textContent = `Within ~${meta.radius} km of ${meta.centre}`;
+    centre = { lat: meta.lat, lon: meta.lon, label: meta.centre.split(',')[0] };
+    withDistances();
+    renderHome();
+    $('subtitle').textContent = `${list.length} schools across Hyderabad`;
     $('disclaimer').textContent =
       `Fees are annual ranges from school-listing websites (updated ${meta.updated}), not from the schools themselves, and listings often disagree. ` +
-      'Saturday, Sunday and timings are only marked where a source said so. Confirm everything with the school before deciding.';
+      'Saturday and timings are only marked where a source said so. Distances are straight-line from approximate school locations; ' +
+      'use Directions for real travel time. Ratings are Claude\'s judgement from public reputation, list mentions, results and value — not from visits. ' +
+      'Confirm everything with the school before deciding.';
     render();
   } catch (err) {
     $('empty').hidden = false;

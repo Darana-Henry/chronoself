@@ -51,7 +51,7 @@ node scripts/inject.js && firebase deploy --only hosting
 | `instagram.html` | `/instagram.html` | Standalone Instagram follower tracker page |
 | `cryptic.html` | `/cryptic.html` | Minute Cryptic player — every daily clue from #1, strictly in order |
 | `library.html` | `/library.html` | Saved notes — one tab per document, each split into boxes that open a reader. Content lives in the `DOCS` array; `?doc=<id>` deep-links a tab |
-| `schools.html` | `/schools.html` | School Finder — filterable table of schools near Miyapur, loaded from `data/schools.xml` (edit that file to add or correct schools) |
+| `schools.html` | `/schools.html` | School Finder — filterable table of Hyderabad schools, loaded from `data/schools.xml` (edit that file to add or correct schools). Each school has approximate `lat`/`lon`; the page measures straight-line distance from the viewer's location (`chrono_schools_home`, set on-device via "Use my location") or the file's default centre |
 
 `schedule.html` reads `?tab=<name>` on load to deep-link into a specific tab. Valid tab names: `today`, `schedule`, `tracker`, `backlog`, `goals`, `freeletics`, `chronicle`, `classes`, `instagram`.
 
