@@ -37,7 +37,7 @@ body::before {
 
 .page {
   position: relative; z-index: 1;
-  max-width: 1320px;
+  max-width: 1760px;
   margin: 0 auto;
   padding: 64px 24px 40px;
 }
@@ -90,7 +90,7 @@ body::before {
   transition: width 0.5s ease, margin-left 0.5s ease;
 }
 .embedded .map-wrap { --w: min(100%, max(420px, calc((100vh - 130px) * 0.898))); }
-.stage.open .map-wrap { width: min(var(--w), 100% - 444px); margin-left: 0; }
+.stage.open .map-wrap { width: min(var(--w), 100% - 844px); margin-left: 0; }
 .map-wrap svg { width: 100%; height: 100%; display: block; overflow: visible; }
 .hit { fill: transparent; cursor: pointer; }
 
@@ -99,8 +99,15 @@ body::before {
   transform: translateX(24px);
   transition: flex-basis 0.45s ease, width 0.45s ease, opacity 0.3s ease 0.1s, transform 0.45s ease, margin 0.45s ease;
 }
-.stage.open .detail { flex-basis: 420px; width: 420px; opacity: 1; transform: none; margin-left: 24px; }
-.detail-inner { width: 420px; display: flex; flex-direction: column; gap: 14px; }
+.stage.open .detail { flex-basis: 820px; width: 820px; opacity: 1; transform: none; margin-left: 24px; }
+/* Two columns: each current-result card sits beside its history card. */
+.detail-inner { width: 820px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+.detail-inner > .wide { grid-column: 1 / -1; }
+@media (max-width: 1240px) {
+  .stage.open .map-wrap { width: min(var(--w), 100% - 444px); }
+  .stage.open .detail { flex-basis: 420px; width: 420px; }
+  .detail-inner { width: 420px; grid-template-columns: 1fr; }
+}
 
 /* ── Map ── */
 .st { stroke: #0a0a0a; stroke-width: 0.8; stroke-linejoin: round; cursor: pointer; transition: fill 0.2s, opacity 0.25s; outline: none; }
@@ -150,12 +157,60 @@ body::before {
 
 .seats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .seat { background: rgba(255,255,255,0.025); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.seat.none { background: transparent; border-style: dashed; }
+.seat.none .seat-n { color: var(--txt-dim); }
+.seat.none .seat-l { color: var(--txt-dim); }
 .seat-n { font-size: 26px; font-weight: 700; letter-spacing: -0.6px; font-variant-numeric: tabular-nums; }
 .seat-n small { font-size: 12px; font-weight: 600; color: var(--txt-mid); letter-spacing: 0; }
 .seat-l { font-size: 11px; color: var(--txt-mid); margin-top: 2px; line-height: 1.35; }
 .share { margin-top: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.06); overflow: hidden; }
 .share i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
 .note { font-size: 12.5px; color: var(--txt-mid); line-height: 1.55; }
+
+/* ── Table view: every state's CMs across its last five elections ── */
+.alt-view .stage, .alt-view .legend, .alt-view .map-only { display: none !important; }
+.gview { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
+.gview[hidden] { display: none; }
+.gsec { min-width: 0; }
+@media (max-width: 600px) { .ucards { grid-template-columns: 1fr !important; } }
+.gsec h2 { font-size: 11px; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase; color: var(--accent); margin: 0 0 4px; }
+.gsec .gsub { font-size: 12px; color: var(--txt-dim); margin: 0 0 10px; }
+.ucards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.ucard { border: 1px solid var(--line); border-radius: 14px; background: var(--card); padding: 12px 14px; min-width: 0; }
+.ucard .k { font-size: 10px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--txt-dim); }
+.ucard .n { font-size: 15px; font-weight: 700; margin: 6px 0 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ucard .f { font-size: 12px; color: var(--txt); }
+.ucard .f b { font-weight: 700; }
+.ucard .m { font-size: 11px; color: var(--txt-dim); margin-top: 3px; }
+@media (max-width: 1100px) { .ucards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ctab.fixed { table-layout: fixed; }
+.ctab tr.reg.cols td span { display: block; margin: 3px 0 0; }
+.ctab tr.reg.cols td i { font-style: normal; font-size: 10px; font-weight: 600; color: var(--txt-dim); letter-spacing: 0.8px; }
+.ctab tbody tr.reg.cols:first-child td { border-top: 0; }
+.ctab .post { font-weight: 700; color: var(--txt); white-space: nowrap; }
+.ctab td.chg { box-shadow: inset 2px 0 0 var(--accent); }
+.ctab .hold + .hold { margin-top: 7px; }
+.ctab .dt { display: block; font-size: 10.5px; color: var(--txt-dim); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ctab .fr { font-size: 11px; color: var(--txt-dim); font-weight: 500; }
+.ctab .nt { display: block; font-size: 10.5px; color: var(--txt-mid); font-style: italic; max-width: 220px; }
+.ctab .bycm { color: var(--txt-dim); font-size: 11.5px; }
+.ctab .gt { display: block; font-size: 10.5px; color: var(--txt-dim); }
+.tview { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+.ctab { width: 100%; min-width: 860px; border-collapse: collapse; font-size: 12.5px; }
+.ctab th { text-align: left; font-size: 10px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--txt-dim); padding: 12px 14px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: #121214; }
+.ctab td { padding: 9px 14px; border-top: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+.ctab tr.reg td { background: rgba(129,140,248,0.07); color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 14px; border-top: 1px solid var(--line); }
+.ctab tr.reg td span { color: var(--txt-dim); font-weight: 500; letter-spacing: 0.3px; text-transform: none; margin-left: 8px; }
+.ctab tr.row { cursor: pointer; }
+.ctab tr.row:hover td { background: rgba(255,255,255,0.03); }
+.ctab tr.row:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.ctab .st-n { font-weight: 700; color: var(--txt); white-space: nowrap; }
+.ctab .st-s { font-size: 11px; color: var(--txt-dim); font-variant-numeric: tabular-nums; }
+.ctab .yr { display: block; font-size: 10.5px; color: var(--txt-dim); font-variant-numeric: tabular-nums; }
+.ctab .cmn { display: block; font-weight: 700; white-space: nowrap; }
+.ctab .now { display: block; font-size: 11px; color: var(--txt-mid); white-space: nowrap; margin-top: 2px; }
+.ctab .now b { font-weight: 700; }
+.ctab .nolg { color: var(--txt-dim); font-style: italic; }
 
 /* ── Election results ── */
 .el-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; }
@@ -187,6 +242,40 @@ body::before {
 .more summary { cursor: pointer; font-size: 11.5px; color: var(--accent); padding: 4px 0; list-style: none; }
 .more summary::-webkit-details-marker { display: none; }
 .more[open] summary { display: none; }
+.strip { display: flex; gap: 2px; margin-bottom: 4px; }
+.strip > div {
+  flex: 1; min-width: 0; height: 38px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: #0a0a0a; line-height: 1.15; overflow: hidden; cursor: default;
+}
+.strip > div:first-child { border-radius: 4px 0 0 4px; }
+.strip > div:last-child { border-radius: 0 4px 4px 0; }
+.strip > div:hover { filter: brightness(1.15); }
+.strip b { font-size: 11px; font-weight: 800; letter-spacing: 0.3px; white-space: nowrap; }
+.strip span { font-size: 10px; font-weight: 600; opacity: 0.8; font-variant-numeric: tabular-nums; }
+.hrow { display: grid; grid-template-columns: 40px 1fr auto; gap: 4px 10px; padding: 9px 0; border-top: 1px solid rgba(255,255,255,0.04); align-items: baseline; }
+.hrow .y { font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums; }
+.hrow .who { font-size: 13px; font-weight: 700; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hrow .who small { font-weight: 700; font-size: 10px; padding: 1px 6px; border-radius: 999px; color: #0a0a0a; margin-left: 6px; vertical-align: 1px; }
+.hrow .res { font-size: 11.5px; color: var(--txt-mid); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hrow .hbar { grid-column: 2 / 4; position: relative; display: flex; gap: 2px; height: 18px; margin-top: 2px; }
+.hrow .hbar .s { font-size: 10px; justify-content: flex-start; padding: 0 6px; white-space: nowrap; }
+.hrow .hbar .maj { top: -3px; bottom: -3px; }
+.hrow .sub { grid-column: 2 / 4; font-size: 11px; color: var(--txt-dim); line-height: 1.4; }
+.hrow .sub.flag { color: #e8b04a; }
+.next { margin-top: 10px; font-size: 12px; color: var(--txt-mid); }
+.next b { color: var(--txt); font-weight: 600; }
+.lsh { display: grid; grid-template-columns: 40px 1fr; gap: 3px 10px; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.04); align-items: center; }
+.lsh .y { font-weight: 700; font-size: 13px; font-variant-numeric: tabular-nums; }
+.lsh .sbar { height: 14px; }
+.lsh .sbar .s { font-size: 9px; }
+.lsh .t { grid-column: 2; font-size: 11px; color: var(--txt-mid); font-variant-numeric: tabular-nums; }
+.lsh .t em { font-style: normal; color: var(--txt-dim); }
+.upg { padding: 9px 0; border-top: 1px solid rgba(255,255,255,0.04); display: grid; grid-template-columns: 86px 1fr; gap: 10px; align-items: baseline; }
+.upg .when { font-size: 12px; font-weight: 700; }
+.upg .who { display: flex; flex-wrap: wrap; gap: 5px; }
+.upg button { background: transparent; border: 1px solid var(--line); color: var(--txt); border-radius: 999px; font: 500 11.5px inherit; font-family: inherit; padding: 3px 9px; cursor: pointer; }
+.upg button:hover, .upg button:focus-visible { border-color: var(--accent-line); color: var(--accent); outline: none; }
+.upg .ls { color: var(--accent); font-weight: 600; font-size: 12px; }
 .pm { font-size: 13px; color: var(--txt-mid); margin-top: 6px; }
 .pm b { color: var(--txt); }
 
@@ -199,7 +288,7 @@ body::before {
   .stage.open .map-wrap { --w: min(100%, 42vh * 0.898); width: var(--w); margin: 0 auto; }
   .detail { width: 100%; flex-basis: auto; max-height: 0; transform: translateY(16px); }
   .stage.open .detail { width: 100%; flex-basis: auto; max-height: none; margin: 16px 0 0; }
-  .detail-inner { width: 100%; }
+  .detail-inner { width: 100%; grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) {
   .page { padding: 56px 16px 32px; }
@@ -226,14 +315,20 @@ body::before {
       <p class="subtitle" id="subtitle">States, capitals and who governs them</p>
     </div>
     <div class="toolbar">
-      <button class="chip-btn" id="india-btn">All India</button>
-      <div class="seg" role="group" aria-label="Colour the map by">
+      <div class="seg" role="group" aria-label="View">
+        <button id="view-map" class="on" aria-pressed="true">Map</button>
+        <button id="view-table" aria-pressed="false">CMs</button>
+        <button id="view-gov" aria-pressed="false">Government</button>
+      </div>
+      <button class="chip-btn map-only" id="india-btn">All India</button>
+      <div class="seg map-only" role="group" aria-label="Colour the map by">
         <button id="mode-party" class="on" aria-pressed="true">CM party</button>
         <button id="mode-ls" aria-pressed="false">Lok Sabha '24</button>
+        <button id="mode-hist" aria-pressed="false" hidden>Power changes</button>
         <button id="mode-plain" aria-pressed="false">States</button>
       </div>
-      <button class="chip-btn on" id="caps-btn" aria-pressed="true">Capitals</button>
-      <select class="jump" id="jump" aria-label="Jump to a state or union territory">
+      <button class="chip-btn on map-only" id="caps-btn" aria-pressed="true">Capitals</button>
+      <select class="jump map-only" id="jump" aria-label="Jump to a state or union territory">
         <option value="">Jump to…</option>
       </select>
     </div>
@@ -245,6 +340,9 @@ body::before {
     <div class="map-wrap" id="map-wrap"></div>
     <aside class="detail" id="detail" aria-live="polite"><div class="detail-inner" id="detail-inner"></div></aside>
   </div>
+
+  <div class="tview" id="tview" hidden></div>
+  <div class="gview" id="gview" hidden></div>
 
   <p class="foot" id="foot"></p>
 </div>
@@ -260,6 +358,8 @@ const PLAIN = ['#3b4a6b', '#4a3b6b', '#3b6b5e', '#6b5a3b', '#5e3b6b', '#3b5e6b',
 const NO_LEG = '#2a2d33';
 const FOLD = '#5b6170';
 const BLOC_COL = { NDA: '#e0701f', INDIA: '#3b7fe0', Split: '#8a6fc0', Others: FOLD };
+// Sequential ramp for "power changes": more changes reads brighter on the dark surface.
+const TURN = ['#262a4d', '#36407f', '#4b58b0', '#6f7fe0', '#aab4ff'];
 const PM = { name: 'Narendra Modi', party: 'BJP', since: '2014-05-26' };
 const SMALL_AREA = 1300;
 // Tiny UTs get an outside label joined by a leader line: [dx, dy] from their centre.
@@ -276,7 +376,7 @@ const NUDGE = { Punjab: [-10, 16] };
 // Capital labels that would collide with a state label: l = left of the dot, b = below it.
 const CAP_POS = { Dehradun: 'l', Agartala: 'l', Chandigarh: 'l', Imphal: 'b', Shillong: 'b', Kohima: 'b' };
 
-let MAP, DATA, EL, byName = {}, selected = null, mode = 'party';
+let MAP, DATA, EL, GOV, byName = {}, selected = null, mode = 'party';
 const el = (tag, attrs = {}, parent) => {
   const n = document.createElementNS(NS, tag);
   for (const k in attrs) n.setAttribute(k, attrs[k]);
@@ -293,6 +393,7 @@ function project([lat, lon]) {
 function fillFor(st) {
   if (mode === 'plain') return PLAIN[st.geo.colour % PLAIN.length];
   if (mode === 'ls') return BLOC_COL[lsWinner(st.name)] + 'b3';
+  if (mode === 'hist') { const t = turnover(st.name); return t ? TURN[t.changes] : NO_LEG; }
   if (!st.party) return NO_LEG;
   return DATA.parties[st.party].color + 'b3';
 }
@@ -357,6 +458,14 @@ function recolour() {
     });
     return;
   }
+  if (mode === 'hist') {
+    const c = [0, 0, 0, 0, 0];
+    DATA.states.forEach(s => { const t = turnover(s.name); if (t) c[t.changes]++; });
+    const lbl = ['Never changed', '1 change', '2 changes', '3 changes', 'Changed every time'];
+    c.forEach((n, i) => { if (n) lg.insertAdjacentHTML('beforeend', `<span><i style="background:${TURN[i]}"></i>${lbl[i]} · ${n}</span>`); });
+    lg.insertAdjacentHTML('beforeend', `<span style="color:var(--txt-dim)">Party of the CM after each of the last 5 Assembly elections</span>`);
+    return;
+  }
   if (mode !== 'party') return;
   const counts = {};
   DATA.states.forEach(s => { if (s.party) counts[s.party] = (counts[s.party] || 0) + 1; });
@@ -368,7 +477,14 @@ function recolour() {
 
 function showTip(e, st) {
   const tip = document.getElementById('tip');
-  tip.innerHTML = `<b>${esc(st.name)}</b><small>Capital: ${esc(st.capital)}</small>${st.cm ? `<small>CM: ${esc(st.cm)} (${esc(st.party)})</small>` : ''}`;
+  let extra = st.cm ? `<small>CM: ${esc(st.cm)} (${esc(st.party)})</small>` : '';
+  if (mode === 'hist') {
+    const t = turnover(st.name);
+    extra = t ? `<small>${t.seq.map(e => `${e.year} ${esc(e.cmParty)}`).join(' → ')}</small>` : '<small>No legislature</small>';
+  } else if (mode === 'ls') {
+    extra = `<small>Lok Sabha 2024: ${lsRows(st.name).map(r => `${esc(r.party)} ${r.seats}`).join(', ')}</small>`;
+  }
+  tip.innerHTML = `<b>${esc(st.name)}</b><small>Capital: ${esc(st.capital)}</small>${extra}`;
   const w = tip.offsetWidth;
   tip.style.left = Math.min(e.clientX + 14, window.innerWidth - w - 8) + 'px';
   tip.style.top = (e.clientY + 14) + 'px';
@@ -389,6 +505,7 @@ function tenure(iso) {
 }
 
 function seat(n, label, extra, share) {
+  if (!n) return `<div class="seat none"><div class="seat-n">—</div><div class="seat-l">${label}</div></div>`;
   return `<div class="seat"><div class="seat-n">${n}${extra ? ` <small>${extra}</small>` : ''}</div><div class="seat-l">${label}</div>${share != null ? `<div class="share"><i style="width:${Math.max(1, share * 100).toFixed(1)}%"></i></div>` : ''}</div>`;
 }
 
@@ -459,7 +576,7 @@ function renderIndia() {
   rows.forEach(r => { b[r.bloc || 'Others'] += r.seats; });
   const blocRows = ['NDA', 'INDIA', 'Others'].map(k => ({ party: k, seats: b[k] }));
   document.getElementById('detail-inner').innerHTML = `
-    <div class="card d-head">
+    <div class="card d-head wide">
       <button class="close" id="close" aria-label="Close">✕</button>
       <div class="d-type">Country</div>
       <div class="d-name">India</div>
@@ -467,15 +584,18 @@ function renderIndia() {
     </div>
     <div class="card">
       <div class="el-head"><div class="k">Lok Sabha ${EL.lokSabha.year} · by alliance</div><div class="el-sub">${total} seats</div></div>
-      ${seatBar(blocRows, total, maj, r => BLOC_COL[r.party], r => `${r.party} ${r.seats}`, r => `${r.party} · ${r.seats} seats`)}
+      ${seatBar(blocRows, total, maj, r => BLOC_COL[r.party], r => `${r.party} ‧ ${r.seats}`, r => `${r.party} · ${r.seats} seats`)}
       <div class="plist">${blocRows.map(r => `<div class="prow"><i style="background:${BLOC_COL[r.party]}"></i><b>${r.party}</b><span>${r.party === 'NDA' ? 'National Democratic Alliance' : r.party === 'INDIA' ? 'Indian National Developmental Inclusive Alliance' : 'Unaligned parties and independents'}</span><em>${r.seats}</em></div>`).join('')}</div>
     </div>
     <div class="card">
       <div class="el-head"><div class="k">Lok Sabha ${EL.lokSabha.year} · by party</div><div class="el-sub">${rows.length} parties</div></div>
       ${partyList(rows.slice().sort((a, b) => (a.party === 'IND') - (b.party === 'IND') || b.seats - a.seats || a.party.localeCompare(b.party)), true, 10)}
     </div>
-    <div class="card note">Alliances are as they stood at the ${EL.lokSabha.year} election. Click a state for its own Lok Sabha and Assembly results.</div>`;
+    ${upcomingCard()}
+    ${lsHistoryCard()}
+    <div class="card note wide">Alliances are as they stood at the ${EL.lokSabha.year} election. Click a state for its own Lok Sabha and Assembly results.</div>`;
   document.getElementById('close').addEventListener('click', close);
+  document.querySelectorAll('[data-state]').forEach(b => b.addEventListener('click', () => select(b.dataset.state)));
 }
 
 function renderDetail(st) {
@@ -490,20 +610,23 @@ function renderDetail(st) {
         ${party.alliance !== 'Other' ? `<span class="alliance">${esc(party.alliance)}</span>` : ''}
       </div>
       <div class="since">In office since ${fmtDate(st.since)} · ${tenure(st.since)}</div>
+      ${nextLine(st.name)}
     </div>` : `
     <div class="card">
       <div class="k">Chief Minister</div>
       <div class="no-cm">No Chief Minister — this union territory has no legislature and is run by the ${esc(st.admin)}, appointed by the President.</div>
     </div>`;
 
-  const seats = [];
-  if (st.mla) seats.push(seat(st.mla, 'MLAs — Legislative Assembly seats', st.mlaNominated ? `+${st.mlaNominated} nominated` : ''));
-  if (st.mlc) seats.push(seat(st.mlc, 'MLCs — Legislative Council seats'));
-  seats.push(seat(st.ls, `Lok Sabha MPs · ${(st.ls / LS_TOTAL * 100).toFixed(1)}% of ${LS_TOTAL}`, '', st.ls / LS_TOTAL));
-  seats.push(seat(st.rs, st.rs ? `Rajya Sabha MPs · of ${RS_ELECTED} elected` : 'Rajya Sabha MPs — no seats', '', st.rs ? st.rs / RS_ELECTED : null));
+  // Fixed slots (MLAs, MLCs / Lok Sabha, Rajya Sabha) so each number is always in the same place; missing ones stay as dashed placeholders.
+  const seats = [
+    seat(st.mla, st.mla ? 'MLAs — Legislative Assembly seats' : 'MLAs — no Legislative Assembly', st.mlaNominated ? `+${st.mlaNominated} nominated` : ''),
+    seat(st.mlc, st.mlc ? 'MLCs — Legislative Council seats' : 'MLCs — no Legislative Council'),
+    seat(st.ls, `Lok Sabha MPs · ${(st.ls / LS_TOTAL * 100).toFixed(1)}% of ${LS_TOTAL}`, '', st.ls / LS_TOTAL),
+    seat(st.rs, st.rs ? `Rajya Sabha MPs · of ${RS_ELECTED} elected` : 'Rajya Sabha MPs — no seats', '', st.rs / RS_ELECTED),
+  ];
 
   document.getElementById('detail-inner').innerHTML = `
-    <div class="card d-head">
+    <div class="card d-head wide">
       <button class="close" id="close" aria-label="Close">✕</button>
       <div class="d-type">${st.type === 'ut' ? 'Union territory' : 'State'}</div>
       <div class="d-name">${esc(st.name)}</div>
@@ -515,17 +638,258 @@ function renderDetail(st) {
       <div class="seats">${seats.join('')}</div>
     </div>
     ${electionCards(st)}
-    ${st.note ? `<div class="card note">${esc(st.note)}</div>` : ''}`;
+    ${st.note ? `<div class="card note wide">${esc(st.note)}</div>` : ''}`;
   document.getElementById('close').addEventListener('click', close);
 }
 
 function electionCards(st) {
   let html = '';
   const a = EL.assembly[st.name];
-  if (a) html += electionCard(`Assembly election · ${a.year}`, `${a.total} seats`, a.results, a.total, Math.floor(a.total / 2) + 1);
+  if (a) html += electionCard(`Assembly election · ${a.year}`, `${a.total} seats`, a.results, a.total, Math.floor(a.total / 2) + 1) + (historyCard(st.name) || '<div></div>');
   const ls = lsRows(st.name);
-  if (ls.length) html += electionCard(`Lok Sabha ${EL.lokSabha.year}`, `${st.ls} seat${st.ls > 1 ? 's' : ''} from here`, ls, st.ls, 0);
+  if (ls.length) html += electionCard(`Lok Sabha ${EL.lokSabha.year}`, `${st.ls} seat${st.ls > 1 ? 's' : ''} from here`, ls, st.ls, 0) + (lsStateHistoryCard(st.name) || '<div></div>');
   return html;
+}
+
+function turnover(name) {
+  const h = EL.assemblyHistory[name];
+  if (!h) return null;
+  const seq = h.slice().reverse();
+  let changes = 0;
+  for (let i = 1; i < seq.length; i++) if (seq[i].cmParty !== seq[i - 1].cmParty) changes++;
+  return { seq, changes };
+}
+
+function monthsUntil(ym) {
+  const [y, m] = ym.split('-').map(Number), now = new Date();
+  return (y - now.getFullYear()) * 12 + (m - 1 - now.getMonth());
+}
+function nextLine(name) {
+  const u = EL.upcoming.assembly[name];
+  if (!u) return '';
+  const m = monthsUntil(u.due);
+  const away = m <= 1 ? 'any time now' : m < 24 ? `in about ${m} months` : `in about ${Math.round(m / 12)} years`;
+  return `<div class="next">Next Assembly election · <b>${esc(u.label)}</b> <span style="color:var(--txt-dim)">(${away})</span></div>`;
+}
+
+function lsStateHistoryCard(name) {
+  const h = EL.lokSabhaStateHistory[name];
+  if (!h || h.length < 2) return '';
+  const rows = h.map(e => {
+    const r = e.results.map(([party, seats]) => ({ party, seats })).sort((a, b) => (a.party === 'IND') - (b.party === 'IND') || b.seats - a.seats);
+    const text = r.slice(0, 3).map(x => `${esc(x.party)} ${x.seats}`).join(' · ') + (r.length > 3 ? ` · +${r.length - 3} more` : '');
+    return `<div class="lsh"><div class="y">${e.year}</div>${seatBar(r, e.total, 0)}<div class="t">${text}${e.note ? ` <em>— ${esc(e.note)}</em>` : ''}</div></div>`;
+  }).join('');
+  return `<div class="card">
+    <div class="el-head"><div class="k">Lok Sabha · last ${h.length} elections</div><div class="el-sub">MPs from here</div></div>
+    ${rows}
+  </div>`;
+}
+
+function upcomingCard() {
+  const groups = {};
+  Object.entries(EL.upcoming.assembly).forEach(([name, u]) => { (groups[u.due] = groups[u.due] || { label: u.label, names: [] }).names.push(name); });
+  const ls = EL.upcoming.lokSabha;
+  const keys = Object.keys(groups).concat(ls.due).filter((v, i, a) => a.indexOf(v) === i).sort();
+  const rows = keys.map(k => {
+    const g = groups[k];
+    const who = (g ? g.names.sort().map(n => `<button data-state="${esc(n)}">${esc(n)}</button>`).join('') : '') +
+      (k === ls.due ? `<span class="ls">Lok Sabha general election</span>` : '');
+    return `<div class="upg"><div class="when">${esc(g ? g.label : ls.label)}</div><div class="who">${who}</div></div>`;
+  }).join('');
+  return `<div class="card">
+    <div class="el-head"><div class="k">Upcoming elections</div><div class="el-sub">Expected</div></div>
+    ${rows}
+    <div class="el-sub" style="margin-top:8px">${esc(EL.upcoming.note)}</div>
+  </div>`;
+}
+
+// Names wear their party's hue, lifted toward white so they stay readable on the dark card.
+function partyName(name, code) {
+  return `<div class="who" style="color:color-mix(in oklab, ${pcol(code)} 62%, #fff)" data-tip="${esc(name)} · ${esc(pname(code))}">${esc(name)}</div>`;
+}
+
+// Two largest parties plus everyone else, on the house's own scale, with a majority tick.
+function historyBar(e) {
+  const segs = e.largest.map(([party, seats]) => ({ party, seats, col: pcol(party), label: party, tip: `${pname(party)} · ${seats}` }));
+  const rest = e.total - segs.reduce((n, x) => n + x.seats, 0);
+  if (rest > 0) segs.push({ party: 'Others', seats: rest, col: FOLD, label: 'Others', tip: `All other parties and independents · ${rest}` });
+  const maj = Math.floor(e.total / 2) + 1;
+  const html = segs.filter(x => x.seats > 0).map(x => {
+    const share = x.seats / e.total;
+    const room = x.party === 'Others' ? 0.3 : 0.16;
+    const text = share >= room ? `${x.label} ‧ ${x.seats}` : share >= 0.06 ? `${x.seats}` : '';
+    return `<span class="s" style="flex:${x.seats} 0 0;background:${x.col}" data-tip="${esc(x.tip)} of ${e.total}">${esc(text)}</span>`;
+  }).join('');
+  return `<div class="hbar sbar" role="img" aria-label="${esc(segs.map(x => `${x.label} ${x.seats}`).join(', '))} of ${e.total}">${html}<i class="maj" style="left:${(maj / e.total * 100).toFixed(2)}%" data-tip="Majority · ${maj}"></i></div>`;
+}
+
+function historyCard(name) {
+  const h = EL.assemblyHistory[name];
+  if (!h) return '';
+  const oldestFirst = h.slice().reverse();
+  const strip = `<div class="strip" role="img" aria-label="${esc(oldestFirst.map(e => `${e.year} ${e.cmParty}`).join(', '))}">${oldestFirst.map(e =>
+    `<div style="background:${pcol(e.cmParty)}" data-tip="${e.year} · ${esc(e.cm)} (${esc(pname(e.cmParty))})"><b>${esc(e.cmParty)}</b><span>${e.year}</span></div>`).join('')}</div>`;
+  const rows = h.map(e => {
+    const [top, second] = e.largest;
+    const flag = top[0] !== e.cmParty && !(second && second[1] === top[1] && second[0] === e.cmParty);
+    const sub = [flag ? `Largest party ${top[0]} didn’t form the government` : '', e.note || ''].filter(Boolean).join(' · ');
+    return `<div class="hrow">
+      <div class="y">${e.year}</div>
+      ${partyName(e.cm, e.cmParty)}
+      <div class="res">${e.total} seats</div>
+      ${historyBar(e)}
+      ${sub ? `<div class="sub${flag ? ' flag' : ''}">${esc(sub)}</div>` : ''}
+    </div>`;
+  }).join('');
+  return `<div class="card">
+    <div class="el-head"><div class="k">Last ${h.length} Assembly elections</div><div class="el-sub">CM after each election</div></div>
+    ${strip}
+    <div style="margin-top:10px">${rows}</div>
+  </div>`;
+}
+
+function lsHistoryCard() {
+  const BCOL = { NDA: BLOC_COL.NDA, UPA: BLOC_COL.INDIA, INDIA: BLOC_COL.INDIA };
+  const oldestFirst = EL.lokSabhaHistory.slice().reverse();
+  const strip = `<div class="strip">${oldestFirst.map(e =>
+    `<div style="background:${BCOL[e.winner]}" data-tip="${e.year} · ${e.winner} ${e.blocs[0][1]} seats · PM ${esc(e.pm)}"><b>${e.winner}</b><span>${e.year}</span></div>`).join('')}</div>`;
+  const rows = EL.lokSabhaHistory.map(e => `<div class="hrow">
+      <div class="y">${e.year}</div>
+      ${partyName(e.pm, e.pmParty)}
+      <div class="res">${e.blocs.map(([b, n]) => `${b} ${n}`).join(' · ')}</div>
+      <div class="sub">${e.parties.map(([p, n]) => `${p} ${n}`).join(' · ')} — largest two parties</div>
+    </div>`).join('');
+  return `<div class="card">
+    <div class="el-head"><div class="k">Last ${EL.lokSabhaHistory.length} Lok Sabha elections</div><div class="el-sub">PM after each election</div></div>
+    ${strip}
+    <div style="margin-top:10px">${rows}</div>
+  </div>`;
+}
+
+const tint = code => `color-mix(in oklab, ${pcol(code)} 62%, #fff)`;
+
+// Regions by total Lok Sabha seats, and states within each by their own seats.
+function byRegion() {
+  const regions = {};
+  DATA.states.forEach(s => (regions[s.region] = regions[s.region] || []).push(s));
+  return Object.keys(regions).map(r => {
+    const list = regions[r].slice().sort((a, b) => b.ls - a.ls || a.name.localeCompare(b.name));
+    return { region: r, list, seats: list.reduce((n, s) => n + s.ls, 0) };
+  }).sort((a, b) => b.seats - a.seats);
+}
+
+function tipHandlers(el) {
+  el.addEventListener('mousemove', e => {
+    const t = e.target.closest('[data-tip]');
+    if (!t) return hideTip();
+    const tip = document.getElementById('tip');
+    tip.textContent = t.dataset.tip;
+    tip.style.left = Math.min(e.clientX + 14, window.innerWidth - tip.offsetWidth - 8) + 'px';
+    tip.style.top = (e.clientY + 14) + 'px';
+    tip.classList.add('show');
+  });
+  el.addEventListener('mouseleave', hideTip);
+}
+
+function stateRowLinks(el) {
+  el.querySelectorAll('tr.row').forEach(tr => {
+    const go = () => { setView('map'); select(tr.dataset.state); };
+    tr.addEventListener('click', go);
+    tr.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+  });
+}
+
+const monYr = d => new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+const stateCell = s => `<td><div class="st-n">${esc(s.name)}</div><div class="st-s">${s.ls} Lok Sabha seat${s.ls > 1 ? 's' : ''}</div></td>`;
+
+function buildGov() {
+  const P = GOV.people, label = Object.fromEntries(GOV.posts);
+  const who = name => `<span class="cmn" style="color:${tint(P[name].party)}" data-tip="${esc(name)} · ${esc(pname(P[name].party))} · ${esc(P[name].seat)}">${esc(name)}</span>`;
+  const now = GOV.union[0];
+  const cards = GOV.posts.map(([k, l]) => {
+    const x = now.posts[k][now.posts[k].length - 1], p = P[x.name];
+    return `<div class="ucard"><div class="k">${esc(l)}</div>
+      <div class="n" style="color:${tint(p.party)}" data-tip="${esc(x.name)} · ${esc(pname(p.party))}">${esc(x.name)}</div>
+      <div class="f">From <b>${esc(p.from)}</b></div>
+      <div class="m">${esc(p.seat)}</div>
+      <div class="m">Since ${fmtDate(x.since)}${p.note ? ` · ${esc(p.note)}` : ''}</div></div>`;
+  }).join('');
+
+  const head = `<tr><th>Post</th>${GOV.union.map(g => `<th>${g.year} · ${esc(g.label)}</th>`).join('')}</tr>`;
+  const rows = GOV.posts.map(([k, l]) => `<tr><td class="post">${esc(l)}</td>${GOV.union.map(g => {
+    const hs = g.posts[k], many = hs.length > 1;
+    const body = hs.map(x => `<div class="hold">${who(x.name)}<span class="fr">${esc(P[x.name].from)}</span>${
+      many ? `<span class="dt">${monYr(x.since)} – ${x.until ? monYr(x.until) : 'now'}</span>` : ''}${x.note ? `<span class="nt">${esc(x.note)}</span>` : ''}</div>`).join('');
+    return `<td${many ? ' class="chg"' : ''}>${body}</td>`;
+  }).join('')}</tr>`).join('');
+
+  const N = 5;
+  const pick = (s, v) => {
+    if (v === 'cm') return `<span class="bycm">Held by the CM</span>`;
+    if (v === 'lg') return `<span class="bycm">With the Lt Governor</span>`;
+    return `<span class="cmn" style="color:${tint(v.party)}" data-tip="${esc(v.name)} · ${esc(pname(v.party))}">${esc(v.name)}</span>`;
+  };
+  const cols = ['Governor / LG', 'Chief Minister', 'Deputy CM', 'Home', 'Finance'];
+  const sbody = byRegion().map(({ region, list, seats }) => `<tr class="reg cols"><td>${esc(region)}<span>${list.length} states & UTs · ${seats} Lok Sabha seats</span></td>${cols.map(c => `<td><i>${c}</i></td>`).join('')}</tr>` + list.map(s => {
+    const g = GOV.states[s.name] || {};
+    const head = g.head ? `<span class="gt">${esc(g.head.title)}</span><span class="cmn" style="color:var(--txt)" data-tip="Since ${fmtDate(g.head.since)}">${esc(g.head.name)}</span>` : '';
+    const note = g.note ? `<span class="nt">${esc(g.note)}</span>` : '';
+    if (!s.cm) return `<tr class="row" tabindex="0" data-state="${esc(s.name)}">${stateCell(s)}<td>${head}</td><td colspan="${N - 1}" class="nolg">No legislature — the ${esc(g.head ? g.head.title : 'Administrator')} runs it for the Union${note ? ' · ' + esc(g.note) : ''}</td></tr>`;
+    const dep = g.deputy && g.deputy.length ? g.deputy.map(d => `<div class="hold">${pick(s, d)}</div>`).join('') : '<span class="bycm">—</span>';
+    return `<tr class="row" tabindex="0" data-state="${esc(s.name)}">${stateCell(s)}<td>${head}</td>
+      <td><span class="cmn" style="color:${tint(s.party)}" data-tip="${esc(s.cm)} · ${esc(pname(s.party))}">${esc(s.cm)}</span></td>
+      <td>${dep}</td><td>${pick(s, g.home)}${note}</td><td>${pick(s, g.finance)}</td></tr>`;
+  }).join('')).join('');
+
+  const gv = document.getElementById('gview');
+  gv.innerHTML = `
+    <section class="gsec"><h2>Union Government · now</h2><p class="gsub">The Prime Minister and the four ministries that sit on the Cabinet Committee on Security. “From” is the state they come from; the seat line is the house and state that sends them to Parliament.</p><div class="ucards">${cards}</div></section>
+    <section class="gsec"><h2>Top five posts · last five governments</h2><p class="gsub">Each column is the government formed after that Lok Sabha election. A marked cell means the post changed hands mid-term, with dates.</p>
+      <div class="tview"><table class="ctab fixed"><colgroup><col style="width:130px">${GOV.union.map(() => '<col>').join('')}</colgroup><thead>${head}</thead><tbody>${rows}</tbody></table></div></section>
+    <section class="gsec"><h2>States · top posts now</h2><p class="gsub">Grouped by region, most Lok Sabha seats first. “Held by the CM” means the Chief Minister keeps that department.</p>
+      <div class="tview"><table class="ctab"><tbody>${sbody}</tbody></table></div></section>`;
+  stateRowLinks(gv);
+  tipHandlers(gv);
+}
+
+function buildTable() {
+  const N = 5;
+  const head = `<tr><th>State</th>${Array.from({ length: N }, (_, i) => `<th>${i === 0 ? 'Latest election' : `${i} before`}</th>`).join('')}</tr>`;
+  const body = byRegion().map(({ region: r, list, seats }) => {
+    const rows = list.map(s => {
+      const h = EL.assemblyHistory[s.name] || [];
+      const cells = h.length ? Array.from({ length: N }, (_, i) => {
+        const e = h[i];
+        if (!e) return '<td></td>';
+        const now = i === 0 && s.cm && s.cm !== e.cm
+          ? `<span class="now">now: <b style="color:${tint(s.party)}">${esc(s.cm)}</b></span>` : '';
+        return `<td data-tip="${esc(e.cm)} · ${esc(pname(e.cmParty))}"><span class="yr">${e.year}</span><span class="cmn" style="color:${tint(e.cmParty)}">${esc(e.cm)}</span>${now}</td>`;
+      }).join('') : `<td colspan="${N}" class="nolg">No legislature — run by the ${esc(s.admin || 'Administrator')}</td>`;
+      return `<tr class="row" tabindex="0" data-state="${esc(s.name)}">${stateCell(s)}${cells}</tr>`;
+    }).join('');
+    return `<tr class="reg"><td colspan="${N + 1}">${esc(r)}<span>${list.length} states & UTs · ${seats} Lok Sabha seats</span></td></tr>${rows}`;
+  }).join('');
+  const tv = document.getElementById('tview');
+  tv.innerHTML = `<table class="ctab"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+  stateRowLinks(tv);
+  tipHandlers(tv);
+}
+
+function setView(v) {
+  const tv = document.getElementById('tview'), gv = document.getElementById('gview');
+  if (v === 'table' && !tv.innerHTML) buildTable();
+  if (v === 'gov' && !gv.innerHTML) buildGov();
+  document.documentElement.classList.toggle('alt-view', v !== 'map');
+  tv.hidden = v !== 'table';
+  gv.hidden = v !== 'gov';
+  ['map', 'table', 'gov'].forEach(k => {
+    const b = document.getElementById('view-' + k);
+    b.classList.toggle('on', k === v);
+    b.setAttribute('aria-pressed', k === v);
+  });
+  if (v !== 'map') { if (selected) close(); history.replaceState(null, '', '?view=' + v); }
+  else if (!selected) history.replaceState(null, '', location.pathname);
 }
 
 function openIndia() {
@@ -568,7 +932,7 @@ function close() {
 
 function setMode(m) {
   mode = m;
-  ['party', 'ls', 'plain'].forEach(k => {
+  ['party', 'ls', 'hist', 'plain'].forEach(k => {
     const b = document.getElementById('mode-' + k);
     b.classList.toggle('on', k === m);
     b.setAttribute('aria-pressed', k === m);
@@ -578,12 +942,13 @@ function setMode(m) {
 
 async function init() {
   try {
-    const [m, d, e] = await Promise.all([
+    const [m, d, e, g] = await Promise.all([
       fetch('data/india-map.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
       fetch('data/india-states.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
       fetch('data/india-elections.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      fetch('data/india-government.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
     ]);
-    MAP = m; DATA = d; EL = e;
+    MAP = m; DATA = d; EL = e; GOV = g;
   } catch (e) {
     document.getElementById('map-wrap').innerHTML = '<div class="err">Couldn’t load the map data.</div>';
     return;
@@ -609,6 +974,7 @@ async function init() {
   document.getElementById('mode-party').addEventListener('click', () => setMode('party'));
   document.getElementById('mode-plain').addEventListener('click', () => setMode('plain'));
   document.getElementById('mode-ls').addEventListener('click', () => setMode('ls'));
+  document.getElementById('mode-hist').addEventListener('click', () => setMode('hist'));
   document.getElementById('india-btn').addEventListener('click', openIndia);
   document.getElementById('detail').addEventListener('mousemove', e => {
     const t = e.target.closest('[data-tip]');
@@ -629,6 +995,11 @@ async function init() {
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && selected) close(); });
 
+  document.getElementById('view-map').addEventListener('click', () => setView('map'));
+  document.getElementById('view-table').addEventListener('click', () => setView('table'));
+  document.getElementById('view-gov').addEventListener('click', () => setView('gov'));
+  const v = new URLSearchParams(location.search).get('view');
+  if (v === 'table' || v === 'gov') setView(v);
   const q = new URLSearchParams(location.search).get('state');
   if (q && q.toUpperCase() === 'IN') openIndia();
   else if (q) {

@@ -1,0 +1,954 @@
+{
+ "asOf": "2026-11-03",
+ "posts": [
+  [
+   "pm",
+   "Prime Minister"
+  ],
+  [
+   "home",
+   "Home Affairs"
+  ],
+  [
+   "finance",
+   "Finance"
+  ],
+  [
+   "defence",
+   "Defence"
+  ],
+  [
+   "external",
+   "External Affairs"
+  ]
+ ],
+ "people": {
+  "Narendra Modi": {
+   "party": "BJP",
+   "from": "Gujarat",
+   "seat": "Lok Sabha · Varanasi, Uttar Pradesh"
+  },
+  "Amit Shah": {
+   "party": "BJP",
+   "from": "Gujarat",
+   "seat": "Lok Sabha · Gandhinagar, Gujarat"
+  },
+  "Nirmala Sitharaman": {
+   "party": "BJP",
+   "from": "Tamil Nadu",
+   "seat": "Rajya Sabha · Karnataka"
+  },
+  "Rajnath Singh": {
+   "party": "BJP",
+   "from": "Uttar Pradesh",
+   "seat": "Lok Sabha · Lucknow, Uttar Pradesh"
+  },
+  "S. Jaishankar": {
+   "party": "BJP",
+   "from": "Delhi",
+   "seat": "Rajya Sabha · Gujarat"
+  },
+  "Arun Jaitley": {
+   "party": "BJP",
+   "from": "Delhi",
+   "seat": "Rajya Sabha · Gujarat, then Uttar Pradesh from 2018"
+  },
+  "Manohar Parrikar": {
+   "party": "BJP",
+   "from": "Goa",
+   "seat": "Rajya Sabha · Uttar Pradesh"
+  },
+  "Sushma Swaraj": {
+   "party": "BJP",
+   "from": "Haryana",
+   "seat": "Lok Sabha · Vidisha, Madhya Pradesh"
+  },
+  "Piyush Goyal": {
+   "party": "BJP",
+   "from": "Maharashtra",
+   "seat": "Rajya Sabha · Maharashtra"
+  },
+  "Manmohan Singh": {
+   "party": "INC",
+   "from": "Punjab",
+   "seat": "Rajya Sabha · Assam",
+   "note": "Born in Gah, west Punjab (now Pakistan)"
+  },
+  "P. Chidambaram": {
+   "party": "INC",
+   "from": "Tamil Nadu",
+   "seat": "Lok Sabha · Sivaganga, Tamil Nadu"
+  },
+  "Pranab Mukherjee": {
+   "party": "INC",
+   "from": "West Bengal",
+   "seat": "Lok Sabha · Jangipur, West Bengal"
+  },
+  "A. K. Antony": {
+   "party": "INC",
+   "from": "Kerala",
+   "seat": "Rajya Sabha · Kerala"
+  },
+  "Shivraj Patil": {
+   "party": "INC",
+   "from": "Maharashtra",
+   "seat": "Rajya Sabha · Maharashtra"
+  },
+  "Sushilkumar Shinde": {
+   "party": "INC",
+   "from": "Maharashtra",
+   "seat": "Lok Sabha · Solapur, Maharashtra"
+  },
+  "S. M. Krishna": {
+   "party": "INC",
+   "from": "Karnataka",
+   "seat": "Rajya Sabha · Karnataka"
+  },
+  "Salman Khurshid": {
+   "party": "INC",
+   "from": "Uttar Pradesh",
+   "seat": "Lok Sabha · Farrukhabad, Uttar Pradesh"
+  },
+  "Natwar Singh": {
+   "party": "INC",
+   "from": "Rajasthan",
+   "seat": "Rajya Sabha · Rajasthan"
+  }
+ },
+ "union": [
+  {
+   "year": 2024,
+   "label": "Modi III",
+   "start": "2024-06-09",
+   "posts": {
+    "pm": [
+     {
+      "name": "Narendra Modi",
+      "since": "2024-06-09"
+     }
+    ],
+    "home": [
+     {
+      "name": "Amit Shah",
+      "since": "2024-06-10"
+     }
+    ],
+    "finance": [
+     {
+      "name": "Nirmala Sitharaman",
+      "since": "2024-06-10"
+     }
+    ],
+    "defence": [
+     {
+      "name": "Rajnath Singh",
+      "since": "2024-06-10"
+     }
+    ],
+    "external": [
+     {
+      "name": "S. Jaishankar",
+      "since": "2024-06-10"
+     }
+    ]
+   }
+  },
+  {
+   "year": 2019,
+   "label": "Modi II",
+   "start": "2019-05-30",
+   "end": "2024-06-09",
+   "posts": {
+    "pm": [
+     {
+      "name": "Narendra Modi",
+      "since": "2019-05-30"
+     }
+    ],
+    "home": [
+     {
+      "name": "Amit Shah",
+      "since": "2019-05-30"
+     }
+    ],
+    "finance": [
+     {
+      "name": "Nirmala Sitharaman",
+      "since": "2019-05-31"
+     }
+    ],
+    "defence": [
+     {
+      "name": "Rajnath Singh",
+      "since": "2019-05-30"
+     }
+    ],
+    "external": [
+     {
+      "name": "S. Jaishankar",
+      "since": "2019-05-30"
+     }
+    ]
+   }
+  },
+  {
+   "year": 2014,
+   "label": "Modi I",
+   "start": "2014-05-26",
+   "end": "2019-05-30",
+   "posts": {
+    "pm": [
+     {
+      "name": "Narendra Modi",
+      "since": "2014-05-26"
+     }
+    ],
+    "home": [
+     {
+      "name": "Rajnath Singh",
+      "since": "2014-05-26"
+     }
+    ],
+    "finance": [
+     {
+      "name": "Arun Jaitley",
+      "since": "2014-05-27",
+      "note": "Piyush Goyal held it while he was ill: May–Aug 2018 and Jan–Feb 2019, presenting the 2019 interim budget"
+     }
+    ],
+    "defence": [
+     {
+      "name": "Arun Jaitley",
+      "since": "2014-05-26",
+      "until": "2014-11-09",
+      "note": "Additional charge"
+     },
+     {
+      "name": "Manohar Parrikar",
+      "since": "2014-11-09",
+      "until": "2017-03-13",
+      "note": "Left to become Goa CM"
+     },
+     {
+      "name": "Arun Jaitley",
+      "since": "2017-03-13",
+      "until": "2017-09-03",
+      "note": "Additional charge"
+     },
+     {
+      "name": "Nirmala Sitharaman",
+      "since": "2017-09-03",
+      "until": "2019-05-30"
+     }
+    ],
+    "external": [
+     {
+      "name": "Sushma Swaraj",
+      "since": "2014-05-26"
+     }
+    ]
+   }
+  },
+  {
+   "year": 2009,
+   "label": "Manmohan II",
+   "start": "2009-05-22",
+   "end": "2014-05-26",
+   "posts": {
+    "pm": [
+     {
+      "name": "Manmohan Singh",
+      "since": "2009-05-22"
+     }
+    ],
+    "home": [
+     {
+      "name": "P. Chidambaram",
+      "since": "2009-05-22",
+      "until": "2012-07-31",
+      "note": "Moved to Finance"
+     },
+     {
+      "name": "Sushilkumar Shinde",
+      "since": "2012-07-31",
+      "until": "2014-05-26"
+     }
+    ],
+    "finance": [
+     {
+      "name": "Pranab Mukherjee",
+      "since": "2009-05-22",
+      "until": "2012-06-26",
+      "note": "Left to become President"
+     },
+     {
+      "name": "Manmohan Singh",
+      "since": "2012-06-26",
+      "until": "2012-07-31",
+      "note": "Held by the PM"
+     },
+     {
+      "name": "P. Chidambaram",
+      "since": "2012-07-31",
+      "until": "2014-05-26"
+     }
+    ],
+    "defence": [
+     {
+      "name": "A. K. Antony",
+      "since": "2009-05-22"
+     }
+    ],
+    "external": [
+     {
+      "name": "S. M. Krishna",
+      "since": "2009-05-22",
+      "until": "2012-10-28",
+      "note": "Resigned"
+     },
+     {
+      "name": "Salman Khurshid",
+      "since": "2012-10-28",
+      "until": "2014-05-26"
+     }
+    ]
+   }
+  },
+  {
+   "year": 2004,
+   "label": "Manmohan I",
+   "start": "2004-05-22",
+   "end": "2009-05-22",
+   "posts": {
+    "pm": [
+     {
+      "name": "Manmohan Singh",
+      "since": "2004-05-22"
+     }
+    ],
+    "home": [
+     {
+      "name": "Shivraj Patil",
+      "since": "2004-05-22",
+      "until": "2008-11-30",
+      "note": "Resigned after the Mumbai attacks"
+     },
+     {
+      "name": "P. Chidambaram",
+      "since": "2008-11-30",
+      "until": "2009-05-22"
+     }
+    ],
+    "finance": [
+     {
+      "name": "P. Chidambaram",
+      "since": "2004-05-22",
+      "until": "2008-11-30",
+      "note": "Moved to Home"
+     },
+     {
+      "name": "Manmohan Singh",
+      "since": "2008-11-30",
+      "until": "2009-01-24",
+      "note": "Held by the PM"
+     },
+     {
+      "name": "Pranab Mukherjee",
+      "since": "2009-01-24",
+      "until": "2009-05-22"
+     }
+    ],
+    "defence": [
+     {
+      "name": "Pranab Mukherjee",
+      "since": "2004-05-22",
+      "until": "2006-10-24",
+      "note": "Moved to External Affairs"
+     },
+     {
+      "name": "A. K. Antony",
+      "since": "2006-10-24",
+      "until": "2009-05-22"
+     }
+    ],
+    "external": [
+     {
+      "name": "Natwar Singh",
+      "since": "2004-05-23",
+      "until": "2005-11-06",
+      "note": "Removed over the Volcker report"
+     },
+     {
+      "name": "Manmohan Singh",
+      "since": "2005-11-06",
+      "until": "2006-10-24",
+      "note": "Held by the PM"
+     },
+     {
+      "name": "Pranab Mukherjee",
+      "since": "2006-10-24",
+      "until": "2009-05-22"
+     }
+    ]
+   }
+  }
+ ],
+ "states": {
+  "Andhra Pradesh": {
+   "head": {
+    "title": "Governor",
+    "name": "S. Abdul Nazeer",
+    "since": "2023-02-24"
+   },
+   "deputy": [
+    {
+     "name": "Pawan Kalyan",
+     "party": "JSP"
+    }
+   ],
+   "home": {
+    "name": "Vangalapudi Anitha",
+    "party": "TDP"
+   },
+   "finance": {
+    "name": "Payyavula Keshav",
+    "party": "TDP"
+   }
+  },
+  "Arunachal Pradesh": {
+   "head": {
+    "title": "Governor",
+    "name": "K. T. Parnaik",
+    "since": "2023-02-16"
+   },
+   "deputy": [
+    {
+     "name": "Chowna Mein",
+     "party": "BJP"
+    }
+   ],
+   "home": {
+    "name": "Mama Natung",
+    "party": "BJP"
+   },
+   "finance": {
+    "name": "Chowna Mein",
+    "party": "BJP"
+   }
+  },
+  "Assam": {
+   "head": {
+    "title": "Governor",
+    "name": "Lakshman Acharya",
+    "since": "2024-07-30"
+   },
+   "deputy": [],
+   "home": "cm",
+   "finance": {
+    "name": "Jayanta Malla Baruah",
+    "party": "BJP"
+   }
+  },
+  "Bihar": {
+   "head": {
+    "title": "Governor",
+    "name": "Syed Ata Hasnain",
+    "since": "2026-03-14"
+   },
+   "deputy": [
+    {
+     "name": "Bijendra Prasad Yadav",
+     "party": "JD(U)"
+    },
+    {
+     "name": "Vijay Kumar Chaudhary",
+     "party": "JD(U)"
+    }
+   ],
+   "home": "cm",
+   "finance": {
+    "name": "Bijendra Prasad Yadav",
+    "party": "JD(U)"
+   }
+  },
+  "Chhattisgarh": {
+   "head": {
+    "title": "Governor",
+    "name": "Ramen Deka",
+    "since": "2024-07-31"
+   },
+   "deputy": [
+    {
+     "name": "Arun Sao",
+     "party": "BJP"
+    },
+    {
+     "name": "Vijay Sharma",
+     "party": "BJP"
+    }
+   ],
+   "home": {
+    "name": "Vijay Sharma",
+    "party": "BJP"
+   },
+   "finance": {
+    "name": "O. P. Choudhary",
+    "party": "BJP"
+   }
+  },
+  "Goa": {
+   "head": {
+    "title": "Governor",
+    "name": "P. Ashok Gajapathi Raju",
+    "since": "2025-07-26"
+   },
+   "deputy": [],
+   "home": "cm",
+   "finance": "cm"
+  },
+  "Gujarat": {
+   "head": {
+    "title": "Governor",
+    "name": "Acharya Devvrat",
+    "since": "2019-07-22"
+   },
+   "deputy": [
+    {
+     "name": "Harsh Sanghavi",
+     "party": "BJP"
+    }
+   ],
+   "home": {
+    "name": "Harsh Sanghavi",
+    "party": "BJP"
+   },
+   "finance": {
+    "name": "Kanubhai Desai",
+    "party": "BJP"
+   }
+  },
+  "Haryana": {
+   "head": {
+    "title": "Governor",
+    "name": "Ashim Kumar Ghosh",
+    "since": "2025-07-21"
+   },
+   "deputy": [],
+   "home": "cm",
+   "finance": "cm"
+  },
+  "Himachal Pradesh": {
+   "head": {
+    "title": "Governor",
+    "name": "Kavinder Gupta",
+    "since": "2026-03-10"
+   },
+   "deputy": [
+    {
+     "name": "Mukesh Agnihotri",
+     "party": "INC"
+    }
+   ],
+   "home": "cm",
+   "finance": "cm"
+  },
+  "Jharkhand": {
+   "head": {
+    "title": "Governor",
+    "name": "Santosh Kumar Gangwar",
+    "since": "2024-07-31"
+   },
+   "deputy": [],
+   "home": "cm",
+   "finance": {
+    "name": "Radha Krishna Kishore",
+    "party": "INC"
+   }
+  },
+  "Karnataka": {
+   "head": {
+    "title": "Governor",
+    "name": "Sudha Yadav",
+    "since": "2026-10-16"
+   },
+   "deputy": [
+    {
+     "name": "G. Parameshwara",
+     "party": "INC"
+    }
+   ],
+   "home": {
+    "name": "Priyank Kharge",
+    "party": "INC"
+   },
+   "finance": "cm"
+  },
+  "Kerala": {
+   "head": {
+    "title": "Governor",
+    "name": "Om Prakash Mathur",
+    "since": "2026-10-23"
+   },
+   "deputy": [],
+   "home": {
+    "name": "Ramesh Chennithala",
+    "party": "INC"
+   },
+   "finance": "cm"
+  },
+  "Madhya Pradesh": {
+   "head": {
+    "title": "Governor",
+    "name": "Mangubhai C. Patel",
+    "since": "2021-07-08"
+   },
+   "deputy": [
+    {
+     "name": "Rajendra Shukla",
+     "party": "BJP"
+    },
+    {
+     "name": "Jagdish Devda",
+     "party": "BJP"
+    }
+   ],
+   "home": "cm",
+   "finance": {
+    "name": "Jagdish Devda",
+    "party": "BJP"
+   }
+  },
+  "Maharashtra": {
+   "head": {
+    "title": "Governor",
+    "name": "Jishnu Dev Varma",
+    "since": "2026-03-10"
+   },
+   "deputy": [
+    {
+     "name": "Eknath Shinde",
+     "party": "SHS"
+    },
+    {
+     "name": "Sunetra Pawar",
+     "party": "NCP"
+    }
+   ],
+   "home": "cm",
+   "finance": "cm",
+   "note": "Finance passed to the CM after Deputy CM Ajit Pawar died on 28 January 2026"
+  },
+  "Manipur": {
+   "head": {
+    "title": "Governor",
+    "name": "Ajay Kumar Bhalla",
+    "since": "2025-01-03"
+   },
+   "deputy": [
+    {
+     "name": "Nemcha Kipgen",
+     "party": "BJP"
+    },
+    {
+     "name": "Losii Dikho",
+     "party": "NPF"
+    }
+   ],
+   "home": {
+    "name": "Govindas Konthoujam",
+    "party": "BJP"
+   },
+   "finance": "cm"
+  },
+  "Meghalaya": {
+   "head": {
+    "title": "Governor",
+    "name": "C. H. Vijayashankar",
+    "since": "2024-07-30"
+   },
+   "deputy": [
+    {
+     "name": "Prestone Tynsong",
+     "party": "NPP"
+    },
+    {
+     "name": "Sniawbhalang Dhar",
+     "party": "NPP"
+    }
+   ],
+   "home": {
+    "name": "Prestone Tynsong",
+    "party": "NPP"
+   },
+   "finance": "cm"
+  },
+  "Mizoram": {
+   "head": {
+    "title": "Governor",
+    "name": "V. K. Singh",
+    "since": "2025-01-16"
+   },
+   "deputy": [],
+   "home": {
+    "name": "K. Sapdanga",
+    "party": "ZPM"
+   },
+   "finance": "cm"
+  },
+  "Nagaland": {
+   "head": {
+    "title": "Governor",
+    "name": "Nand Kishore Yadav",
+    "since": "2026-03-13"
+   },
+   "deputy": [
+    {
+     "name": "Yanthungo Patton",
+     "party": "BJP"
+    },
+    {
+     "name": "T. R. Zeliang",
+     "party": "NPF"
+    }
+   ],
+   "home": {
+    "name": "Yanthungo Patton",
+    "party": "BJP"
+   },
+   "finance": "cm"
+  },
+  "Odisha": {
+   "head": {
+    "title": "Governor",
+    "name": "Braj Mohan Ram",
+    "since": "2026-10-18"
+   },
+   "deputy": [
+    {
+     "name": "Kanak Vardhan Singh Deo",
+     "party": "BJP"
+    },
+    {
+     "name": "Pravati Parida",
+     "party": "BJP"
+    }
+   ],
+   "home": "cm",
+   "finance": "cm"
+  },
+  "Punjab": {
+   "head": {
+    "title": "Governor",
+    "name": "Gulab Chand Kataria",
+    "since": "2024-07-31"
+   },
+   "deputy": [],
+   "home": "cm",
+   "finance": {
+    "name": "Harpal Singh Cheema",
+    "party": "AAP"
+   }
+  },
+  "Rajasthan": {
+   "head": {
+    "title": "Governor",
+    "name": "Haribhau Bagade",
+    "since": "2024-07-31"
+   },
+   "deputy": [
+    {
+     "name": "Diya Kumari",
+     "party": "BJP"
+    },
+    {
+     "name": "Prem Chand Bairwa",
+     "party": "BJP"
+    }
+   ],
+   "home": "cm",
+   "finance": {
+    "name": "Diya Kumari",
+    "party": "BJP"
+   }
+  },
+  "Sikkim": {
+   "head": {
+    "title": "Governor",
+    "name": "Dushyant Kumar Gautam",
+    "since": "2026-10-19"
+   },
+   "deputy": [],
+   "home": "cm",
+   "finance": "cm"
+  },
+  "Tamil Nadu": {
+   "head": {
+    "title": "Governor",
+    "name": "Rajendra Arlekar",
+    "since": "2026-03-12"
+   },
+   "deputy": [],
+   "home": "cm",
+   "finance": {
+    "name": "N. Marie Wilson",
+    "party": "TVK"
+   }
+  },
+  "Telangana": {
+   "head": {
+    "title": "Governor",
+    "name": "Shiv Pratap Shukla",
+    "since": "2026-03-11"
+   },
+   "deputy": [
+    {
+     "name": "Mallu Bhatti Vikramarka",
+     "party": "INC"
+    }
+   ],
+   "home": "cm",
+   "finance": {
+    "name": "Mallu Bhatti Vikramarka",
+    "party": "INC"
+   }
+  },
+  "Tripura": {
+   "head": {
+    "title": "Governor",
+    "name": "N. Indrasena Reddy",
+    "since": "2023-10-26"
+   },
+   "deputy": [],
+   "home": "cm",
+   "finance": {
+    "name": "Pranjit Singha Roy",
+    "party": "BJP"
+   }
+  },
+  "Uttar Pradesh": {
+   "head": {
+    "title": "Governor",
+    "name": "Anandiben Patel",
+    "since": "2019-07-29"
+   },
+   "deputy": [
+    {
+     "name": "Keshav Prasad Maurya",
+     "party": "BJP"
+    },
+    {
+     "name": "Brajesh Pathak",
+     "party": "BJP"
+    }
+   ],
+   "home": "cm",
+   "finance": {
+    "name": "Suresh Kumar Khanna",
+    "party": "BJP"
+   }
+  },
+  "Uttarakhand": {
+   "head": {
+    "title": "Governor",
+    "name": "Dhal Singh Bisen",
+    "since": "2026-10-19"
+   },
+   "deputy": [],
+   "home": "cm",
+   "finance": "cm"
+  },
+  "West Bengal": {
+   "head": {
+    "title": "Governor",
+    "name": "R. N. Ravi",
+    "since": "2026-03-12"
+   },
+   "deputy": [],
+   "home": "cm",
+   "finance": {
+    "name": "Swapan Dasgupta",
+    "party": "BJP"
+   }
+  },
+  "Delhi": {
+   "head": {
+    "title": "Lieutenant Governor",
+    "name": "Taranjit Singh Sandhu",
+    "since": "2026-03-11"
+   },
+   "deputy": [],
+   "home": {
+    "name": "Ashish Sood",
+    "party": "BJP"
+   },
+   "finance": "cm",
+   "note": "Delhi Police answers to the Union Home Ministry, not the state Home minister"
+  },
+  "Jammu and Kashmir": {
+   "head": {
+    "title": "Lieutenant Governor",
+    "name": "Manoj Sinha",
+    "since": "2020-08-07"
+   },
+   "deputy": [
+    {
+     "name": "Surinder Kumar Choudhary",
+     "party": "JKNC"
+    }
+   ],
+   "home": "lg",
+   "finance": "cm",
+   "note": "Police and public order sit with the Lieutenant Governor in the union territory"
+  },
+  "Puducherry": {
+   "head": {
+    "title": "Lieutenant Governor",
+    "name": "K. Kailashnathan",
+    "since": "2024-08-07"
+   },
+   "deputy": [],
+   "home": {
+    "name": "A. Namassivayam",
+    "party": "BJP"
+   },
+   "finance": "cm"
+  },
+  "Andaman and Nicobar Islands": {
+   "head": {
+    "title": "Lieutenant Governor",
+    "name": "Dinesh Sharma",
+    "since": "2026-09-15"
+   }
+  },
+  "Chandigarh": {
+   "head": {
+    "title": "Administrator",
+    "name": "Gulab Chand Kataria",
+    "since": "2024-07-31"
+   },
+   "note": "The Governor of Punjab is ex officio Administrator"
+  },
+  "Dadra and Nagar Haveli and Daman and Diu": {
+   "head": {
+    "title": "Administrator",
+    "name": "Praful Khoda Patel",
+    "since": "2020-01-26"
+   }
+  },
+  "Ladakh": {
+   "head": {
+    "title": "Lieutenant Governor",
+    "name": "V. K. Saxena",
+    "since": "2026-03-13"
+   }
+  },
+  "Lakshadweep": {
+   "head": {
+    "title": "Administrator",
+    "name": "Praful Khoda Patel",
+    "since": "2020-12-05"
+   },
+   "note": "Additional charge, alongside Dadra and Nagar Haveli and Daman and Diu"
+  }
+ }
+}

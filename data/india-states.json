@@ -188,7 +188,7 @@
    "color": "#2f9e5a"
   },
   "BRS": {
-   "name": "Bharat Rashtra Samithi",
+   "name": "Bharat Rashtra Samithi (formerly TRS)",
    "alliance": "Other",
    "color": "#d6456e"
   },
@@ -409,6 +409,68 @@
   "OTH": {
    "name": "Others",
    "alliance": "Other"
+  },
+  "MPP": {
+   "name": "Manipur Peoples Party",
+   "alliance": "Other"
+  },
+  "MSCP": {
+   "name": "Manipur State Congress Party",
+   "alliance": "Other"
+  },
+  "LJP": {
+   "name": "Lok Janshakti Party",
+   "alliance": "Other",
+   "color": "#7e64e8"
+  },
+  "RLSP": {
+   "name": "Rashtriya Lok Samta Party",
+   "alliance": "Other"
+  },
+  "NLP": {
+   "name": "National Loktantrik Party",
+   "alliance": "Other"
+  },
+  "SJP(R)": {
+   "name": "Samajwadi Janata Party (Rashtriya)",
+   "alliance": "Other"
+  },
+  "HJC": {
+   "name": "Haryana Janhit Congress (BL)",
+   "alliance": "Other"
+  },
+  "JVM": {
+   "name": "Jharkhand Vikas Morcha (Prajatantrik)",
+   "alliance": "Other"
+  },
+  "SWP": {
+   "name": "Swabhimani Paksha",
+   "alliance": "Other"
+  },
+  "BVA": {
+   "name": "Bahujan Vikas Aaghadi",
+   "alliance": "Other"
+  },
+  "AIFB": {
+   "name": "All India Forward Bloc",
+   "alliance": "Other"
+  },
+  "SUCI": {
+   "name": "Socialist Unity Centre of India (Communist)",
+   "alliance": "Other"
+  },
+  "IFDP": {
+   "name": "Indian Federal Democratic Party",
+   "alliance": "Other"
+  },
+  "BNP": {
+   "name": "Bharatiya Navshakti Party",
+   "alliance": "Other"
+  },
+  "LDF": {
+   "name": "Left Democratic Front (CPI(M) and allies)",
+   "alliance": "Other",
+   "color": "#d64545"
   }
  },
  "states": [
@@ -427,7 +489,8 @@
    "mla": 175,
    "mlc": 58,
    "ls": 25,
-   "rs": 11
+   "rs": 11,
+   "region": "South"
   },
   {
    "name": "Arunachal Pradesh",
@@ -443,7 +506,8 @@
    "since": "2016-07-17",
    "mla": 60,
    "ls": 2,
-   "rs": 1
+   "rs": 1,
+   "region": "Northeast"
   },
   {
    "name": "Assam",
@@ -460,7 +524,8 @@
    "mla": 126,
    "ls": 14,
    "rs": 7,
-   "note": "Re-elected May 2026; second term sworn in 12 May 2026."
+   "note": "Re-elected May 2026; second term sworn in 12 May 2026.",
+   "region": "Northeast"
   },
   {
    "name": "Bihar",
@@ -477,7 +542,8 @@
    "mla": 243,
    "mlc": 75,
    "ls": 40,
-   "rs": 16
+   "rs": 16,
+   "region": "East"
   },
   {
    "name": "Chhattisgarh",
@@ -493,7 +559,8 @@
    "since": "2023-12-13",
    "mla": 90,
    "ls": 11,
-   "rs": 5
+   "rs": 5,
+   "region": "Central"
   },
   {
    "name": "Goa",
@@ -509,7 +576,8 @@
    "since": "2019-03-19",
    "mla": 40,
    "ls": 2,
-   "rs": 1
+   "rs": 1,
+   "region": "West"
   },
   {
    "name": "Gujarat",
@@ -525,7 +593,8 @@
    "since": "2021-09-13",
    "mla": 182,
    "ls": 26,
-   "rs": 11
+   "rs": 11,
+   "region": "West"
   },
   {
    "name": "Haryana",
@@ -539,7 +608,8 @@
    "mla": 90,
    "ls": 10,
    "rs": 5,
-   "note": "Shares Chandigarh (a union territory) as capital with Punjab."
+   "note": "Shares Chandigarh (a union territory) as capital with Punjab.",
+   "region": "North"
   },
   {
    "name": "Himachal Pradesh",
@@ -556,7 +626,8 @@
    "mla": 68,
    "ls": 4,
    "rs": 3,
-   "note": "Winter capital: Dharamshala."
+   "note": "Winter capital: Dharamshala.",
+   "region": "North"
   },
   {
    "name": "Jharkhand",
@@ -572,7 +643,8 @@
    "since": "2024-07-04",
    "mla": 81,
    "ls": 14,
-   "rs": 6
+   "rs": 6,
+   "region": "East"
   },
   {
    "name": "Karnataka",
@@ -589,7 +661,8 @@
    "mla": 224,
    "mlc": 75,
    "ls": 28,
-   "rs": 12
+   "rs": 12,
+   "region": "South"
   },
   {
    "name": "Kerala",
@@ -606,7 +679,8 @@
    "mla": 140,
    "ls": 20,
    "rs": 9,
-   "note": "Leads the UDF government formed after the 2026 election."
+   "note": "Leads the UDF government formed after the 2026 election.",
+   "region": "South"
   },
   {
    "name": "Madhya Pradesh",
@@ -622,7 +696,8 @@
    "since": "2023-12-13",
    "mla": 230,
    "ls": 29,
-   "rs": 11
+   "rs": 11,
+   "region": "Central"
   },
   {
    "name": "Maharashtra",
@@ -640,7 +715,8 @@
    "mlc": 78,
    "ls": 48,
    "rs": 19,
-   "note": "Winter capital: Nagpur."
+   "note": "Winter capital: Nagpur.",
+   "region": "West"
   },
   {
    "name": "Manipur",
@@ -656,7 +732,8 @@
    "since": "2026-02-04",
    "mla": 60,
    "ls": 2,
-   "rs": 1
+   "rs": 1,
+   "region": "Northeast"
   },
   {
    "name": "Meghalaya",
@@ -672,7 +749,8 @@
    "since": "2018-03-06",
    "mla": 60,
    "ls": 2,
-   "rs": 1
+   "rs": 1,
+   "region": "Northeast"
   },
   {
    "name": "Mizoram",
@@ -688,7 +766,8 @@
    "since": "2023-12-08",
    "mla": 40,
    "ls": 1,
-   "rs": 1
+   "rs": 1,
+   "region": "Northeast"
   },
   {
    "name": "Nagaland",
@@ -704,7 +783,8 @@
    "since": "2018-03-08",
    "mla": 60,
    "ls": 1,
-   "rs": 1
+   "rs": 1,
+   "region": "Northeast"
   },
   {
    "name": "Odisha",
@@ -720,7 +800,8 @@
    "since": "2024-06-12",
    "mla": 147,
    "ls": 21,
-   "rs": 10
+   "rs": 10,
+   "region": "East"
   },
   {
    "name": "Punjab",
@@ -734,7 +815,8 @@
    "mla": 117,
    "ls": 13,
    "rs": 7,
-   "note": "Shares Chandigarh (a union territory) as capital with Haryana."
+   "note": "Shares Chandigarh (a union territory) as capital with Haryana.",
+   "region": "North"
   },
   {
    "name": "Rajasthan",
@@ -750,7 +832,8 @@
    "since": "2023-12-15",
    "mla": 200,
    "ls": 25,
-   "rs": 10
+   "rs": 10,
+   "region": "North"
   },
   {
    "name": "Sikkim",
@@ -766,7 +849,8 @@
    "since": "2019-05-27",
    "mla": 32,
    "ls": 1,
-   "rs": 1
+   "rs": 1,
+   "region": "Northeast"
   },
   {
    "name": "Tamil Nadu",
@@ -783,7 +867,8 @@
    "mla": 234,
    "ls": 39,
    "rs": 18,
-   "note": "First non-Dravidian-party CM since 1967."
+   "note": "First non-Dravidian-party CM since 1967.",
+   "region": "South"
   },
   {
    "name": "Telangana",
@@ -800,7 +885,8 @@
    "mla": 119,
    "mlc": 40,
    "ls": 17,
-   "rs": 7
+   "rs": 7,
+   "region": "South"
   },
   {
    "name": "Tripura",
@@ -816,7 +902,8 @@
    "since": "2022-05-15",
    "mla": 60,
    "ls": 2,
-   "rs": 1
+   "rs": 1,
+   "region": "Northeast"
   },
   {
    "name": "Uttar Pradesh",
@@ -833,7 +920,8 @@
    "mla": 403,
    "mlc": 100,
    "ls": 80,
-   "rs": 31
+   "rs": 31,
+   "region": "North"
   },
   {
    "name": "Uttarakhand",
@@ -850,7 +938,8 @@
    "mla": 70,
    "ls": 5,
    "rs": 3,
-   "note": "Summer capital: Bhararisain (Gairsain)."
+   "note": "Summer capital: Bhararisain (Gairsain).",
+   "region": "North"
   },
   {
    "name": "West Bengal",
@@ -867,7 +956,8 @@
    "mla": 294,
    "ls": 42,
    "rs": 16,
-   "note": "First BJP Chief Minister of West Bengal."
+   "note": "First BJP Chief Minister of West Bengal.",
+   "region": "East"
   },
   {
    "name": "Delhi",
@@ -884,7 +974,8 @@
    "mla": 70,
    "ls": 7,
    "rs": 3,
-   "note": "National Capital Territory \u2014 a UT with its own legislature."
+   "note": "National Capital Territory \u2014 a UT with its own legislature.",
+   "region": "North"
   },
   {
    "name": "Jammu and Kashmir",
@@ -902,7 +993,8 @@
    "mlaNominated": 5,
    "ls": 5,
    "rs": 4,
-   "note": "Srinagar in summer, Jammu in winter."
+   "note": "Srinagar in summer, Jammu in winter.",
+   "region": "North"
   },
   {
    "name": "Puducherry",
@@ -920,7 +1012,8 @@
    "mlaNominated": 3,
    "ls": 1,
    "rs": 1,
-   "note": "Re-elected 2026; fifth term as CM sworn in 13 May 2026."
+   "note": "Re-elected 2026; fifth term as CM sworn in 13 May 2026.",
+   "region": "South"
   },
   {
    "name": "Andaman and Nicobar Islands",
@@ -934,7 +1027,8 @@
    "admin": "Lieutenant Governor",
    "ls": 1,
    "rs": 0,
-   "note": "Capital renamed from Port Blair in 2024."
+   "note": "Capital renamed from Port Blair in 2024.",
+   "region": "East"
   },
   {
    "name": "Chandigarh",
@@ -948,7 +1042,8 @@
    "admin": "Administrator (Governor of Punjab)",
    "ls": 1,
    "rs": 0,
-   "note": "Also the capital of Punjab and Haryana."
+   "note": "Also the capital of Punjab and Haryana.",
+   "region": "North"
   },
   {
    "name": "Dadra and Nagar Haveli and Daman and Diu",
@@ -961,7 +1056,8 @@
    ],
    "admin": "Administrator",
    "ls": 2,
-   "rs": 0
+   "rs": 0,
+   "region": "West"
   },
   {
    "name": "Ladakh",
@@ -975,7 +1071,8 @@
    "admin": "Lieutenant Governor",
    "ls": 1,
    "rs": 0,
-   "note": "Kargil is a second administrative capital."
+   "note": "Kargil is a second administrative capital.",
+   "region": "North"
   },
   {
    "name": "Lakshadweep",
@@ -988,7 +1085,8 @@
    ],
    "admin": "Administrator",
    "ls": 1,
-   "rs": 0
+   "rs": 0,
+   "region": "South"
   }
  ]
 }
