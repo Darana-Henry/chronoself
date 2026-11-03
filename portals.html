@@ -126,6 +126,7 @@ body::before {
 .card-cryptic::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(45,212,191,0.10), transparent); }
 .card-library::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(163,230,53,0.10), transparent); }
 .card-schools::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(56,189,248,0.10), transparent); }
+.card-india::before       { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(129,140,248,0.12), transparent); }
 
 .card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.055); }
 .card:hover::before { opacity: 1; }
@@ -140,6 +141,7 @@ body::before {
 .card-cryptic:hover    { border-color: rgba(45,212,191,0.45);  box-shadow: 0 8px 40px rgba(45,212,191,0.12); }
 .card-library:hover    { border-color: rgba(163,230,53,0.45);  box-shadow: 0 8px 40px rgba(163,230,53,0.12); }
 .card-schools:hover    { border-color: rgba(56,189,248,0.45);  box-shadow: 0 8px 40px rgba(56,189,248,0.12); }
+.card-india:hover      { border-color: rgba(129,140,248,0.45); box-shadow: 0 8px 40px rgba(129,140,248,0.12); }
 
 /* Icons */
 .card-icon {
@@ -156,6 +158,7 @@ body::before {
 .card-cryptic    .card-icon { background: rgba(45,212,191,0.12); }
 .card-library    .card-icon { background: rgba(163,230,53,0.12); }
 .card-schools    .card-icon { background: rgba(56,189,248,0.12); }
+.card-india      .card-icon { background: rgba(129,140,248,0.12); }
 .card-icon svg { width: 24px; height: 24px; }
 
 .card-title {
@@ -183,6 +186,7 @@ body::before {
 .card-cryptic    .card-arrow { color: #2dd4bf; }
 .card-library    .card-arrow { color: #a3e635; }
 .card-schools    .card-arrow { color: #38bdf8; }
+.card-india      .card-arrow { color: #818cf8; }
 .card:hover .card-arrow { gap: 10px; }
 
 /* Countdown (display only) */
@@ -374,6 +378,23 @@ body::before {
       <div class="card-desc">Hyderabad schools — distance from you, board, fee, rating, Saturdays and timings.</div>
       <div class="card-arrow">
         Compare schools
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- India -->
+    <a class="card card-india" href="india.html">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>
+        </svg>
+      </div>
+      <div class="card-title">India</div>
+      <div class="card-desc">Map of every state and union territory with capitals — tap one for its Chief Minister, party, and MLA and MP seats.</div>
+      <div class="card-arrow">
+        Explore the map
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>

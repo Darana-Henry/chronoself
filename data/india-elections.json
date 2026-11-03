@@ -1,0 +1,7349 @@
+{
+ "note": "Seats won, from the official results as summarised on Wikipedia. Static: past results don't change.",
+ "lokSabha": {
+  "year": 2024,
+  "total": 543,
+  "blocs": {
+   "NDA": [
+    "AD(S)",
+    "AGP",
+    "AJSU",
+    "BJP",
+    "HAM",
+    "JD(S)",
+    "JD(U)",
+    "JSP",
+    "LJP(RV)",
+    "NCP",
+    "RLD",
+    "SHS",
+    "SKM",
+    "TDP",
+    "UPPL"
+   ],
+   "INDIA": [
+    "AAP",
+    "AITC",
+    "BAP",
+    "CPI",
+    "CPI(M)",
+    "CPI(ML)L",
+    "DMK",
+    "INC",
+    "IUML",
+    "JKNC",
+    "JMM",
+    "KEC",
+    "MDMK",
+    "NCP(SP)",
+    "RJD",
+    "RLP",
+    "RSP",
+    "SP",
+    "SS(UBT)",
+    "VCK"
+   ]
+  },
+  "states": {
+   "Andhra Pradesh": [
+    {
+     "party": "TDP",
+     "seats": 16
+    },
+    {
+     "party": "YSRCP",
+     "seats": 4
+    },
+    {
+     "party": "BJP",
+     "seats": 3
+    },
+    {
+     "party": "JSP",
+     "seats": 2
+    }
+   ],
+   "Arunachal Pradesh": [
+    {
+     "party": "BJP",
+     "seats": 2
+    }
+   ],
+   "Assam": [
+    {
+     "party": "BJP",
+     "seats": 9
+    },
+    {
+     "party": "INC",
+     "seats": 3
+    },
+    {
+     "party": "AGP",
+     "seats": 1
+    },
+    {
+     "party": "UPPL",
+     "seats": 1
+    }
+   ],
+   "Bihar": [
+    {
+     "party": "BJP",
+     "seats": 12
+    },
+    {
+     "party": "JD(U)",
+     "seats": 12
+    },
+    {
+     "party": "LJP(RV)",
+     "seats": 5
+    },
+    {
+     "party": "HAM",
+     "seats": 1
+    },
+    {
+     "party": "RJD",
+     "seats": 4
+    },
+    {
+     "party": "INC",
+     "seats": 3
+    },
+    {
+     "party": "CPI(ML)L",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ],
+   "Chhattisgarh": [
+    {
+     "party": "BJP",
+     "seats": 10
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Goa": [
+    {
+     "party": "BJP",
+     "seats": 1
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Gujarat": [
+    {
+     "party": "BJP",
+     "seats": 25
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Haryana": [
+    {
+     "party": "BJP",
+     "seats": 5
+    },
+    {
+     "party": "INC",
+     "seats": 5
+    }
+   ],
+   "Himachal Pradesh": [
+    {
+     "party": "BJP",
+     "seats": 4
+    }
+   ],
+   "Jharkhand": [
+    {
+     "party": "BJP",
+     "seats": 8
+    },
+    {
+     "party": "JMM",
+     "seats": 3
+    },
+    {
+     "party": "INC",
+     "seats": 2
+    },
+    {
+     "party": "AJSU",
+     "seats": 1
+    }
+   ],
+   "Karnataka": [
+    {
+     "party": "BJP",
+     "seats": 17
+    },
+    {
+     "party": "INC",
+     "seats": 9
+    },
+    {
+     "party": "JD(S)",
+     "seats": 2
+    }
+   ],
+   "Kerala": [
+    {
+     "party": "INC",
+     "seats": 14
+    },
+    {
+     "party": "IUML",
+     "seats": 2
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1
+    },
+    {
+     "party": "KEC",
+     "seats": 1
+    },
+    {
+     "party": "RSP",
+     "seats": 1
+    },
+    {
+     "party": "BJP",
+     "seats": 1
+    }
+   ],
+   "Madhya Pradesh": [
+    {
+     "party": "BJP",
+     "seats": 29
+    }
+   ],
+   "Maharashtra": [
+    {
+     "party": "INC",
+     "seats": 13
+    },
+    {
+     "party": "BJP",
+     "seats": 9
+    },
+    {
+     "party": "SS(UBT)",
+     "seats": 9
+    },
+    {
+     "party": "NCP(SP)",
+     "seats": 8
+    },
+    {
+     "party": "SHS",
+     "seats": 7
+    },
+    {
+     "party": "NCP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ],
+   "Manipur": [
+    {
+     "party": "INC",
+     "seats": 2
+    }
+   ],
+   "Meghalaya": [
+    {
+     "party": "INC",
+     "seats": 1
+    },
+    {
+     "party": "VPP",
+     "seats": 1
+    }
+   ],
+   "Mizoram": [
+    {
+     "party": "ZPM",
+     "seats": 1
+    }
+   ],
+   "Nagaland": [
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Odisha": [
+    {
+     "party": "BJP",
+     "seats": 20
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Punjab": [
+    {
+     "party": "INC",
+     "seats": 7
+    },
+    {
+     "party": "AAP",
+     "seats": 3
+    },
+    {
+     "party": "SAD",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 2
+    }
+   ],
+   "Rajasthan": [
+    {
+     "party": "BJP",
+     "seats": 14
+    },
+    {
+     "party": "INC",
+     "seats": 8
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1
+    },
+    {
+     "party": "RLP",
+     "seats": 1
+    },
+    {
+     "party": "BAP",
+     "seats": 1
+    }
+   ],
+   "Sikkim": [
+    {
+     "party": "SKM",
+     "seats": 1
+    }
+   ],
+   "Tamil Nadu": [
+    {
+     "party": "DMK",
+     "seats": 22
+    },
+    {
+     "party": "INC",
+     "seats": 9
+    },
+    {
+     "party": "VCK",
+     "seats": 2
+    },
+    {
+     "party": "CPI",
+     "seats": 2
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 2
+    },
+    {
+     "party": "IUML",
+     "seats": 1
+    },
+    {
+     "party": "MDMK",
+     "seats": 1
+    }
+   ],
+   "Telangana": [
+    {
+     "party": "INC",
+     "seats": 8
+    },
+    {
+     "party": "BJP",
+     "seats": 8
+    },
+    {
+     "party": "AIMIM",
+     "seats": 1
+    }
+   ],
+   "Tripura": [
+    {
+     "party": "BJP",
+     "seats": 2
+    }
+   ],
+   "Uttar Pradesh": [
+    {
+     "party": "SP",
+     "seats": 37
+    },
+    {
+     "party": "BJP",
+     "seats": 33
+    },
+    {
+     "party": "INC",
+     "seats": 6
+    },
+    {
+     "party": "RLD",
+     "seats": 2
+    },
+    {
+     "party": "AD(S)",
+     "seats": 1
+    },
+    {
+     "party": "ASP(KR)",
+     "seats": 1
+    }
+   ],
+   "Uttarakhand": [
+    {
+     "party": "BJP",
+     "seats": 5
+    }
+   ],
+   "West Bengal": [
+    {
+     "party": "AITC",
+     "seats": 29
+    },
+    {
+     "party": "BJP",
+     "seats": 12
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Delhi": [
+    {
+     "party": "BJP",
+     "seats": 7
+    }
+   ],
+   "Jammu and Kashmir": [
+    {
+     "party": "JKNC",
+     "seats": 2
+    },
+    {
+     "party": "BJP",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ],
+   "Puducherry": [
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Andaman and Nicobar Islands": [
+    {
+     "party": "BJP",
+     "seats": 1
+    }
+   ],
+   "Chandigarh": [
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Dadra and Nagar Haveli and Daman and Diu": [
+    {
+     "party": "BJP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ],
+   "Ladakh": [
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ],
+   "Lakshadweep": [
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ]
+  }
+ },
+ "assembly": {
+  "Andhra Pradesh": {
+   "year": 2024,
+   "total": 175,
+   "results": [
+    {
+     "party": "TDP",
+     "seats": 135,
+     "bloc": "NDA"
+    },
+    {
+     "party": "JSP",
+     "seats": 21,
+     "bloc": "NDA"
+    },
+    {
+     "party": "BJP",
+     "seats": 8,
+     "bloc": "NDA"
+    },
+    {
+     "party": "YSRCP",
+     "seats": 11
+    }
+   ]
+  },
+  "Arunachal Pradesh": {
+   "year": 2024,
+   "total": 60,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 46
+    },
+    {
+     "party": "NPP",
+     "seats": 5
+    },
+    {
+     "party": "NCP",
+     "seats": 3
+    },
+    {
+     "party": "PPA",
+     "seats": 2
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Assam": {
+   "year": 2026,
+   "total": 126,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 82,
+     "bloc": "NDA"
+    },
+    {
+     "party": "AGP",
+     "seats": 10,
+     "bloc": "NDA"
+    },
+    {
+     "party": "BPF",
+     "seats": 10,
+     "bloc": "NDA"
+    },
+    {
+     "party": "INC",
+     "seats": 19,
+     "bloc": "ASM"
+    },
+    {
+     "party": "RD",
+     "seats": 2,
+     "bloc": "ASM"
+    },
+    {
+     "party": "AIUDF",
+     "seats": 2
+    },
+    {
+     "party": "AITC",
+     "seats": 1
+    }
+   ]
+  },
+  "Bihar": {
+   "year": 2025,
+   "total": 243,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 89,
+     "bloc": "NDA"
+    },
+    {
+     "party": "JD(U)",
+     "seats": 85,
+     "bloc": "NDA"
+    },
+    {
+     "party": "LJP(RV)",
+     "seats": 19,
+     "bloc": "NDA"
+    },
+    {
+     "party": "HAM",
+     "seats": 5,
+     "bloc": "NDA"
+    },
+    {
+     "party": "RLM",
+     "seats": 4,
+     "bloc": "NDA"
+    },
+    {
+     "party": "RJD",
+     "seats": 25,
+     "bloc": "MGB"
+    },
+    {
+     "party": "INC",
+     "seats": 6,
+     "bloc": "MGB"
+    },
+    {
+     "party": "CPI(ML)L",
+     "seats": 2,
+     "bloc": "MGB"
+    },
+    {
+     "party": "IIP",
+     "seats": 1,
+     "bloc": "MGB"
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1,
+     "bloc": "MGB"
+    },
+    {
+     "party": "AIMIM",
+     "seats": 5
+    },
+    {
+     "party": "BSP",
+     "seats": 1
+    }
+   ]
+  },
+  "Chhattisgarh": {
+   "year": 2023,
+   "total": 90,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 54
+    },
+    {
+     "party": "INC",
+     "seats": 35
+    },
+    {
+     "party": "GGP",
+     "seats": 1
+    }
+   ]
+  },
+  "Goa": {
+   "year": 2022,
+   "total": 40,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 20
+    },
+    {
+     "party": "INC",
+     "seats": 11
+    },
+    {
+     "party": "AAP",
+     "seats": 2
+    },
+    {
+     "party": "MGP",
+     "seats": 2
+    },
+    {
+     "party": "GFP",
+     "seats": 1
+    },
+    {
+     "party": "RGP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Gujarat": {
+   "year": 2022,
+   "total": 182,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 156
+    },
+    {
+     "party": "INC",
+     "seats": 17
+    },
+    {
+     "party": "AAP",
+     "seats": 5
+    },
+    {
+     "party": "SP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Haryana": {
+   "year": 2024,
+   "total": 90,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 48
+    },
+    {
+     "party": "INC",
+     "seats": 37
+    },
+    {
+     "party": "INLD",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Himachal Pradesh": {
+   "year": 2022,
+   "total": 68,
+   "results": [
+    {
+     "party": "INC",
+     "seats": 40
+    },
+    {
+     "party": "BJP",
+     "seats": 25
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Jharkhand": {
+   "year": 2024,
+   "total": 81,
+   "results": [
+    {
+     "party": "JMM",
+     "seats": 34,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "INC",
+     "seats": 16,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "RJD",
+     "seats": 4,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "CPI(ML)L",
+     "seats": 2,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "BJP",
+     "seats": 21,
+     "bloc": "NDA"
+    },
+    {
+     "party": "AJSU",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "LJP(RV)",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "JD(U)",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "JLKM",
+     "seats": 1
+    }
+   ]
+  },
+  "Karnataka": {
+   "year": 2023,
+   "total": 224,
+   "results": [
+    {
+     "party": "INC",
+     "seats": 135
+    },
+    {
+     "party": "BJP",
+     "seats": 66
+    },
+    {
+     "party": "JD(S)",
+     "seats": 19
+    },
+    {
+     "party": "KRPP",
+     "seats": 1
+    },
+    {
+     "party": "SKP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 2
+    }
+   ]
+  },
+  "Kerala": {
+   "year": 2026,
+   "total": 140,
+   "results": [
+    {
+     "party": "INC",
+     "seats": 63,
+     "bloc": "UDF"
+    },
+    {
+     "party": "IUML",
+     "seats": 22,
+     "bloc": "UDF"
+    },
+    {
+     "party": "KEC",
+     "seats": 7,
+     "bloc": "UDF"
+    },
+    {
+     "party": "RSP",
+     "seats": 3,
+     "bloc": "UDF"
+    },
+    {
+     "party": "KC(J)",
+     "seats": 1,
+     "bloc": "UDF"
+    },
+    {
+     "party": "RMPI",
+     "seats": 1,
+     "bloc": "UDF"
+    },
+    {
+     "party": "CMP",
+     "seats": 1,
+     "bloc": "UDF"
+    },
+    {
+     "party": "IND",
+     "seats": 4,
+     "bloc": "UDF"
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 26,
+     "bloc": "LDF"
+    },
+    {
+     "party": "CPI",
+     "seats": 8,
+     "bloc": "LDF"
+    },
+    {
+     "party": "RJD",
+     "seats": 1,
+     "bloc": "LDF"
+    },
+    {
+     "party": "BJP",
+     "seats": 3,
+     "bloc": "NDA"
+    }
+   ]
+  },
+  "Madhya Pradesh": {
+   "year": 2023,
+   "total": 230,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 163
+    },
+    {
+     "party": "INC",
+     "seats": 66
+    },
+    {
+     "party": "BAP",
+     "seats": 1
+    }
+   ]
+  },
+  "Maharashtra": {
+   "year": 2024,
+   "total": 288,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 132,
+     "bloc": "Mahayuti"
+    },
+    {
+     "party": "SHS",
+     "seats": 57,
+     "bloc": "Mahayuti"
+    },
+    {
+     "party": "NCP",
+     "seats": 41,
+     "bloc": "Mahayuti"
+    },
+    {
+     "party": "SS(UBT)",
+     "seats": 20,
+     "bloc": "MVA"
+    },
+    {
+     "party": "INC",
+     "seats": 16,
+     "bloc": "MVA"
+    },
+    {
+     "party": "NCP(SP)",
+     "seats": 10,
+     "bloc": "MVA"
+    },
+    {
+     "party": "OTH",
+     "seats": 12
+    }
+   ]
+  },
+  "Manipur": {
+   "year": 2022,
+   "total": 60,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 32
+    },
+    {
+     "party": "NPP",
+     "seats": 7
+    },
+    {
+     "party": "JD(U)",
+     "seats": 6
+    },
+    {
+     "party": "NPF",
+     "seats": 5
+    },
+    {
+     "party": "INC",
+     "seats": 5
+    },
+    {
+     "party": "KPA",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Meghalaya": {
+   "year": 2023,
+   "total": 60,
+   "results": [
+    {
+     "party": "NPP",
+     "seats": 26
+    },
+    {
+     "party": "UDP",
+     "seats": 12
+    },
+    {
+     "party": "AITC",
+     "seats": 5
+    },
+    {
+     "party": "INC",
+     "seats": 5
+    },
+    {
+     "party": "VPP",
+     "seats": 4
+    },
+    {
+     "party": "BJP",
+     "seats": 2
+    },
+    {
+     "party": "HSPDP",
+     "seats": 2
+    },
+    {
+     "party": "PDF",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 2
+    }
+   ]
+  },
+  "Mizoram": {
+   "year": 2023,
+   "total": 40,
+   "results": [
+    {
+     "party": "ZPM",
+     "seats": 27
+    },
+    {
+     "party": "MNF",
+     "seats": 10
+    },
+    {
+     "party": "BJP",
+     "seats": 2
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ]
+  },
+  "Nagaland": {
+   "year": 2023,
+   "total": 60,
+   "results": [
+    {
+     "party": "NDPP",
+     "seats": 25,
+     "bloc": "NDA"
+    },
+    {
+     "party": "BJP",
+     "seats": 12,
+     "bloc": "NDA"
+    },
+    {
+     "party": "NCP",
+     "seats": 7
+    },
+    {
+     "party": "NPP",
+     "seats": 5
+    },
+    {
+     "party": "LJP(RV)",
+     "seats": 2
+    },
+    {
+     "party": "NPF",
+     "seats": 2
+    },
+    {
+     "party": "RPI(A)",
+     "seats": 2
+    },
+    {
+     "party": "JD(U)",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 4
+    }
+   ]
+  },
+  "Odisha": {
+   "year": 2024,
+   "total": 147,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 78
+    },
+    {
+     "party": "BJD",
+     "seats": 51
+    },
+    {
+     "party": "INC",
+     "seats": 14
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Punjab": {
+   "year": 2022,
+   "total": 117,
+   "results": [
+    {
+     "party": "AAP",
+     "seats": 92
+    },
+    {
+     "party": "INC",
+     "seats": 18
+    },
+    {
+     "party": "SAD",
+     "seats": 3
+    },
+    {
+     "party": "BJP",
+     "seats": 2
+    },
+    {
+     "party": "BSP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ]
+  },
+  "Rajasthan": {
+   "year": 2023,
+   "total": 200,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 115
+    },
+    {
+     "party": "INC",
+     "seats": 70
+    },
+    {
+     "party": "BAP",
+     "seats": 3
+    },
+    {
+     "party": "BSP",
+     "seats": 2
+    },
+    {
+     "party": "RLD",
+     "seats": 1
+    },
+    {
+     "party": "RLP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 8
+    }
+   ]
+  },
+  "Sikkim": {
+   "year": 2024,
+   "total": 32,
+   "results": [
+    {
+     "party": "SKM",
+     "seats": 31
+    },
+    {
+     "party": "SDF",
+     "seats": 1
+    }
+   ]
+  },
+  "Tamil Nadu": {
+   "year": 2026,
+   "total": 234,
+   "results": [
+    {
+     "party": "TVK",
+     "seats": 108
+    },
+    {
+     "party": "DMK",
+     "seats": 59,
+     "bloc": "SPA"
+    },
+    {
+     "party": "INC",
+     "seats": 5,
+     "bloc": "SPA"
+    },
+    {
+     "party": "VCK",
+     "seats": 2,
+     "bloc": "SPA"
+    },
+    {
+     "party": "CPI",
+     "seats": 2,
+     "bloc": "SPA"
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 2,
+     "bloc": "SPA"
+    },
+    {
+     "party": "IUML",
+     "seats": 2,
+     "bloc": "SPA"
+    },
+    {
+     "party": "DMDK",
+     "seats": 1,
+     "bloc": "SPA"
+    },
+    {
+     "party": "AIADMK",
+     "seats": 47,
+     "bloc": "NDA"
+    },
+    {
+     "party": "PMK",
+     "seats": 4,
+     "bloc": "NDA"
+    },
+    {
+     "party": "BJP",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "AMMK",
+     "seats": 1,
+     "bloc": "NDA"
+    }
+   ]
+  },
+  "Telangana": {
+   "year": 2023,
+   "total": 119,
+   "results": [
+    {
+     "party": "INC",
+     "seats": 64
+    },
+    {
+     "party": "BRS",
+     "seats": 39
+    },
+    {
+     "party": "BJP",
+     "seats": 8
+    },
+    {
+     "party": "AIMIM",
+     "seats": 7
+    },
+    {
+     "party": "CPI",
+     "seats": 1
+    }
+   ]
+  },
+  "Tripura": {
+   "year": 2023,
+   "total": 60,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 32,
+     "bloc": "NDA"
+    },
+    {
+     "party": "IPFT",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "TMP",
+     "seats": 13
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 11
+    },
+    {
+     "party": "INC",
+     "seats": 3
+    }
+   ]
+  },
+  "Uttar Pradesh": {
+   "year": 2022,
+   "total": 403,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 255,
+     "bloc": "NDA"
+    },
+    {
+     "party": "AD(S)",
+     "seats": 12,
+     "bloc": "NDA"
+    },
+    {
+     "party": "NISHAD",
+     "seats": 6,
+     "bloc": "NDA"
+    },
+    {
+     "party": "SP",
+     "seats": 111,
+     "bloc": "SP+"
+    },
+    {
+     "party": "RLD",
+     "seats": 8,
+     "bloc": "SP+"
+    },
+    {
+     "party": "SBSP",
+     "seats": 6,
+     "bloc": "SP+"
+    },
+    {
+     "party": "INC",
+     "seats": 2
+    },
+    {
+     "party": "JD(L)",
+     "seats": 2
+    },
+    {
+     "party": "BSP",
+     "seats": 1
+    }
+   ]
+  },
+  "Uttarakhand": {
+   "year": 2022,
+   "total": 70,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 47
+    },
+    {
+     "party": "INC",
+     "seats": 19
+    },
+    {
+     "party": "BSP",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 2
+    }
+   ]
+  },
+  "West Bengal": {
+   "year": 2026,
+   "total": 294,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 208
+    },
+    {
+     "party": "AITC",
+     "seats": 80
+    },
+    {
+     "party": "INC",
+     "seats": 2
+    },
+    {
+     "party": "AJUP",
+     "seats": 2
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1
+    },
+    {
+     "party": "ISF",
+     "seats": 1
+    }
+   ]
+  },
+  "Delhi": {
+   "year": 2025,
+   "total": 70,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 48
+    },
+    {
+     "party": "AAP",
+     "seats": 22
+    }
+   ]
+  },
+  "Jammu and Kashmir": {
+   "year": 2024,
+   "total": 90,
+   "results": [
+    {
+     "party": "JKNC",
+     "seats": 42,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "INC",
+     "seats": 6,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "BJP",
+     "seats": 29
+    },
+    {
+     "party": "PDP",
+     "seats": 3
+    },
+    {
+     "party": "JKPC",
+     "seats": 1
+    },
+    {
+     "party": "AAP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 7
+    }
+   ]
+  },
+  "Puducherry": {
+   "year": 2026,
+   "total": 30,
+   "results": [
+    {
+     "party": "AINRC",
+     "seats": 12,
+     "bloc": "NDA"
+    },
+    {
+     "party": "BJP",
+     "seats": 4,
+     "bloc": "NDA"
+    },
+    {
+     "party": "LJK",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "AIADMK",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "DMK",
+     "seats": 5,
+     "bloc": "SPA"
+    },
+    {
+     "party": "INC",
+     "seats": 1,
+     "bloc": "SPA"
+    },
+    {
+     "party": "TVK",
+     "seats": 2
+    },
+    {
+     "party": "NMK",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  }
+ },
+ "assemblyHistory": {
+  "Andhra Pradesh": [
+   {
+    "year": 2024,
+    "cm": "N. Chandrababu Naidu",
+    "cmParty": "TDP",
+    "largest": [
+     [
+      "TDP",
+      135
+     ],
+     [
+      "YSRCP",
+      11
+     ]
+    ],
+    "total": 175
+   },
+   {
+    "year": 2019,
+    "cm": "Y. S. Jagan Mohan Reddy",
+    "cmParty": "YSRCP",
+    "largest": [
+     [
+      "YSRCP",
+      151
+     ],
+     [
+      "TDP",
+      23
+     ]
+    ],
+    "total": 175
+   },
+   {
+    "year": 2014,
+    "cm": "N. Chandrababu Naidu",
+    "cmParty": "TDP",
+    "largest": [
+     [
+      "TDP",
+      102
+     ],
+     [
+      "YSRCP",
+      67
+     ]
+    ],
+    "total": 175,
+    "note": "First election after Telangana split off"
+   },
+   {
+    "year": 2009,
+    "cm": "Y. S. Rajasekhara Reddy",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      156
+     ],
+     [
+      "TDP",
+      92
+     ]
+    ],
+    "total": 294,
+    "note": "Undivided Andhra Pradesh"
+   },
+   {
+    "year": 2004,
+    "cm": "Y. S. Rajasekhara Reddy",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      185
+     ],
+     [
+      "TDP",
+      47
+     ]
+    ],
+    "total": 294,
+    "note": "Undivided Andhra Pradesh"
+   }
+  ],
+  "Arunachal Pradesh": [
+   {
+    "year": 2024,
+    "cm": "Pema Khandu",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      46
+     ],
+     [
+      "NPP",
+      5
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2019,
+    "cm": "Pema Khandu",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      41
+     ],
+     [
+      "JD(U)",
+      7
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2014,
+    "cm": "Nabam Tuki",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      42
+     ],
+     [
+      "BJP",
+      11
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2009,
+    "cm": "Dorjee Khandu",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      42
+     ],
+     [
+      "AITC",
+      5
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2004,
+    "cm": "Gegong Apang",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      34
+     ],
+     [
+      "BJP",
+      9
+     ]
+    ],
+    "total": 60
+   }
+  ],
+  "Assam": [
+   {
+    "year": 2026,
+    "cm": "Himanta Biswa Sarma",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      82
+     ],
+     [
+      "INC",
+      19
+     ]
+    ],
+    "total": 126
+   },
+   {
+    "year": 2021,
+    "cm": "Himanta Biswa Sarma",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      60
+     ],
+     [
+      "INC",
+      29
+     ]
+    ],
+    "total": 126
+   },
+   {
+    "year": 2016,
+    "cm": "Sarbananda Sonowal",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      60
+     ],
+     [
+      "INC",
+      26
+     ]
+    ],
+    "total": 126
+   },
+   {
+    "year": 2011,
+    "cm": "Tarun Gogoi",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      78
+     ],
+     [
+      "AIUDF",
+      18
+     ]
+    ],
+    "total": 126
+   },
+   {
+    "year": 2006,
+    "cm": "Tarun Gogoi",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      53
+     ],
+     [
+      "AGP",
+      24
+     ]
+    ],
+    "total": 126
+   }
+  ],
+  "Bihar": [
+   {
+    "year": 2025,
+    "cm": "Nitish Kumar",
+    "cmParty": "JD(U)",
+    "largest": [
+     [
+      "BJP",
+      89
+     ],
+     [
+      "JD(U)",
+      85
+     ]
+    ],
+    "total": 243,
+    "note": "Samrat Choudhary (BJP) took over in April 2026"
+   },
+   {
+    "year": 2020,
+    "cm": "Nitish Kumar",
+    "cmParty": "JD(U)",
+    "largest": [
+     [
+      "RJD",
+      75
+     ],
+     [
+      "BJP",
+      74
+     ]
+    ],
+    "total": 243
+   },
+   {
+    "year": 2015,
+    "cm": "Nitish Kumar",
+    "cmParty": "JD(U)",
+    "largest": [
+     [
+      "RJD",
+      80
+     ],
+     [
+      "JD(U)",
+      71
+     ]
+    ],
+    "total": 243
+   },
+   {
+    "year": 2010,
+    "cm": "Nitish Kumar",
+    "cmParty": "JD(U)",
+    "largest": [
+     [
+      "JD(U)",
+      115
+     ],
+     [
+      "BJP",
+      91
+     ]
+    ],
+    "total": 243
+   },
+   {
+    "year": 2005,
+    "cm": "Nitish Kumar",
+    "cmParty": "JD(U)",
+    "largest": [
+     [
+      "JD(U)",
+      88
+     ],
+     [
+      "BJP",
+      55
+     ]
+    ],
+    "total": 243,
+    "note": "October 2005 re-poll after a hung February result"
+   }
+  ],
+  "Chhattisgarh": [
+   {
+    "year": 2023,
+    "cm": "Vishnu Deo Sai",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      54
+     ],
+     [
+      "INC",
+      35
+     ]
+    ],
+    "total": 90
+   },
+   {
+    "year": 2018,
+    "cm": "Bhupesh Baghel",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      68
+     ],
+     [
+      "BJP",
+      15
+     ]
+    ],
+    "total": 90
+   },
+   {
+    "year": 2013,
+    "cm": "Raman Singh",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      49
+     ],
+     [
+      "INC",
+      39
+     ]
+    ],
+    "total": 90
+   },
+   {
+    "year": 2008,
+    "cm": "Raman Singh",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      50
+     ],
+     [
+      "INC",
+      38
+     ]
+    ],
+    "total": 90
+   },
+   {
+    "year": 2003,
+    "cm": "Raman Singh",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      50
+     ],
+     [
+      "INC",
+      37
+     ]
+    ],
+    "total": 90
+   }
+  ],
+  "Goa": [
+   {
+    "year": 2022,
+    "cm": "Pramod Sawant",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      20
+     ],
+     [
+      "INC",
+      11
+     ]
+    ],
+    "total": 40
+   },
+   {
+    "year": 2017,
+    "cm": "Manohar Parrikar",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "INC",
+      17
+     ],
+     [
+      "BJP",
+      13
+     ]
+    ],
+    "total": 40
+   },
+   {
+    "year": 2012,
+    "cm": "Manohar Parrikar",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      21
+     ],
+     [
+      "INC",
+      9
+     ]
+    ],
+    "total": 40
+   },
+   {
+    "year": 2007,
+    "cm": "Digambar Kamat",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      16
+     ],
+     [
+      "BJP",
+      14
+     ]
+    ],
+    "total": 40
+   },
+   {
+    "year": 2002,
+    "cm": "Manohar Parrikar",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      17
+     ],
+     [
+      "INC",
+      16
+     ]
+    ],
+    "total": 40
+   }
+  ],
+  "Gujarat": [
+   {
+    "year": 2022,
+    "cm": "Bhupendra Patel",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      156
+     ],
+     [
+      "INC",
+      17
+     ]
+    ],
+    "total": 182
+   },
+   {
+    "year": 2017,
+    "cm": "Vijay Rupani",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      99
+     ],
+     [
+      "INC",
+      77
+     ]
+    ],
+    "total": 182
+   },
+   {
+    "year": 2012,
+    "cm": "Narendra Modi",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      115
+     ],
+     [
+      "INC",
+      61
+     ]
+    ],
+    "total": 182
+   },
+   {
+    "year": 2007,
+    "cm": "Narendra Modi",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      117
+     ],
+     [
+      "INC",
+      59
+     ]
+    ],
+    "total": 182
+   },
+   {
+    "year": 2002,
+    "cm": "Narendra Modi",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      127
+     ],
+     [
+      "INC",
+      51
+     ]
+    ],
+    "total": 182
+   }
+  ],
+  "Haryana": [
+   {
+    "year": 2024,
+    "cm": "Nayab Singh Saini",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      48
+     ],
+     [
+      "INC",
+      37
+     ]
+    ],
+    "total": 90
+   },
+   {
+    "year": 2019,
+    "cm": "Manohar Lal Khattar",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      40
+     ],
+     [
+      "INC",
+      31
+     ]
+    ],
+    "total": 90
+   },
+   {
+    "year": 2014,
+    "cm": "Manohar Lal Khattar",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      47
+     ],
+     [
+      "INLD",
+      19
+     ]
+    ],
+    "total": 90
+   },
+   {
+    "year": 2009,
+    "cm": "Bhupinder Singh Hooda",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      40
+     ],
+     [
+      "INLD",
+      31
+     ]
+    ],
+    "total": 90
+   },
+   {
+    "year": 2005,
+    "cm": "Bhupinder Singh Hooda",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      67
+     ],
+     [
+      "INLD",
+      9
+     ]
+    ],
+    "total": 90
+   }
+  ],
+  "Himachal Pradesh": [
+   {
+    "year": 2022,
+    "cm": "Sukhvinder Singh Sukhu",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      40
+     ],
+     [
+      "BJP",
+      25
+     ]
+    ],
+    "total": 68
+   },
+   {
+    "year": 2017,
+    "cm": "Jai Ram Thakur",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      44
+     ],
+     [
+      "INC",
+      21
+     ]
+    ],
+    "total": 68
+   },
+   {
+    "year": 2012,
+    "cm": "Virbhadra Singh",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      36
+     ],
+     [
+      "BJP",
+      26
+     ]
+    ],
+    "total": 68
+   },
+   {
+    "year": 2007,
+    "cm": "Prem Kumar Dhumal",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      41
+     ],
+     [
+      "INC",
+      23
+     ]
+    ],
+    "total": 68
+   },
+   {
+    "year": 2003,
+    "cm": "Virbhadra Singh",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      43
+     ],
+     [
+      "BJP",
+      16
+     ]
+    ],
+    "total": 68
+   }
+  ],
+  "Jharkhand": [
+   {
+    "year": 2024,
+    "cm": "Hemant Soren",
+    "cmParty": "JMM",
+    "largest": [
+     [
+      "JMM",
+      34
+     ],
+     [
+      "BJP",
+      21
+     ]
+    ],
+    "total": 81
+   },
+   {
+    "year": 2019,
+    "cm": "Hemant Soren",
+    "cmParty": "JMM",
+    "largest": [
+     [
+      "JMM",
+      30
+     ],
+     [
+      "BJP",
+      25
+     ]
+    ],
+    "total": 81
+   },
+   {
+    "year": 2014,
+    "cm": "Raghubar Das",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      37
+     ],
+     [
+      "JMM",
+      19
+     ]
+    ],
+    "total": 81
+   },
+   {
+    "year": 2009,
+    "cm": "Shibu Soren",
+    "cmParty": "JMM",
+    "largest": [
+     [
+      "BJP",
+      18
+     ],
+     [
+      "JMM",
+      18
+     ]
+    ],
+    "total": 81
+   },
+   {
+    "year": 2005,
+    "cm": "Arjun Munda",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      30
+     ],
+     [
+      "JMM",
+      17
+     ]
+    ],
+    "total": 81
+   }
+  ],
+  "Karnataka": [
+   {
+    "year": 2023,
+    "cm": "Siddaramaiah",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      135
+     ],
+     [
+      "BJP",
+      66
+     ]
+    ],
+    "total": 224,
+    "note": "D. K. Shivakumar took over in June 2026"
+   },
+   {
+    "year": 2018,
+    "cm": "H. D. Kumaraswamy",
+    "cmParty": "JD(S)",
+    "largest": [
+     [
+      "BJP",
+      104
+     ],
+     [
+      "INC",
+      80
+     ]
+    ],
+    "total": 224,
+    "note": "JD(S)\u2013INC coalition"
+   },
+   {
+    "year": 2013,
+    "cm": "Siddaramaiah",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      122
+     ],
+     [
+      "JD(S)",
+      40
+     ]
+    ],
+    "total": 224
+   },
+   {
+    "year": 2008,
+    "cm": "B. S. Yediyurappa",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      110
+     ],
+     [
+      "INC",
+      80
+     ]
+    ],
+    "total": 224
+   },
+   {
+    "year": 2004,
+    "cm": "Dharam Singh",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "BJP",
+      79
+     ],
+     [
+      "INC",
+      65
+     ]
+    ],
+    "total": 224,
+    "note": "INC\u2013JD(S) coalition"
+   }
+  ],
+  "Kerala": [
+   {
+    "year": 2026,
+    "cm": "V. D. Satheesan",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      63
+     ],
+     [
+      "CPI(M)",
+      26
+     ]
+    ],
+    "total": 140,
+    "note": "UDF 102 seats"
+   },
+   {
+    "year": 2021,
+    "cm": "Pinarayi Vijayan",
+    "cmParty": "CPI(M)",
+    "largest": [
+     [
+      "CPI(M)",
+      62
+     ],
+     [
+      "INC",
+      21
+     ]
+    ],
+    "total": 140,
+    "note": "LDF 99 seats"
+   },
+   {
+    "year": 2016,
+    "cm": "Pinarayi Vijayan",
+    "cmParty": "CPI(M)",
+    "largest": [
+     [
+      "CPI(M)",
+      58
+     ],
+     [
+      "INC",
+      22
+     ]
+    ],
+    "total": 140,
+    "note": "LDF 91 seats"
+   },
+   {
+    "year": 2011,
+    "cm": "Oommen Chandy",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "CPI(M)",
+      45
+     ],
+     [
+      "INC",
+      38
+     ]
+    ],
+    "total": 140,
+    "note": "UDF 72 seats"
+   },
+   {
+    "year": 2006,
+    "cm": "V. S. Achuthanandan",
+    "cmParty": "CPI(M)",
+    "largest": [
+     [
+      "CPI(M)",
+      61
+     ],
+     [
+      "INC",
+      24
+     ]
+    ],
+    "total": 140,
+    "note": "LDF 98 seats"
+   }
+  ],
+  "Madhya Pradesh": [
+   {
+    "year": 2023,
+    "cm": "Mohan Yadav",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      163
+     ],
+     [
+      "INC",
+      66
+     ]
+    ],
+    "total": 230
+   },
+   {
+    "year": 2018,
+    "cm": "Kamal Nath",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      114
+     ],
+     [
+      "BJP",
+      109
+     ]
+    ],
+    "total": 230
+   },
+   {
+    "year": 2013,
+    "cm": "Shivraj Singh Chouhan",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      165
+     ],
+     [
+      "INC",
+      58
+     ]
+    ],
+    "total": 230
+   },
+   {
+    "year": 2008,
+    "cm": "Shivraj Singh Chouhan",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      143
+     ],
+     [
+      "INC",
+      71
+     ]
+    ],
+    "total": 230
+   },
+   {
+    "year": 2003,
+    "cm": "Uma Bharti",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      173
+     ],
+     [
+      "INC",
+      38
+     ]
+    ],
+    "total": 230
+   }
+  ],
+  "Maharashtra": [
+   {
+    "year": 2024,
+    "cm": "Devendra Fadnavis",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      132
+     ],
+     [
+      "SHS",
+      57
+     ]
+    ],
+    "total": 288
+   },
+   {
+    "year": 2019,
+    "cm": "Uddhav Thackeray",
+    "cmParty": "SHS",
+    "largest": [
+     [
+      "BJP",
+      105
+     ],
+     [
+      "SHS",
+      56
+     ]
+    ],
+    "total": 288,
+    "note": "Shiv Sena\u2013NCP\u2013INC coalition"
+   },
+   {
+    "year": 2014,
+    "cm": "Devendra Fadnavis",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      122
+     ],
+     [
+      "SHS",
+      63
+     ]
+    ],
+    "total": 288
+   },
+   {
+    "year": 2009,
+    "cm": "Ashok Chavan",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      82
+     ],
+     [
+      "NCP",
+      62
+     ]
+    ],
+    "total": 288
+   },
+   {
+    "year": 2004,
+    "cm": "Vilasrao Deshmukh",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "NCP",
+      71
+     ],
+     [
+      "INC",
+      69
+     ]
+    ],
+    "total": 288
+   }
+  ],
+  "Manipur": [
+   {
+    "year": 2022,
+    "cm": "N. Biren Singh",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      32
+     ],
+     [
+      "NPP",
+      7
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2017,
+    "cm": "N. Biren Singh",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "INC",
+      28
+     ],
+     [
+      "BJP",
+      21
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2012,
+    "cm": "Okram Ibobi Singh",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      42
+     ],
+     [
+      "AITC",
+      7
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2007,
+    "cm": "Okram Ibobi Singh",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      30
+     ],
+     [
+      "MPP",
+      5
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2002,
+    "cm": "Okram Ibobi Singh",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      20
+     ],
+     [
+      "MSCP",
+      7
+     ]
+    ],
+    "total": 60
+   }
+  ],
+  "Meghalaya": [
+   {
+    "year": 2023,
+    "cm": "Conrad Sangma",
+    "cmParty": "NPP",
+    "largest": [
+     [
+      "NPP",
+      26
+     ],
+     [
+      "UDP",
+      12
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2018,
+    "cm": "Conrad Sangma",
+    "cmParty": "NPP",
+    "largest": [
+     [
+      "INC",
+      21
+     ],
+     [
+      "NPP",
+      20
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2013,
+    "cm": "Mukul Sangma",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      29
+     ],
+     [
+      "UDP",
+      8
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2008,
+    "cm": "D. D. Lapang",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      25
+     ],
+     [
+      "NCP",
+      14
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2003,
+    "cm": "D. D. Lapang",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      22
+     ],
+     [
+      "NCP",
+      14
+     ]
+    ],
+    "total": 60
+   }
+  ],
+  "Mizoram": [
+   {
+    "year": 2023,
+    "cm": "Lalduhoma",
+    "cmParty": "ZPM",
+    "largest": [
+     [
+      "ZPM",
+      27
+     ],
+     [
+      "MNF",
+      10
+     ]
+    ],
+    "total": 40
+   },
+   {
+    "year": 2018,
+    "cm": "Zoramthanga",
+    "cmParty": "MNF",
+    "largest": [
+     [
+      "MNF",
+      26
+     ],
+     [
+      "ZPM",
+      8
+     ]
+    ],
+    "total": 40
+   },
+   {
+    "year": 2013,
+    "cm": "Lal Thanhawla",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      34
+     ],
+     [
+      "MNF",
+      5
+     ]
+    ],
+    "total": 40
+   },
+   {
+    "year": 2008,
+    "cm": "Lal Thanhawla",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      32
+     ],
+     [
+      "MNF",
+      3
+     ]
+    ],
+    "total": 40
+   },
+   {
+    "year": 2003,
+    "cm": "Zoramthanga",
+    "cmParty": "MNF",
+    "largest": [
+     [
+      "MNF",
+      21
+     ],
+     [
+      "INC",
+      12
+     ]
+    ],
+    "total": 40
+   }
+  ],
+  "Nagaland": [
+   {
+    "year": 2023,
+    "cm": "Neiphiu Rio",
+    "cmParty": "NDPP",
+    "largest": [
+     [
+      "NDPP",
+      25
+     ],
+     [
+      "BJP",
+      12
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2018,
+    "cm": "Neiphiu Rio",
+    "cmParty": "NDPP",
+    "largest": [
+     [
+      "NPF",
+      26
+     ],
+     [
+      "NDPP",
+      18
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2013,
+    "cm": "Neiphiu Rio",
+    "cmParty": "NPF",
+    "largest": [
+     [
+      "NPF",
+      38
+     ],
+     [
+      "INC",
+      8
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2008,
+    "cm": "Neiphiu Rio",
+    "cmParty": "NPF",
+    "largest": [
+     [
+      "NPF",
+      26
+     ],
+     [
+      "INC",
+      23
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2003,
+    "cm": "Neiphiu Rio",
+    "cmParty": "NPF",
+    "largest": [
+     [
+      "INC",
+      21
+     ],
+     [
+      "NPF",
+      19
+     ]
+    ],
+    "total": 60
+   }
+  ],
+  "Odisha": [
+   {
+    "year": 2024,
+    "cm": "Mohan Charan Majhi",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      78
+     ],
+     [
+      "BJD",
+      51
+     ]
+    ],
+    "total": 147
+   },
+   {
+    "year": 2019,
+    "cm": "Naveen Patnaik",
+    "cmParty": "BJD",
+    "largest": [
+     [
+      "BJD",
+      112
+     ],
+     [
+      "BJP",
+      23
+     ]
+    ],
+    "total": 147
+   },
+   {
+    "year": 2014,
+    "cm": "Naveen Patnaik",
+    "cmParty": "BJD",
+    "largest": [
+     [
+      "BJD",
+      117
+     ],
+     [
+      "INC",
+      16
+     ]
+    ],
+    "total": 147
+   },
+   {
+    "year": 2009,
+    "cm": "Naveen Patnaik",
+    "cmParty": "BJD",
+    "largest": [
+     [
+      "BJD",
+      103
+     ],
+     [
+      "INC",
+      27
+     ]
+    ],
+    "total": 147
+   },
+   {
+    "year": 2004,
+    "cm": "Naveen Patnaik",
+    "cmParty": "BJD",
+    "largest": [
+     [
+      "BJD",
+      61
+     ],
+     [
+      "INC",
+      38
+     ]
+    ],
+    "total": 147
+   }
+  ],
+  "Punjab": [
+   {
+    "year": 2022,
+    "cm": "Bhagwant Mann",
+    "cmParty": "AAP",
+    "largest": [
+     [
+      "AAP",
+      92
+     ],
+     [
+      "INC",
+      18
+     ]
+    ],
+    "total": 117
+   },
+   {
+    "year": 2017,
+    "cm": "Amarinder Singh",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      77
+     ],
+     [
+      "AAP",
+      20
+     ]
+    ],
+    "total": 117
+   },
+   {
+    "year": 2012,
+    "cm": "Parkash Singh Badal",
+    "cmParty": "SAD",
+    "largest": [
+     [
+      "SAD",
+      56
+     ],
+     [
+      "INC",
+      46
+     ]
+    ],
+    "total": 117
+   },
+   {
+    "year": 2007,
+    "cm": "Parkash Singh Badal",
+    "cmParty": "SAD",
+    "largest": [
+     [
+      "SAD",
+      48
+     ],
+     [
+      "INC",
+      44
+     ]
+    ],
+    "total": 117
+   },
+   {
+    "year": 2002,
+    "cm": "Amarinder Singh",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      62
+     ],
+     [
+      "SAD",
+      41
+     ]
+    ],
+    "total": 117
+   }
+  ],
+  "Rajasthan": [
+   {
+    "year": 2023,
+    "cm": "Bhajan Lal Sharma",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      115
+     ],
+     [
+      "INC",
+      70
+     ]
+    ],
+    "total": 200
+   },
+   {
+    "year": 2018,
+    "cm": "Ashok Gehlot",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      100
+     ],
+     [
+      "BJP",
+      73
+     ]
+    ],
+    "total": 200
+   },
+   {
+    "year": 2013,
+    "cm": "Vasundhara Raje",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      163
+     ],
+     [
+      "INC",
+      21
+     ]
+    ],
+    "total": 200
+   },
+   {
+    "year": 2008,
+    "cm": "Ashok Gehlot",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      96
+     ],
+     [
+      "BJP",
+      78
+     ]
+    ],
+    "total": 200
+   },
+   {
+    "year": 2003,
+    "cm": "Vasundhara Raje",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      120
+     ],
+     [
+      "INC",
+      56
+     ]
+    ],
+    "total": 200
+   }
+  ],
+  "Sikkim": [
+   {
+    "year": 2024,
+    "cm": "Prem Singh Tamang",
+    "cmParty": "SKM",
+    "largest": [
+     [
+      "SKM",
+      31
+     ],
+     [
+      "SDF",
+      1
+     ]
+    ],
+    "total": 32
+   },
+   {
+    "year": 2019,
+    "cm": "Prem Singh Tamang",
+    "cmParty": "SKM",
+    "largest": [
+     [
+      "SKM",
+      17
+     ],
+     [
+      "SDF",
+      15
+     ]
+    ],
+    "total": 32
+   },
+   {
+    "year": 2014,
+    "cm": "Pawan Chamling",
+    "cmParty": "SDF",
+    "largest": [
+     [
+      "SDF",
+      22
+     ],
+     [
+      "SKM",
+      10
+     ]
+    ],
+    "total": 32
+   },
+   {
+    "year": 2009,
+    "cm": "Pawan Chamling",
+    "cmParty": "SDF",
+    "largest": [
+     [
+      "SDF",
+      32
+     ],
+     [
+      "INC",
+      0
+     ]
+    ],
+    "total": 32
+   },
+   {
+    "year": 2004,
+    "cm": "Pawan Chamling",
+    "cmParty": "SDF",
+    "largest": [
+     [
+      "SDF",
+      31
+     ],
+     [
+      "INC",
+      1
+     ]
+    ],
+    "total": 32
+   }
+  ],
+  "Tamil Nadu": [
+   {
+    "year": 2026,
+    "cm": "C. Joseph Vijay",
+    "cmParty": "TVK",
+    "largest": [
+     [
+      "TVK",
+      108
+     ],
+     [
+      "DMK",
+      59
+     ]
+    ],
+    "total": 234
+   },
+   {
+    "year": 2021,
+    "cm": "M. K. Stalin",
+    "cmParty": "DMK",
+    "largest": [
+     [
+      "DMK",
+      133
+     ],
+     [
+      "AIADMK",
+      66
+     ]
+    ],
+    "total": 234
+   },
+   {
+    "year": 2016,
+    "cm": "J. Jayalalithaa",
+    "cmParty": "AIADMK",
+    "largest": [
+     [
+      "AIADMK",
+      136
+     ],
+     [
+      "DMK",
+      89
+     ]
+    ],
+    "total": 234
+   },
+   {
+    "year": 2011,
+    "cm": "J. Jayalalithaa",
+    "cmParty": "AIADMK",
+    "largest": [
+     [
+      "AIADMK",
+      150
+     ],
+     [
+      "DMDK",
+      29
+     ]
+    ],
+    "total": 234
+   },
+   {
+    "year": 2006,
+    "cm": "M. Karunanidhi",
+    "cmParty": "DMK",
+    "largest": [
+     [
+      "DMK",
+      96
+     ],
+     [
+      "AIADMK",
+      61
+     ]
+    ],
+    "total": 234
+   }
+  ],
+  "Telangana": [
+   {
+    "year": 2023,
+    "cm": "A. Revanth Reddy",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      64
+     ],
+     [
+      "BRS",
+      39
+     ]
+    ],
+    "total": 119
+   },
+   {
+    "year": 2018,
+    "cm": "K. Chandrashekar Rao",
+    "cmParty": "BRS",
+    "largest": [
+     [
+      "BRS",
+      88
+     ],
+     [
+      "INC",
+      19
+     ]
+    ],
+    "total": 119,
+    "note": "Party was then called Telangana Rashtra Samithi"
+   },
+   {
+    "year": 2014,
+    "cm": "K. Chandrashekar Rao",
+    "cmParty": "BRS",
+    "largest": [
+     [
+      "BRS",
+      63
+     ],
+     [
+      "INC",
+      21
+     ]
+    ],
+    "total": 119,
+    "note": "First election as a state; party then called TRS"
+   }
+  ],
+  "Tripura": [
+   {
+    "year": 2023,
+    "cm": "Manik Saha",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      32
+     ],
+     [
+      "TMP",
+      13
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2018,
+    "cm": "Biplab Kumar Deb",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      36
+     ],
+     [
+      "CPI(M)",
+      16
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2013,
+    "cm": "Manik Sarkar",
+    "cmParty": "CPI(M)",
+    "largest": [
+     [
+      "CPI(M)",
+      49
+     ],
+     [
+      "INC",
+      10
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2008,
+    "cm": "Manik Sarkar",
+    "cmParty": "CPI(M)",
+    "largest": [
+     [
+      "CPI(M)",
+      46
+     ],
+     [
+      "INC",
+      10
+     ]
+    ],
+    "total": 60
+   },
+   {
+    "year": 2003,
+    "cm": "Manik Sarkar",
+    "cmParty": "CPI(M)",
+    "largest": [
+     [
+      "CPI(M)",
+      38
+     ],
+     [
+      "INC",
+      13
+     ]
+    ],
+    "total": 60
+   }
+  ],
+  "Uttar Pradesh": [
+   {
+    "year": 2022,
+    "cm": "Yogi Adityanath",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      255
+     ],
+     [
+      "SP",
+      111
+     ]
+    ],
+    "total": 403
+   },
+   {
+    "year": 2017,
+    "cm": "Yogi Adityanath",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      312
+     ],
+     [
+      "SP",
+      47
+     ]
+    ],
+    "total": 403
+   },
+   {
+    "year": 2012,
+    "cm": "Akhilesh Yadav",
+    "cmParty": "SP",
+    "largest": [
+     [
+      "SP",
+      224
+     ],
+     [
+      "BSP",
+      80
+     ]
+    ],
+    "total": 403
+   },
+   {
+    "year": 2007,
+    "cm": "Mayawati",
+    "cmParty": "BSP",
+    "largest": [
+     [
+      "BSP",
+      206
+     ],
+     [
+      "SP",
+      97
+     ]
+    ],
+    "total": 403
+   },
+   {
+    "year": 2002,
+    "cm": "Mayawati",
+    "cmParty": "BSP",
+    "largest": [
+     [
+      "SP",
+      143
+     ],
+     [
+      "BSP",
+      98
+     ]
+    ],
+    "total": 403,
+    "note": "BSP\u2013BJP coalition"
+   }
+  ],
+  "Uttarakhand": [
+   {
+    "year": 2022,
+    "cm": "Pushkar Singh Dhami",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      47
+     ],
+     [
+      "INC",
+      19
+     ]
+    ],
+    "total": 70
+   },
+   {
+    "year": 2017,
+    "cm": "Trivendra Singh Rawat",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      57
+     ],
+     [
+      "INC",
+      11
+     ]
+    ],
+    "total": 70
+   },
+   {
+    "year": 2012,
+    "cm": "Vijay Bahuguna",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      32
+     ],
+     [
+      "BJP",
+      31
+     ]
+    ],
+    "total": 70
+   },
+   {
+    "year": 2007,
+    "cm": "B. C. Khanduri",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      35
+     ],
+     [
+      "INC",
+      21
+     ]
+    ],
+    "total": 70
+   },
+   {
+    "year": 2002,
+    "cm": "N. D. Tiwari",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      36
+     ],
+     [
+      "BJP",
+      19
+     ]
+    ],
+    "total": 70
+   }
+  ],
+  "West Bengal": [
+   {
+    "year": 2026,
+    "cm": "Suvendu Adhikari",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      208
+     ],
+     [
+      "AITC",
+      80
+     ]
+    ],
+    "total": 294
+   },
+   {
+    "year": 2021,
+    "cm": "Mamata Banerjee",
+    "cmParty": "AITC",
+    "largest": [
+     [
+      "AITC",
+      215
+     ],
+     [
+      "BJP",
+      77
+     ]
+    ],
+    "total": 294
+   },
+   {
+    "year": 2016,
+    "cm": "Mamata Banerjee",
+    "cmParty": "AITC",
+    "largest": [
+     [
+      "AITC",
+      211
+     ],
+     [
+      "INC",
+      44
+     ]
+    ],
+    "total": 294
+   },
+   {
+    "year": 2011,
+    "cm": "Mamata Banerjee",
+    "cmParty": "AITC",
+    "largest": [
+     [
+      "AITC",
+      184
+     ],
+     [
+      "CPI(M)",
+      40
+     ]
+    ],
+    "total": 294
+   },
+   {
+    "year": 2006,
+    "cm": "Buddhadeb Bhattacharjee",
+    "cmParty": "CPI(M)",
+    "largest": [
+     [
+      "CPI(M)",
+      176
+     ],
+     [
+      "AITC",
+      30
+     ]
+    ],
+    "total": 294
+   }
+  ],
+  "Delhi": [
+   {
+    "year": 2025,
+    "cm": "Rekha Gupta",
+    "cmParty": "BJP",
+    "largest": [
+     [
+      "BJP",
+      48
+     ],
+     [
+      "AAP",
+      22
+     ]
+    ],
+    "total": 70
+   },
+   {
+    "year": 2020,
+    "cm": "Arvind Kejriwal",
+    "cmParty": "AAP",
+    "largest": [
+     [
+      "AAP",
+      62
+     ],
+     [
+      "BJP",
+      8
+     ]
+    ],
+    "total": 70
+   },
+   {
+    "year": 2015,
+    "cm": "Arvind Kejriwal",
+    "cmParty": "AAP",
+    "largest": [
+     [
+      "AAP",
+      67
+     ],
+     [
+      "BJP",
+      3
+     ]
+    ],
+    "total": 70
+   },
+   {
+    "year": 2013,
+    "cm": "Arvind Kejriwal",
+    "cmParty": "AAP",
+    "largest": [
+     [
+      "BJP",
+      31
+     ],
+     [
+      "AAP",
+      28
+     ]
+    ],
+    "total": 70,
+    "note": "AAP minority government with INC support"
+   },
+   {
+    "year": 2008,
+    "cm": "Sheila Dikshit",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      43
+     ],
+     [
+      "BJP",
+      23
+     ]
+    ],
+    "total": 70
+   }
+  ],
+  "Jammu and Kashmir": [
+   {
+    "year": 2024,
+    "cm": "Omar Abdullah",
+    "cmParty": "JKNC",
+    "largest": [
+     [
+      "JKNC",
+      42
+     ],
+     [
+      "BJP",
+      29
+     ]
+    ],
+    "total": 90,
+    "note": "First election as a union territory"
+   },
+   {
+    "year": 2014,
+    "cm": "Mufti Mohammad Sayeed",
+    "cmParty": "PDP",
+    "largest": [
+     [
+      "PDP",
+      28
+     ],
+     [
+      "BJP",
+      25
+     ]
+    ],
+    "total": 87,
+    "note": "PDP\u2013BJP coalition"
+   },
+   {
+    "year": 2008,
+    "cm": "Omar Abdullah",
+    "cmParty": "JKNC",
+    "largest": [
+     [
+      "JKNC",
+      28
+     ],
+     [
+      "PDP",
+      21
+     ]
+    ],
+    "total": 87,
+    "note": "JKNC\u2013INC coalition"
+   },
+   {
+    "year": 2002,
+    "cm": "Mufti Mohammad Sayeed",
+    "cmParty": "PDP",
+    "largest": [
+     [
+      "JKNC",
+      28
+     ],
+     [
+      "INC",
+      20
+     ]
+    ],
+    "total": 87,
+    "note": "PDP\u2013INC coalition"
+   },
+   {
+    "year": 1996,
+    "cm": "Farooq Abdullah",
+    "cmParty": "JKNC",
+    "largest": [
+     [
+      "JKNC",
+      57
+     ],
+     [
+      "BJP",
+      8
+     ]
+    ],
+    "total": 87
+   }
+  ],
+  "Puducherry": [
+   {
+    "year": 2026,
+    "cm": "N. Rangaswamy",
+    "cmParty": "AINRC",
+    "largest": [
+     [
+      "AINRC",
+      12
+     ],
+     [
+      "DMK",
+      5
+     ]
+    ],
+    "total": 30
+   },
+   {
+    "year": 2021,
+    "cm": "N. Rangaswamy",
+    "cmParty": "AINRC",
+    "largest": [
+     [
+      "AINRC",
+      10
+     ],
+     [
+      "DMK",
+      6
+     ]
+    ],
+    "total": 30
+   },
+   {
+    "year": 2016,
+    "cm": "V. Narayanasamy",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      15
+     ],
+     [
+      "AINRC",
+      8
+     ]
+    ],
+    "total": 30
+   },
+   {
+    "year": 2011,
+    "cm": "N. Rangaswamy",
+    "cmParty": "AINRC",
+    "largest": [
+     [
+      "AINRC",
+      15
+     ],
+     [
+      "INC",
+      7
+     ]
+    ],
+    "total": 30
+   },
+   {
+    "year": 2006,
+    "cm": "N. Rangaswamy",
+    "cmParty": "INC",
+    "largest": [
+     [
+      "INC",
+      10
+     ],
+     [
+      "DMK",
+      7
+     ]
+    ],
+    "total": 30,
+    "note": "Rangaswamy was then in Congress"
+   }
+  ]
+ },
+ "lokSabhaHistory": [
+  {
+   "year": 2024,
+   "pm": "Narendra Modi",
+   "pmParty": "BJP",
+   "winner": "NDA",
+   "blocs": [
+    [
+     "NDA",
+     293
+    ],
+    [
+     "INDIA",
+     234
+    ]
+   ],
+   "parties": [
+    [
+     "BJP",
+     240
+    ],
+    [
+     "INC",
+     99
+    ]
+   ]
+  },
+  {
+   "year": 2019,
+   "pm": "Narendra Modi",
+   "pmParty": "BJP",
+   "winner": "NDA",
+   "blocs": [
+    [
+     "NDA",
+     353
+    ],
+    [
+     "UPA",
+     91
+    ]
+   ],
+   "parties": [
+    [
+     "BJP",
+     303
+    ],
+    [
+     "INC",
+     52
+    ]
+   ]
+  },
+  {
+   "year": 2014,
+   "pm": "Narendra Modi",
+   "pmParty": "BJP",
+   "winner": "NDA",
+   "blocs": [
+    [
+     "NDA",
+     336
+    ],
+    [
+     "UPA",
+     60
+    ]
+   ],
+   "parties": [
+    [
+     "BJP",
+     282
+    ],
+    [
+     "INC",
+     44
+    ]
+   ]
+  },
+  {
+   "year": 2009,
+   "pm": "Manmohan Singh",
+   "pmParty": "INC",
+   "winner": "UPA",
+   "blocs": [
+    [
+     "UPA",
+     262
+    ],
+    [
+     "NDA",
+     159
+    ]
+   ],
+   "parties": [
+    [
+     "INC",
+     206
+    ],
+    [
+     "BJP",
+     116
+    ]
+   ]
+  },
+  {
+   "year": 2004,
+   "pm": "Manmohan Singh",
+   "pmParty": "INC",
+   "winner": "UPA",
+   "blocs": [
+    [
+     "UPA",
+     218
+    ],
+    [
+     "NDA",
+     181
+    ]
+   ],
+   "parties": [
+    [
+     "INC",
+     145
+    ],
+    [
+     "BJP",
+     138
+    ]
+   ]
+  }
+ ],
+ "lokSabhaStateHistory": {
+  "Andhra Pradesh": [
+   {
+    "year": 2024,
+    "total": 25,
+    "results": [
+     [
+      "TDP",
+      16
+     ],
+     [
+      "YSRCP",
+      4
+     ],
+     [
+      "BJP",
+      3
+     ],
+     [
+      "JSP",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 25,
+    "results": [
+     [
+      "YSRCP",
+      22
+     ],
+     [
+      "TDP",
+      3
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 25,
+    "results": [
+     [
+      "TDP",
+      15
+     ],
+     [
+      "YSRCP",
+      8
+     ],
+     [
+      "BJP",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 42,
+    "results": [
+     [
+      "INC",
+      33
+     ],
+     [
+      "TDP",
+      6
+     ],
+     [
+      "BRS",
+      2
+     ],
+     [
+      "AIMIM",
+      1
+     ]
+    ],
+    "note": "Undivided Andhra Pradesh, 42 seats"
+   },
+   {
+    "year": 2004,
+    "total": 42,
+    "results": [
+     [
+      "INC",
+      29
+     ],
+     [
+      "TDP",
+      5
+     ],
+     [
+      "BRS",
+      5
+     ],
+     [
+      "CPI",
+      1
+     ],
+     [
+      "CPI(M)",
+      1
+     ],
+     [
+      "AIMIM",
+      1
+     ]
+    ],
+    "note": "Undivided Andhra Pradesh, 42 seats"
+   }
+  ],
+  "Arunachal Pradesh": [
+   {
+    "year": 2024,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      1
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      2
+     ]
+    ]
+   }
+  ],
+  "Assam": [
+   {
+    "year": 2024,
+    "total": 14,
+    "results": [
+     [
+      "BJP",
+      9
+     ],
+     [
+      "INC",
+      3
+     ],
+     [
+      "AGP",
+      1
+     ],
+     [
+      "UPPL",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 14,
+    "results": [
+     [
+      "BJP",
+      9
+     ],
+     [
+      "INC",
+      3
+     ],
+     [
+      "AIUDF",
+      1
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 14,
+    "results": [
+     [
+      "BJP",
+      7
+     ],
+     [
+      "INC",
+      3
+     ],
+     [
+      "AIUDF",
+      3
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 14,
+    "results": [
+     [
+      "INC",
+      7
+     ],
+     [
+      "BJP",
+      4
+     ],
+     [
+      "AGP",
+      1
+     ],
+     [
+      "BPF",
+      1
+     ],
+     [
+      "AIUDF",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 14,
+    "results": [
+     [
+      "INC",
+      9
+     ],
+     [
+      "BJP",
+      2
+     ],
+     [
+      "AGP",
+      2
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   }
+  ],
+  "Bihar": [
+   {
+    "year": 2024,
+    "total": 40,
+    "results": [
+     [
+      "BJP",
+      12
+     ],
+     [
+      "JD(U)",
+      12
+     ],
+     [
+      "LJP(RV)",
+      5
+     ],
+     [
+      "HAM",
+      1
+     ],
+     [
+      "RJD",
+      4
+     ],
+     [
+      "INC",
+      3
+     ],
+     [
+      "CPI(ML)L",
+      2
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 40,
+    "results": [
+     [
+      "BJP",
+      17
+     ],
+     [
+      "JD(U)",
+      16
+     ],
+     [
+      "LJP",
+      6
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 40,
+    "results": [
+     [
+      "BJP",
+      22
+     ],
+     [
+      "LJP",
+      6
+     ],
+     [
+      "RLSP",
+      3
+     ],
+     [
+      "RJD",
+      4
+     ],
+     [
+      "INC",
+      2
+     ],
+     [
+      "JD(U)",
+      2
+     ],
+     [
+      "NCP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 40,
+    "results": [
+     [
+      "JD(U)",
+      20
+     ],
+     [
+      "BJP",
+      12
+     ],
+     [
+      "RJD",
+      4
+     ],
+     [
+      "INC",
+      2
+     ],
+     [
+      "IND",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 40,
+    "results": [
+     [
+      "RJD",
+      22
+     ],
+     [
+      "JD(U)",
+      6
+     ],
+     [
+      "BJP",
+      5
+     ],
+     [
+      "LJP",
+      4
+     ],
+     [
+      "INC",
+      3
+     ]
+    ]
+   }
+  ],
+  "Chhattisgarh": [
+   {
+    "year": 2024,
+    "total": 11,
+    "results": [
+     [
+      "BJP",
+      10
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 11,
+    "results": [
+     [
+      "BJP",
+      9
+     ],
+     [
+      "INC",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 11,
+    "results": [
+     [
+      "BJP",
+      10
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 11,
+    "results": [
+     [
+      "BJP",
+      10
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 11,
+    "results": [
+     [
+      "BJP",
+      10
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   }
+  ],
+  "Goa": [
+   {
+    "year": 2024,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      1
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      1
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      1
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      1
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   }
+  ],
+  "Gujarat": [
+   {
+    "year": 2024,
+    "total": 26,
+    "results": [
+     [
+      "BJP",
+      25
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 26,
+    "results": [
+     [
+      "BJP",
+      26
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 26,
+    "results": [
+     [
+      "BJP",
+      26
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 26,
+    "results": [
+     [
+      "BJP",
+      15
+     ],
+     [
+      "INC",
+      11
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 26,
+    "results": [
+     [
+      "BJP",
+      14
+     ],
+     [
+      "INC",
+      12
+     ]
+    ]
+   }
+  ],
+  "Haryana": [
+   {
+    "year": 2024,
+    "total": 10,
+    "results": [
+     [
+      "BJP",
+      5
+     ],
+     [
+      "INC",
+      5
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 10,
+    "results": [
+     [
+      "BJP",
+      10
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 10,
+    "results": [
+     [
+      "BJP",
+      7
+     ],
+     [
+      "INLD",
+      2
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 10,
+    "results": [
+     [
+      "INC",
+      9
+     ],
+     [
+      "HJC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 10,
+    "results": [
+     [
+      "INC",
+      9
+     ],
+     [
+      "BJP",
+      1
+     ]
+    ]
+   }
+  ],
+  "Himachal Pradesh": [
+   {
+    "year": 2024,
+    "total": 4,
+    "results": [
+     [
+      "BJP",
+      4
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 4,
+    "results": [
+     [
+      "BJP",
+      4
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 4,
+    "results": [
+     [
+      "BJP",
+      4
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 4,
+    "results": [
+     [
+      "BJP",
+      3
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 4,
+    "results": [
+     [
+      "INC",
+      3
+     ],
+     [
+      "BJP",
+      1
+     ]
+    ]
+   }
+  ],
+  "Jharkhand": [
+   {
+    "year": 2024,
+    "total": 14,
+    "results": [
+     [
+      "BJP",
+      8
+     ],
+     [
+      "JMM",
+      3
+     ],
+     [
+      "INC",
+      2
+     ],
+     [
+      "AJSU",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 14,
+    "results": [
+     [
+      "BJP",
+      11
+     ],
+     [
+      "AJSU",
+      1
+     ],
+     [
+      "INC",
+      1
+     ],
+     [
+      "JMM",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 14,
+    "results": [
+     [
+      "BJP",
+      12
+     ],
+     [
+      "JMM",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 14,
+    "results": [
+     [
+      "BJP",
+      8
+     ],
+     [
+      "JMM",
+      2
+     ],
+     [
+      "INC",
+      1
+     ],
+     [
+      "JVM",
+      1
+     ],
+     [
+      "IND",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 14,
+    "results": [
+     [
+      "INC",
+      6
+     ],
+     [
+      "JMM",
+      4
+     ],
+     [
+      "RJD",
+      2
+     ],
+     [
+      "CPI",
+      1
+     ],
+     [
+      "BJP",
+      1
+     ]
+    ]
+   }
+  ],
+  "Karnataka": [
+   {
+    "year": 2024,
+    "total": 28,
+    "results": [
+     [
+      "BJP",
+      17
+     ],
+     [
+      "INC",
+      9
+     ],
+     [
+      "JD(S)",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 28,
+    "results": [
+     [
+      "BJP",
+      25
+     ],
+     [
+      "INC",
+      1
+     ],
+     [
+      "JD(S)",
+      1
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 28,
+    "results": [
+     [
+      "BJP",
+      17
+     ],
+     [
+      "INC",
+      9
+     ],
+     [
+      "JD(S)",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 28,
+    "results": [
+     [
+      "BJP",
+      19
+     ],
+     [
+      "INC",
+      6
+     ],
+     [
+      "JD(S)",
+      3
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 28,
+    "results": [
+     [
+      "BJP",
+      18
+     ],
+     [
+      "INC",
+      8
+     ],
+     [
+      "JD(S)",
+      2
+     ]
+    ]
+   }
+  ],
+  "Kerala": [
+   {
+    "year": 2024,
+    "total": 20,
+    "results": [
+     [
+      "INC",
+      14
+     ],
+     [
+      "IUML",
+      2
+     ],
+     [
+      "CPI(M)",
+      1
+     ],
+     [
+      "KEC",
+      1
+     ],
+     [
+      "RSP",
+      1
+     ],
+     [
+      "BJP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 20,
+    "results": [
+     [
+      "INC",
+      15
+     ],
+     [
+      "IUML",
+      2
+     ],
+     [
+      "KEC",
+      1
+     ],
+     [
+      "RSP",
+      1
+     ],
+     [
+      "CPI(M)",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 20,
+    "results": [
+     [
+      "INC",
+      8
+     ],
+     [
+      "IUML",
+      2
+     ],
+     [
+      "KEC",
+      1
+     ],
+     [
+      "RSP",
+      1
+     ],
+     [
+      "CPI(M)",
+      5
+     ],
+     [
+      "CPI",
+      1
+     ],
+     [
+      "IND",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 20,
+    "results": [
+     [
+      "INC",
+      13
+     ],
+     [
+      "IUML",
+      2
+     ],
+     [
+      "KEC",
+      1
+     ],
+     [
+      "CPI(M)",
+      4
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 20,
+    "results": [
+     [
+      "LDF",
+      18
+     ],
+     [
+      "IUML",
+      1
+     ],
+     [
+      "IFDP",
+      1
+     ]
+    ],
+    "note": "Party-level split of LDF\u2019s 18 seats not recorded"
+   }
+  ],
+  "Madhya Pradesh": [
+   {
+    "year": 2024,
+    "total": 29,
+    "results": [
+     [
+      "BJP",
+      29
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 29,
+    "results": [
+     [
+      "BJP",
+      28
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 29,
+    "results": [
+     [
+      "BJP",
+      27
+     ],
+     [
+      "INC",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 29,
+    "results": [
+     [
+      "BJP",
+      16
+     ],
+     [
+      "INC",
+      12
+     ],
+     [
+      "BSP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 29,
+    "results": [
+     [
+      "BJP",
+      25
+     ],
+     [
+      "INC",
+      4
+     ]
+    ]
+   }
+  ],
+  "Maharashtra": [
+   {
+    "year": 2024,
+    "total": 48,
+    "results": [
+     [
+      "INC",
+      13
+     ],
+     [
+      "BJP",
+      9
+     ],
+     [
+      "SS(UBT)",
+      9
+     ],
+     [
+      "NCP(SP)",
+      8
+     ],
+     [
+      "SHS",
+      7
+     ],
+     [
+      "NCP",
+      1
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 48,
+    "results": [
+     [
+      "BJP",
+      23
+     ],
+     [
+      "SHS",
+      18
+     ],
+     [
+      "NCP",
+      4
+     ],
+     [
+      "INC",
+      1
+     ],
+     [
+      "AIMIM",
+      1
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 48,
+    "results": [
+     [
+      "BJP",
+      23
+     ],
+     [
+      "SHS",
+      18
+     ],
+     [
+      "NCP",
+      4
+     ],
+     [
+      "INC",
+      2
+     ],
+     [
+      "SWP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 48,
+    "results": [
+     [
+      "INC",
+      17
+     ],
+     [
+      "SHS",
+      11
+     ],
+     [
+      "BJP",
+      9
+     ],
+     [
+      "NCP",
+      8
+     ],
+     [
+      "SWP",
+      1
+     ],
+     [
+      "BVA",
+      1
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 48,
+    "results": [
+     [
+      "INC",
+      13
+     ],
+     [
+      "BJP",
+      13
+     ],
+     [
+      "SHS",
+      12
+     ],
+     [
+      "NCP",
+      9
+     ],
+     [
+      "RPI(A)",
+      1
+     ]
+    ]
+   }
+  ],
+  "Manipur": [
+   {
+    "year": 2024,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      1
+     ],
+     [
+      "NPF",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      1
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   }
+  ],
+  "Meghalaya": [
+   {
+    "year": 2024,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      1
+     ],
+     [
+      "VPP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      1
+     ],
+     [
+      "NPP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      1
+     ],
+     [
+      "NPP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      1
+     ],
+     [
+      "NCP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      1
+     ],
+     [
+      "AITC",
+      1
+     ]
+    ]
+   }
+  ],
+  "Mizoram": [
+   {
+    "year": 2024,
+    "total": 1,
+    "results": [
+     [
+      "ZPM",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 1,
+    "results": [
+     [
+      "MNF",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 1,
+    "results": [
+     [
+      "MNF",
+      1
+     ]
+    ]
+   }
+  ],
+  "Nagaland": [
+   {
+    "year": 2024,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 1,
+    "results": [
+     [
+      "NDPP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 1,
+    "results": [
+     [
+      "NPF",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 1,
+    "results": [
+     [
+      "NPF",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 1,
+    "results": [
+     [
+      "NPF",
+      1
+     ]
+    ]
+   }
+  ],
+  "Odisha": [
+   {
+    "year": 2024,
+    "total": 21,
+    "results": [
+     [
+      "BJP",
+      20
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 21,
+    "results": [
+     [
+      "BJD",
+      12
+     ],
+     [
+      "BJP",
+      8
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 21,
+    "results": [
+     [
+      "BJD",
+      20
+     ],
+     [
+      "BJP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 21,
+    "results": [
+     [
+      "BJD",
+      14
+     ],
+     [
+      "INC",
+      6
+     ],
+     [
+      "CPI",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 21,
+    "results": [
+     [
+      "BJD",
+      11
+     ],
+     [
+      "BJP",
+      7
+     ],
+     [
+      "INC",
+      2
+     ],
+     [
+      "JMM",
+      1
+     ]
+    ]
+   }
+  ],
+  "Punjab": [
+   {
+    "year": 2024,
+    "total": 13,
+    "results": [
+     [
+      "INC",
+      7
+     ],
+     [
+      "AAP",
+      3
+     ],
+     [
+      "SAD",
+      1
+     ],
+     [
+      "IND",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 13,
+    "results": [
+     [
+      "INC",
+      8
+     ],
+     [
+      "SAD",
+      2
+     ],
+     [
+      "BJP",
+      2
+     ],
+     [
+      "AAP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 13,
+    "results": [
+     [
+      "AAP",
+      4
+     ],
+     [
+      "SAD",
+      4
+     ],
+     [
+      "INC",
+      3
+     ],
+     [
+      "BJP",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 13,
+    "results": [
+     [
+      "INC",
+      8
+     ],
+     [
+      "SAD",
+      4
+     ],
+     [
+      "BJP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 13,
+    "results": [
+     [
+      "SAD",
+      8
+     ],
+     [
+      "BJP",
+      3
+     ],
+     [
+      "INC",
+      2
+     ]
+    ]
+   }
+  ],
+  "Rajasthan": [
+   {
+    "year": 2024,
+    "total": 25,
+    "results": [
+     [
+      "BJP",
+      14
+     ],
+     [
+      "INC",
+      8
+     ],
+     [
+      "CPI(M)",
+      1
+     ],
+     [
+      "RLP",
+      1
+     ],
+     [
+      "BAP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 25,
+    "results": [
+     [
+      "BJP",
+      24
+     ],
+     [
+      "RLP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 25,
+    "results": [
+     [
+      "BJP",
+      25
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 25,
+    "results": [
+     [
+      "INC",
+      20
+     ],
+     [
+      "BJP",
+      4
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 25,
+    "results": [
+     [
+      "BJP",
+      21
+     ],
+     [
+      "INC",
+      4
+     ]
+    ]
+   }
+  ],
+  "Sikkim": [
+   {
+    "year": 2024,
+    "total": 1,
+    "results": [
+     [
+      "SKM",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 1,
+    "results": [
+     [
+      "SKM",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 1,
+    "results": [
+     [
+      "SDF",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 1,
+    "results": [
+     [
+      "SDF",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 1,
+    "results": [
+     [
+      "SDF",
+      1
+     ]
+    ]
+   }
+  ],
+  "Tamil Nadu": [
+   {
+    "year": 2024,
+    "total": 39,
+    "results": [
+     [
+      "DMK",
+      22
+     ],
+     [
+      "INC",
+      9
+     ],
+     [
+      "VCK",
+      2
+     ],
+     [
+      "CPI",
+      2
+     ],
+     [
+      "CPI(M)",
+      2
+     ],
+     [
+      "IUML",
+      1
+     ],
+     [
+      "MDMK",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 39,
+    "results": [
+     [
+      "DMK",
+      24
+     ],
+     [
+      "INC",
+      8
+     ],
+     [
+      "CPI",
+      2
+     ],
+     [
+      "CPI(M)",
+      2
+     ],
+     [
+      "IUML",
+      1
+     ],
+     [
+      "VCK",
+      1
+     ],
+     [
+      "AIADMK",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 39,
+    "results": [
+     [
+      "AIADMK",
+      37
+     ],
+     [
+      "BJP",
+      1
+     ],
+     [
+      "PMK",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 39,
+    "results": [
+     [
+      "DMK",
+      18
+     ],
+     [
+      "AIADMK",
+      9
+     ],
+     [
+      "INC",
+      8
+     ],
+     [
+      "VCK",
+      1
+     ],
+     [
+      "MDMK",
+      1
+     ],
+     [
+      "CPI",
+      1
+     ],
+     [
+      "CPI(M)",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 39,
+    "results": [
+     [
+      "DMK",
+      16
+     ],
+     [
+      "INC",
+      10
+     ],
+     [
+      "PMK",
+      5
+     ],
+     [
+      "MDMK",
+      4
+     ],
+     [
+      "CPI",
+      2
+     ],
+     [
+      "CPI(M)",
+      2
+     ]
+    ]
+   }
+  ],
+  "Telangana": [
+   {
+    "year": 2024,
+    "total": 17,
+    "results": [
+     [
+      "INC",
+      8
+     ],
+     [
+      "BJP",
+      8
+     ],
+     [
+      "AIMIM",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 17,
+    "results": [
+     [
+      "BRS",
+      9
+     ],
+     [
+      "BJP",
+      4
+     ],
+     [
+      "INC",
+      3
+     ],
+     [
+      "AIMIM",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 17,
+    "results": [
+     [
+      "BRS",
+      11
+     ],
+     [
+      "INC",
+      2
+     ],
+     [
+      "BJP",
+      1
+     ],
+     [
+      "TDP",
+      1
+     ],
+     [
+      "YSRCP",
+      1
+     ],
+     [
+      "AIMIM",
+      1
+     ]
+    ]
+   }
+  ],
+  "Tripura": [
+   {
+    "year": 2024,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 2,
+    "results": [
+     [
+      "CPI(M)",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 2,
+    "results": [
+     [
+      "CPI(M)",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 2,
+    "results": [
+     [
+      "CPI(M)",
+      2
+     ]
+    ]
+   }
+  ],
+  "Uttar Pradesh": [
+   {
+    "year": 2024,
+    "total": 80,
+    "results": [
+     [
+      "SP",
+      37
+     ],
+     [
+      "BJP",
+      33
+     ],
+     [
+      "INC",
+      6
+     ],
+     [
+      "RLD",
+      2
+     ],
+     [
+      "AD(S)",
+      1
+     ],
+     [
+      "ASP(KR)",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 80,
+    "results": [
+     [
+      "BJP",
+      62
+     ],
+     [
+      "BSP",
+      10
+     ],
+     [
+      "SP",
+      5
+     ],
+     [
+      "AD(S)",
+      2
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 80,
+    "results": [
+     [
+      "BJP",
+      71
+     ],
+     [
+      "SP",
+      5
+     ],
+     [
+      "INC",
+      2
+     ],
+     [
+      "AD(S)",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 80,
+    "results": [
+     [
+      "SP",
+      23
+     ],
+     [
+      "INC",
+      21
+     ],
+     [
+      "BSP",
+      20
+     ],
+     [
+      "BJP",
+      10
+     ],
+     [
+      "RLD",
+      5
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 80,
+    "results": [
+     [
+      "SP",
+      35
+     ],
+     [
+      "BSP",
+      19
+     ],
+     [
+      "BJP",
+      10
+     ],
+     [
+      "INC",
+      9
+     ],
+     [
+      "RLD",
+      3
+     ],
+     [
+      "JD(U)",
+      1
+     ],
+     [
+      "NLP",
+      1
+     ],
+     [
+      "SJP(R)",
+      1
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   }
+  ],
+  "Uttarakhand": [
+   {
+    "year": 2024,
+    "total": 5,
+    "results": [
+     [
+      "BJP",
+      5
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 5,
+    "results": [
+     [
+      "BJP",
+      5
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 5,
+    "results": [
+     [
+      "BJP",
+      5
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 5,
+    "results": [
+     [
+      "INC",
+      5
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 5,
+    "results": [
+     [
+      "BJP",
+      3
+     ],
+     [
+      "INC",
+      1
+     ],
+     [
+      "SP",
+      1
+     ]
+    ]
+   }
+  ],
+  "West Bengal": [
+   {
+    "year": 2024,
+    "total": 42,
+    "results": [
+     [
+      "AITC",
+      29
+     ],
+     [
+      "BJP",
+      12
+     ],
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 42,
+    "results": [
+     [
+      "AITC",
+      22
+     ],
+     [
+      "BJP",
+      18
+     ],
+     [
+      "INC",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 42,
+    "results": [
+     [
+      "AITC",
+      34
+     ],
+     [
+      "INC",
+      4
+     ],
+     [
+      "CPI(M)",
+      2
+     ],
+     [
+      "BJP",
+      2
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 42,
+    "results": [
+     [
+      "AITC",
+      19
+     ],
+     [
+      "CPI(M)",
+      9
+     ],
+     [
+      "INC",
+      6
+     ],
+     [
+      "RSP",
+      2
+     ],
+     [
+      "CPI",
+      2
+     ],
+     [
+      "AIFB",
+      2
+     ],
+     [
+      "SUCI",
+      1
+     ],
+     [
+      "BJP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 42,
+    "results": [
+     [
+      "CPI(M)",
+      26
+     ],
+     [
+      "INC",
+      6
+     ],
+     [
+      "RSP",
+      3
+     ],
+     [
+      "CPI",
+      3
+     ],
+     [
+      "AIFB",
+      3
+     ],
+     [
+      "AITC",
+      1
+     ]
+    ]
+   }
+  ],
+  "Delhi": [
+   {
+    "year": 2024,
+    "total": 7,
+    "results": [
+     [
+      "BJP",
+      7
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 7,
+    "results": [
+     [
+      "BJP",
+      7
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 7,
+    "results": [
+     [
+      "BJP",
+      7
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 7,
+    "results": [
+     [
+      "INC",
+      7
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 7,
+    "results": [
+     [
+      "INC",
+      6
+     ],
+     [
+      "BJP",
+      1
+     ]
+    ]
+   }
+  ],
+  "Jammu and Kashmir": [
+   {
+    "year": 2024,
+    "total": 5,
+    "results": [
+     [
+      "JKNC",
+      2
+     ],
+     [
+      "BJP",
+      2
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 6,
+    "results": [
+     [
+      "JKNC",
+      3
+     ],
+     [
+      "BJP",
+      3
+     ]
+    ],
+    "note": "6 seats then, including Ladakh"
+   },
+   {
+    "year": 2014,
+    "total": 6,
+    "results": [
+     [
+      "BJP",
+      3
+     ],
+     [
+      "PDP",
+      3
+     ]
+    ],
+    "note": "6 seats then, including Ladakh"
+   },
+   {
+    "year": 2009,
+    "total": 6,
+    "results": [
+     [
+      "JKNC",
+      3
+     ],
+     [
+      "INC",
+      2
+     ],
+     [
+      "IND",
+      1
+     ]
+    ],
+    "note": "6 seats then, including Ladakh"
+   },
+   {
+    "year": 2004,
+    "total": 6,
+    "results": [
+     [
+      "INC",
+      2
+     ],
+     [
+      "JKNC",
+      2
+     ],
+     [
+      "PDP",
+      1
+     ],
+     [
+      "IND",
+      1
+     ]
+    ],
+    "note": "6 seats then, including Ladakh"
+   }
+  ],
+  "Puducherry": [
+   {
+    "year": 2024,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 1,
+    "results": [
+     [
+      "AINRC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 1,
+    "results": [
+     [
+      "PMK",
+      1
+     ]
+    ]
+   }
+  ],
+  "Andaman and Nicobar Islands": [
+   {
+    "year": 2024,
+    "total": 1,
+    "results": [
+     [
+      "BJP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 1,
+    "results": [
+     [
+      "BJP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 1,
+    "results": [
+     [
+      "BJP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   }
+  ],
+  "Chandigarh": [
+   {
+    "year": 2024,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 1,
+    "results": [
+     [
+      "BJP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 1,
+    "results": [
+     [
+      "BJP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   }
+  ],
+  "Dadra and Nagar Haveli and Daman and Diu": [
+   {
+    "year": 2024,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      1
+     ],
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      1
+     ],
+     [
+      "IND",
+      1
+     ]
+    ],
+    "note": "Two separate UTs then, one seat each"
+   },
+   {
+    "year": 2014,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      2
+     ]
+    ],
+    "note": "Two separate UTs then, one seat each"
+   },
+   {
+    "year": 2009,
+    "total": 2,
+    "results": [
+     [
+      "BJP",
+      2
+     ]
+    ],
+    "note": "Two separate UTs then, one seat each"
+   },
+   {
+    "year": 2004,
+    "total": 2,
+    "results": [
+     [
+      "INC",
+      1
+     ],
+     [
+      "BNP",
+      1
+     ]
+    ],
+    "note": "Two separate UTs then, one seat each"
+   }
+  ],
+  "Ladakh": [
+   {
+    "year": 2024,
+    "total": 1,
+    "results": [
+     [
+      "IND",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 1,
+    "results": [
+     [
+      "BJP",
+      1
+     ]
+    ],
+    "note": "Then one of Jammu and Kashmir\u2019s seats"
+   },
+   {
+    "year": 2014,
+    "total": 1,
+    "results": [
+     [
+      "BJP",
+      1
+     ]
+    ],
+    "note": "Then one of Jammu and Kashmir\u2019s seats"
+   },
+   {
+    "year": 2009,
+    "total": 1,
+    "results": [
+     [
+      "IND",
+      1
+     ]
+    ],
+    "note": "Then one of Jammu and Kashmir\u2019s seats"
+   },
+   {
+    "year": 2004,
+    "total": 1,
+    "results": [
+     [
+      "IND",
+      1
+     ]
+    ],
+    "note": "Then one of Jammu and Kashmir\u2019s seats"
+   }
+  ],
+  "Lakshadweep": [
+   {
+    "year": 2024,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2019,
+    "total": 1,
+    "results": [
+     [
+      "NCP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2014,
+    "total": 1,
+    "results": [
+     [
+      "NCP",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2009,
+    "total": 1,
+    "results": [
+     [
+      "INC",
+      1
+     ]
+    ]
+   },
+   {
+    "year": 2004,
+    "total": 1,
+    "results": [
+     [
+      "JD(U)",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ "upcoming": {
+  "note": "Expected from each house's five-year term; the Election Commission fixes exact dates shortly before.",
+  "lokSabha": {
+   "due": "2029-04",
+   "label": "Mid 2029"
+  },
+  "assembly": {
+   "Goa": {
+    "due": "2027-02",
+    "label": "Early 2027"
+   },
+   "Manipur": {
+    "due": "2027-02",
+    "label": "Early 2027"
+   },
+   "Punjab": {
+    "due": "2027-02",
+    "label": "Early 2027"
+   },
+   "Uttar Pradesh": {
+    "due": "2027-02",
+    "label": "Early 2027"
+   },
+   "Uttarakhand": {
+    "due": "2027-02",
+    "label": "Early 2027"
+   },
+   "Gujarat": {
+    "due": "2027-11",
+    "label": "Late 2027"
+   },
+   "Himachal Pradesh": {
+    "due": "2027-11",
+    "label": "Late 2027"
+   },
+   "Meghalaya": {
+    "due": "2028-02",
+    "label": "Early 2028"
+   },
+   "Nagaland": {
+    "due": "2028-02",
+    "label": "Early 2028"
+   },
+   "Tripura": {
+    "due": "2028-02",
+    "label": "Early 2028"
+   },
+   "Karnataka": {
+    "due": "2028-05",
+    "label": "Mid 2028"
+   },
+   "Chhattisgarh": {
+    "due": "2028-11",
+    "label": "Late 2028"
+   },
+   "Madhya Pradesh": {
+    "due": "2028-11",
+    "label": "Late 2028"
+   },
+   "Mizoram": {
+    "due": "2028-11",
+    "label": "Late 2028"
+   },
+   "Rajasthan": {
+    "due": "2028-11",
+    "label": "Late 2028"
+   },
+   "Telangana": {
+    "due": "2028-11",
+    "label": "Late 2028"
+   },
+   "Andhra Pradesh": {
+    "due": "2029-04",
+    "label": "Mid 2029"
+   },
+   "Arunachal Pradesh": {
+    "due": "2029-04",
+    "label": "Mid 2029"
+   },
+   "Odisha": {
+    "due": "2029-04",
+    "label": "Mid 2029"
+   },
+   "Sikkim": {
+    "due": "2029-04",
+    "label": "Mid 2029"
+   },
+   "Haryana": {
+    "due": "2029-10",
+    "label": "Late 2029"
+   },
+   "Maharashtra": {
+    "due": "2029-10",
+    "label": "Late 2029"
+   },
+   "Jharkhand": {
+    "due": "2029-10",
+    "label": "Late 2029"
+   },
+   "Jammu and Kashmir": {
+    "due": "2029-10",
+    "label": "Late 2029"
+   },
+   "Delhi": {
+    "due": "2030-02",
+    "label": "Early 2030"
+   },
+   "Bihar": {
+    "due": "2030-11",
+    "label": "Late 2030"
+   },
+   "Assam": {
+    "due": "2031-04",
+    "label": "Mid 2031"
+   },
+   "Kerala": {
+    "due": "2031-04",
+    "label": "Mid 2031"
+   },
+   "Tamil Nadu": {
+    "due": "2031-04",
+    "label": "Mid 2031"
+   },
+   "West Bengal": {
+    "due": "2031-04",
+    "label": "Mid 2031"
+   },
+   "Puducherry": {
+    "due": "2031-04",
+    "label": "Mid 2031"
+   }
+  }
+ }
+}

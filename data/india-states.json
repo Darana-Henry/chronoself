@@ -1,0 +1,1092 @@
+{
+ "asOf": "2026-11-03",
+ "parties": {
+  "BJP": {
+   "name": "Bharatiya Janata Party",
+   "alliance": "NDA",
+   "color": "#e0701f"
+  },
+  "INC": {
+   "name": "Indian National Congress",
+   "alliance": "INDIA",
+   "color": "#3b7fe0"
+  },
+  "AAP": {
+   "name": "Aam Aadmi Party",
+   "alliance": "Other",
+   "color": "#0e8fa0"
+  },
+  "TDP": {
+   "name": "Telugu Desam Party",
+   "alliance": "NDA",
+   "color": "#b8960c"
+  },
+  "YSRCP": {
+   "name": "YSR Congress Party",
+   "alliance": "Other",
+   "color": "#2f9e5a"
+  },
+  "JSP": {
+   "name": "Janasena Party",
+   "alliance": "NDA",
+   "color": "#d6456e"
+  },
+  "JMM": {
+   "name": "Jharkhand Mukti Morcha",
+   "alliance": "INDIA",
+   "color": "#2f9e5a"
+  },
+  "JKNC": {
+   "name": "Jammu & Kashmir National Conference",
+   "alliance": "INDIA",
+   "color": "#d64545"
+  },
+  "PDP": {
+   "name": "J&K Peoples Democratic Party",
+   "alliance": "Other",
+   "color": "#178a4a"
+  },
+  "JKPC": {
+   "name": "J&K People's Conference",
+   "alliance": "Other"
+  },
+  "NPP": {
+   "name": "National People's Party",
+   "alliance": "NDA",
+   "color": "#b8960c"
+  },
+  "ZPM": {
+   "name": "Zoram People's Movement",
+   "alliance": "Other",
+   "color": "#7e64e8"
+  },
+  "MNF": {
+   "name": "Mizo National Front",
+   "alliance": "Other",
+   "color": "#0e8fa0"
+  },
+  "NPF": {
+   "name": "Naga People's Front",
+   "alliance": "NDA",
+   "color": "#7e64e8"
+  },
+  "NDPP": {
+   "name": "Nationalist Democratic Progressive Party",
+   "alliance": "NDA",
+   "color": "#d6456e"
+  },
+  "SKM": {
+   "name": "Sikkim Krantikari Morcha",
+   "alliance": "NDA",
+   "color": "#d64545"
+  },
+  "SDF": {
+   "name": "Sikkim Democratic Front",
+   "alliance": "Other",
+   "color": "#2f9e5a"
+  },
+  "TVK": {
+   "name": "Tamilaga Vettri Kazhagam",
+   "alliance": "Other",
+   "color": "#b8960c"
+  },
+  "DMK": {
+   "name": "Dravida Munnetra Kazhagam",
+   "alliance": "INDIA",
+   "color": "#d64545"
+  },
+  "AIADMK": {
+   "name": "All India Anna Dravida Munnetra Kazhagam",
+   "alliance": "NDA",
+   "color": "#178a4a"
+  },
+  "AINRC": {
+   "name": "All India N.R. Congress",
+   "alliance": "NDA",
+   "color": "#b8960c"
+  },
+  "AITC": {
+   "name": "All India Trinamool Congress",
+   "alliance": "INDIA",
+   "color": "#2f9e5a"
+  },
+  "CPI(M)": {
+   "name": "Communist Party of India (Marxist)",
+   "alliance": "INDIA",
+   "color": "#d64545"
+  },
+  "CPI": {
+   "name": "Communist Party of India",
+   "alliance": "INDIA",
+   "color": "#b33a3a"
+  },
+  "CPI(ML)L": {
+   "name": "CPI (Marxist\u2013Leninist) Liberation",
+   "alliance": "INDIA",
+   "color": "#d64545"
+  },
+  "IUML": {
+   "name": "Indian Union Muslim League",
+   "alliance": "INDIA",
+   "color": "#178a4a"
+  },
+  "KEC": {
+   "name": "Kerala Congress",
+   "alliance": "INDIA",
+   "color": "#7e64e8"
+  },
+  "RSP": {
+   "name": "Revolutionary Socialist Party",
+   "alliance": "INDIA",
+   "color": "#c04fc8"
+  },
+  "SP": {
+   "name": "Samajwadi Party",
+   "alliance": "INDIA",
+   "color": "#d64545"
+  },
+  "RLD": {
+   "name": "Rashtriya Lok Dal",
+   "alliance": "NDA",
+   "color": "#2f9e5a"
+  },
+  "BSP": {
+   "name": "Bahujan Samaj Party",
+   "alliance": "Other",
+   "color": "#7e64e8"
+  },
+  "JD(U)": {
+   "name": "Janata Dal (United)",
+   "alliance": "NDA",
+   "color": "#0e8fa0"
+  },
+  "RJD": {
+   "name": "Rashtriya Janata Dal",
+   "alliance": "INDIA",
+   "color": "#2f9e5a"
+  },
+  "LJP(RV)": {
+   "name": "Lok Janshakti Party (Ram Vilas)",
+   "alliance": "NDA",
+   "color": "#7e64e8"
+  },
+  "HAM": {
+   "name": "Hindustani Awam Morcha",
+   "alliance": "NDA"
+  },
+  "RLM": {
+   "name": "Rashtriya Lok Morcha",
+   "alliance": "NDA"
+  },
+  "IIP": {
+   "name": "Indian Inclusive Party",
+   "alliance": "INDIA"
+  },
+  "BJD": {
+   "name": "Biju Janata Dal",
+   "alliance": "Other",
+   "color": "#2f9e5a"
+  },
+  "BRS": {
+   "name": "Bharat Rashtra Samithi (formerly TRS)",
+   "alliance": "Other",
+   "color": "#d6456e"
+  },
+  "AIMIM": {
+   "name": "All India Majlis-e-Ittehadul Muslimeen",
+   "alliance": "Other",
+   "color": "#178a4a"
+  },
+  "SHS": {
+   "name": "Shiv Sena",
+   "alliance": "NDA",
+   "color": "#d6456e"
+  },
+  "SS(UBT)": {
+   "name": "Shiv Sena (Uddhav Balasaheb Thackeray)",
+   "alliance": "INDIA",
+   "color": "#c04fc8"
+  },
+  "NCP": {
+   "name": "Nationalist Congress Party",
+   "alliance": "NDA",
+   "color": "#0e8fa0"
+  },
+  "NCP(SP)": {
+   "name": "NCP \u2013 Sharadchandra Pawar",
+   "alliance": "INDIA",
+   "color": "#7e64e8"
+  },
+  "SAD": {
+   "name": "Shiromani Akali Dal",
+   "alliance": "Other",
+   "color": "#b8960c"
+  },
+  "INLD": {
+   "name": "Indian National Lok Dal",
+   "alliance": "Other",
+   "color": "#2f9e5a"
+  },
+  "AGP": {
+   "name": "Asom Gana Parishad",
+   "alliance": "NDA",
+   "color": "#0e8fa0"
+  },
+  "BPF": {
+   "name": "Bodoland People's Front",
+   "alliance": "NDA",
+   "color": "#2f9e5a"
+  },
+  "UPPL": {
+   "name": "United People's Party Liberal",
+   "alliance": "NDA"
+  },
+  "AIUDF": {
+   "name": "All India United Democratic Front",
+   "alliance": "Other",
+   "color": "#178a4a"
+  },
+  "RD": {
+   "name": "Raijor Dal",
+   "alliance": "Other"
+  },
+  "TMP": {
+   "name": "Tipra Motha Party",
+   "alliance": "NDA",
+   "color": "#b8960c"
+  },
+  "IPFT": {
+   "name": "Indigenous People's Front of Tripura",
+   "alliance": "NDA"
+  },
+  "UDP": {
+   "name": "United Democratic Party",
+   "alliance": "NDA",
+   "color": "#2f9e5a"
+  },
+  "VPP": {
+   "name": "Voice of the People Party",
+   "alliance": "Other",
+   "color": "#7e64e8"
+  },
+  "HSPDP": {
+   "name": "Hill State People's Democratic Party",
+   "alliance": "NDA"
+  },
+  "PDF": {
+   "name": "People's Democratic Front",
+   "alliance": "NDA"
+  },
+  "KPA": {
+   "name": "Kuki People's Alliance",
+   "alliance": "Other"
+  },
+  "RPI(A)": {
+   "name": "Republican Party of India (Athawale)",
+   "alliance": "NDA"
+  },
+  "PPA": {
+   "name": "People's Party of Arunachal",
+   "alliance": "NDA"
+  },
+  "JD(S)": {
+   "name": "Janata Dal (Secular)",
+   "alliance": "NDA",
+   "color": "#2f9e5a"
+  },
+  "KRPP": {
+   "name": "Kalyana Rajya Pragathi Paksha",
+   "alliance": "Other"
+  },
+  "SKP": {
+   "name": "Sarvodaya Karnataka Paksha",
+   "alliance": "Other"
+  },
+  "GGP": {
+   "name": "Gondwana Gantantra Party",
+   "alliance": "Other"
+  },
+  "BAP": {
+   "name": "Bharat Adivasi Party",
+   "alliance": "INDIA"
+  },
+  "RLP": {
+   "name": "Rashtriya Loktantrik Party",
+   "alliance": "INDIA"
+  },
+  "MGP": {
+   "name": "Maharashtrawadi Gomantak Party",
+   "alliance": "NDA"
+  },
+  "GFP": {
+   "name": "Goa Forward Party",
+   "alliance": "INDIA"
+  },
+  "RGP": {
+   "name": "Revolutionary Goans Party",
+   "alliance": "Other"
+  },
+  "AJSU": {
+   "name": "AJSU Party",
+   "alliance": "NDA"
+  },
+  "JLKM": {
+   "name": "Jharkhand Loktantrik Krantikari Morcha",
+   "alliance": "Other"
+  },
+  "AD(S)": {
+   "name": "Apna Dal (Sonelal)",
+   "alliance": "NDA"
+  },
+  "NISHAD": {
+   "name": "NISHAD Party",
+   "alliance": "NDA"
+  },
+  "SBSP": {
+   "name": "Suheldev Bharatiya Samaj Party",
+   "alliance": "NDA"
+  },
+  "JD(L)": {
+   "name": "Jansatta Dal (Loktantrik)",
+   "alliance": "Other"
+  },
+  "ASP(KR)": {
+   "name": "Aazad Samaj Party (Kanshi Ram)",
+   "alliance": "Other"
+  },
+  "VCK": {
+   "name": "Viduthalai Chiruthaigal Katchi",
+   "alliance": "INDIA"
+  },
+  "MDMK": {
+   "name": "Marumalarchi DMK",
+   "alliance": "INDIA"
+  },
+  "DMDK": {
+   "name": "Desiya Murpokku Dravida Kazhagam",
+   "alliance": "INDIA"
+  },
+  "PMK": {
+   "name": "Pattali Makkal Katchi",
+   "alliance": "NDA"
+  },
+  "AMMK": {
+   "name": "Amma Makkal Munnettra Kazagam",
+   "alliance": "NDA"
+  },
+  "KC(J)": {
+   "name": "Kerala Congress (Jacob)",
+   "alliance": "INDIA"
+  },
+  "RMPI": {
+   "name": "Revolutionary Marxist Party of India",
+   "alliance": "Other"
+  },
+  "CMP": {
+   "name": "Communist Marxist Party",
+   "alliance": "INDIA"
+  },
+  "AJUP": {
+   "name": "Aam Janata Unnayan Party",
+   "alliance": "Other"
+  },
+  "ISF": {
+   "name": "Indian Secular Front",
+   "alliance": "Other"
+  },
+  "LJK": {
+   "name": "Latchiya Jananayaka Katchi",
+   "alliance": "NDA"
+  },
+  "NMK": {
+   "name": "Namadhu Makkal Katchi",
+   "alliance": "Other"
+  },
+  "IND": {
+   "name": "Independents",
+   "alliance": "Other"
+  },
+  "OTH": {
+   "name": "Others",
+   "alliance": "Other"
+  },
+  "MPP": {
+   "name": "Manipur Peoples Party",
+   "alliance": "Other"
+  },
+  "MSCP": {
+   "name": "Manipur State Congress Party",
+   "alliance": "Other"
+  },
+  "LJP": {
+   "name": "Lok Janshakti Party",
+   "alliance": "Other",
+   "color": "#7e64e8"
+  },
+  "RLSP": {
+   "name": "Rashtriya Lok Samta Party",
+   "alliance": "Other"
+  },
+  "NLP": {
+   "name": "National Loktantrik Party",
+   "alliance": "Other"
+  },
+  "SJP(R)": {
+   "name": "Samajwadi Janata Party (Rashtriya)",
+   "alliance": "Other"
+  },
+  "HJC": {
+   "name": "Haryana Janhit Congress (BL)",
+   "alliance": "Other"
+  },
+  "JVM": {
+   "name": "Jharkhand Vikas Morcha (Prajatantrik)",
+   "alliance": "Other"
+  },
+  "SWP": {
+   "name": "Swabhimani Paksha",
+   "alliance": "Other"
+  },
+  "BVA": {
+   "name": "Bahujan Vikas Aaghadi",
+   "alliance": "Other"
+  },
+  "AIFB": {
+   "name": "All India Forward Bloc",
+   "alliance": "Other"
+  },
+  "SUCI": {
+   "name": "Socialist Unity Centre of India (Communist)",
+   "alliance": "Other"
+  },
+  "IFDP": {
+   "name": "Indian Federal Democratic Party",
+   "alliance": "Other"
+  },
+  "BNP": {
+   "name": "Bharatiya Navshakti Party",
+   "alliance": "Other"
+  },
+  "LDF": {
+   "name": "Left Democratic Front (CPI(M) and allies)",
+   "alliance": "Other",
+   "color": "#d64545"
+  }
+ },
+ "states": [
+  {
+   "name": "Andhra Pradesh",
+   "abbr": "AP",
+   "type": "state",
+   "capital": "Amaravati",
+   "cap": [
+    16.51,
+    80.52
+   ],
+   "cm": "N. Chandrababu Naidu",
+   "party": "TDP",
+   "since": "2024-06-12",
+   "mla": 175,
+   "mlc": 58,
+   "ls": 25,
+   "rs": 11,
+   "region": "South"
+  },
+  {
+   "name": "Arunachal Pradesh",
+   "abbr": "AR",
+   "type": "state",
+   "capital": "Itanagar",
+   "cap": [
+    27.08,
+    93.61
+   ],
+   "cm": "Pema Khandu",
+   "party": "BJP",
+   "since": "2016-07-17",
+   "mla": 60,
+   "ls": 2,
+   "rs": 1,
+   "region": "Northeast"
+  },
+  {
+   "name": "Assam",
+   "abbr": "AS",
+   "type": "state",
+   "capital": "Dispur",
+   "cap": [
+    26.14,
+    91.79
+   ],
+   "cm": "Himanta Biswa Sarma",
+   "party": "BJP",
+   "since": "2021-05-10",
+   "mla": 126,
+   "ls": 14,
+   "rs": 7,
+   "note": "Re-elected May 2026; second term sworn in 12 May 2026.",
+   "region": "Northeast"
+  },
+  {
+   "name": "Bihar",
+   "abbr": "BR",
+   "type": "state",
+   "capital": "Patna",
+   "cap": [
+    25.59,
+    85.14
+   ],
+   "cm": "Samrat Choudhary",
+   "party": "BJP",
+   "since": "2026-04-15",
+   "mla": 243,
+   "mlc": 75,
+   "ls": 40,
+   "rs": 16,
+   "region": "East"
+  },
+  {
+   "name": "Chhattisgarh",
+   "abbr": "CG",
+   "type": "state",
+   "capital": "Raipur",
+   "cap": [
+    21.25,
+    81.63
+   ],
+   "cm": "Vishnu Deo Sai",
+   "party": "BJP",
+   "since": "2023-12-13",
+   "mla": 90,
+   "ls": 11,
+   "rs": 5,
+   "region": "Central"
+  },
+  {
+   "name": "Goa",
+   "abbr": "GA",
+   "type": "state",
+   "capital": "Panaji",
+   "cap": [
+    15.49,
+    73.83
+   ],
+   "cm": "Pramod Sawant",
+   "party": "BJP",
+   "since": "2019-03-19",
+   "mla": 40,
+   "ls": 2,
+   "rs": 1,
+   "region": "West"
+  },
+  {
+   "name": "Gujarat",
+   "abbr": "GJ",
+   "type": "state",
+   "capital": "Gandhinagar",
+   "cap": [
+    23.22,
+    72.65
+   ],
+   "cm": "Bhupendra Patel",
+   "party": "BJP",
+   "since": "2021-09-13",
+   "mla": 182,
+   "ls": 26,
+   "rs": 11,
+   "region": "West"
+  },
+  {
+   "name": "Haryana",
+   "abbr": "HR",
+   "type": "state",
+   "capital": "Chandigarh",
+   "cap": null,
+   "cm": "Nayab Singh Saini",
+   "party": "BJP",
+   "since": "2024-03-12",
+   "mla": 90,
+   "ls": 10,
+   "rs": 5,
+   "note": "Shares Chandigarh (a union territory) as capital with Punjab.",
+   "region": "North"
+  },
+  {
+   "name": "Himachal Pradesh",
+   "abbr": "HP",
+   "type": "state",
+   "capital": "Shimla",
+   "cap": [
+    31.1,
+    77.17
+   ],
+   "cm": "Sukhvinder Singh Sukhu",
+   "party": "INC",
+   "since": "2022-12-11",
+   "mla": 68,
+   "ls": 4,
+   "rs": 3,
+   "note": "Winter capital: Dharamshala.",
+   "region": "North"
+  },
+  {
+   "name": "Jharkhand",
+   "abbr": "JH",
+   "type": "state",
+   "capital": "Ranchi",
+   "cap": [
+    23.34,
+    85.31
+   ],
+   "cm": "Hemant Soren",
+   "party": "JMM",
+   "since": "2024-07-04",
+   "mla": 81,
+   "ls": 14,
+   "rs": 6,
+   "region": "East"
+  },
+  {
+   "name": "Karnataka",
+   "abbr": "KA",
+   "type": "state",
+   "capital": "Bengaluru",
+   "cap": [
+    12.97,
+    77.59
+   ],
+   "cm": "D. K. Shivakumar",
+   "party": "INC",
+   "since": "2026-06-03",
+   "mla": 224,
+   "mlc": 75,
+   "ls": 28,
+   "rs": 12,
+   "region": "South"
+  },
+  {
+   "name": "Kerala",
+   "abbr": "KL",
+   "type": "state",
+   "capital": "Thiruvananthapuram",
+   "cap": [
+    8.52,
+    76.94
+   ],
+   "cm": "V. D. Satheesan",
+   "party": "INC",
+   "since": "2026-05-18",
+   "mla": 140,
+   "ls": 20,
+   "rs": 9,
+   "note": "Leads the UDF government formed after the 2026 election.",
+   "region": "South"
+  },
+  {
+   "name": "Madhya Pradesh",
+   "abbr": "MP",
+   "type": "state",
+   "capital": "Bhopal",
+   "cap": [
+    23.26,
+    77.41
+   ],
+   "cm": "Mohan Yadav",
+   "party": "BJP",
+   "since": "2023-12-13",
+   "mla": 230,
+   "ls": 29,
+   "rs": 11,
+   "region": "Central"
+  },
+  {
+   "name": "Maharashtra",
+   "abbr": "MH",
+   "type": "state",
+   "capital": "Mumbai",
+   "cap": [
+    19.08,
+    72.88
+   ],
+   "cm": "Devendra Fadnavis",
+   "party": "BJP",
+   "since": "2024-12-05",
+   "mla": 288,
+   "mlc": 78,
+   "ls": 48,
+   "rs": 19,
+   "note": "Winter capital: Nagpur.",
+   "region": "West"
+  },
+  {
+   "name": "Manipur",
+   "abbr": "MN",
+   "type": "state",
+   "capital": "Imphal",
+   "cap": [
+    24.82,
+    93.94
+   ],
+   "cm": "Yumnam Khemchand Singh",
+   "party": "BJP",
+   "since": "2026-02-04",
+   "mla": 60,
+   "ls": 2,
+   "rs": 1,
+   "region": "Northeast"
+  },
+  {
+   "name": "Meghalaya",
+   "abbr": "ML",
+   "type": "state",
+   "capital": "Shillong",
+   "cap": [
+    25.58,
+    91.89
+   ],
+   "cm": "Conrad Sangma",
+   "party": "NPP",
+   "since": "2018-03-06",
+   "mla": 60,
+   "ls": 2,
+   "rs": 1,
+   "region": "Northeast"
+  },
+  {
+   "name": "Mizoram",
+   "abbr": "MZ",
+   "type": "state",
+   "capital": "Aizawl",
+   "cap": [
+    23.73,
+    92.72
+   ],
+   "cm": "Lalduhoma",
+   "party": "ZPM",
+   "since": "2023-12-08",
+   "mla": 40,
+   "ls": 1,
+   "rs": 1,
+   "region": "Northeast"
+  },
+  {
+   "name": "Nagaland",
+   "abbr": "NL",
+   "type": "state",
+   "capital": "Kohima",
+   "cap": [
+    25.67,
+    94.11
+   ],
+   "cm": "Neiphiu Rio",
+   "party": "NPF",
+   "since": "2018-03-08",
+   "mla": 60,
+   "ls": 1,
+   "rs": 1,
+   "region": "Northeast"
+  },
+  {
+   "name": "Odisha",
+   "abbr": "OD",
+   "type": "state",
+   "capital": "Bhubaneswar",
+   "cap": [
+    20.3,
+    85.82
+   ],
+   "cm": "Mohan Charan Majhi",
+   "party": "BJP",
+   "since": "2024-06-12",
+   "mla": 147,
+   "ls": 21,
+   "rs": 10,
+   "region": "East"
+  },
+  {
+   "name": "Punjab",
+   "abbr": "PB",
+   "type": "state",
+   "capital": "Chandigarh",
+   "cap": null,
+   "cm": "Bhagwant Mann",
+   "party": "AAP",
+   "since": "2022-03-16",
+   "mla": 117,
+   "ls": 13,
+   "rs": 7,
+   "note": "Shares Chandigarh (a union territory) as capital with Haryana.",
+   "region": "North"
+  },
+  {
+   "name": "Rajasthan",
+   "abbr": "RJ",
+   "type": "state",
+   "capital": "Jaipur",
+   "cap": [
+    26.91,
+    75.79
+   ],
+   "cm": "Bhajan Lal Sharma",
+   "party": "BJP",
+   "since": "2023-12-15",
+   "mla": 200,
+   "ls": 25,
+   "rs": 10,
+   "region": "North"
+  },
+  {
+   "name": "Sikkim",
+   "abbr": "SK",
+   "type": "state",
+   "capital": "Gangtok",
+   "cap": [
+    27.33,
+    88.61
+   ],
+   "cm": "Prem Singh Tamang",
+   "party": "SKM",
+   "since": "2019-05-27",
+   "mla": 32,
+   "ls": 1,
+   "rs": 1,
+   "region": "Northeast"
+  },
+  {
+   "name": "Tamil Nadu",
+   "abbr": "TN",
+   "type": "state",
+   "capital": "Chennai",
+   "cap": [
+    13.08,
+    80.27
+   ],
+   "cm": "C. Joseph Vijay",
+   "party": "TVK",
+   "since": "2026-05-10",
+   "mla": 234,
+   "ls": 39,
+   "rs": 18,
+   "note": "First non-Dravidian-party CM since 1967.",
+   "region": "South"
+  },
+  {
+   "name": "Telangana",
+   "abbr": "TS",
+   "type": "state",
+   "capital": "Hyderabad",
+   "cap": [
+    17.39,
+    78.49
+   ],
+   "cm": "A. Revanth Reddy",
+   "party": "INC",
+   "since": "2023-12-07",
+   "mla": 119,
+   "mlc": 40,
+   "ls": 17,
+   "rs": 7,
+   "region": "South"
+  },
+  {
+   "name": "Tripura",
+   "abbr": "TR",
+   "type": "state",
+   "capital": "Agartala",
+   "cap": [
+    23.83,
+    91.29
+   ],
+   "cm": "Manik Saha",
+   "party": "BJP",
+   "since": "2022-05-15",
+   "mla": 60,
+   "ls": 2,
+   "rs": 1,
+   "region": "Northeast"
+  },
+  {
+   "name": "Uttar Pradesh",
+   "abbr": "UP",
+   "type": "state",
+   "capital": "Lucknow",
+   "cap": [
+    26.85,
+    80.95
+   ],
+   "cm": "Yogi Adityanath",
+   "party": "BJP",
+   "since": "2017-03-19",
+   "mla": 403,
+   "mlc": 100,
+   "ls": 80,
+   "rs": 31,
+   "region": "North"
+  },
+  {
+   "name": "Uttarakhand",
+   "abbr": "UK",
+   "type": "state",
+   "capital": "Dehradun",
+   "cap": [
+    30.32,
+    78.03
+   ],
+   "cm": "Pushkar Singh Dhami",
+   "party": "BJP",
+   "since": "2021-07-04",
+   "mla": 70,
+   "ls": 5,
+   "rs": 3,
+   "note": "Summer capital: Bhararisain (Gairsain).",
+   "region": "North"
+  },
+  {
+   "name": "West Bengal",
+   "abbr": "WB",
+   "type": "state",
+   "capital": "Kolkata",
+   "cap": [
+    22.57,
+    88.36
+   ],
+   "cm": "Suvendu Adhikari",
+   "party": "BJP",
+   "since": "2026-05-09",
+   "mla": 294,
+   "ls": 42,
+   "rs": 16,
+   "note": "First BJP Chief Minister of West Bengal.",
+   "region": "East"
+  },
+  {
+   "name": "Delhi",
+   "abbr": "DL",
+   "type": "ut",
+   "capital": "New Delhi",
+   "cap": [
+    28.61,
+    77.21
+   ],
+   "cm": "Rekha Gupta",
+   "party": "BJP",
+   "since": "2025-02-20",
+   "mla": 70,
+   "ls": 7,
+   "rs": 3,
+   "note": "National Capital Territory \u2014 a UT with its own legislature.",
+   "region": "North"
+  },
+  {
+   "name": "Jammu and Kashmir",
+   "abbr": "JK",
+   "type": "ut",
+   "capital": "Srinagar",
+   "cap": [
+    34.08,
+    74.8
+   ],
+   "cm": "Omar Abdullah",
+   "party": "JKNC",
+   "since": "2024-10-16",
+   "mla": 90,
+   "mlaNominated": 5,
+   "ls": 5,
+   "rs": 4,
+   "note": "Srinagar in summer, Jammu in winter.",
+   "region": "North"
+  },
+  {
+   "name": "Puducherry",
+   "abbr": "PY",
+   "type": "ut",
+   "capital": "Puducherry",
+   "cap": [
+    11.94,
+    79.81
+   ],
+   "cm": "N. Rangaswamy",
+   "party": "AINRC",
+   "since": "2021-05-07",
+   "mla": 30,
+   "mlaNominated": 3,
+   "ls": 1,
+   "rs": 1,
+   "note": "Re-elected 2026; fifth term as CM sworn in 13 May 2026.",
+   "region": "South"
+  },
+  {
+   "name": "Andaman and Nicobar Islands",
+   "abbr": "AN",
+   "type": "ut",
+   "capital": "Sri Vijaya Puram",
+   "cap": [
+    11.62,
+    92.73
+   ],
+   "admin": "Lieutenant Governor",
+   "ls": 1,
+   "rs": 0,
+   "note": "Capital renamed from Port Blair in 2024.",
+   "region": "East"
+  },
+  {
+   "name": "Chandigarh",
+   "abbr": "CH",
+   "type": "ut",
+   "capital": "Chandigarh",
+   "cap": [
+    30.73,
+    76.78
+   ],
+   "admin": "Administrator (Governor of Punjab)",
+   "ls": 1,
+   "rs": 0,
+   "note": "Also the capital of Punjab and Haryana.",
+   "region": "North"
+  },
+  {
+   "name": "Dadra and Nagar Haveli and Daman and Diu",
+   "abbr": "DD",
+   "type": "ut",
+   "capital": "Daman",
+   "cap": [
+    20.4,
+    72.83
+   ],
+   "admin": "Administrator",
+   "ls": 2,
+   "rs": 0,
+   "region": "West"
+  },
+  {
+   "name": "Ladakh",
+   "abbr": "LA",
+   "type": "ut",
+   "capital": "Leh",
+   "cap": [
+    34.15,
+    77.58
+   ],
+   "admin": "Lieutenant Governor",
+   "ls": 1,
+   "rs": 0,
+   "note": "Kargil is a second administrative capital.",
+   "region": "North"
+  },
+  {
+   "name": "Lakshadweep",
+   "abbr": "LD",
+   "type": "ut",
+   "capital": "Kavaratti",
+   "cap": [
+    10.57,
+    72.64
+   ],
+   "admin": "Administrator",
+   "ls": 1,
+   "rs": 0,
+   "region": "South"
+  }
+ ]
+}

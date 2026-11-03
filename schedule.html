@@ -515,6 +515,127 @@ td.cls-adj { padding: 0 16px; vertical-align: middle; }
 .cls-adj-input::-webkit-calendar-picker-indicator { filter: invert(0.55); cursor: pointer; }
 
 /* ══════════════════════════════════════════════════════
+   REBOOT — 50-DAY HABIT PLAN
+══════════════════════════════════════════════════════ */
+.rb-wrap { flex:1; display:flex; min-height:0; overflow:hidden; }
+.rb-main { flex:1; overflow-y:auto; padding:28px 32px 48px; display:flex; flex-direction:column; gap:20px; border-right:1px solid var(--line); }
+.rb-side { width:300px; flex-shrink:0; overflow-y:auto; padding:24px 20px 40px; display:flex; flex-direction:column; gap:18px; }
+
+.rb-card { border-radius:12px; border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02); padding:20px 22px; }
+.rb-eyebrow { font-size:10px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--txt-dim); }
+
+.rb-hero-top { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+.rb-hero-day { font-size:30px; font-weight:700; color:#f87171; letter-spacing:-0.5px; }
+.rb-hero-day span { font-size:15px; color:var(--txt-dim); font-weight:500; }
+.rb-hero-block { font-size:13px; color:var(--txt-mid); }
+.rb-cells { display:grid; grid-template-columns:repeat(25, 1fr); gap:4px; margin-top:16px; }
+.rb-cell { aspect-ratio:1; border-radius:4px; background:rgba(255,255,255,0.05); cursor:pointer; border:1.5px solid transparent; transition:background 0.12s; }
+.rb-cell:hover { background:rgba(255,255,255,0.12); }
+.rb-cell.done { background:#f87171; }
+.rb-cell.missed { background:rgba(248,113,113,0.14); }
+.rb-cell.today { border-color:#e8eaed; }
+.rb-cell.sel { box-shadow:0 0 0 2px rgba(248,113,113,0.55); }
+.rb-stats { display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; margin-top:18px; }
+.rb-stat-v { font-size:20px; font-weight:600; color:var(--txt); }
+.rb-stat-l { font-size:10px; color:var(--txt-dim); letter-spacing:0.5px; text-transform:uppercase; margin-top:2px; }
+
+.rb-day-head { display:flex; align-items:flex-start; gap:12px; flex-wrap:wrap; }
+.rb-day-title { font-size:17px; font-weight:600; color:var(--txt); }
+.rb-day-sub { font-size:12px; color:var(--txt-mid); margin-top:4px; }
+.rb-level { display:inline-flex; gap:3px; margin-top:10px; }
+.rb-level i { width:22px; height:5px; border-radius:3px; background:rgba(255,255,255,0.08); }
+.rb-level i.on { background:#f87171; }
+.rb-progress-note { font-size:12px; color:#fca5a5; margin-top:8px; }
+.rb-start {
+  margin-left:auto; padding:9px 20px; border-radius:10px; border:1px solid rgba(248,113,113,0.45);
+  background:rgba(248,113,113,0.12); color:#fca5a5; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit;
+}
+.rb-start:hover { background:rgba(248,113,113,0.22); }
+
+.rb-section { margin-top:18px; }
+.rb-section-title { font-size:10px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--txt-dim); margin-bottom:8px; }
+.rb-simple { font-size:12px; color:var(--txt-mid); line-height:1.8; }
+.rb-move { display:flex; gap:12px; padding:10px 0; border-top:1px solid rgba(255,255,255,0.05); }
+.rb-move:first-of-type { border-top:none; }
+.rb-move-n { width:20px; flex-shrink:0; font-size:12px; color:var(--txt-dim); font-variant-numeric:tabular-nums; padding-top:1px; }
+.rb-move-name { font-size:13px; font-weight:600; color:var(--txt); }
+.rb-move-cue { font-size:12px; color:var(--txt-mid); margin-top:2px; line-height:1.45; }
+.rb-move-alt { font-size:11px; color:var(--txt-dim); margin-top:3px; }
+.rb-new { font-size:9px; font-weight:700; letter-spacing:0.6px; padding:2px 6px; border-radius:5px; margin-left:6px; vertical-align:2px; background:rgba(248,113,113,0.14); color:#fca5a5; }
+.rb-callout { font-size:12px; color:var(--txt-mid); background:rgba(248,113,113,0.06); border:1px solid rgba(248,113,113,0.15); border-radius:8px; padding:10px 12px; margin-top:14px; line-height:1.5; }
+
+.rb-log { display:grid; grid-template-columns:auto repeat(4, 1fr); gap:12px; align-items:end; margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06); }
+.rb-check { display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; font-size:13px; color:var(--txt-mid); padding-bottom:8px; }
+.rb-box { width:20px; height:20px; border-radius:6px; border:1.5px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; }
+.rb-box.checked { background:#f87171; border-color:#f87171; }
+.rb-box.checked::after { content:'✓'; font-size:12px; color:#2a0505; font-weight:800; }
+.rb-field label { display:block; font-size:10px; color:var(--txt-dim); letter-spacing:0.5px; text-transform:uppercase; margin-bottom:4px; }
+.rb-field input {
+  width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.10); border-radius:7px;
+  color:var(--txt); font-size:13px; font-family:inherit; padding:7px 10px;
+}
+.rb-field input:focus { outline:none; border-color:rgba(248,113,113,0.45); }
+.rb-note { grid-column:1 / -1; }
+
+.rb-charts { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.rb-chart-title { font-size:12px; font-weight:600; color:var(--txt-mid); }
+.rb-chart-sub { font-size:11px; color:var(--txt-dim); margin-top:2px; }
+.rb-chart svg { display:block; width:100%; height:140px; margin-top:10px; overflow:visible; }
+.rb-tip {
+  position:fixed; pointer-events:none; z-index:900; display:none;
+  background:#1c1c1c; border:1px solid rgba(255,255,255,0.12); border-radius:8px;
+  padding:7px 10px; font-size:11px; color:var(--txt); white-space:nowrap; box-shadow:0 6px 24px rgba(0,0,0,0.5);
+}
+
+.rb-blk { border-radius:10px; border:1px solid rgba(255,255,255,0.06); padding:12px 14px; cursor:pointer; transition:background 0.12s; }
+.rb-blk:hover { background:rgba(255,255,255,0.03); }
+.rb-blk.cur { border-color:rgba(248,113,113,0.40); background:rgba(248,113,113,0.05); }
+.rb-blk.past { opacity:0.55; }
+.rb-blk-top { display:flex; justify-content:space-between; gap:8px; }
+.rb-blk-name { font-size:12px; font-weight:600; color:var(--txt); }
+.rb-blk-dates { font-size:11px; color:var(--txt-dim); white-space:nowrap; }
+.rb-blk-desc { font-size:11px; color:var(--txt-mid); margin-top:4px; line-height:1.45; }
+.rb-rules { font-size:12px; color:var(--txt-mid); line-height:1.55; display:flex; flex-direction:column; gap:8px; }
+.rb-rules b { color:var(--txt); font-weight:600; }
+
+.rb-timer { position:fixed; inset:0; z-index:800; background:rgba(8,8,8,0.97); display:none; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:24px; text-align:center; }
+.rb-timer.open { display:flex; }
+.rb-t-phase { font-size:12px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--txt-dim); }
+.rb-t-phase.work { color:#f87171; }
+.rb-t-move { font-size:34px; font-weight:700; color:var(--txt); max-width:720px; }
+.rb-t-cue { font-size:14px; color:var(--txt-mid); max-width:560px; line-height:1.5; min-height:21px; }
+.rb-t-clock { font-size:120px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--txt); line-height:1; }
+.rb-t-next { font-size:13px; color:var(--txt-dim); }
+.rb-t-bar { width:min(560px, 90vw); height:4px; background:rgba(255,255,255,0.08); border-radius:2px; overflow:hidden; }
+.rb-t-bar div { height:100%; background:#f87171; }
+.rb-t-btns { display:flex; gap:10px; margin-top:10px; }
+.rb-t-btns button {
+  padding:9px 20px; border-radius:10px; border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.04);
+  color:var(--txt-mid); font-size:13px; font-weight:600; cursor:pointer; font-family:inherit;
+}
+.rb-t-btns button:hover { background:rgba(255,255,255,0.09); color:var(--txt); }
+
+@media (max-width: 900px) {
+  .rb-wrap { flex-direction:column; overflow-y:auto; }
+  .rb-main { overflow:visible; border-right:none; padding:20px 16px; }
+  .rb-side { width:auto; overflow:visible; padding:0 16px 40px; }
+  .rb-charts, .rb-stats { grid-template-columns:1fr 1fr; }
+  .rb-log { grid-template-columns:1fr 1fr; }
+  .rb-cells { grid-template-columns:repeat(10, 1fr); }
+  .rb-t-clock { font-size:88px; }
+}
+
+/* ══════════════════════════════════════════════════════
+   SCHOOL FINDER TAB  (embeds schools.html)
+══════════════════════════════════════════════════════ */
+.sf-frame { flex: 1; width: 100%; border: 0; background: #0a0a0a; }
+
+/* ══════════════════════════════════════════════════════
+   INDIA TAB  (embeds india.html)
+══════════════════════════════════════════════════════ */
+.in-frame { flex: 1; width: 100%; border: 0; background: #0a0a0a; }
+
+/* ══════════════════════════════════════════════════════
    INSTAGRAM TAB
 ══════════════════════════════════════════════════════ */
 .ig-wrap { flex: 1; overflow-y: auto; padding: 28px 28px 48px; display: flex; flex-direction: column; gap: 24px; }
@@ -2039,7 +2160,6 @@ const FIREBASE_CONFIG = {
   messagingSenderId: "__FIREBASE_MESSAGING_SENDER_ID__",
   appId:             "__FIREBASE_APP_ID__"
 };
-const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
 </script>
 
 <!-- Firebase SDK -->
@@ -2056,6 +2176,16 @@ const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
   gap: 20px;
 }
 #auth-overlay.hidden { display: none; }
+#setup-overlay {
+  position: fixed; inset: 0; z-index: 9998;
+  background: #0d0d12;
+  display: none; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px; padding: 24px; text-align: center;
+}
+#setup-overlay.open { display: flex; }
+.setup-text { font-size: 13px; color: rgba(255,255,255,0.55); max-width: 440px; line-height: 1.6; }
+.setup-skip { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 12px; cursor: pointer; font-family: inherit; }
 .auth-title  { font-size: 24px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
 .auth-sub    { font-size: 13px; color: rgba(255,255,255,0.4); }
 .auth-btn {
@@ -2084,6 +2214,13 @@ const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
   </button>
   <div class="auth-error" id="auth-error"></div>
 </div>
+<div id="setup-overlay">
+  <div class="auth-title">Import your setup</div>
+  <div class="setup-text">Your schedule, habits, default goals and classes aren't stored in this page. Pick your <b>chronoself-config.json</b> file once; it's saved to your account and loads on every device after you sign in.</div>
+  <label class="auth-btn">Choose file<input type="file" id="setup-file" accept="application/json,.json" hidden></label>
+  <div class="auth-error" id="setup-error"></div>
+  <button class="setup-skip" id="setup-skip">Skip for now</button>
+</div>
 <div id="app">
 
   <!-- ── Tab bar ───────────────────────── -->
@@ -2097,6 +2234,9 @@ const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
     <button class="tab-btn"        id="btn-freeletics"  onclick="switchTab('freeletics')">Freeletics</button>
     <button class="tab-btn"        id="btn-chronicle"   onclick="switchTab('chronicle')">Chronicle</button>
     <button class="tab-btn"        id="btn-classes"     onclick="switchTab('classes')">Classes</button>
+    <button class="tab-btn"        id="btn-reboot"      onclick="switchTab('reboot')">Reboot</button>
+    <button class="tab-btn"        id="btn-schools"     onclick="switchTab('schools')">Schools</button>
+    <button class="tab-btn"        id="btn-india"       onclick="switchTab('india')">India</button>
     <button class="tab-btn"        id="btn-instagram"   onclick="switchTab('instagram')">Instagram</button>
   </nav>
 
@@ -2296,6 +2436,57 @@ const ALLOWED_EMAIL = "__ALLOWED_EMAIL__";
   <!-- ── Classes panel ───────────────── -->
   <div id="panel-classes" class="panel">
     <div class="cls-wrap"><table id="cls-table"></table></div>
+  </div>
+
+  <!-- ── Reboot panel ────────────────── -->
+  <div id="panel-reboot" class="panel">
+    <div class="rb-wrap">
+      <div class="rb-main">
+        <div class="rb-card" id="rb-hero"></div>
+        <div class="rb-card" id="rb-day"></div>
+        <div class="rb-charts" id="rb-charts"></div>
+      </div>
+      <div class="rb-side">
+        <div>
+          <div class="rb-eyebrow" style="margin-bottom:10px">Blocks</div>
+          <div id="rb-blocks" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+        <div>
+          <div class="rb-eyebrow" style="margin-bottom:10px">Rules</div>
+          <div class="rb-rules">
+            <div><b>20 minutes, every day.</b> 3 min warm-up, ~15 min main, 2 min cool-down. Same workout all week, a little more work each day.</div>
+            <div><b>Pain check.</b> An ache up to 3/10 is fine. At 4–5, shrink the range or use the easier option. Sharp, shooting or above 5: stop that move and march gently for the rest of its time.</div>
+            <div><b>Bad day?</b> Warm-up, 14 min easy walk, cool-down. Tick it. The streak survives.</div>
+            <div><b>Daily targets.</b> 10,000 steps · 1,500 kcal · aim for ~120 g protein so the weight you lose is fat, not muscle.</div>
+            <div><b>Steps are separate.</b> The workout is not your walk. Split steps into 2–3 walks if one long walk makes your knees ache.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rb-tip" id="rb-tip"></div>
+    <div class="rb-timer" id="rb-timer">
+      <div class="rb-t-phase" id="rb-t-phase"></div>
+      <div class="rb-t-move" id="rb-t-move"></div>
+      <div class="rb-t-cue" id="rb-t-cue"></div>
+      <div class="rb-t-clock" id="rb-t-clock"></div>
+      <div class="rb-t-bar"><div id="rb-t-bar"></div></div>
+      <div class="rb-t-next" id="rb-t-next"></div>
+      <div class="rb-t-btns">
+        <button id="rb-t-pause" onclick="rbTimerPause()">Pause</button>
+        <button onclick="rbTimerSkip()">Skip</button>
+        <button onclick="rbTimerStop()">Stop</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── School Finder panel ─────────── -->
+  <div id="panel-schools" class="panel">
+    <iframe class="sf-frame" id="sf-frame" title="School Finder"></iframe>
+  </div>
+
+  <!-- ── India panel ─────────────────── -->
+  <div id="panel-india" class="panel">
+    <iframe class="in-frame" id="in-frame" title="India — states and chief ministers"></iframe>
   </div>
 
   <!-- ── Instagram panel ─────────────── -->
@@ -2611,7 +2802,7 @@ function renderToday() {
       item.className = 'today-habit-item' + (gymDone ? ' done' : '');
       const box  = document.createElement('div');  box.className = 'today-habit-box';
       const name = document.createElement('span'); name.className = 'today-habit-name';
-      name.textContent = 'Gymnastics';
+      name.textContent = CLASSES.session2;
       item.append(box, name);
       item.addEventListener('click', () => {
         clsSet(todayDs, 'gym', clsGet(todayDs, 'gym') === '1' ? null : '1');
@@ -2801,6 +2992,9 @@ function switchTab(name) {
   if (name === 'tracker')   buildTracker();
   if (name === 'classes')   buildClasses();
   if (name === 'instagram') buildInstagram();
+  if (name === 'reboot')    renderReboot();
+  if (name === 'schools' && !document.getElementById('sf-frame').src) document.getElementById('sf-frame').src = 'schools.html';
+  if (name === 'india'   && !document.getElementById('in-frame').src) document.getElementById('in-frame').src = 'india.html';
   if (name === 'chronicle') { renderChronicle(); renderChronicleCalendar(); }
 }
 
@@ -2861,65 +3055,44 @@ function makeEvIcon(category) {
   return svg;
 }
 
-const BLOCKS = [
-  { label:'Sleep', category:'sleep', days:[0,1,2,3,4,5,6], start:'00:00', end:'06:00' },
-  { label:'Sleep', category:'sleep', days:[0,1,2,3,4,5,6], start:'23:00', end:'24:00' },
-  { label:'Walk',    sublabel:'wake-up · 10 min', category:'walk',    days:[0,1,2,3,4,5,6], start:'06:00', end:'06:15' },
-  { label:'Workout', sublabel:'45 min',            category:'workout', days:[0,1,2,3,4,5,6], start:'06:15', end:'07:00' },
-  { label:'Grooming', sublabel:'Bath · Brush',     category:'hygiene', days:[0,1,2,3,4,6], start:'07:00', end:'07:45' },
-  { label:'Shave',    sublabel:'30 – 45 min',      category:'hygiene', days:[5],            start:'07:00', end:'07:45' },
-  { label:'Grooming', sublabel:'Bath · Brush',     category:'hygiene', days:[5],            start:'07:45', end:'08:15' },
-  { label:'School Drop-off', category:'family', days:[0,1,2,3,4,5], start:'08:15', end:'08:45', altSat:true },
-  { label:'Slack',    sublabel:'30 min',  category:'work',     days:[0,1,2,3,4,5], start:'08:45', end:'09:15' },
-  { label:'Learning', sublabel:'45 min',  category:'learning', days:[0,1,2,3,4,5], start:'09:15', end:'10:00' },
-  { label:'Practice', sublabel:'30 min',  category:'learning', days:[0,1,2,3,4,5], start:'10:00', end:'10:30' },
-  { label:'Breakfast', category:'free', days:[0,1,2,3,4,5], start:'10:30', end:'11:00' },
-  { label:'Highlights', sublabel:'NBA · MLB · NFL', category:'sports', days:[1,2,3,4,5], start:'19:00', end:'20:00' },
-  { label:'Church', category:'family', days:[6], start:'09:00', end:'13:00' },
-  { label:'Work', category:'work', days:[0,1,2,3,4], start:'11:00', end:'13:00' },
-  { label:'Lunch', category:'free', days:[0,1,2,3,4,5,6], start:'13:00', end:'13:45' },
-  { label:'Walk', sublabel:'after lunch', category:'walk', days:[0,1,2,3,4,5,6], start:'13:45', end:'14:00' },
-  { label:'Work', category:'work', days:[0,1,2,3,4], start:'14:00', end:'15:45' },
-  { label:'School Pick-up', category:'family', days:[0,1,2,3,4,5], start:'15:45', end:'16:15', altSat:true },
-  { label:'With Kid',       category:'family', days:[0,1,2,3,4,5], start:'16:15', end:'17:00', altSat:true },
-  { label:'Snacks', category:'free', days:[0,1,2,3,4,5,6], start:'17:00', end:'17:15' },
-  { label:'Walk', sublabel:'after snacks', category:'walk', days:[0,1,2,3,4,5,6], start:'17:15', end:'17:30' },
-  { label:'Tea Break', category:'free', days:[0,1,2,3,4,5,6], start:'17:30', end:'18:00' },
-  { label:'Work',     category:'work', days:[0,1,2,3,4],   start:'18:00', end:'19:00' },
-  { label:'Job Hunt', sublabel:'1 hr', category:'work', days:[5],        start:'18:00', end:'19:00' },
-  { label:'Premier League', sublabel:'highlights', category:'sports',   days:[0,6],       start:'19:00', end:'20:00' },
-  { label:'Dinner', category:'free', days:[0,1,2,3,4,5,6], start:'20:00', end:'20:30' },
-  { label:'Walk', sublabel:'after dinner', category:'walk', days:[0,1,2,3,4,5,6], start:'20:30', end:'20:45' },
-  { label:'YouTube',  sublabel:'45 min', category:'free',     days:[0,1,2,3,4,5,6], start:'20:45', end:'21:30' },
-  { label:'Show',     sublabel:'45 min', category:'free',     days:[0,1,2,3,4,5,6], start:'21:30', end:'22:15' },
-];
+// ═══════════════════════════════════════════════════
+//  PRIVATE CONFIG — schedule, habits, default goals and classes live in
+//  Firestore users/{uid}/data/config (cached in chrono_config), never in this file
+// ═══════════════════════════════════════════════════
+let BLOCKS = [];
+let BLOCKS2 = [];
+let CLASSES = { session1: 'Session 1', session2: 'Session 2', session2Days: [], music: [] };
 
-const BLOCKS2 = [
-  { label:'Sleep',        category:'sleep',  days:[0,1,2,3,4,5,6], start:'23:00', end:'24:00' },
-  { label:'Sleep',        category:'sleep',  days:[0,1,2,3,4,5,6], start:'00:00', end:'07:00' },
-  { label:'Drop Kid',     category:'family', days:[0,1,2,3,4,5], start:'08:00', end:'09:00' },
-  { label:'Workout',      category:'workout', days:[0,1,2,3,4,5], start:'09:00', end:'10:00' },
-  { label:'Sports Highlights', sublabel:'MLS · MLB · Cricket · NBA', category:'sports', days:[4,5], start:'10:00', end:'11:00' },
-  { label:'Football Highlights', category:'sports', days:[0], start:'10:00', end:'11:00' },
-  { label:'Church',       category:'family', days:[6], start:'09:00', end:'13:00' },
-  { label:'Work',         category:'work',   days:[0,1,2,3,4], start:'11:00', end:'13:00' },
-  { label:'Content Creation', category:'work', days:[5], start:'11:00', end:'14:00' },
-  { label:'Show / Movie', category:'free',   days:[0,1,2,3,4], start:'13:00', end:'14:00' },
-  { label:'Show / Movie', category:'free',   days:[5], start:'14:00', end:'15:00' },
-  { label:'Football Highlights', category:'sports', days:[6], start:'13:00', end:'14:00' },
-  { label:'Lunch',        category:'free',   days:[6], start:'14:00', end:'15:00' },
-  { label:'Incognito', category:'free', days:[6], start:'15:00', end:'17:00' },
-  { label:'Work',         category:'work',   days:[0,1,2,3,4], start:'14:00', end:'15:30' },
-  { label:'Job Hunt', sublabel:'apply 7 jobs', category:'work', days:[5], start:'15:00', end:'15:45' },
-  { label:'Pick Up Kid',  category:'family', days:[0,1,2,3,4], start:'15:45', end:'17:15' },
-  { label:'Pick Up Kid',  category:'family', days:[5], start:'15:45', end:'16:30' },
-  { label:'Work',         category:'work',   days:[0,1,2,3,4], start:'17:15', end:'19:00' },
-  { label:'Practice',     category:'learning', days:[5,6], start:'17:00', end:'19:00' },
-  { label:'Family Time',  category:'family', days:[0,1,2,3,4,5,6], start:'19:00', end:'19:30' },
-  { label:'Learn',        category:'learning', days:[0,1,2,3,4,5,6], start:'19:30', end:'20:00' },
-  { label:'YouTube · NFL', category:'free',   days:[0,1,2,3,4,5,6], start:'20:00', end:'21:00' },
-  { label:'Movie Night',  category:'family', days:[0,1,2,3,4,5,6], start:'21:00', end:'22:00' },
-];
+function loadPrivateConfig() {
+  try {
+    const cfg = JSON.parse(localStorage.getItem('chrono_config') || 'null');
+    if (!cfg || !Array.isArray(cfg.blocks)) return false;
+    BLOCKS        = cfg.blocks;
+    BLOCKS2       = cfg.blocks2 || [];
+    ACTIVITIES    = cfg.activities || [];
+    DEFAULT_GOALS = cfg.defaultGoals || [];
+    CLASSES       = { ...CLASSES, ...(cfg.classes || {}) };
+    return true;
+  } catch { return false; }
+}
+
+function openSetup() {
+  const overlay = document.getElementById('setup-overlay');
+  overlay.classList.add('open');
+  document.getElementById('setup-skip').onclick = () => overlay.classList.remove('open');
+  document.getElementById('setup-file').onchange = async e => {
+    const errEl = document.getElementById('setup-error');
+    try {
+      const cfg = JSON.parse(await e.target.files[0].text());
+      if (!Array.isArray(cfg.blocks) || !Array.isArray(cfg.activities)) throw new Error('missing blocks or activities');
+      localStorage.setItem('chrono_config', JSON.stringify(cfg));
+      await fsPushConfig(cfg);
+      location.replace(location.pathname);
+    } catch (err) {
+      errEl.textContent = `That file didn't work (${err.message}).`;
+    }
+  };
+}
 
 // ═══════════════════════════════════════════════════
 //  SCHEDULE — HELPERS
@@ -3154,39 +3327,7 @@ const TR_COLORS = {
   special:'rgba(255,255,255,0.55)',
 };
 
-const ACTIVITIES = [
-  // ── Morning ────────────────────────────────────────
-  { key:'sleep11',  label:'Sleep 11pm',    cat:'sleep',    days:null },
-  { key:'bath',     label:'Bath',          cat:'hygiene',  days:null },
-  { key:'brush',    label:'Brush',         cat:'hygiene',  days:null },
-  { key:'workout',  label:'Workout (30)',  cat:'workout',  days:null },
-  // ── Work block ─────────────────────────────────────
-  { key:'slack',    label:'Slack',         cat:'work',     days:null },
-  { key:'mail',     label:'Mail',          cat:'work',     days:null },
-  // ── Afternoon focus ────────────────────────────────
-  { key:'study',    label:'Study (30)',    cat:'learning', days:null },
-  { key:'practice', label:'Practice (30)', cat:'learning', days:null },
-  // ── Evening wind-down ──────────────────────────────
-  { key:'show',     label:'Show (30)',     cat:'free',     days:null },
-  { key:'walk',     label:'Walk (60)',     cat:'workout',  days:null },
-  { key:'youtube',  label:'YouTube (40)', cat:'free',     days:null },
-  // ── Sports highlights ──────────────────────────────
-  { key:'mlb',    label:'MLB',          cat:'sports', days:null, seasonStart:'2026-03-27', seasonEnd:'2026-11-02' },
-  { key:'nba',    label:'NBA',          cat:'sports', days:null, seasonStart:'2025-10-22', seasonEnd:'2026-06-22' },
-  { key:'nfl',    label:'NFL ×2',       cat:'sports', days:null, seasonStart:'2026-09-10', seasonEnd:'2027-02-08' },
-  { key:'prem',   label:'Prem',         cat:'sports', days:null, seasonStart:'2026-08-15', seasonEnd:'2027-05-24' },
-  { key:'ucl',    label:'UCL',          cat:'sports', days:null, seasonStart:'2026-09-16', seasonEnd:'2027-05-31' },
-  { key:'europa', label:'Europa/Conf',  cat:'sports', days:null, seasonStart:'2026-09-18', seasonEnd:'2027-05-21' },
-  { key:'mls',    label:'MLS',          cat:'sports', days:[4], seasonStart:'2026-02-21', seasonEnd:'2026-11-22' },
-  // ── Periodic ───────────────────────────────────────
-  { key:'shave',        label:'Shave',           cat:'hygiene',  days:'biweeksat' },
-  { key:'nails',        label:'Nails',           cat:'hygiene',  days:[5]         },
-  { key:'hair_oil',     label:'Oil Hair',         cat:'hygiene',  days:[2,5]       },
-  { key:'hair_wash',    label:'Hair Bath',        cat:'hygiene',  days:[3,6]       },
-  { key:'hair_straighten', label:'Straighten Hair', cat:'hygiene', days:[6]       },
-  { key:'jobs',         label:'Job Hunt',         cat:'work',     days:[5]         },
-  { key:'xxx',      label:'Coupling',      cat:'special',  days:'div3'            },
-];
+let ACTIVITIES = [];
 
 // ═══════════════════════════════════════════════════
 //  TRACKER — STORAGE
@@ -3223,22 +3364,16 @@ function clsSet(dateStr, key, val) {
   fsPushClasses(dateStr);
 }
 
-const CLS_MUSIC_SCHEDULE_CHANGE = '2026-07-14';
-
 function clsMusicLabel(date) {
-  const d  = trDayIdx(date);
   const ds = date.toISOString().split('T')[0];
-  if (ds >= CLS_MUSIC_SCHEDULE_CHANGE) {
-    if (d === 0 || d === 2) return 'Piano';  // Mon, Wed
-    if (d === 1)            return 'Vocals'; // Tue
-    return null;                             // Thu, Fri, Sat, Sun — no music class
-  }
-  if (d === 0 || d === 2 || d === 5) return 'Vocals';
-  if (d === 1 || d === 3)            return 'Piano';
-  return null; // Fri, Sun — no music class
+  const period = CLASSES.music
+    .filter(p => !p.from || ds >= p.from)
+    .sort((a, b) => (a.from || '').localeCompare(b.from || ''))
+    .pop();
+  return (period && period.days[trDayIdx(date)]) || null;
 }
 function clsHasGym(date) {
-  return trDayIdx(date) <= 4; // Mon–Fri
+  return CLASSES.session2Days.includes(trDayIdx(date));
 }
 
 // ═══════════════════════════════════════════════════
@@ -3263,7 +3398,7 @@ function buildClasses() {
   // ── Header ──────────────────────────────────────
   const thead = table.createTHead();
   const hrow  = thead.insertRow();
-  ['Date', 'Session 1 — Music', 'Session 2 — Gymnastics', 'Adjusted Day'].forEach(text => {
+  ['Date', `Session 1 — ${CLASSES.session1}`, `Session 2 — ${CLASSES.session2}`, 'Adjusted Day'].forEach(text => {
     const th = document.createElement('th');
     th.textContent = text;
     hrow.appendChild(th);
@@ -3325,7 +3460,7 @@ function buildClasses() {
 
       const lbl = document.createElement('span');
       lbl.className   = 'cls-session-label';
-      lbl.textContent = 'Gymnastics';
+      lbl.textContent = CLASSES.session2;
 
       inner.append(box, lbl);
       inner.addEventListener('click', () => {
@@ -3358,6 +3493,545 @@ function buildClasses() {
       td3.textContent = '—';
     }
   });
+}
+
+// ═══════════════════════════════════════════════════
+//  REBOOT — 50-DAY PLAN DATA
+// ═══════════════════════════════════════════════════
+const RB_START      = new Date(2026, 9, 26);
+const RB_DAYS       = 50;
+const RB_STEPS_GOAL = 10000;
+const RB_KCAL_GOAL  = 1500;
+
+const RB_WARMUP = [
+  { name:'March on the spot',          secs:60 },
+  { name:'Arm circles',                secs:30 },
+  { name:'Hip circles',                secs:30 },
+  { name:'Slow sit-to-stands (chair)', secs:30 },
+  { name:'Cat-cow on the mat',         secs:30 },
+];
+const RB_COOLDOWN = [
+  { name:"Child's pose",            secs:30 },
+  { name:'Knee-to-chest, left',     secs:15 },
+  { name:'Knee-to-chest, right',    secs:15 },
+  { name:'Figure-4 stretch, left',  secs:15 },
+  { name:'Figure-4 stretch, right', secs:15 },
+  { name:'Calf stretch at the wall',secs:30 },
+];
+
+const RB_MOVES = {
+  march:        { name:'March in place',            cue:'Tall posture, swing the arms, steady rhythm.' },
+  box_squat:    { name:'Box squat to chair',        cue:'Sit back until you touch the chair, then stand tall. Knees follow the toes.', alt:'Knees achy: add a cushion to raise the seat.' },
+  incline_pu:   { name:'Incline push-up (bench)',   cue:'Hands on the bench edge, body straight like a plank, chest to the edge.', alt:'Too hard: hands on a wall or table.' },
+  bridge:       { name:'Glute bridge',              cue:'Feet flat, squeeze the glutes to lift. Ribs down — don\'t arch the low back.' },
+  calf:         { name:'Calf raise',                cue:'Hold the wall, rise slowly, lower slowly.' },
+  bird_dog:     { name:'Bird-dog',                  cue:'On all fours, reach opposite arm and leg, hold 2 s, alternate. Back flat like a table.' },
+  dead_bug:     { name:'Dead bug',                  cue:'Low back pressed into the mat. Slowly lower opposite arm and leg, alternate.' },
+  db_row:       { name:'One-arm DB row (7.5 kg)',   cue:'Hand and knee on the bench, pull the dumbbell to your hip. Switch arms halfway.' },
+  db_bridge:    { name:'Weighted glute bridge',     cue:'One 7.5 kg dumbbell across the hips. Pause 1 s at the top.' },
+  side_plank:   { name:'Side plank (knees)',        cue:'Half the interval each side. Hips high, straight line from knee to head.' },
+  hk_march:     { name:'High-knee march',           cue:'Drive knees toward hip height, pump the arms. No hopping.' },
+  step_jack:    { name:'Step-jacks',                cue:'Step one foot out as the arms go overhead, alternate quickly. No jumping.' },
+  shadow_box:   { name:'Shadow boxing',             cue:'Soft knees, fast straight punches, rotate through the hips.' },
+  step_up:      { name:'Low step-up',               cue:'Bottom stair or a low step. Whole foot on, drive through the heel, alternate legs.', alt:'Knees achy: high-knee march instead.' },
+  knee_drive:   { name:'Cross-body knee drive',     cue:'Elbow toward the opposite knee, alternate, twist from the ribs.' },
+  side_crunch:  { name:'Standing side crunch',      cue:'Hand behind head, bring elbow and knee together at the side. Alternate.' },
+  goblet_sq:    { name:'Goblet box squat (7.5 kg)', cue:'Hold one dumbbell at the chest, sit to the chair, stand tall.', alt:'Knees achy: no dumbbell, higher seat.' },
+  floor_press:  { name:'DB floor press',            cue:'Lie on the mat, knees bent. Press both dumbbells up; elbows touch the floor lightly.' },
+  rdl:          { name:'DB Romanian deadlift',      cue:'Soft knees, push hips back, dumbbells slide down the thighs. Flat back — stop where the stretch is.', alt:'Back twinges: go only to mid-thigh.' },
+  bent_row:     { name:'Bent-over DB row',          cue:'Hinge forward, flat back, pull both dumbbells to the ribs.', alt:'Back twinges: chest-supported row with one hand on the bench.' },
+  farmer:       { name:"Farmer's march",            cue:'A dumbbell in each hand, stand tall, march slowly.' },
+  jj:           { name:'Jumping jacks',             cue:'Light on the balls of the feet, small jumps.', alt:'Knees say no: step-jacks.' },
+  power_knee:   { name:'Power knees',               cue:'Hands overhead, pull them down as one knee drives up. Switch sides halfway.', alt:'Knees say no: fast high-knee march.' },
+  sb_burpee:    { name:'Step-back burpee',          cue:'Hands to the floor, step back to a plank, step in, stand. No jump, no push-up.', alt:'Easier: hands on the bench.' },
+  squat_punch:  { name:'Squat + punch',             cue:'Half squat, stand and throw two punches. Keep moving.' },
+  shoulder_tap: { name:'Plank shoulder taps (knees)', cue:'Knee plank, tap the opposite shoulder, keep the hips still.' },
+};
+
+const RB_BLOCKS = [
+  { name:'Foundation',        desc:'Learn the moves. Leave every session feeling you could do more.',
+    moves:['march','box_squat','incline_pu','bridge','calf','bird_dog','dead_bug'], rounds:2, slot:60, work:[20,23,26,29,32,35,38] },
+  { name:'Chair Strength',    desc:'First dumbbell work. Same chair and bench, more time under work each day.',
+    moves:['box_squat','incline_pu','db_row','db_bridge','side_plank'],              rounds:3, slot:60, work:[30,32,35,37,40,42,45] },
+  { name:'Low-Impact Cardio', desc:'Insanity rhythm with zero jumping. Heart rate up, knees protected.',
+    moves:['hk_march','step_jack','shadow_box','step_up','knee_drive','side_crunch'], rounds:3, slot:45, work:[25,27,29,31,33,35,37] },
+  { name:'Dumbbell Builder',  desc:'Both dumbbells, every session. The hip hinge builds the lower back up.',
+    moves:['goblet_sq','floor_press','rdl','bent_row','farmer','dead_bug'],          rounds:3, slot:50, work:[30,32,34,36,38,40,42] },
+  { name:'Hybrid Intervals',  desc:'Strength and cardio alternate. Everything here is a move you already know.',
+    moves:['goblet_sq','hk_march','floor_press','step_jack','rdl','shadow_box','bent_row','side_plank'], rounds:2, slot:55, work:[33,35,37,39,41,43,45] },
+  { name:'Insanity Lite',     desc:'First light impact. Every move has a no-jump fallback — use it freely.',
+    moves:['jj','power_knee','sb_burpee','squat_punch','shoulder_tap'],               rounds:3, slot:60, work:[40,42,44,46,48,50,52] },
+  { name:'Greatest Hits',     desc:'Nothing new. Your best moves at the highest density of the 50 days.',
+    moves:['goblet_sq','power_knee','floor_press','step_jack','rdl','shadow_box','side_plank'], rounds:2, slot:65, work:[42,44,46,48,50,52,54] },
+];
+
+const RB_CHECKIN = { name:'Check-in', desc:'Day 1 again, exactly. Notice how different it feels.' };
+
+// ═══════════════════════════════════════════════════
+//  REBOOT — HELPERS & STORAGE
+// ═══════════════════════════════════════════════════
+function rbDs(d) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+function rbDate(i) { const d = new Date(RB_START); d.setDate(d.getDate() + i); return d; }
+function rbFmt(d, opts = { weekday:'short', day:'numeric', month:'short' }) { return d.toLocaleDateString('en-GB', opts); }
+function rbTodayIdx() {
+  const t = new Date(); t.setHours(0, 0, 0, 0);
+  return Math.round((t - RB_START) / 86400000);
+}
+
+function rbPlan(i) {
+  if (i === RB_DAYS - 1) {
+    const b = RB_BLOCKS[0];
+    return { i, blockIdx:7, block:RB_CHECKIN, level:null, moves:b.moves, rounds:b.rounds, slot:b.slot, work:b.work[0] };
+  }
+  const blockIdx = Math.floor(i / 7), level = i % 7, b = RB_BLOCKS[blockIdx];
+  return { i, blockIdx, block:b, level, moves:b.moves, rounds:b.rounds, slot:b.slot, work:b.work[level] };
+}
+function rbWorkSecs(p) { return p.moves.length * p.rounds * p.work; }
+function rbMainSecs(p) { return p.moves.length * p.rounds * p.slot; }
+
+function rbLoadLogs() { try { return JSON.parse(localStorage.getItem('chrono_reboot') || '[]'); } catch { return []; } }
+function rbLogMap() { return Object.fromEntries(rbLoadLogs().map(l => [l.date, l])); }
+function rbSaveLog(ds, patch) {
+  const logs = rbLoadLogs();
+  let entry = logs.find(l => l.date === ds);
+  if (!entry) { entry = { date: ds }; logs.push(entry); }
+  Object.assign(entry, patch);
+  Object.keys(entry).forEach(k => { if (entry[k] === null || entry[k] === '') delete entry[k]; });
+  logs.sort((a, b) => a.date.localeCompare(b.date));
+  localStorage.setItem('chrono_reboot', JSON.stringify(logs));
+  fsPushReboot(logs);
+}
+
+let rbSel = null;
+
+// ═══════════════════════════════════════════════════
+//  REBOOT — RENDER
+// ═══════════════════════════════════════════════════
+function renderReboot() {
+  if (rbSel === null) rbSel = Math.min(Math.max(rbTodayIdx(), 0), RB_DAYS - 1);
+  const logs = rbLogMap();
+  rbRenderHero(logs);
+  rbRenderDay(logs);
+  rbRenderCharts(logs);
+  rbRenderBlocks();
+}
+
+function rbSelect(i) { rbSel = i; renderReboot(); }
+
+function rbRenderHero(logs) {
+  const el = document.getElementById('rb-hero');
+  const ti = rbTodayIdx();
+  el.innerHTML = '';
+
+  const top = document.createElement('div');
+  top.className = 'rb-hero-top';
+  if (ti < 0) {
+    top.innerHTML = `<div class="rb-hero-day">Starts in ${-ti} day${ti === -1 ? '' : 's'}</div>`;
+  } else if (ti >= RB_DAYS) {
+    top.innerHTML = `<div class="rb-hero-day">50 days complete</div><div class="rb-hero-block">Keep the habit rolling — repeat any block you like.</div>`;
+  } else {
+    const p = rbPlan(ti);
+    top.innerHTML = `<div class="rb-hero-day">Day ${ti + 1} <span>of ${RB_DAYS}</span></div>
+      <div class="rb-hero-block">${p.blockIdx < 7 ? `Block ${p.blockIdx + 1} · ${p.block.name} · Level ${p.level + 1}/7` : 'Check-in day'}</div>`;
+  }
+  el.appendChild(top);
+
+  const cells = document.createElement('div');
+  cells.className = 'rb-cells';
+  for (let i = 0; i < RB_DAYS; i++) {
+    const ds = rbDs(rbDate(i));
+    const c = document.createElement('div');
+    c.className = 'rb-cell';
+    if (logs[ds]?.done) c.classList.add('done');
+    else if (i < ti) c.classList.add('missed');
+    if (i === ti) c.classList.add('today');
+    if (i === rbSel) c.classList.add('sel');
+    c.title = `Day ${i + 1} · ${rbFmt(rbDate(i))}`;
+    c.addEventListener('click', () => rbSelect(i));
+    cells.appendChild(c);
+  }
+  el.appendChild(cells);
+
+  let streak = 0;
+  for (let i = Math.min(ti, RB_DAYS - 1); i >= 0; i--) {
+    if (logs[rbDs(rbDate(i))]?.done) streak++;
+    else if (i !== ti) break;
+  }
+  const done = Object.values(logs).filter(l => l.done).length;
+  const recent = [];
+  for (let k = 0; k < 7; k++) { const d = new Date(); d.setDate(d.getDate() - k); if (logs[rbDs(d)]) recent.push(logs[rbDs(d)]); }
+  const avg = key => { const v = recent.map(l => l[key]).filter(x => x != null); return v.length ? Math.round(v.reduce((a, b) => a + b, 0) / v.length) : null; };
+  const weights = Object.values(logs).filter(l => l.weight != null).sort((a, b) => a.date.localeCompare(b.date));
+  const dW = weights.length > 1 ? weights[weights.length - 1].weight - weights[0].weight : null;
+  const avgSteps = avg('steps'), avgKcal = avg('kcal');
+
+  const stats = document.createElement('div');
+  stats.className = 'rb-stats';
+  [
+    [streak, 'Day streak'],
+    [`${done}/${RB_DAYS}`, 'Workouts done'],
+    [avgSteps != null ? avgSteps.toLocaleString() : '—', 'Steps · 7-day avg'],
+    [avgKcal  != null ? avgKcal.toLocaleString()  : '—', 'Kcal · 7-day avg'],
+    [dW != null ? `${dW > 0 ? '+' : dW < 0 ? '−' : ''}${Math.abs(dW).toFixed(1)} kg` : (weights.length ? `${weights[0].weight} kg` : '—'), dW != null ? 'Weight change' : 'Weight'],
+  ].forEach(([v, l]) => {
+    const s = document.createElement('div');
+    s.innerHTML = `<div class="rb-stat-v">${v}</div><div class="rb-stat-l">${l}</div>`;
+    stats.appendChild(s);
+  });
+  el.appendChild(stats);
+}
+
+function rbRenderDay(logs) {
+  const el = document.getElementById('rb-day');
+  const p  = rbPlan(rbSel);
+  const ds = rbDs(rbDate(rbSel));
+  const log = logs[ds] || {};
+  const prevMoves = new Set(RB_BLOCKS.slice(0, Math.min(p.blockIdx, 7)).flatMap(b => b.moves));
+  el.innerHTML = '';
+
+  const head = document.createElement('div');
+  head.className = 'rb-day-head';
+  const info = document.createElement('div');
+  const blockLabel = p.blockIdx < 7 ? `Block ${p.blockIdx + 1} · ${p.block.name}` : 'Day 50 · Check-in';
+  info.innerHTML = `
+    <div class="rb-eyebrow">${rbFmt(rbDate(rbSel), { weekday:'long', day:'numeric', month:'long' })} · Day ${rbSel + 1}</div>
+    <div class="rb-day-title" style="margin-top:6px">${blockLabel}</div>
+    <div class="rb-day-sub">${p.work}s work / ${p.slot - p.work}s rest · ${p.moves.length} moves × ${p.rounds} rounds · ${Math.round(rbMainSecs(p) / 60)} min main + 5 min warm-up & cool-down</div>`;
+  if (p.level !== null) {
+    const lv = document.createElement('div');
+    lv.className = 'rb-level';
+    for (let k = 0; k < 7; k++) { const t = document.createElement('i'); if (k <= p.level) t.className = 'on'; lv.appendChild(t); }
+    info.appendChild(lv);
+  }
+  const note = document.createElement('div');
+  note.className = 'rb-progress-note';
+  if (p.blockIdx === 7) {
+    note.textContent = `Same workout as Day 1 — ${(rbWorkSecs(p) / 60).toFixed(1)} min of work, versus ${(rbWorkSecs(rbPlan(RB_DAYS - 2)) / 60).toFixed(1)} min yesterday.`;
+  } else if (p.level === 0) {
+    const fresh = p.moves.filter(m => !prevMoves.has(m)).length;
+    note.textContent = rbSel === 0
+      ? 'Level 1 of 7. Each day this week adds a few seconds of work to every move.'
+      : `New block${fresh ? ` · ${fresh} new move${fresh > 1 ? 's' : ''}` : ''}. Work starts a little lower so you can learn it, then climbs all week.`;
+  } else {
+    const prev = rbPlan(rbSel - 1);
+    note.textContent = `+${p.work - prev.work}s per move vs yesterday (${prev.work}s → ${p.work}s) · ${(rbWorkSecs(p) / 60).toFixed(1)} min of total work today.`;
+  }
+  info.appendChild(note);
+
+  const start = document.createElement('button');
+  start.className = 'rb-start';
+  start.textContent = '▶ Start timer';
+  start.addEventListener('click', () => rbTimerStart(p, ds));
+  head.append(info, start);
+  el.appendChild(head);
+
+  const warm = document.createElement('div');
+  warm.className = 'rb-section';
+  warm.innerHTML = `<div class="rb-section-title">Warm-up · 3 min</div>
+    <div class="rb-simple">${RB_WARMUP.map(w => `${w.name} (${w.secs}s)`).join(' → ')}</div>`;
+  el.appendChild(warm);
+
+  const main = document.createElement('div');
+  main.className = 'rb-section';
+  main.innerHTML = `<div class="rb-section-title">Main · ${p.rounds} rounds, ${p.work}s on / ${p.slot - p.work}s off</div>`;
+  p.moves.forEach((id, n) => {
+    const m = RB_MOVES[id];
+    const isNew = p.blockIdx > 0 && p.blockIdx < 7 && !prevMoves.has(id);
+    const row = document.createElement('div');
+    row.className = 'rb-move';
+    row.innerHTML = `<div class="rb-move-n">${n + 1}</div><div>
+      <div class="rb-move-name">${m.name}${isNew ? '<span class="rb-new">NEW</span>' : ''}</div>
+      <div class="rb-move-cue">${m.cue}</div>${m.alt ? `<div class="rb-move-alt">${m.alt}</div>` : ''}</div>`;
+    main.appendChild(row);
+  });
+  el.appendChild(main);
+
+  const cool = document.createElement('div');
+  cool.className = 'rb-section';
+  cool.innerHTML = `<div class="rb-section-title">Cool-down · 2 min</div>
+    <div class="rb-simple">${RB_COOLDOWN.map(w => `${w.name} (${w.secs}s)`).join(' → ')}</div>`;
+  el.appendChild(cool);
+
+  if (rbSel === 0 || p.blockIdx === 7) {
+    const c = document.createElement('div');
+    c.className = 'rb-callout';
+    c.textContent = 'Snapshot (optional, for noticing, not a target): weight, waist at the navel, chair sit-to-stands in 60 s, max incline push-ups, and front + back photos. Note the numbers below.';
+    el.appendChild(c);
+  }
+
+  const form = document.createElement('div');
+  form.className = 'rb-log';
+  const chk = document.createElement('div');
+  chk.className = 'rb-check';
+  chk.innerHTML = `<div class="rb-box${log.done ? ' checked' : ''}"></div>Workout done`;
+  chk.addEventListener('click', () => { rbSaveLog(ds, { done: log.done ? null : 1 }); renderReboot(); });
+  form.appendChild(chk);
+
+  [
+    ['steps',   'Steps',       `goal ${RB_STEPS_GOAL.toLocaleString()}`, 1],
+    ['kcal',    'Calories',    `goal ${RB_KCAL_GOAL.toLocaleString()}`,  1],
+    ['protein', 'Protein (g)', 'aim ~120',                                1],
+    ['weight',  'Weight (kg)', 'optional',                                0.1],
+  ].forEach(([key, label, ph, step]) => {
+    const f = document.createElement('div');
+    f.className = 'rb-field';
+    f.innerHTML = `<label>${label}</label>`;
+    const inp = document.createElement('input');
+    inp.type = 'number'; inp.min = '0'; inp.step = step; inp.placeholder = ph;
+    if (log[key] != null) inp.value = log[key];
+    inp.addEventListener('change', () => {
+      const v = inp.value === '' ? null : Number(inp.value);
+      rbSaveLog(ds, { [key]: v });
+      const fresh = rbLogMap();
+      rbRenderHero(fresh);
+      rbRenderCharts(fresh);
+    });
+    f.appendChild(inp);
+    form.appendChild(f);
+  });
+
+  const nf = document.createElement('div');
+  nf.className = 'rb-field rb-note';
+  nf.innerHTML = '<label>Note</label>';
+  const ni = document.createElement('input');
+  ni.type = 'text'; ni.placeholder = 'How did it feel? Any knee or back pain (0–10)?';
+  if (log.note) ni.value = log.note;
+  ni.addEventListener('change', () => rbSaveLog(ds, { note: ni.value.trim() || null }));
+  nf.appendChild(ni);
+  form.appendChild(nf);
+  el.appendChild(form);
+}
+
+function rbRenderBlocks() {
+  const el = document.getElementById('rb-blocks');
+  const ti = rbTodayIdx();
+  const curBlock = rbPlan(rbSel).blockIdx;
+  el.innerHTML = '';
+  [...RB_BLOCKS, RB_CHECKIN].forEach((b, bi) => {
+    const first = bi * 7, last = bi === 7 ? RB_DAYS - 1 : first + 6;
+    const card = document.createElement('div');
+    card.className = 'rb-blk' + (bi === curBlock ? ' cur' : '') + (last < ti ? ' past' : '');
+    const dates = bi === 7 ? rbFmt(rbDate(first), { day:'numeric', month:'short' })
+      : `${rbFmt(rbDate(first), { day:'numeric', month:'short' })} – ${rbFmt(rbDate(last), { day:'numeric', month:'short' })}`;
+    const range = bi === 7 ? '' : ` · ${b.work[0]}→${b.work[6]}s work`;
+    card.innerHTML = `<div class="rb-blk-top"><div class="rb-blk-name">${bi === 7 ? 'Day 50' : `${bi + 1}. ${b.name}`}</div><div class="rb-blk-dates">${dates}</div></div>
+      <div class="rb-blk-desc">${b.desc}${range}</div>`;
+    card.addEventListener('click', () => rbSelect(ti >= first && ti <= last ? ti : first));
+    el.appendChild(card);
+  });
+}
+
+// ═══════════════════════════════════════════════════
+//  REBOOT — CHARTS  (vanilla SVG)
+// ═══════════════════════════════════════════════════
+const RB_SVG = 'http://www.w3.org/2000/svg';
+function rbSvgEl(tag, attrs) {
+  const e = document.createElementNS(RB_SVG, tag);
+  Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v));
+  return e;
+}
+function rbTip(evt, html) {
+  const t = document.getElementById('rb-tip');
+  if (!html) { t.style.display = 'none'; return; }
+  t.innerHTML = html;
+  t.style.display = 'block';
+  const x = Math.min(evt.clientX + 14, window.innerWidth - t.offsetWidth - 8);
+  t.style.left = `${x}px`;
+  t.style.top  = `${evt.clientY - t.offsetHeight - 10}px`;
+}
+
+function rbRenderCharts(logs) {
+  const wrap = document.getElementById('rb-charts');
+  wrap.innerHTML = '';
+  const ti = rbTodayIdx();
+  const days = Array.from({ length: RB_DAYS }, (_, i) => ({ i, ds: rbDs(rbDate(i)), p: rbPlan(i) }));
+  const val = key => days.map(d => logs[d.ds]?.[key] ?? null);
+
+  rbChart(wrap, {
+    title: 'Workload', sub: 'Minutes of actual work per session — the climb inside each block',
+    values: days.map(d => rbWorkSecs(d.p) / 60),
+    fill: (i, v) => logs[days[i].ds]?.done ? '#f87171' : i < ti ? 'rgba(248,113,113,0.22)' : 'rgba(255,255,255,0.10)',
+    tip: (i, v) => `Day ${i + 1} · ${rbFmt(rbDate(i))}<br>${days[i].p.block.name} · ${v.toFixed(1)} min work${logs[days[i].ds]?.done ? ' · ✓ done' : ''}`,
+    fmt: v => `${Math.round(v)}m`,
+  });
+  rbChart(wrap, {
+    title: 'Steps', sub: `Daily steps vs ${RB_STEPS_GOAL.toLocaleString()} goal`,
+    values: val('steps'), ref: RB_STEPS_GOAL, minMax: RB_STEPS_GOAL * 1.2,
+    fill: () => '#f87171',
+    tip: (i, v) => `Day ${i + 1} · ${rbFmt(rbDate(i))}<br>${v.toLocaleString()} steps`,
+    fmt: v => v >= 1000 ? `${Math.round(v / 1000)}k` : v,
+  });
+  rbChart(wrap, {
+    title: 'Calories', sub: `Daily intake vs ${RB_KCAL_GOAL.toLocaleString()} kcal target`,
+    values: val('kcal'), ref: RB_KCAL_GOAL, minMax: RB_KCAL_GOAL * 1.5,
+    fill: () => '#f87171',
+    tip: (i, v) => `Day ${i + 1} · ${rbFmt(rbDate(i))}<br>${v.toLocaleString()} kcal`,
+    fmt: v => v,
+  });
+  rbChart(wrap, {
+    title: 'Weight', sub: 'Logged weigh-ins (kg)',
+    values: val('weight'), line: true,
+    tip: (i, v) => `Day ${i + 1} · ${rbFmt(rbDate(i))}<br>${v} kg`,
+    fmt: v => Number.isInteger(v) ? v : v.toFixed(1),
+  });
+}
+
+function rbChart(wrap, o) {
+  const card = document.createElement('div');
+  card.className = 'rb-card rb-chart';
+  card.innerHTML = `<div class="rb-chart-title">${o.title}</div><div class="rb-chart-sub">${o.sub}</div>`;
+  wrap.appendChild(card);
+
+  const W = Math.max(card.clientWidth - 44, 240), H = 140, padL = 34, padB = 16, padT = 6;
+  const svg = rbSvgEl('svg', { viewBox: `0 0 ${W} ${H}` });
+  card.appendChild(svg);
+
+  const present = o.values.filter(v => v != null);
+  if (!present.length) {
+    const t = rbSvgEl('text', { x: W / 2, y: H / 2, 'text-anchor': 'middle', fill: '#5f6368', 'font-size': 11 });
+    t.textContent = 'Nothing logged yet';
+    svg.appendChild(t);
+    return;
+  }
+
+  let lo = 0, hi = Math.max(...present, o.ref || 0, o.minMax || 0);
+  if (o.line) { lo = Math.floor(Math.min(...present) - 2); hi = Math.ceil(Math.max(...present) + 2); }
+  const plotH = H - padB - padT;
+  const y = v => padT + plotH - ((v - lo) / (hi - lo)) * plotH;
+  const colW = (W - padL) / RB_DAYS;
+  const cx = i => padL + colW * i + colW / 2;
+
+  [lo, (lo + hi) / 2, hi].forEach(v => {
+    svg.appendChild(rbSvgEl('line', { x1: padL, x2: W, y1: y(v), y2: y(v), stroke: 'rgba(255,255,255,0.06)', 'stroke-width': 1 }));
+    const t = rbSvgEl('text', { x: padL - 6, y: y(v) + 3, 'text-anchor': 'end', fill: '#5f6368', 'font-size': 9 });
+    t.textContent = o.fmt(v);
+    svg.appendChild(t);
+  });
+  [0, 7, 14, 21, 28, 35, 42, 49].forEach(i => {
+    const t = rbSvgEl('text', { x: cx(i), y: H - 3, 'text-anchor': 'middle', fill: '#5f6368', 'font-size': 9 });
+    t.textContent = i + 1;
+    svg.appendChild(t);
+  });
+
+  if (o.line) {
+    const pts = o.values.map((v, i) => v == null ? null : [cx(i), y(v)]).filter(Boolean);
+    svg.appendChild(rbSvgEl('polyline', { points: pts.map(p => p.join(',')).join(' '), fill: 'none', stroke: '#f87171', 'stroke-width': 2, 'stroke-linejoin': 'round' }));
+    o.values.forEach((v, i) => { if (v != null) svg.appendChild(rbSvgEl('circle', { cx: cx(i), cy: y(v), r: 4, fill: '#f87171', stroke: '#141414', 'stroke-width': 2 })); });
+  } else {
+    const bw = Math.max(colW - 2, 1);
+    o.values.forEach((v, i) => {
+      if (v == null) return;
+      const top = y(v);
+      svg.appendChild(rbSvgEl('rect', { x: cx(i) - bw / 2, y: top, width: bw, height: Math.max(y(lo) - top, 1), rx: Math.min(2, bw / 2), fill: o.fill(i, v) }));
+    });
+  }
+  if (o.ref) {
+    svg.appendChild(rbSvgEl('line', { x1: padL, x2: W, y1: y(o.ref), y2: y(o.ref), stroke: 'rgba(232,234,237,0.45)', 'stroke-width': 1, 'stroke-dasharray': '4 3' }));
+  }
+
+  o.values.forEach((v, i) => {
+    if (v == null) return;
+    const hit = rbSvgEl('rect', { x: padL + colW * i, y: 0, width: colW, height: H - padB, fill: 'transparent' });
+    hit.style.cursor = 'pointer';
+    hit.addEventListener('mousemove', e => rbTip(e, o.tip(i, v)));
+    hit.addEventListener('mouseleave', e => rbTip(e, null));
+    hit.addEventListener('click', () => rbSelect(i));
+    svg.appendChild(hit);
+  });
+}
+
+// ═══════════════════════════════════════════════════
+//  REBOOT — INTERVAL TIMER
+// ═══════════════════════════════════════════════════
+let rbT = null;
+
+function rbBeep(freq = 880, dur = 0.12) {
+  try {
+    rbT.audio = rbT.audio || new (window.AudioContext || window.webkitAudioContext)();
+    const ctx = rbT.audio, osc = ctx.createOscillator(), g = ctx.createGain();
+    osc.frequency.value = freq;
+    g.gain.setValueAtTime(0.25, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+    osc.connect(g).connect(ctx.destination);
+    osc.start(); osc.stop(ctx.currentTime + dur);
+  } catch {}
+}
+
+function rbTimerStart(p, ds) {
+  const steps = [];
+  RB_WARMUP.forEach(w => steps.push({ phase:'Warm-up', name:w.name, secs:w.secs }));
+  for (let r = 1; r <= p.rounds; r++) {
+    p.moves.forEach((id, n) => {
+      const m = RB_MOVES[id];
+      steps.push({ phase:`Round ${r}/${p.rounds} · Work`, work:true, name:m.name, cue:m.cue, secs:p.work });
+      const last = r === p.rounds && n === p.moves.length - 1;
+      if (!last && p.slot > p.work) steps.push({ phase:'Rest', name:'Rest', secs:p.slot - p.work });
+    });
+  }
+  RB_COOLDOWN.forEach(w => steps.push({ phase:'Cool-down', name:w.name, secs:w.secs }));
+
+  rbT = { steps, idx:-1, ds, endAt:0, left:0, paused:false, audio:rbT?.audio, total:steps.reduce((a, s) => a + s.secs, 0) };
+  document.getElementById('rb-timer').classList.add('open');
+  document.getElementById('rb-t-pause').textContent = 'Pause';
+  rbTimerNext();
+  rbT.iv = setInterval(rbTimerTick, 200);
+}
+
+function rbTimerNext() {
+  rbT.idx++;
+  if (rbT.idx >= rbT.steps.length) return rbTimerFinish();
+  const s = rbT.steps[rbT.idx];
+  rbT.endAt = Date.now() + s.secs * 1000;
+  rbT.lastBeep = null;
+  rbBeep(s.work ? 1175 : 660, s.work ? 0.25 : 0.15);
+  const next = rbT.steps.slice(rbT.idx + 1).find(x => x.name !== 'Rest');
+  document.getElementById('rb-t-phase').textContent = s.phase;
+  document.getElementById('rb-t-phase').className = 'rb-t-phase' + (s.work ? ' work' : '');
+  document.getElementById('rb-t-move').textContent = s.name === 'Rest' && next ? `Rest — next: ${next.name}` : s.name;
+  document.getElementById('rb-t-cue').textContent = s.cue || '';
+  document.getElementById('rb-t-next').textContent = next ? `Then: ${next.name}` : 'Last one';
+  rbTimerTick();
+}
+
+function rbTimerTick() {
+  if (!rbT || rbT.paused) return;
+  const left = Math.max(0, Math.ceil((rbT.endAt - Date.now()) / 1000));
+  document.getElementById('rb-t-clock').textContent = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}`;
+  const doneSecs = rbT.steps.slice(0, rbT.idx).reduce((a, s) => a + s.secs, 0) + (rbT.steps[rbT.idx].secs - left);
+  document.getElementById('rb-t-bar').style.width = `${(doneSecs / rbT.total) * 100}%`;
+  if (left <= 3 && left > 0 && rbT.lastBeep !== left) { rbT.lastBeep = left; rbBeep(880, 0.08); }
+  if (left === 0) rbTimerNext();
+}
+
+function rbTimerPause() {
+  if (!rbT) return;
+  const btn = document.getElementById('rb-t-pause');
+  if (rbT.paused) {
+    rbT.endAt = Date.now() + rbT.left; rbT.paused = false; btn.textContent = 'Pause';
+  } else {
+    rbT.left = rbT.endAt - Date.now(); rbT.paused = true; btn.textContent = 'Resume';
+  }
+}
+function rbTimerSkip() { if (rbT && !rbT.paused && rbT.idx < rbT.steps.length) rbTimerNext(); }
+function rbTimerStop() {
+  if (rbT) clearInterval(rbT.iv);
+  document.getElementById('rb-timer').classList.remove('open');
+}
+function rbTimerFinish() {
+  clearInterval(rbT.iv);
+  rbBeep(1320, 0.4);
+  rbSaveLog(rbT.ds, { done: 1 });
+  document.getElementById('rb-t-phase').textContent = 'Done';
+  document.getElementById('rb-t-phase').className = 'rb-t-phase work';
+  document.getElementById('rb-t-move').textContent = 'Session complete — ticked off.';
+  document.getElementById('rb-t-cue').textContent = '';
+  document.getElementById('rb-t-clock').textContent = '✓';
+  document.getElementById('rb-t-next').textContent = '';
+  document.getElementById('rb-t-bar').style.width = '100%';
+  rbT.idx = rbT.steps.length;
+  renderReboot();
 }
 
 // ═══════════════════════════════════════════════════
@@ -4471,140 +5145,7 @@ function renderBacklog() {
 // ═══════════════════════════════════════════════════
 //  GOALS — DATA
 // ═══════════════════════════════════════════════════
-const DEFAULT_GOALS = [
-  {
-    id: 'goal_health_shape', title: 'Get Into Better Shape', icon: '💪', color: '#4dddce',
-    checks: {},
-    levels: [
-      { id: 'lvl1_shape', num: 1, title: 'Sleep & Recovery', passedDate: null,
-        habits: [
-          { id: 'sh1', label: 'Sleep 8 hours',  carriedOver: false },
-          { id: 'sh2', label: 'In bed by 11pm', carriedOver: false },
-        ]},
-      { id: 'lvl2_shape', num: 2, title: 'Daily Movement', passedDate: null,
-        habits: [
-          { id: 'sh1', label: 'Sleep 8 hours',         carriedOver: true  },
-          { id: 'sh2', label: 'In bed by 11pm',         carriedOver: true  },
-          { id: 'sh5', label: 'Walk 10k steps',         carriedOver: false },
-          { id: 'sh6', label: '10 min morning stretch', carriedOver: false },
-        ]},
-      { id: 'lvl3_shape', num: 3, title: 'Structured Training', passedDate: null,
-        habits: [
-          { id: 'sh1', label: 'Sleep 8 hours',           carriedOver: true  },
-          { id: 'sh2', label: 'In bed by 11pm',           carriedOver: true  },
-          { id: 'sh5', label: 'Walk 10k steps',           carriedOver: true  },
-          { id: 'sh6', label: '10 min morning stretch',   carriedOver: true  },
-          { id: 'sh7', label: '3× workout sessions/week', carriedOver: false },
-          { id: 'sh8', label: 'No junk food weekdays',    carriedOver: false },
-        ]},
-      { id: 'lvl4_shape', num: 4, title: 'Nutrition Discipline', passedDate: null,
-        habits: [
-          { id: 'sh1',  label: 'Sleep 8 hours',           carriedOver: true  },
-          { id: 'sh2',  label: 'In bed by 11pm',           carriedOver: true  },
-          { id: 'sh5',  label: 'Walk 10k steps',           carriedOver: true  },
-          { id: 'sh6',  label: '10 min morning stretch',   carriedOver: true  },
-          { id: 'sh7',  label: '3× workout sessions/week', carriedOver: true  },
-          { id: 'sh8',  label: 'No junk food weekdays',    carriedOver: true  },
-          { id: 'sh9',  label: 'Protein with every meal',  carriedOver: false },
-          { id: 'sh10', label: 'Meal prep Sunday',         carriedOver: false },
-          { id: 'sh11', label: 'No alcohol on weekdays',   carriedOver: false },
-        ]},
-      { id: 'lvl5_shape', num: 5, title: 'Peak Consistency', passedDate: null,
-        habits: [
-          { id: 'sh1',  label: 'Sleep 8 hours',           carriedOver: true  },
-          { id: 'sh2',  label: 'In bed by 11pm',           carriedOver: true  },
-          { id: 'sh5',  label: 'Walk 10k steps',           carriedOver: true  },
-          { id: 'sh6',  label: '10 min morning stretch',   carriedOver: true  },
-          { id: 'sh7',  label: '3× workout sessions/week', carriedOver: true  },
-          { id: 'sh8',  label: 'No junk food weekdays',    carriedOver: true  },
-          { id: 'sh9',  label: 'Protein with every meal',  carriedOver: true  },
-          { id: 'sh10', label: 'Meal prep Sunday',         carriedOver: true  },
-          { id: 'sh11', label: 'No alcohol on weekdays',   carriedOver: true  },
-          { id: 'sh12', label: '5× workouts/week',         carriedOver: false },
-          { id: 'sh13', label: 'Cold shower',              carriedOver: false },
-          { id: 'sh14', label: 'Track calories',           carriedOver: false },
-        ]},
-    ]
-  },
-  {
-    id: 'goal_edu_playwright', title: 'Learn Playwright', icon: '🎭', color: '#7aa8ff',
-    checks: {},
-    levels: [
-      { id: 'lvl1_pw', num: 1, title: 'Getting Started', passedDate: null,
-        habits: [
-          { id: 'pw1', label: 'Playwright Course 30 mins', carriedOver: false },
-          { id: 'pw2', label: 'Do a Test Project',         carriedOver: false },
-        ]},
-      { id: 'lvl2_pw', num: 2, title: 'Core Skills', passedDate: null,
-        habits: [
-          { id: 'pw1', label: 'Playwright Course 30 mins',  carriedOver: true  },
-          { id: 'pw2', label: 'Do a Test Project',          carriedOver: true  },
-          { id: 'pw4', label: 'Write 3 tests/day',          carriedOver: false },
-          { id: 'pw5', label: 'Practice selectors & locators', carriedOver: false },
-          { id: 'pw6', label: 'Study page object model',    carriedOver: false },
-        ]},
-      { id: 'lvl3_pw', num: 3, title: 'Real Coverage', passedDate: null,
-        habits: [
-          { id: 'pw1', label: 'Playwright Course 30 mins', carriedOver: true  },
-          { id: 'pw4', label: 'Write 3 tests/day',         carriedOver: true  },
-          { id: 'pw7', label: 'Build a full E2E test suite', carriedOver: false },
-          { id: 'pw8', label: 'Test a real project',        carriedOver: false },
-          { id: 'pw9', label: 'Handle auth flows',          carriedOver: false },
-        ]},
-      { id: 'lvl4_pw', num: 4, title: 'Advanced Patterns', passedDate: null,
-        habits: [
-          { id: 'pw4',  label: 'Write 3 tests/day',           carriedOver: true  },
-          { id: 'pw10', label: 'Visual testing practice',     carriedOver: false },
-          { id: 'pw11', label: 'API mocking practice',        carriedOver: false },
-          { id: 'pw12', label: 'Practice parallel test runs', carriedOver: false },
-        ]},
-      { id: 'lvl5_pw', num: 5, title: 'CI/CD & Mastery', passedDate: null,
-        habits: [
-          { id: 'pw4',  label: 'Write 3 tests/day',           carriedOver: true  },
-          { id: 'pw13', label: 'Integrate into a pipeline',   carriedOver: false },
-          { id: 'pw14', label: 'Debug flaky tests',           carriedOver: false },
-          { id: 'pw15', label: "Code review others' tests",   carriedOver: false },
-        ]},
-    ]
-  },
-  {
-    id: 'goal_edu_sysdesign', title: 'Learn System Design', icon: '🏗️', color: '#b07aff',
-    checks: {},
-    levels: [
-      { id: 'lvl1_sd', num: 1, title: 'Fundamentals', passedDate: null,
-        habits: [
-          { id: 'sd1', label: 'Read System Design Interview 30 mins', carriedOver: false },
-        ]},
-      { id: 'lvl2_sd', num: 2, title: 'Core Patterns', passedDate: null,
-        habits: [
-          { id: 'sd1', label: 'Read System Design Interview 30 mins', carriedOver: true  },
-          { id: 'sd3', label: 'Study CAP theorem & consistency',      carriedOver: false },
-          { id: 'sd4', label: 'Draw 1 architecture diagram/day',      carriedOver: false },
-        ]},
-      { id: 'lvl3_sd', num: 3, title: 'Case Studies', passedDate: null,
-        habits: [
-          { id: 'sd1', label: 'Read System Design Interview 30 mins', carriedOver: true  },
-          { id: 'sd4', label: 'Draw 1 architecture diagram/day',      carriedOver: true  },
-          { id: 'sd5', label: 'Read 1 engineering blog/day',          carriedOver: false },
-          { id: 'sd6', label: 'Write a summary of what you read',     carriedOver: false },
-        ]},
-      { id: 'lvl4_sd', num: 4, title: 'Practice Sessions', passedDate: null,
-        habits: [
-          { id: 'sd4', label: 'Draw 1 architecture diagram/day',  carriedOver: true  },
-          { id: 'sd5', label: 'Read 1 engineering blog/day',      carriedOver: true  },
-          { id: 'sd7', label: 'Mock system design session (1/wk)', carriedOver: false },
-          { id: 'sd8', label: 'Design a system in your journal',  carriedOver: false },
-        ]},
-      { id: 'lvl5_sd', num: 5, title: 'Interview Ready', passedDate: null,
-        habits: [
-          { id: 'sd4', label: 'Draw 1 architecture diagram/day',   carriedOver: true  },
-          { id: 'sd7', label: 'Mock system design session (1/wk)', carriedOver: true  },
-          { id: 'sd9', label: 'Full mock interview (1/week)',       carriedOver: false },
-          { id: 'sd10',label: 'Teach back a concept',              carriedOver: false },
-        ]},
-    ]
-  },
-];
+let DEFAULT_GOALS = [];
 
 // ═══════════════════════════════════════════════════
 //  GOALS — STORAGE
@@ -6725,6 +7266,16 @@ function fsPushClasses(dateStr) {
     .catch(err => console.error('Classes sync failed:', err));
 }
 
+async function fsPushConfig(cfg) {
+  if (!fsDb || !fsUid) return;
+  await fsUserDoc().collection('data').doc('config').set({ json: JSON.stringify(cfg) });
+}
+
+function fsPushReboot(logs) {
+  if (!fsDb || !fsUid) return;
+  fsUserDoc().collection('data').doc('reboot').set({ logs }).catch(console.error);
+}
+
 // ── Pull on sign-in ──────────────────────────────────
 async function fsPull() {
   const userDoc = fsUserDoc();
@@ -6758,6 +7309,10 @@ async function fsPull() {
       localStorage.setItem('chrono_goals_v3',      JSON.stringify(doc.data().goals));
     if (doc.id === 'chronicle' && doc.data().entries)
       localStorage.setItem('chrono_chronicle',     JSON.stringify(doc.data().entries));
+    if (doc.id === 'config'    && doc.data().json)
+      localStorage.setItem('chrono_config',        doc.data().json);
+    if (doc.id === 'reboot'    && doc.data().logs)
+      localStorage.setItem('chrono_reboot',        JSON.stringify(doc.data().logs));
   });
 
   // First-time: if Firestore is empty, push existing localStorage data up
@@ -6768,6 +7323,8 @@ async function fsPull() {
     if (backlog)   fsPushBacklog(JSON.parse(backlog));
     if (goals)     fsPushGoals(JSON.parse(goals));
     if (chronicle) fsPushChronicle(JSON.parse(chronicle));
+    const reboot    = localStorage.getItem('chrono_reboot');
+    if (reboot)    fsPushReboot(JSON.parse(reboot));
   }
 }
 
@@ -6777,6 +7334,7 @@ async function fsPull() {
 const _fbConfigured = FIREBASE_CONFIG.apiKey && !FIREBASE_CONFIG.apiKey.startsWith('__');
 
 function initApp() {
+  if (!loadPrivateConfig() || new URLSearchParams(location.search).has('setup')) openSetup();
   buildHeader();
   buildTimes();
   buildGrid();
@@ -6799,7 +7357,7 @@ function initApp() {
   renderToday();
   setInterval(renderToday, 60_000);
   const urlTab = new URLSearchParams(window.location.search).get('tab');
-  if (urlTab && ['today','tracker','backlog','goals','freeletics','chronicle','classes','instagram'].includes(urlTab)) switchTab(urlTab);
+  if (urlTab && ['today','tracker','backlog','goals','freeletics','chronicle','classes','reboot','schools','india','instagram'].includes(urlTab)) switchTab(urlTab);
 }
 
 if (_fbConfigured) {
@@ -6812,26 +7370,31 @@ if (_fbConfigured) {
   signInBtn.addEventListener('click', () => {
     errEl.textContent = '';
     const provider = new firebase.auth.GoogleAuthProvider();
-    provider.setCustomParameters({ login_hint: ALLOWED_EMAIL });
     auth.signInWithPopup(provider).catch(err => {
       errEl.textContent = 'Sign-in failed. Please try again.';
     });
   });
 
   auth.onAuthStateChanged(async user => {
-    if (user && user.email === ALLOWED_EMAIL) {
-      overlay.classList.add('hidden');
-      if (!document.getElementById('app').dataset.init) {
-        document.getElementById('app').dataset.init = '1';
-        fsDb  = firebase.firestore();
-        fsUid = user.uid;
+    if (user) {
+      if (document.getElementById('app').dataset.init) return;
+      fsDb  = firebase.firestore();
+      fsUid = user.uid;
+      try {
         await fsPull();
-        initApp();
+      } catch (err) {
+        // Firestore rules only admit the owner's uid; anyone else is denied here
+        if (err.code === 'permission-denied') {
+          fsDb = fsUid = null;
+          errEl.textContent = 'Access restricted. This account is not allowed.';
+          auth.signOut();
+          return;
+        }
+        console.error('Pull failed:', err);
       }
-    } else if (user) {
-      // Signed in but wrong account
-      errEl.textContent = `Access restricted. Sign in as ${ALLOWED_EMAIL}.`;
-      auth.signOut();
+      overlay.classList.add('hidden');
+      document.getElementById('app').dataset.init = '1';
+      initApp();
     } else {
       overlay.classList.remove('hidden');
     }
