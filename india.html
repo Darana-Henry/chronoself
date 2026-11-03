@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India — ChronoSelf</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #818cf8;
+  --accent-soft: rgba(129,140,248,0.12);
+  --accent-line: rgba(129,140,248,0.45);
+  --txt: #e8eaed;
+  --txt-mid: #9aa0a6;
+  --txt-dim: #5f6368;
+  --line: rgba(255,255,255,0.08);
+  --card: rgba(255,255,255,0.035);
+}
+
+html, body {
+  min-height: 100%;
+  background: #0a0a0a;
+  color: var(--txt);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.page {
+  position: relative; z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 64px 24px 40px;
+}
+.embedded .page { padding-top: 22px; }
+
+.back-link {
+  position: fixed; top: 20px; left: 24px; z-index: 10;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+  color: var(--txt-dim); text-decoration: none; transition: color 0.15s;
+}
+.back-link:hover { color: var(--txt-mid); }
+.back-link svg { width: 14px; height: 14px; }
+.embedded .back-link { display: none; }
+
+.header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; margin-bottom: 18px; }
+.title {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -1px;
+  background: linear-gradient(135deg, #e8eaed 30%, #9aa0a6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.subtitle { font-size: 13px; color: var(--txt-dim); margin-top: 4px; }
+
+.toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.seg button, .chip-btn {
+  background: transparent; border: 0; color: var(--txt-mid);
+  font: 600 12px/1 inherit; font-family: inherit; padding: 8px 12px; cursor: pointer;
+}
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button.on { background: var(--accent-soft); color: var(--accent); }
+.chip-btn { border: 1px solid var(--line); border-radius: 10px; }
+.chip-btn.on { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
+.jump {
+  background: #111; color: var(--txt); border: 1px solid var(--line); border-radius: 10px;
+  font: 500 12px inherit; font-family: inherit; padding: 7px 10px; max-width: 220px;
+}
+.seg button:focus-visible, .chip-btn:focus-visible, .jump:focus-visible, .close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 14px; font-size: 11px; color: var(--txt-mid); min-height: 16px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+
+/* ── Stage: map slides left when a state opens ── */
+.stage { display: flex; align-items: flex-start; }
+.map-wrap {
+  --w: min(100%, max(420px, calc((100vh - 170px) * 0.898)));
+  flex: 0 0 auto; width: var(--w); aspect-ratio: 1000 / 1114;
+  margin-left: calc((100% - var(--w)) / 2);
+  transition: width 0.5s ease, margin-left 0.5s ease;
+}
+.embedded .map-wrap { --w: min(100%, max(420px, calc((100vh - 130px) * 0.898))); }
+.stage.open .map-wrap { width: min(var(--w), 100% - 444px); margin-left: 0; }
+.map-wrap svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.hit { fill: transparent; cursor: pointer; }
+
+.detail {
+  flex: 0 0 0; width: 0; opacity: 0; overflow: hidden;
+  transform: translateX(24px);
+  transition: flex-basis 0.45s ease, width 0.45s ease, opacity 0.3s ease 0.1s, transform 0.45s ease, margin 0.45s ease;
+}
+.stage.open .detail { flex-basis: 420px; width: 420px; opacity: 1; transform: none; margin-left: 24px; }
+.detail-inner { width: 420px; display: flex; flex-direction: column; gap: 14px; }
+
+/* ── Map ── */
+.st { stroke: #0a0a0a; stroke-width: 0.8; stroke-linejoin: round; cursor: pointer; transition: fill 0.2s, opacity 0.25s; outline: none; }
+.st:hover, .st:focus-visible { filter: brightness(1.35); }
+.st:focus-visible { stroke: var(--accent); stroke-width: 1.6; }
+.stage.open .st { opacity: 0.55; }
+.stage.open .st.sel { opacity: 1; stroke: #fff; stroke-width: 1.6; }
+.lbl, .cap-lbl, .callout { pointer-events: none; paint-order: stroke; stroke: rgba(10,10,10,0.85); stroke-linejoin: round; }
+.lbl { fill: #f1f3f4; font-weight: 700; text-anchor: middle; dominant-baseline: middle; stroke-width: 3; letter-spacing: 0.2px; }
+.lbl.small { font-weight: 800; letter-spacing: 0.6px; }
+.cap-lbl.l { text-anchor: end; }
+.cap-dot { fill: #fff; stroke: #0a0a0a; stroke-width: 1.2; pointer-events: none; }
+.cap-lbl { fill: #cbd5e1; font-size: 10.5px; font-style: italic; stroke-width: 2.6; }
+.leader { stroke: rgba(255,255,255,0.35); stroke-width: 0.8; pointer-events: none; }
+.no-caps .cap-dot, .no-caps .cap-lbl { display: none; }
+
+.tip {
+  position: fixed; z-index: 20; pointer-events: none;
+  background: rgba(20,20,24,0.96); border: 1px solid var(--line); border-radius: 10px;
+  padding: 8px 11px; font-size: 12px; line-height: 1.45; color: var(--txt);
+  opacity: 0; transition: opacity 0.12s; white-space: nowrap;
+}
+.tip.show { opacity: 1; }
+.tip small { color: var(--txt-mid); display: block; }
+
+/* ── Detail panel ── */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+.d-head { position: relative; padding-right: 56px; }
+.d-type { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.d-name { font-size: 26px; font-weight: 700; letter-spacing: -0.6px; line-height: 1.15; }
+.d-cap { margin-top: 6px; font-size: 13px; color: var(--txt-mid); }
+.d-cap b { color: var(--txt); font-weight: 600; }
+.close {
+  position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; border-radius: 8px;
+  background: transparent; border: 1px solid var(--line); color: var(--txt-mid); cursor: pointer; font-size: 16px; line-height: 1;
+}
+.close:hover { color: var(--txt); border-color: rgba(255,255,255,0.2); }
+
+.k { font-size: 10px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--txt-dim); margin-bottom: 8px; }
+.cm-name { font-size: 22px; font-weight: 700; letter-spacing: -0.4px; }
+.party { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.pill { font-size: 11px; font-weight: 800; letter-spacing: 0.6px; padding: 4px 9px; border-radius: 999px; color: #0a0a0a; }
+.party-full { font-size: 13px; color: var(--txt); }
+.alliance { font-size: 11px; color: var(--txt-mid); border: 1px solid var(--line); border-radius: 999px; padding: 3px 8px; }
+.since { margin-top: 10px; font-size: 12px; color: var(--txt-mid); }
+.no-cm { font-size: 14px; color: var(--txt-mid); line-height: 1.55; }
+
+.seats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.seat { background: rgba(255,255,255,0.025); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.seat-n { font-size: 26px; font-weight: 700; letter-spacing: -0.6px; font-variant-numeric: tabular-nums; }
+.seat-n small { font-size: 12px; font-weight: 600; color: var(--txt-mid); letter-spacing: 0; }
+.seat-l { font-size: 11px; color: var(--txt-mid); margin-top: 2px; line-height: 1.35; }
+.share { margin-top: 8px; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.06); overflow: hidden; }
+.share i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+.note { font-size: 12.5px; color: var(--txt-mid); line-height: 1.55; }
+
+/* ── Election results ── */
+.el-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+.el-head .k { margin: 0; }
+.el-sub { font-size: 11px; color: var(--txt-dim); }
+.blocs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.bloc { font-size: 11px; color: var(--txt-mid); border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; }
+.bloc b { color: var(--txt); font-variant-numeric: tabular-nums; }
+.bloc.won { border-color: var(--accent-line); color: var(--txt); }
+.sbar { position: relative; display: flex; gap: 2px; height: 22px; }
+.sbar .s {
+  min-width: 3px; display: flex; align-items: center; justify-content: center; overflow: hidden;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.3px; color: #0a0a0a; cursor: default;
+}
+.sbar .s:first-child { border-radius: 4px 0 0 4px; }
+.sbar .s:last-child { border-radius: 0 4px 4px 0; }
+.sbar .s:only-child { border-radius: 4px; }
+.sbar .s:hover { filter: brightness(1.2); }
+.maj { position: absolute; top: -4px; bottom: -4px; width: 2px; margin-left: -1px; background: var(--txt); border-radius: 1px; pointer-events: none; }
+.maj-l { position: relative; height: 16px; margin-top: 4px; font-size: 10px; color: var(--txt-mid); }
+.maj-l span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.plist { margin-top: 10px; display: flex; flex-direction: column; }
+.prow { display: grid; grid-template-columns: 10px 58px 1fr auto; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid rgba(255,255,255,0.04); font-size: 12px; }
+.prow i { width: 10px; height: 10px; border-radius: 3px; }
+.prow b { font-weight: 700; font-size: 11.5px; }
+.prow span { color: var(--txt-mid); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.prow em { font-style: normal; font-weight: 700; font-variant-numeric: tabular-nums; }
+.more { margin-top: 6px; }
+.more summary { cursor: pointer; font-size: 11.5px; color: var(--accent); padding: 4px 0; list-style: none; }
+.more summary::-webkit-details-marker { display: none; }
+.more[open] summary { display: none; }
+.pm { font-size: 13px; color: var(--txt-mid); margin-top: 6px; }
+.pm b { color: var(--txt); }
+
+.foot { margin-top: 18px; font-size: 11px; color: #3c4043; text-align: center; }
+.err { padding: 60px 0; text-align: center; color: var(--txt-mid); font-size: 13px; }
+
+@media (max-width: 900px) {
+  .stage { flex-direction: column; }
+  .map-wrap, .embedded .map-wrap { --w: min(100%, 70vh * 0.898); margin: 0 auto; }
+  .stage.open .map-wrap { --w: min(100%, 42vh * 0.898); width: var(--w); margin: 0 auto; }
+  .detail { width: 100%; flex-basis: auto; max-height: 0; transform: translateY(16px); }
+  .stage.open .detail { width: 100%; flex-basis: auto; max-height: none; margin: 16px 0 0; }
+  .detail-inner { width: 100%; }
+}
+@media (max-width: 520px) {
+  .page { padding: 56px 16px 32px; }
+  .jump { max-width: 100%; flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .map-wrap, .detail, .st { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<a class="back-link" href="portals.html">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+  </svg>
+  Hub
+</a>
+
+<div class="page">
+  <header class="header">
+    <div>
+      <h1 class="title">India</h1>
+      <p class="subtitle" id="subtitle">States, capitals and who governs them</p>
+    </div>
+    <div class="toolbar">
+      <button class="chip-btn" id="india-btn">All India</button>
+      <div class="seg" role="group" aria-label="Colour the map by">
+        <button id="mode-party" class="on" aria-pressed="true">CM party</button>
+        <button id="mode-ls" aria-pressed="false">Lok Sabha '24</button>
+        <button id="mode-plain" aria-pressed="false">States</button>
+      </div>
+      <button class="chip-btn on" id="caps-btn" aria-pressed="true">Capitals</button>
+      <select class="jump" id="jump" aria-label="Jump to a state or union territory">
+        <option value="">Jump to…</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="legend" id="legend"></div>
+
+  <div class="stage" id="stage">
+    <div class="map-wrap" id="map-wrap"></div>
+    <aside class="detail" id="detail" aria-live="polite"><div class="detail-inner" id="detail-inner"></div></aside>
+  </div>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+if (window.self !== window.top) document.documentElement.classList.add('embedded');
+
+const NS = 'http://www.w3.org/2000/svg';
+const LS_TOTAL = 543, RS_ELECTED = 233;
+const PLAIN = ['#3b4a6b', '#4a3b6b', '#3b6b5e', '#6b5a3b', '#5e3b6b', '#3b5e6b', '#6b3b4f', '#4f6b3b'];
+const NO_LEG = '#2a2d33';
+const FOLD = '#5b6170';
+const BLOC_COL = { NDA: '#e0701f', INDIA: '#3b7fe0', Split: '#8a6fc0', Others: FOLD };
+const PM = { name: 'Narendra Modi', party: 'BJP', since: '2014-05-26' };
+const SMALL_AREA = 1300;
+// Tiny UTs get an outside label joined by a leader line: [dx, dy] from their centre.
+const CALLOUT = {
+  'Delhi': [40, -22],
+  'Dadra and Nagar Haveli and Daman and Diu': [-56, 10],
+  'Puducherry': [44, 10],
+  'Lakshadweep': [-30, 0],
+  'Goa': [-40, 6],
+};
+// Chandigarh's dot already carries its name, so it gets no separate area label.
+const NO_LABEL = new Set(['Chandigarh']);
+const NUDGE = { Punjab: [-10, 16] };
+// Capital labels that would collide with a state label: l = left of the dot, b = below it.
+const CAP_POS = { Dehradun: 'l', Agartala: 'l', Chandigarh: 'l', Imphal: 'b', Shillong: 'b', Kohima: 'b' };
+
+let MAP, DATA, EL, byName = {}, selected = null, mode = 'party';
+const el = (tag, attrs = {}, parent) => {
+  const n = document.createElementNS(NS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(n);
+  return n;
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function project([lat, lon]) {
+  const p = MAP.proj, c = Math.cos(p.lat0 * Math.PI / 180);
+  return [(lon * c - p.x0) * p.k + p.pad, (-lat - p.y0) * p.k + p.pad];
+}
+
+function fillFor(st) {
+  if (mode === 'plain') return PLAIN[st.geo.colour % PLAIN.length];
+  if (mode === 'ls') return BLOC_COL[lsWinner(st.name)] + 'b3';
+  if (!st.party) return NO_LEG;
+  return DATA.parties[st.party].color + 'b3';
+}
+
+function buildMap() {
+  const svg = el('svg', { viewBox: `0 0 ${MAP.width} ${MAP.height}`, role: 'img', 'aria-label': 'Map of India by state and union territory' });
+  const gStates = el('g', {}, svg), gLeaders = el('g', {}, svg), gCaps = el('g', {}, svg), gLabels = el('g', {}, svg), gHits = el('g', {}, svg);
+
+  MAP.states.forEach((g, i) => {
+    const st = byName[g.name];
+    st.geo = g;
+    const p = el('path', { d: g.d, class: 'st', tabindex: 0, role: 'button', 'aria-label': `${g.name}, capital ${st.capital}` }, gStates);
+    p.style.fill = fillFor(st);
+    st.path = p;
+    p.addEventListener('click', () => select(g.name));
+    p.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(g.name); } });
+    p.addEventListener('mousemove', e => showTip(e, st));
+    p.addEventListener('mouseleave', hideTip);
+
+    let [x, y] = g.label;
+    const off = CALLOUT[g.name];
+    const small = g.area < SMALL_AREA;
+    if (g.area < 200) {
+      const h = el('circle', { cx: x, cy: y, r: 9, class: 'hit' }, gHits);
+      h.addEventListener('click', () => select(g.name));
+      h.addEventListener('mousemove', e => showTip(e, st));
+      h.addEventListener('mouseleave', hideTip);
+    }
+    if (NO_LABEL.has(g.name)) return;
+    if (NUDGE[g.name]) { x += NUDGE[g.name][0]; y += NUDGE[g.name][1]; }
+    if (off) {
+      el('line', { x1: x, y1: y, x2: x + off[0] * 0.8, y2: y + off[1] * 0.8, class: 'leader' }, gLeaders);
+      x += off[0]; y += off[1];
+    }
+    const size = small ? 11 : Math.max(11, Math.min(20, Math.sqrt(g.area) / 7.5));
+    const t = el('text', { x, y, class: 'lbl' + (small ? ' small' : ''), 'font-size': size.toFixed(1) }, gLabels);
+    t.textContent = small ? st.abbr : g.name;
+  });
+
+  DATA.states.filter(s => s.cap).forEach(s => {
+    const [x, y] = project(s.cap);
+    el('circle', { cx: x, cy: y, r: 3, class: 'cap-dot' }, gCaps);
+    const pos = CAP_POS[s.capital];
+    const t = pos === 'l' ? el('text', { x: x - 5, y: y + 3.5, class: 'cap-lbl l' }, gCaps)
+            : pos === 'b' ? el('text', { x: x - 4, y: y + 13, class: 'cap-lbl' }, gCaps)
+            : el('text', { x: x + 5, y: y + 3.5, class: 'cap-lbl' }, gCaps);
+    t.textContent = s.capital;
+  });
+
+  document.getElementById('map-wrap').appendChild(svg);
+}
+
+function recolour() {
+  DATA.states.forEach(s => { s.path.style.fill = fillFor(s); });
+  const lg = document.getElementById('legend');
+  lg.innerHTML = '';
+  if (mode === 'ls') {
+    const c = {};
+    DATA.states.forEach(s => { const w = lsWinner(s.name); c[w] = (c[w] || 0) + 1; });
+    [['NDA', 'NDA won most seats'], ['INDIA', 'INDIA won most seats'], ['Split', 'Tied'], ['Others', 'Others won most']].forEach(([k, label]) => {
+      if (c[k]) lg.insertAdjacentHTML('beforeend', `<span><i style="background:${BLOC_COL[k]}"></i>${label} · ${c[k]}</span>`);
+    });
+    return;
+  }
+  if (mode !== 'party') return;
+  const counts = {};
+  DATA.states.forEach(s => { if (s.party) counts[s.party] = (counts[s.party] || 0) + 1; });
+  Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b)).forEach(k => {
+    lg.insertAdjacentHTML('beforeend', `<span><i style="background:${DATA.parties[k].color}"></i>${esc(k)} · ${counts[k]}</span>`);
+  });
+  lg.insertAdjacentHTML('beforeend', `<span><i style="background:${NO_LEG};border:1px solid #444"></i>No legislature</span>`);
+}
+
+function showTip(e, st) {
+  const tip = document.getElementById('tip');
+  tip.innerHTML = `<b>${esc(st.name)}</b><small>Capital: ${esc(st.capital)}</small>${st.cm ? `<small>CM: ${esc(st.cm)} (${esc(st.party)})</small>` : ''}`;
+  const w = tip.offsetWidth;
+  tip.style.left = Math.min(e.clientX + 14, window.innerWidth - w - 8) + 'px';
+  tip.style.top = (e.clientY + 14) + 'px';
+  tip.classList.add('show');
+}
+function hideTip() { document.getElementById('tip').classList.remove('show'); }
+
+function fmtDate(iso) {
+  return new Date(iso + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+function tenure(iso) {
+  const a = new Date(iso + 'T00:00:00'), b = new Date();
+  let m = (b.getFullYear() - a.getFullYear()) * 12 + b.getMonth() - a.getMonth();
+  if (b.getDate() < a.getDate()) m--;
+  const y = Math.floor(m / 12); m %= 12;
+  if (y <= 0 && m <= 0) return 'under a month';
+  return [y && `${y} yr`, m && `${m} mo`].filter(Boolean).join(' ');
+}
+
+function seat(n, label, extra, share) {
+  return `<div class="seat"><div class="seat-n">${n}${extra ? ` <small>${extra}</small>` : ''}</div><div class="seat-l">${label}</div>${share != null ? `<div class="share"><i style="width:${Math.max(1, share * 100).toFixed(1)}%"></i></div>` : ''}</div>`;
+}
+
+const pcol = code => (DATA.parties[code] && DATA.parties[code].color) || FOLD;
+const pname = code => (DATA.parties[code] && DATA.parties[code].name) || code;
+const lsBloc = code => EL.lokSabha.blocs.NDA.includes(code) ? 'NDA' : EL.lokSabha.blocs.INDIA.includes(code) ? 'INDIA' : null;
+
+function lsRows(name) {
+  return (EL.lokSabha.states[name] || []).map(r => ({ ...r, bloc: lsBloc(r.party) }));
+}
+function lsWinner(name) {
+  const t = { NDA: 0, INDIA: 0, Others: 0 };
+  lsRows(name).forEach(r => { t[r.bloc || 'Others'] += r.seats; });
+  const top = Math.max(t.NDA, t.INDIA, t.Others);
+  if (t.NDA === top && t.INDIA === top) return 'Split';
+  return t.NDA === top ? 'NDA' : t.INDIA === top ? 'INDIA' : 'Others';
+}
+
+// Alliances stay contiguous in the bar and list; independents and "others" go last.
+function ordered(rows) {
+  const blocTot = {};
+  rows.forEach(r => { if (r.bloc) blocTot[r.bloc] = (blocTot[r.bloc] || 0) + r.seats; });
+  const last = r => !r.bloc && (r.party === 'IND' || r.party === 'OTH') ? 1 : 0;
+  const group = r => r.bloc ? blocTot[r.bloc] : r.seats;
+  return rows.slice().sort((a, b) => last(a) - last(b) || group(b) - group(a) || (a.bloc || a.party).localeCompare(b.bloc || b.party) || b.seats - a.seats);
+}
+
+function seatBar(rows, total, majority, colourOf = r => pcol(r.party), labelOf = r => r.party, tipOf = r => `${pname(r.party)} · ${r.seats}`) {
+  const segs = rows.map(r =>
+    `<span class="s" style="flex:${r.seats} 0 0;background:${colourOf(r)}" data-tip="${esc(tipOf(r))}">${r.seats / total >= 0.08 ? esc(labelOf(r)) : ''}</span>`
+  ).join('');
+  const pos = (majority / total * 100).toFixed(2);
+  return `<div class="sbar" role="img" aria-label="${esc(rows.map(r => `${labelOf(r)} ${r.seats}`).join(', '))}">${segs}${majority ? `<i class="maj" style="left:${pos}%"></i>` : ''}</div>` +
+    (majority ? `<div class="maj-l"><span style="left:${Math.min(85, Math.max(15, pos))}%">Majority · ${majority}</span></div>` : '');
+}
+
+function blocChips(rows, majority) {
+  const t = {};
+  rows.forEach(r => { if (r.bloc) t[r.bloc] = (t[r.bloc] || 0) + r.seats; });
+  const keys = Object.keys(t).sort((a, b) => t[b] - t[a]);
+  if (!keys.length) return '';
+  return `<div class="blocs">${keys.map(k => `<span class="bloc${majority && t[k] >= majority ? ' won' : ''}">${esc(k)} <b>${t[k]}</b></span>`).join('')}</div>`;
+}
+
+function partyList(rows, showBloc, limit = 8) {
+  const row = r => `<div class="prow"><i style="background:${pcol(r.party)}"></i><b>${esc(r.party)}</b><span>${esc(pname(r.party))}${showBloc && r.bloc ? ` · ${esc(r.bloc)}` : ''}</span><em>${r.seats}</em></div>`;
+  const head = rows.slice(0, limit).map(row).join('');
+  const rest = rows.slice(limit);
+  return `<div class="plist">${head}${rest.length ? `<details class="more"><summary>+ ${rest.length} more</summary>${rest.map(row).join('')}</details>` : ''}</div>`;
+}
+
+function electionCard(title, sub, rows, total, majority) {
+  const o = ordered(rows);
+  return `<div class="card">
+    <div class="el-head"><div class="k">${title}</div><div class="el-sub">${sub}</div></div>
+    ${blocChips(o, majority)}
+    ${seatBar(o, total, majority)}
+    ${partyList(o, true)}
+  </div>`;
+}
+
+function renderIndia() {
+  const tot = {};
+  Object.values(EL.lokSabha.states).flat().forEach(r => { tot[r.party] = (tot[r.party] || 0) + r.seats; });
+  const rows = Object.entries(tot).map(([party, seats]) => ({ party, seats, bloc: lsBloc(party) }));
+  const total = EL.lokSabha.total, maj = Math.floor(total / 2) + 1;
+  const b = { NDA: 0, INDIA: 0, Others: 0 };
+  rows.forEach(r => { b[r.bloc || 'Others'] += r.seats; });
+  const blocRows = ['NDA', 'INDIA', 'Others'].map(k => ({ party: k, seats: b[k] }));
+  document.getElementById('detail-inner').innerHTML = `
+    <div class="card d-head">
+      <button class="close" id="close" aria-label="Close">✕</button>
+      <div class="d-type">Country</div>
+      <div class="d-name">India</div>
+      <div class="pm">Prime Minister · <b>${esc(PM.name)}</b> (${esc(PM.party)}) since ${fmtDate(PM.since)}</div>
+    </div>
+    <div class="card">
+      <div class="el-head"><div class="k">Lok Sabha ${EL.lokSabha.year} · by alliance</div><div class="el-sub">${total} seats</div></div>
+      ${seatBar(blocRows, total, maj, r => BLOC_COL[r.party], r => `${r.party} ${r.seats}`, r => `${r.party} · ${r.seats} seats`)}
+      <div class="plist">${blocRows.map(r => `<div class="prow"><i style="background:${BLOC_COL[r.party]}"></i><b>${r.party}</b><span>${r.party === 'NDA' ? 'National Democratic Alliance' : r.party === 'INDIA' ? 'Indian National Developmental Inclusive Alliance' : 'Unaligned parties and independents'}</span><em>${r.seats}</em></div>`).join('')}</div>
+    </div>
+    <div class="card">
+      <div class="el-head"><div class="k">Lok Sabha ${EL.lokSabha.year} · by party</div><div class="el-sub">${rows.length} parties</div></div>
+      ${partyList(rows.slice().sort((a, b) => (a.party === 'IND') - (b.party === 'IND') || b.seats - a.seats || a.party.localeCompare(b.party)), true, 10)}
+    </div>
+    <div class="card note">Alliances are as they stood at the ${EL.lokSabha.year} election. Click a state for its own Lok Sabha and Assembly results.</div>`;
+  document.getElementById('close').addEventListener('click', close);
+}
+
+function renderDetail(st) {
+  const party = st.party && DATA.parties[st.party];
+  const cmBlock = st.cm ? `
+    <div class="card">
+      <div class="k">Chief Minister</div>
+      <div class="cm-name">${esc(st.cm)}</div>
+      <div class="party">
+        <span class="pill" style="background:${party.color}">${esc(st.party)}</span>
+        <span class="party-full">${esc(party.name)}</span>
+        ${party.alliance !== 'Other' ? `<span class="alliance">${esc(party.alliance)}</span>` : ''}
+      </div>
+      <div class="since">In office since ${fmtDate(st.since)} · ${tenure(st.since)}</div>
+    </div>` : `
+    <div class="card">
+      <div class="k">Chief Minister</div>
+      <div class="no-cm">No Chief Minister — this union territory has no legislature and is run by the ${esc(st.admin)}, appointed by the President.</div>
+    </div>`;
+
+  const seats = [];
+  if (st.mla) seats.push(seat(st.mla, 'MLAs — Legislative Assembly seats', st.mlaNominated ? `+${st.mlaNominated} nominated` : ''));
+  if (st.mlc) seats.push(seat(st.mlc, 'MLCs — Legislative Council seats'));
+  seats.push(seat(st.ls, `Lok Sabha MPs · ${(st.ls / LS_TOTAL * 100).toFixed(1)}% of ${LS_TOTAL}`, '', st.ls / LS_TOTAL));
+  seats.push(seat(st.rs, st.rs ? `Rajya Sabha MPs · of ${RS_ELECTED} elected` : 'Rajya Sabha MPs — no seats', '', st.rs ? st.rs / RS_ELECTED : null));
+
+  document.getElementById('detail-inner').innerHTML = `
+    <div class="card d-head">
+      <button class="close" id="close" aria-label="Close">✕</button>
+      <div class="d-type">${st.type === 'ut' ? 'Union territory' : 'State'}</div>
+      <div class="d-name">${esc(st.name)}</div>
+      <div class="d-cap">Capital · <b>${esc(st.capital)}</b></div>
+    </div>
+    ${cmBlock}
+    <div class="card">
+      <div class="k">Seats</div>
+      <div class="seats">${seats.join('')}</div>
+    </div>
+    ${electionCards(st)}
+    ${st.note ? `<div class="card note">${esc(st.note)}</div>` : ''}`;
+  document.getElementById('close').addEventListener('click', close);
+}
+
+function electionCards(st) {
+  let html = '';
+  const a = EL.assembly[st.name];
+  if (a) html += electionCard(`Assembly election · ${a.year}`, `${a.total} seats`, a.results, a.total, Math.floor(a.total / 2) + 1);
+  const ls = lsRows(st.name);
+  if (ls.length) html += electionCard(`Lok Sabha ${EL.lokSabha.year}`, `${st.ls} seat${st.ls > 1 ? 's' : ''} from here`, ls, st.ls, 0);
+  return html;
+}
+
+function openIndia() {
+  if (selected === '__india') return close();
+  if (selected && byName[selected]) byName[selected].path.classList.remove('sel');
+  selected = '__india';
+  renderIndia();
+  document.getElementById('stage').classList.add('open');
+  document.getElementById('india-btn').classList.add('on');
+  document.getElementById('jump').value = '';
+  history.replaceState(null, '', '?state=IN');
+}
+
+function select(name) {
+  const st = byName[name];
+  if (!st) return;
+  if (selected === name) return close();
+  if (selected && byName[selected]) byName[selected].path.classList.remove('sel');
+  document.getElementById('india-btn').classList.remove('on');
+  selected = name;
+  st.path.classList.add('sel');
+  st.path.parentNode.appendChild(st.path);
+  renderDetail(st);
+  document.getElementById('stage').classList.add('open');
+  document.getElementById('jump').value = name;
+  history.replaceState(null, '', '?state=' + st.abbr);
+  if (window.matchMedia('(max-width: 900px)').matches) {
+    setTimeout(() => document.getElementById('detail').scrollIntoView({ behavior: 'smooth', block: 'start' }), 250);
+  }
+}
+
+function close() {
+  if (selected && byName[selected]) byName[selected].path.classList.remove('sel');
+  document.getElementById('india-btn').classList.remove('on');
+  selected = null;
+  document.getElementById('stage').classList.remove('open');
+  document.getElementById('jump').value = '';
+  history.replaceState(null, '', location.pathname);
+}
+
+function setMode(m) {
+  mode = m;
+  ['party', 'ls', 'plain'].forEach(k => {
+    const b = document.getElementById('mode-' + k);
+    b.classList.toggle('on', k === m);
+    b.setAttribute('aria-pressed', k === m);
+  });
+  recolour();
+}
+
+async function init() {
+  try {
+    const [m, d, e] = await Promise.all([
+      fetch('data/india-map.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      fetch('data/india-states.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      fetch('data/india-elections.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+    ]);
+    MAP = m; DATA = d; EL = e;
+  } catch (e) {
+    document.getElementById('map-wrap').innerHTML = '<div class="err">Couldn’t load the map data.</div>';
+    return;
+  }
+  DATA.states.forEach(s => { byName[s.name] = s; });
+
+  const nStates = DATA.states.filter(s => s.type === 'state').length;
+  document.getElementById('subtitle').textContent = `${nStates} states · ${DATA.states.length - nStates} union territories — click one to see who governs it`;
+  document.getElementById('foot').textContent = `Chief Ministers as of ${fmtDate(DATA.asOf)}. Results are seats won at each state's latest Assembly election and the ${EL.lokSabha.year} Lok Sabha election.`;
+
+  const jump = document.getElementById('jump');
+  [['state', 'States'], ['ut', 'Union territories']].forEach(([t, label]) => {
+    const og = document.createElement('optgroup');
+    og.label = label;
+    DATA.states.filter(s => s.type === t).sort((a, b) => a.name.localeCompare(b.name)).forEach(s => og.appendChild(new Option(s.name, s.name)));
+    jump.appendChild(og);
+  });
+  jump.addEventListener('change', () => jump.value ? select(jump.value) : close());
+
+  buildMap();
+  recolour();
+
+  document.getElementById('mode-party').addEventListener('click', () => setMode('party'));
+  document.getElementById('mode-plain').addEventListener('click', () => setMode('plain'));
+  document.getElementById('mode-ls').addEventListener('click', () => setMode('ls'));
+  document.getElementById('india-btn').addEventListener('click', openIndia);
+  document.getElementById('detail').addEventListener('mousemove', e => {
+    const t = e.target.closest('[data-tip]');
+    if (!t) return hideTip();
+    const tip = document.getElementById('tip');
+    tip.textContent = t.dataset.tip;
+    tip.style.left = Math.min(e.clientX + 14, window.innerWidth - tip.offsetWidth - 8) + 'px';
+    tip.style.top = (e.clientY + 14) + 'px';
+    tip.classList.add('show');
+  });
+  document.getElementById('detail').addEventListener('mouseleave', hideTip);
+  const capsBtn = document.getElementById('caps-btn');
+  capsBtn.addEventListener('click', () => {
+    const on = !capsBtn.classList.contains('on');
+    capsBtn.classList.toggle('on', on);
+    capsBtn.setAttribute('aria-pressed', on);
+    document.getElementById('map-wrap').classList.toggle('no-caps', !on);
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && selected) close(); });
+
+  const q = new URLSearchParams(location.search).get('state');
+  if (q && q.toUpperCase() === 'IN') openIndia();
+  else if (q) {
+    const hit = DATA.states.find(s => s.abbr.toLowerCase() === q.toLowerCase() || s.name.toLowerCase() === q.toLowerCase());
+    if (hit) select(hit.name);
+  }
+}
+init();
+</script>
+</body>
+</html>

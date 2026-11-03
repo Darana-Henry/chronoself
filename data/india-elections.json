@@ -1,0 +1,1556 @@
+{
+ "note": "Seats won, from the official results as summarised on Wikipedia. Static: past results don't change.",
+ "lokSabha": {
+  "year": 2024,
+  "total": 543,
+  "blocs": {
+   "NDA": [
+    "AD(S)",
+    "AGP",
+    "AJSU",
+    "BJP",
+    "HAM",
+    "JD(S)",
+    "JD(U)",
+    "JSP",
+    "LJP(RV)",
+    "NCP",
+    "RLD",
+    "SHS",
+    "SKM",
+    "TDP",
+    "UPPL"
+   ],
+   "INDIA": [
+    "AAP",
+    "AITC",
+    "BAP",
+    "CPI",
+    "CPI(M)",
+    "CPI(ML)L",
+    "DMK",
+    "INC",
+    "IUML",
+    "JKNC",
+    "JMM",
+    "KEC",
+    "MDMK",
+    "NCP(SP)",
+    "RJD",
+    "RLP",
+    "RSP",
+    "SP",
+    "SS(UBT)",
+    "VCK"
+   ]
+  },
+  "states": {
+   "Andhra Pradesh": [
+    {
+     "party": "TDP",
+     "seats": 16
+    },
+    {
+     "party": "YSRCP",
+     "seats": 4
+    },
+    {
+     "party": "BJP",
+     "seats": 3
+    },
+    {
+     "party": "JSP",
+     "seats": 2
+    }
+   ],
+   "Arunachal Pradesh": [
+    {
+     "party": "BJP",
+     "seats": 2
+    }
+   ],
+   "Assam": [
+    {
+     "party": "BJP",
+     "seats": 9
+    },
+    {
+     "party": "INC",
+     "seats": 3
+    },
+    {
+     "party": "AGP",
+     "seats": 1
+    },
+    {
+     "party": "UPPL",
+     "seats": 1
+    }
+   ],
+   "Bihar": [
+    {
+     "party": "BJP",
+     "seats": 12
+    },
+    {
+     "party": "JD(U)",
+     "seats": 12
+    },
+    {
+     "party": "LJP(RV)",
+     "seats": 5
+    },
+    {
+     "party": "HAM",
+     "seats": 1
+    },
+    {
+     "party": "RJD",
+     "seats": 4
+    },
+    {
+     "party": "INC",
+     "seats": 3
+    },
+    {
+     "party": "CPI(ML)L",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ],
+   "Chhattisgarh": [
+    {
+     "party": "BJP",
+     "seats": 10
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Goa": [
+    {
+     "party": "BJP",
+     "seats": 1
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Gujarat": [
+    {
+     "party": "BJP",
+     "seats": 25
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Haryana": [
+    {
+     "party": "BJP",
+     "seats": 5
+    },
+    {
+     "party": "INC",
+     "seats": 5
+    }
+   ],
+   "Himachal Pradesh": [
+    {
+     "party": "BJP",
+     "seats": 4
+    }
+   ],
+   "Jharkhand": [
+    {
+     "party": "BJP",
+     "seats": 8
+    },
+    {
+     "party": "JMM",
+     "seats": 3
+    },
+    {
+     "party": "INC",
+     "seats": 2
+    },
+    {
+     "party": "AJSU",
+     "seats": 1
+    }
+   ],
+   "Karnataka": [
+    {
+     "party": "BJP",
+     "seats": 17
+    },
+    {
+     "party": "INC",
+     "seats": 9
+    },
+    {
+     "party": "JD(S)",
+     "seats": 2
+    }
+   ],
+   "Kerala": [
+    {
+     "party": "INC",
+     "seats": 14
+    },
+    {
+     "party": "IUML",
+     "seats": 2
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1
+    },
+    {
+     "party": "KEC",
+     "seats": 1
+    },
+    {
+     "party": "RSP",
+     "seats": 1
+    },
+    {
+     "party": "BJP",
+     "seats": 1
+    }
+   ],
+   "Madhya Pradesh": [
+    {
+     "party": "BJP",
+     "seats": 29
+    }
+   ],
+   "Maharashtra": [
+    {
+     "party": "INC",
+     "seats": 13
+    },
+    {
+     "party": "BJP",
+     "seats": 9
+    },
+    {
+     "party": "SS(UBT)",
+     "seats": 9
+    },
+    {
+     "party": "NCP(SP)",
+     "seats": 8
+    },
+    {
+     "party": "SHS",
+     "seats": 7
+    },
+    {
+     "party": "NCP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ],
+   "Manipur": [
+    {
+     "party": "INC",
+     "seats": 2
+    }
+   ],
+   "Meghalaya": [
+    {
+     "party": "INC",
+     "seats": 1
+    },
+    {
+     "party": "VPP",
+     "seats": 1
+    }
+   ],
+   "Mizoram": [
+    {
+     "party": "ZPM",
+     "seats": 1
+    }
+   ],
+   "Nagaland": [
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Odisha": [
+    {
+     "party": "BJP",
+     "seats": 20
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Punjab": [
+    {
+     "party": "INC",
+     "seats": 7
+    },
+    {
+     "party": "AAP",
+     "seats": 3
+    },
+    {
+     "party": "SAD",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 2
+    }
+   ],
+   "Rajasthan": [
+    {
+     "party": "BJP",
+     "seats": 14
+    },
+    {
+     "party": "INC",
+     "seats": 8
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1
+    },
+    {
+     "party": "RLP",
+     "seats": 1
+    },
+    {
+     "party": "BAP",
+     "seats": 1
+    }
+   ],
+   "Sikkim": [
+    {
+     "party": "SKM",
+     "seats": 1
+    }
+   ],
+   "Tamil Nadu": [
+    {
+     "party": "DMK",
+     "seats": 22
+    },
+    {
+     "party": "INC",
+     "seats": 9
+    },
+    {
+     "party": "VCK",
+     "seats": 2
+    },
+    {
+     "party": "CPI",
+     "seats": 2
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 2
+    },
+    {
+     "party": "IUML",
+     "seats": 1
+    },
+    {
+     "party": "MDMK",
+     "seats": 1
+    }
+   ],
+   "Telangana": [
+    {
+     "party": "INC",
+     "seats": 8
+    },
+    {
+     "party": "BJP",
+     "seats": 8
+    },
+    {
+     "party": "AIMIM",
+     "seats": 1
+    }
+   ],
+   "Tripura": [
+    {
+     "party": "BJP",
+     "seats": 2
+    }
+   ],
+   "Uttar Pradesh": [
+    {
+     "party": "SP",
+     "seats": 37
+    },
+    {
+     "party": "BJP",
+     "seats": 33
+    },
+    {
+     "party": "INC",
+     "seats": 6
+    },
+    {
+     "party": "RLD",
+     "seats": 2
+    },
+    {
+     "party": "AD(S)",
+     "seats": 1
+    },
+    {
+     "party": "ASP(KR)",
+     "seats": 1
+    }
+   ],
+   "Uttarakhand": [
+    {
+     "party": "BJP",
+     "seats": 5
+    }
+   ],
+   "West Bengal": [
+    {
+     "party": "AITC",
+     "seats": 29
+    },
+    {
+     "party": "BJP",
+     "seats": 12
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Delhi": [
+    {
+     "party": "BJP",
+     "seats": 7
+    }
+   ],
+   "Jammu and Kashmir": [
+    {
+     "party": "JKNC",
+     "seats": 2
+    },
+    {
+     "party": "BJP",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ],
+   "Puducherry": [
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Andaman and Nicobar Islands": [
+    {
+     "party": "BJP",
+     "seats": 1
+    }
+   ],
+   "Chandigarh": [
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ],
+   "Dadra and Nagar Haveli and Daman and Diu": [
+    {
+     "party": "BJP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ],
+   "Ladakh": [
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ],
+   "Lakshadweep": [
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ]
+  }
+ },
+ "assembly": {
+  "Andhra Pradesh": {
+   "year": 2024,
+   "total": 175,
+   "results": [
+    {
+     "party": "TDP",
+     "seats": 135,
+     "bloc": "NDA"
+    },
+    {
+     "party": "JSP",
+     "seats": 21,
+     "bloc": "NDA"
+    },
+    {
+     "party": "BJP",
+     "seats": 8,
+     "bloc": "NDA"
+    },
+    {
+     "party": "YSRCP",
+     "seats": 11
+    }
+   ]
+  },
+  "Arunachal Pradesh": {
+   "year": 2024,
+   "total": 60,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 46
+    },
+    {
+     "party": "NPP",
+     "seats": 5
+    },
+    {
+     "party": "NCP",
+     "seats": 3
+    },
+    {
+     "party": "PPA",
+     "seats": 2
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Assam": {
+   "year": 2026,
+   "total": 126,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 82,
+     "bloc": "NDA"
+    },
+    {
+     "party": "AGP",
+     "seats": 10,
+     "bloc": "NDA"
+    },
+    {
+     "party": "BPF",
+     "seats": 10,
+     "bloc": "NDA"
+    },
+    {
+     "party": "INC",
+     "seats": 19,
+     "bloc": "ASM"
+    },
+    {
+     "party": "RD",
+     "seats": 2,
+     "bloc": "ASM"
+    },
+    {
+     "party": "AIUDF",
+     "seats": 2
+    },
+    {
+     "party": "AITC",
+     "seats": 1
+    }
+   ]
+  },
+  "Bihar": {
+   "year": 2025,
+   "total": 243,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 89,
+     "bloc": "NDA"
+    },
+    {
+     "party": "JD(U)",
+     "seats": 85,
+     "bloc": "NDA"
+    },
+    {
+     "party": "LJP(RV)",
+     "seats": 19,
+     "bloc": "NDA"
+    },
+    {
+     "party": "HAM",
+     "seats": 5,
+     "bloc": "NDA"
+    },
+    {
+     "party": "RLM",
+     "seats": 4,
+     "bloc": "NDA"
+    },
+    {
+     "party": "RJD",
+     "seats": 25,
+     "bloc": "MGB"
+    },
+    {
+     "party": "INC",
+     "seats": 6,
+     "bloc": "MGB"
+    },
+    {
+     "party": "CPI(ML)L",
+     "seats": 2,
+     "bloc": "MGB"
+    },
+    {
+     "party": "IIP",
+     "seats": 1,
+     "bloc": "MGB"
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1,
+     "bloc": "MGB"
+    },
+    {
+     "party": "AIMIM",
+     "seats": 5
+    },
+    {
+     "party": "BSP",
+     "seats": 1
+    }
+   ]
+  },
+  "Chhattisgarh": {
+   "year": 2023,
+   "total": 90,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 54
+    },
+    {
+     "party": "INC",
+     "seats": 35
+    },
+    {
+     "party": "GGP",
+     "seats": 1
+    }
+   ]
+  },
+  "Goa": {
+   "year": 2022,
+   "total": 40,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 20
+    },
+    {
+     "party": "INC",
+     "seats": 11
+    },
+    {
+     "party": "AAP",
+     "seats": 2
+    },
+    {
+     "party": "MGP",
+     "seats": 2
+    },
+    {
+     "party": "GFP",
+     "seats": 1
+    },
+    {
+     "party": "RGP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Gujarat": {
+   "year": 2022,
+   "total": 182,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 156
+    },
+    {
+     "party": "INC",
+     "seats": 17
+    },
+    {
+     "party": "AAP",
+     "seats": 5
+    },
+    {
+     "party": "SP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Haryana": {
+   "year": 2024,
+   "total": 90,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 48
+    },
+    {
+     "party": "INC",
+     "seats": 37
+    },
+    {
+     "party": "INLD",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Himachal Pradesh": {
+   "year": 2022,
+   "total": 68,
+   "results": [
+    {
+     "party": "INC",
+     "seats": 40
+    },
+    {
+     "party": "BJP",
+     "seats": 25
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Jharkhand": {
+   "year": 2024,
+   "total": 81,
+   "results": [
+    {
+     "party": "JMM",
+     "seats": 34,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "INC",
+     "seats": 16,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "RJD",
+     "seats": 4,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "CPI(ML)L",
+     "seats": 2,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "BJP",
+     "seats": 21,
+     "bloc": "NDA"
+    },
+    {
+     "party": "AJSU",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "LJP(RV)",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "JD(U)",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "JLKM",
+     "seats": 1
+    }
+   ]
+  },
+  "Karnataka": {
+   "year": 2023,
+   "total": 224,
+   "results": [
+    {
+     "party": "INC",
+     "seats": 135
+    },
+    {
+     "party": "BJP",
+     "seats": 66
+    },
+    {
+     "party": "JD(S)",
+     "seats": 19
+    },
+    {
+     "party": "KRPP",
+     "seats": 1
+    },
+    {
+     "party": "SKP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 2
+    }
+   ]
+  },
+  "Kerala": {
+   "year": 2026,
+   "total": 140,
+   "results": [
+    {
+     "party": "INC",
+     "seats": 63,
+     "bloc": "UDF"
+    },
+    {
+     "party": "IUML",
+     "seats": 22,
+     "bloc": "UDF"
+    },
+    {
+     "party": "KEC",
+     "seats": 7,
+     "bloc": "UDF"
+    },
+    {
+     "party": "RSP",
+     "seats": 3,
+     "bloc": "UDF"
+    },
+    {
+     "party": "KC(J)",
+     "seats": 1,
+     "bloc": "UDF"
+    },
+    {
+     "party": "RMPI",
+     "seats": 1,
+     "bloc": "UDF"
+    },
+    {
+     "party": "CMP",
+     "seats": 1,
+     "bloc": "UDF"
+    },
+    {
+     "party": "IND",
+     "seats": 4,
+     "bloc": "UDF"
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 26,
+     "bloc": "LDF"
+    },
+    {
+     "party": "CPI",
+     "seats": 8,
+     "bloc": "LDF"
+    },
+    {
+     "party": "RJD",
+     "seats": 1,
+     "bloc": "LDF"
+    },
+    {
+     "party": "BJP",
+     "seats": 3,
+     "bloc": "NDA"
+    }
+   ]
+  },
+  "Madhya Pradesh": {
+   "year": 2023,
+   "total": 230,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 163
+    },
+    {
+     "party": "INC",
+     "seats": 66
+    },
+    {
+     "party": "BAP",
+     "seats": 1
+    }
+   ]
+  },
+  "Maharashtra": {
+   "year": 2024,
+   "total": 288,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 132,
+     "bloc": "Mahayuti"
+    },
+    {
+     "party": "SHS",
+     "seats": 57,
+     "bloc": "Mahayuti"
+    },
+    {
+     "party": "NCP",
+     "seats": 41,
+     "bloc": "Mahayuti"
+    },
+    {
+     "party": "SS(UBT)",
+     "seats": 20,
+     "bloc": "MVA"
+    },
+    {
+     "party": "INC",
+     "seats": 16,
+     "bloc": "MVA"
+    },
+    {
+     "party": "NCP(SP)",
+     "seats": 10,
+     "bloc": "MVA"
+    },
+    {
+     "party": "OTH",
+     "seats": 12
+    }
+   ]
+  },
+  "Manipur": {
+   "year": 2022,
+   "total": 60,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 32
+    },
+    {
+     "party": "NPP",
+     "seats": 7
+    },
+    {
+     "party": "JD(U)",
+     "seats": 6
+    },
+    {
+     "party": "NPF",
+     "seats": 5
+    },
+    {
+     "party": "INC",
+     "seats": 5
+    },
+    {
+     "party": "KPA",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Meghalaya": {
+   "year": 2023,
+   "total": 60,
+   "results": [
+    {
+     "party": "NPP",
+     "seats": 26
+    },
+    {
+     "party": "UDP",
+     "seats": 12
+    },
+    {
+     "party": "AITC",
+     "seats": 5
+    },
+    {
+     "party": "INC",
+     "seats": 5
+    },
+    {
+     "party": "VPP",
+     "seats": 4
+    },
+    {
+     "party": "BJP",
+     "seats": 2
+    },
+    {
+     "party": "HSPDP",
+     "seats": 2
+    },
+    {
+     "party": "PDF",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 2
+    }
+   ]
+  },
+  "Mizoram": {
+   "year": 2023,
+   "total": 40,
+   "results": [
+    {
+     "party": "ZPM",
+     "seats": 27
+    },
+    {
+     "party": "MNF",
+     "seats": 10
+    },
+    {
+     "party": "BJP",
+     "seats": 2
+    },
+    {
+     "party": "INC",
+     "seats": 1
+    }
+   ]
+  },
+  "Nagaland": {
+   "year": 2023,
+   "total": 60,
+   "results": [
+    {
+     "party": "NDPP",
+     "seats": 25,
+     "bloc": "NDA"
+    },
+    {
+     "party": "BJP",
+     "seats": 12,
+     "bloc": "NDA"
+    },
+    {
+     "party": "NCP",
+     "seats": 7
+    },
+    {
+     "party": "NPP",
+     "seats": 5
+    },
+    {
+     "party": "LJP(RV)",
+     "seats": 2
+    },
+    {
+     "party": "NPF",
+     "seats": 2
+    },
+    {
+     "party": "RPI(A)",
+     "seats": 2
+    },
+    {
+     "party": "JD(U)",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 4
+    }
+   ]
+  },
+  "Odisha": {
+   "year": 2024,
+   "total": 147,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 78
+    },
+    {
+     "party": "BJD",
+     "seats": 51
+    },
+    {
+     "party": "INC",
+     "seats": 14
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  },
+  "Punjab": {
+   "year": 2022,
+   "total": 117,
+   "results": [
+    {
+     "party": "AAP",
+     "seats": 92
+    },
+    {
+     "party": "INC",
+     "seats": 18
+    },
+    {
+     "party": "SAD",
+     "seats": 3
+    },
+    {
+     "party": "BJP",
+     "seats": 2
+    },
+    {
+     "party": "BSP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 1
+    }
+   ]
+  },
+  "Rajasthan": {
+   "year": 2023,
+   "total": 200,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 115
+    },
+    {
+     "party": "INC",
+     "seats": 70
+    },
+    {
+     "party": "BAP",
+     "seats": 3
+    },
+    {
+     "party": "BSP",
+     "seats": 2
+    },
+    {
+     "party": "RLD",
+     "seats": 1
+    },
+    {
+     "party": "RLP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 8
+    }
+   ]
+  },
+  "Sikkim": {
+   "year": 2024,
+   "total": 32,
+   "results": [
+    {
+     "party": "SKM",
+     "seats": 31
+    },
+    {
+     "party": "SDF",
+     "seats": 1
+    }
+   ]
+  },
+  "Tamil Nadu": {
+   "year": 2026,
+   "total": 234,
+   "results": [
+    {
+     "party": "TVK",
+     "seats": 108
+    },
+    {
+     "party": "DMK",
+     "seats": 59,
+     "bloc": "SPA"
+    },
+    {
+     "party": "INC",
+     "seats": 5,
+     "bloc": "SPA"
+    },
+    {
+     "party": "VCK",
+     "seats": 2,
+     "bloc": "SPA"
+    },
+    {
+     "party": "CPI",
+     "seats": 2,
+     "bloc": "SPA"
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 2,
+     "bloc": "SPA"
+    },
+    {
+     "party": "IUML",
+     "seats": 2,
+     "bloc": "SPA"
+    },
+    {
+     "party": "DMDK",
+     "seats": 1,
+     "bloc": "SPA"
+    },
+    {
+     "party": "AIADMK",
+     "seats": 47,
+     "bloc": "NDA"
+    },
+    {
+     "party": "PMK",
+     "seats": 4,
+     "bloc": "NDA"
+    },
+    {
+     "party": "BJP",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "AMMK",
+     "seats": 1,
+     "bloc": "NDA"
+    }
+   ]
+  },
+  "Telangana": {
+   "year": 2023,
+   "total": 119,
+   "results": [
+    {
+     "party": "INC",
+     "seats": 64
+    },
+    {
+     "party": "BRS",
+     "seats": 39
+    },
+    {
+     "party": "BJP",
+     "seats": 8
+    },
+    {
+     "party": "AIMIM",
+     "seats": 7
+    },
+    {
+     "party": "CPI",
+     "seats": 1
+    }
+   ]
+  },
+  "Tripura": {
+   "year": 2023,
+   "total": 60,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 32,
+     "bloc": "NDA"
+    },
+    {
+     "party": "IPFT",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "TMP",
+     "seats": 13
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 11
+    },
+    {
+     "party": "INC",
+     "seats": 3
+    }
+   ]
+  },
+  "Uttar Pradesh": {
+   "year": 2022,
+   "total": 403,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 255,
+     "bloc": "NDA"
+    },
+    {
+     "party": "AD(S)",
+     "seats": 12,
+     "bloc": "NDA"
+    },
+    {
+     "party": "NISHAD",
+     "seats": 6,
+     "bloc": "NDA"
+    },
+    {
+     "party": "SP",
+     "seats": 111,
+     "bloc": "SP+"
+    },
+    {
+     "party": "RLD",
+     "seats": 8,
+     "bloc": "SP+"
+    },
+    {
+     "party": "SBSP",
+     "seats": 6,
+     "bloc": "SP+"
+    },
+    {
+     "party": "INC",
+     "seats": 2
+    },
+    {
+     "party": "JD(L)",
+     "seats": 2
+    },
+    {
+     "party": "BSP",
+     "seats": 1
+    }
+   ]
+  },
+  "Uttarakhand": {
+   "year": 2022,
+   "total": 70,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 47
+    },
+    {
+     "party": "INC",
+     "seats": 19
+    },
+    {
+     "party": "BSP",
+     "seats": 2
+    },
+    {
+     "party": "IND",
+     "seats": 2
+    }
+   ]
+  },
+  "West Bengal": {
+   "year": 2026,
+   "total": 294,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 208
+    },
+    {
+     "party": "AITC",
+     "seats": 80
+    },
+    {
+     "party": "INC",
+     "seats": 2
+    },
+    {
+     "party": "AJUP",
+     "seats": 2
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1
+    },
+    {
+     "party": "ISF",
+     "seats": 1
+    }
+   ]
+  },
+  "Delhi": {
+   "year": 2025,
+   "total": 70,
+   "results": [
+    {
+     "party": "BJP",
+     "seats": 48
+    },
+    {
+     "party": "AAP",
+     "seats": 22
+    }
+   ]
+  },
+  "Jammu and Kashmir": {
+   "year": 2024,
+   "total": 90,
+   "results": [
+    {
+     "party": "JKNC",
+     "seats": 42,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "INC",
+     "seats": 6,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "CPI(M)",
+     "seats": 1,
+     "bloc": "INDIA"
+    },
+    {
+     "party": "BJP",
+     "seats": 29
+    },
+    {
+     "party": "PDP",
+     "seats": 3
+    },
+    {
+     "party": "JKPC",
+     "seats": 1
+    },
+    {
+     "party": "AAP",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 7
+    }
+   ]
+  },
+  "Puducherry": {
+   "year": 2026,
+   "total": 30,
+   "results": [
+    {
+     "party": "AINRC",
+     "seats": 12,
+     "bloc": "NDA"
+    },
+    {
+     "party": "BJP",
+     "seats": 4,
+     "bloc": "NDA"
+    },
+    {
+     "party": "LJK",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "AIADMK",
+     "seats": 1,
+     "bloc": "NDA"
+    },
+    {
+     "party": "DMK",
+     "seats": 5,
+     "bloc": "SPA"
+    },
+    {
+     "party": "INC",
+     "seats": 1,
+     "bloc": "SPA"
+    },
+    {
+     "party": "TVK",
+     "seats": 2
+    },
+    {
+     "party": "NMK",
+     "seats": 1
+    },
+    {
+     "party": "IND",
+     "seats": 3
+    }
+   ]
+  }
+ }
+}

@@ -118,6 +118,7 @@ body::before {
 .card-reboot::before      { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(248,113,113,0.10), transparent); }
 .card-hub::before         { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(56,210,220,0.10), transparent); }
 .card-schools::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(56,189,248,0.10), transparent); }
+.card-india::before       { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(129,140,248,0.12), transparent); }
 .card-instagram::before   { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(192,132,252,0.10), transparent); }
 .card-cryptic::before     { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(45,212,191,0.10), transparent); }
 
@@ -136,6 +137,7 @@ body::before {
 .card-reboot:hover      { border-color: rgba(248,113,113,0.45); box-shadow: 0 8px 40px rgba(248,113,113,0.14); }
 .card-hub:hover         { border-color: rgba(56,210,220,0.45);  box-shadow: 0 8px 40px rgba(56,210,220,0.10); }
 .card-schools:hover     { border-color: rgba(56,189,248,0.45);  box-shadow: 0 8px 40px rgba(56,189,248,0.12); }
+.card-india:hover       { border-color: rgba(129,140,248,0.45); box-shadow: 0 8px 40px rgba(129,140,248,0.12); }
 .card-instagram:hover   { border-color: rgba(192,132,252,0.45); box-shadow: 0 8px 40px rgba(192,132,252,0.12); }
 .card-cryptic:hover     { border-color: rgba(45,212,191,0.45); box-shadow: 0 8px 40px rgba(45,212,191,0.12); }
 
@@ -155,6 +157,7 @@ body::before {
 .card-classes    .card-icon { background: rgba(201,122,255,0.12); }
 .card-reboot     .card-icon { background: rgba(248,113,113,0.12); }
 .card-schools    .card-icon { background: rgba(56,189,248,0.12); }
+.card-india      .card-icon { background: rgba(129,140,248,0.12); }
 .card-hub        .card-icon { background: rgba(56,210,220,0.12); }
 .card-instagram  .card-icon { background: rgba(192,132,252,0.12); }
 .card-cryptic    .card-icon { background: rgba(45,212,191,0.12); }
@@ -196,6 +199,7 @@ body::before {
 .card-hub        .card-arrow { color: #38d2dc; }
 .card-instagram  .card-arrow { color: #c084fc; }
 .card-schools    .card-arrow { color: #38bdf8; }
+.card-india      .card-arrow { color: #818cf8; }
 .card-cryptic    .card-arrow { color: #2dd4bf; }
 .card:hover .card-arrow    { gap: 10px; }
 
@@ -447,6 +451,23 @@ body::before {
       <div class="card-desc">Hyderabad schools — distance from you, board, fee, rating, Saturdays and timings.</div>
       <div class="card-arrow">
         Compare schools
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- India -->
+    <a class="card card-india" href="schedule.html?tab=india">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>
+        </svg>
+      </div>
+      <div class="card-title">India</div>
+      <div class="card-desc">Map of every state and union territory with capitals — tap one for its Chief Minister, party, and MLA and MP seats.</div>
+      <div class="card-arrow">
+        Explore the map
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>
