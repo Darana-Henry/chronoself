@@ -170,7 +170,46 @@ body::before {
 /* ── Table view: every state's CMs across its last five elections ── */
 .alt-view .stage, .alt-view .legend, .alt-view .map-only { display: none !important; }
 .gview { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
-.gview[hidden] { display: none; }
+.gview[hidden], .tsview[hidden] { display: none; }
+.tsview { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+.ts-intro { max-width: 900px; font-size: 14px; line-height: 1.6; color: var(--txt-mid); }
+.ts-intro p { margin: 0 0 8px; }
+.ts-score { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ts-score .card { padding: 14px 16px; min-width: 0; }
+.ts-score .t { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; margin-bottom: 10px; }
+.ts-score .t b { font-size: 13px; }
+.ts-score .t span { font-size: 11px; color: var(--txt-dim); white-space: nowrap; }
+.ts-score .keys { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px; font-size: 11.5px; color: var(--txt-mid); }
+.ts-score .keys i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+.ts-score .keys b { color: var(--txt); font-variant-numeric: tabular-nums; }
+.ts-note { font-size: 11.5px; color: var(--txt-dim); margin-top: 8px; line-height: 1.45; }
+.ts-gov { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.ts-mins { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 18px; margin-top: 12px; font-size: 12px; }
+.ts-mins b { display: block; font-weight: 700; color: color-mix(in oklab, #3b7fe0 62%, #fff); }
+.ts-mins span { color: var(--txt-dim); font-size: 11px; }
+.ts-parties { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.ts-party { border: 1px solid var(--line); border-top: 3px solid var(--pc); border-radius: 14px; background: var(--card); padding: 12px 14px; min-width: 0; }
+.ts-party h3 { margin: 0 0 4px; font-size: 14px; color: color-mix(in oklab, var(--pc) 62%, #fff); }
+.ts-party .st { font-size: 11.5px; color: var(--txt-dim); line-height: 1.45; margin-bottom: 8px; }
+.ts-party .p { font-size: 12px; margin-top: 7px; }
+.ts-party .p b { display: block; color: var(--txt); }
+.ts-party .p span { color: var(--txt-mid); font-size: 11px; }
+.ts-tl { border-left: 2px solid var(--line); margin-left: 6px; padding-left: 0; }
+.ts-ev { position: relative; display: grid; grid-template-columns: 92px 92px minmax(0, 1fr); gap: 12px; padding: 9px 0 9px 18px; }
+.ts-ev::before { content: ''; position: absolute; left: -6px; top: 14px; width: 10px; height: 10px; border-radius: 50%; background: #0a0a0a; border: 2px solid var(--tc); }
+.ts-ev .d { font-size: 12px; color: var(--txt-mid); font-variant-numeric: tabular-nums; padding-top: 1px; }
+.ts-ev .g { font-size: 10px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: var(--tc); padding-top: 2px; }
+.ts-ev h4 { margin: 0 0 2px; font-size: 13.5px; color: var(--txt); }
+.ts-ev p { margin: 0; font-size: 12.5px; color: var(--txt-mid); line-height: 1.5; max-width: 820px; }
+.ts-ev.bg { opacity: 0.7; }
+.ts-yr { margin: 14px 0 2px 18px; font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--accent); }
+.ts-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ts-two .card { min-width: 0; }
+.ts-li { font-size: 12.5px; line-height: 1.5; color: var(--txt-mid); padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+.ts-li:first-of-type { border-top: 0; }
+.ts-li b { color: var(--txt); display: block; font-size: 13px; }
+@media (max-width: 1100px) { .ts-gov, .ts-parties { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ts-mins { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .ts-score, .ts-two, .ts-gov, .ts-parties, .ts-mins { grid-template-columns: 1fr; } .ts-ev { grid-template-columns: 1fr; gap: 2px; } }
 .gsec { min-width: 0; }
 @media (max-width: 600px) { .ucards { grid-template-columns: 1fr !important; } }
 .gsec h2 { font-size: 11px; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase; color: var(--accent); margin: 0 0 4px; }
@@ -319,6 +358,7 @@ body::before {
         <button id="view-map" class="on" aria-pressed="true">Map</button>
         <button id="view-table" aria-pressed="false">CMs</button>
         <button id="view-gov" aria-pressed="false">Government</button>
+        <button id="view-ts" aria-pressed="false">Telangana</button>
       </div>
       <button class="chip-btn map-only" id="india-btn">All India</button>
       <div class="seg map-only" role="group" aria-label="Colour the map by">
@@ -343,6 +383,7 @@ body::before {
 
   <div class="tview" id="tview" hidden></div>
   <div class="gview" id="gview" hidden></div>
+  <div class="tsview" id="tsview" hidden></div>
 
   <p class="foot" id="foot"></p>
 </div>
@@ -376,7 +417,7 @@ const NUDGE = { Punjab: [-10, 16] };
 // Capital labels that would collide with a state label: l = left of the dot, b = below it.
 const CAP_POS = { Dehradun: 'l', Agartala: 'l', Chandigarh: 'l', Imphal: 'b', Shillong: 'b', Kohima: 'b' };
 
-let MAP, DATA, EL, GOV, byName = {}, selected = null, mode = 'party';
+let MAP, DATA, EL, GOV, TS, byName = {}, selected = null, mode = 'party';
 const el = (tag, attrs = {}, parent) => {
   const n = document.createElementNS(NS, tag);
   for (const k in attrs) n.setAttribute(k, attrs[k]);
@@ -853,6 +894,48 @@ function buildGov() {
   tipHandlers(gv);
 }
 
+const TAG_COL = { Background: '#8a8f98', Election: '#818cf8', Government: '#3b9e8f', Courts: '#d4a03a', Probe: '#e0605a', Party: '#b07ad6' };
+
+function buildTelangana() {
+  const T = TS, monthYr = d => new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+  const SPECIAL = {
+    XBRS: `repeating-linear-gradient(135deg, ${pcol('INC')} 0 5px, ${pcol('BRS')} 5px 10px)`,
+    RAJA: FOLD, VAC: 'rgba(255,255,255,0.10)', OTH: FOLD,
+  };
+  const col = c => SPECIAL[c] || pcol(c);
+  const score = T.scoreboard.map(b => {
+    const rows = b.rows.map(([party, seats, label, tip]) => ({ party, seats, label: label === undefined ? party : label, tip: tip || `${pname(party)} · ${seats}` }));
+    const bar = seatBar(rows, b.total, b.majority, r => col(r.party), r => r.label ? `${r.label} ‧ ${r.seats}` : '', r => r.tip);
+    const keys = rows.map(r => `<span><i style="background:${col(r.party)}"></i>${esc(r.label || r.tip.split(' · ')[0])} <b>${r.seats.toLocaleString('en-IN')}</b></span>`).join('');
+    return `<div class="card"><div class="t"><b>${esc(b.title)}</b><span>${esc(b.when)} · ${b.total.toLocaleString('en-IN')} seats</span></div>${bar}<div class="keys">${keys}</div><div class="ts-note">${esc(b.note)}</div></div>`;
+  }).join('');
+  const nameIn = (n, c) => `<div class="n" style="color:${c ? tint(c) : 'var(--txt)'}">${esc(n)}</div>`;
+  const gov = T.government.top.map(([k, n, c, m]) => `<div class="ucard"><div class="k">${esc(k)}</div>${nameIn(n, c)}<div class="m">${esc(m)}</div></div>`).join('');
+  const mins = T.government.ministers.map(([n, d]) => `<div><b>${esc(n)}</b><span>${esc(d)}</span></div>`).join('');
+  const parties = T.parties.map(p => `<div class="ts-party" style="--pc:${p.code ? pcol(p.code) : FOLD}"><h3>${esc(p.name)}</h3><div class="st">${esc(p.stance)}</div>${
+    p.people.map(([n, r]) => `<div class="p"><b>${esc(n)}</b><span>${esc(r)}</span></div>`).join('')}</div>`).join('');
+  let lastYr = '';
+  const tl = T.timeline.map(e => {
+    const yr = e.date.slice(0, 4), bg = e.tag === 'Background';
+    const head = !bg && yr !== lastYr ? `<div class="ts-yr">${yr}</div>` : '';
+    if (!bg) lastYr = yr;
+    return `${head}<div class="ts-ev${bg ? ' bg' : ''}" style="--tc:${TAG_COL[e.tag] || FOLD}"><div class="d">${monthYr(e.date)}</div><div class="g">${esc(e.tag)}</div><div><h4>${esc(e.title)}</h4><p>${esc(e.text)}</p></div></div>`;
+  }).join('');
+  const list = rows => rows.map(([k, v]) => `<div class="ts-li"><b>${esc(k)}</b>${esc(v)}</div>`).join('');
+  const el = document.getElementById('tsview');
+  el.innerHTML = `
+    <section class="gsec"><h2>Telangana · the story so far</h2><div class="ts-intro">${T.intro.map(p => `<p>${esc(p)}</p>`).join('')}</div></section>
+    <section class="gsec"><h2>Scoreboard</h2><p class="gsub">Every vote since the 2023 Assembly election, oldest first. The Assembly majority is 60 of 119.</p><div class="ts-score">${score}</div></section>
+    <section class="gsec"><h2>Who runs the state</h2><p class="gsub">${esc(T.government.note)} The Governor is the formal head; the CM holds the power.</p><div class="ts-gov">${gov}</div>
+      <div class="card" style="margin-top:10px"><div class="k" style="font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--txt-dim)">Key ministers</div><div class="ts-mins">${mins}</div></div></section>
+    <section class="gsec"><h2>Who heads whom · the parties</h2><p class="gsub">The person who runs a party isn’t always the one in government. Congress decides in Delhi; BRS decides in KCR’s house.</p><div class="ts-parties">${parties}</div></section>
+    <section class="gsec"><h2>What happened</h2><p class="gsub">From the last election cycle to today. Colours mark the kind of event: <span style="color:${TAG_COL.Election}">election</span>, <span style="color:${TAG_COL.Government}">government</span>, <span style="color:${TAG_COL.Party}">party</span>, <span style="color:${TAG_COL.Courts}">courts</span>, <span style="color:${TAG_COL.Probe}">probe</span>.</p><div class="ts-tl">${tl}</div></section>
+    <section class="gsec ts-two"><div class="card"><h2 class="gsec" style="font-size:11px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--accent);margin:0 0 6px">The fault lines</h2>${list(T.faultLines)}</div>
+      <div class="card"><h2 style="font-size:11px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--accent);margin:0 0 6px">What to watch next</h2>${list(T.watch)}</div></section>
+    <p class="foot" style="margin:0">Compiled from news reports up to ${fmtDate(T.asOf)}. Static, like the rest of this page: update <code>data/india-telangana.json</code> as things change.</p>`;
+  tipHandlers(el);
+}
+
 function buildTable() {
   const N = 5;
   const head = `<tr><th>State</th>${Array.from({ length: N }, (_, i) => `<th>${i === 0 ? 'Latest election' : `${i} before`}</th>`).join('')}</tr>`;
@@ -880,10 +963,13 @@ function setView(v) {
   const tv = document.getElementById('tview'), gv = document.getElementById('gview');
   if (v === 'table' && !tv.innerHTML) buildTable();
   if (v === 'gov' && !gv.innerHTML) buildGov();
+  const tsv = document.getElementById('tsview');
+  if (v === 'ts' && !tsv.innerHTML) buildTelangana();
+  tsv.hidden = v !== 'ts';
   document.documentElement.classList.toggle('alt-view', v !== 'map');
   tv.hidden = v !== 'table';
   gv.hidden = v !== 'gov';
-  ['map', 'table', 'gov'].forEach(k => {
+  ['map', 'table', 'gov', 'ts'].forEach(k => {
     const b = document.getElementById('view-' + k);
     b.classList.toggle('on', k === v);
     b.setAttribute('aria-pressed', k === v);
@@ -942,13 +1028,14 @@ function setMode(m) {
 
 async function init() {
   try {
-    const [m, d, e, g] = await Promise.all([
+    const [m, d, e, g, t] = await Promise.all([
       fetch('data/india-map.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
       fetch('data/india-states.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
       fetch('data/india-elections.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
       fetch('data/india-government.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      fetch('data/india-telangana.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
     ]);
-    MAP = m; DATA = d; EL = e; GOV = g;
+    MAP = m; DATA = d; EL = e; GOV = g; TS = t;
   } catch (e) {
     document.getElementById('map-wrap').innerHTML = '<div class="err">Couldn’t load the map data.</div>';
     return;
@@ -998,8 +1085,9 @@ async function init() {
   document.getElementById('view-map').addEventListener('click', () => setView('map'));
   document.getElementById('view-table').addEventListener('click', () => setView('table'));
   document.getElementById('view-gov').addEventListener('click', () => setView('gov'));
+  document.getElementById('view-ts').addEventListener('click', () => setView('ts'));
   const v = new URLSearchParams(location.search).get('view');
-  if (v === 'table' || v === 'gov') setView(v);
+  if (['table', 'gov', 'ts'].includes(v)) setView(v);
   const q = new URLSearchParams(location.search).get('state');
   if (q && q.toUpperCase() === 'IN') openIndia();
   else if (q) {
