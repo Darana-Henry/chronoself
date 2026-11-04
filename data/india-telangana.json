@@ -1,0 +1,96 @@
+{
+ "asOf": "2026-11-04",
+ "intro": [
+  "Telangana was carved out of Andhra Pradesh on 2 June 2014 after a long statehood movement led by K. Chandrashekar Rao (KCR) and his party, the TRS. KCR ruled for nine and a half years, winning in 2014 and again in 2018. In 2022 he renamed the party Bharat Rashtra Samithi (BRS) to go national.",
+  "In December 2023 voters threw BRS out and gave the Congress a narrow majority under A. Revanth Reddy. Since then, the story has been Congress tightening its grip through by-elections, local polls and defections; BRS shrinking, splitting along family lines and fighting cases in court; and the BJP growing quietly as the third force, strongest in the north of the state."
+ ],
+ "scoreboard": [
+  {"title": "Assembly election", "when": "December 2023", "total": 119, "majority": 60,
+   "rows": [["INC", 64], ["BRS", 39], ["BJP", 8], ["AIMIM", 7], ["CPI", 1]],
+   "note": "Congress won the countryside; BRS swept Hyderabad, where Congress won no seat."},
+  {"title": "Assembly today, in practice", "when": "November 2026", "total": 119, "majority": 60,
+   "rows": [["INC", 66, "Congress", "Congress · 64 won in 2023 + 2 by-elections"], ["XBRS", 9, "Ex-BRS", "BRS MLAs who joined Congress · still BRS on paper"], ["BRS", 27, "BRS", "BRS MLAs still with the party"], ["BJP", 7, "BJP", "BJP"], ["RAJA", 1, "", "T. Raja Singh · quit the BJP in 2025, kept his seat"], ["AIMIM", 7, "AIMIM", "AIMIM"], ["CPI", 1, "", "CPI · Congress ally"], ["VAC", 1, "", "Khairatabad · vacant since Danam Nagender’s disqualification"]],
+   "note": "Two BRS MLAs died (both seats went to Congress in by-elections), ten defected to Congress, and one of those ten has been disqualified."},
+  {"title": "Lok Sabha election", "when": "June 2024", "total": 17, "majority": 0,
+   "rows": [["BJP", 8], ["INC", 8], ["AIMIM", 1]],
+   "note": "BRS, which held 9 of these seats in 2019, won none. The BJP doubled its tally from 4."},
+  {"title": "Municipal wards", "when": "February 2026", "total": 2581, "majority": 0,
+   "rows": [["INC", 1347], ["BRS", 716], ["BJP", 261], ["OTH", 257]],
+   "note": "116 towns voted. BJP was strongest in the Karimnagar and Nizamabad corporations. Greater Hyderabad has not voted yet."}
+ ],
+ "government": {
+  "top": [
+   ["Governor", "Shiv Pratap Shukla", "", "Since March 2026 · appointed by the Union"],
+   ["Chief Minister", "A. Revanth Reddy", "INC", "Since 7 December 2023 · also holds Home, Municipal Administration, Education"],
+   ["Deputy CM", "Mallu Bhatti Vikramarka", "INC", "Finance, Planning, Energy"],
+   ["Speaker", "Gaddam Prasad Kumar", "INC", "Rules on defections, which made him central to the BRS fight"],
+   ["Leader of the Opposition", "K. Chandrashekar Rao", "BRS", "Rarely attends the Assembly"]
+  ],
+  "ministers": [
+   ["N. Uttam Kumar Reddy", "Irrigation, Civil Supplies"],
+   ["D. Sridhar Babu", "IT, Industries, Legislative Affairs"],
+   ["Ponguleti Srinivasa Reddy", "Revenue, Housing"],
+   ["Komatireddy Venkat Reddy", "Roads and Buildings"],
+   ["Damodar Raja Narasimha", "Health"],
+   ["Seethakka", "Panchayat Raj, Women and Child Welfare"],
+   ["Ponnam Prabhakar", "Transport, BC Welfare"],
+   ["Mohammad Azharuddin", "Minorities Welfare · ex-India cricket captain"]
+  ],
+  "note": "16 ministers including the CM, of a maximum 18."
+ },
+ "parties": [
+  {"code": "INC", "name": "Congress", "stance": "In power. The national high command (Mallikarjun Kharge, Rahul Gandhi) picks the CM and signs off on ministers.",
+   "people": [["A. Revanth Reddy", "Chief Minister and Congress legislature leader"], ["B. Mahesh Kumar Goud", "State Congress (TPCC) president since September 2024"], ["Meenakshi Natarajan", "Delhi’s in-charge for Telangana since 2025"], ["Mallu Bhatti Vikramarka", "Deputy CM"]]},
+  {"code": "BRS", "name": "Bharat Rashtra Samithi", "stance": "Main opposition. Run by KCR’s family, the Kalvakuntlas.",
+   "people": [["K. Chandrashekar Rao (KCR)", "Founder, president, Leader of the Opposition"], ["K. T. Rama Rao (KTR)", "Working president · KCR’s son · runs the party day to day"], ["T. Harish Rao", "KCR’s nephew · ex-Finance and Irrigation minister"]]},
+  {"code": "BJP", "name": "BJP", "stance": "Third force, rising. Strongest in north Telangana; has two Union ministers from the state.",
+   "people": [["N. Ramchander Rao", "State president since July 2025"], ["G. Kishan Reddy", "Union Coal and Mines Minister · MP Secunderabad · ex-state chief"], ["Bandi Sanjay Kumar", "Union Minister of State for Home · MP Karimnagar"], ["Eatala Rajender", "MP Malkajgiri · ex-BRS minister"]]},
+  {"code": "AIMIM", "name": "AIMIM", "stance": "Holds Hyderabad’s Old City. Sides with whoever governs: it backed BRS, now it’s friendly with Congress.",
+   "people": [["Asaduddin Owaisi", "Party president · MP Hyderabad"], ["Akbaruddin Owaisi", "Floor leader in the Assembly · his brother"]]},
+  {"code": "", "name": "Kavitha’s new party", "stance": "Launched April 2026 by KCR’s daughter after BRS suspended her. Reported as Telangana Rashtra Sena at launch; the Election Commission registered it as Telangana Rakshana Sena.",
+   "people": [["K. Kavitha", "Founder · ex-MP Nizamabad · ex-MLC"]]}
+ ],
+ "timeline": [
+  {"date": "2014-06-02", "tag": "Background", "title": "Telangana becomes India’s 29th state", "text": "KCR’s TRS wins the first election and he becomes CM. He wins again in a 2018 snap election."},
+  {"date": "2022-10-05", "tag": "Background", "title": "TRS renamed BRS", "text": "KCR drops “Telangana” from the party’s name to contest nationally. The push goes nowhere."},
+  {"date": "2023-10-21", "tag": "Probe", "title": "Medigadda barrage sinks", "text": "Piers of a barrage on the Kaleshwaram lift-irrigation project, KCR’s flagship scheme costing about ₹1 lakh crore, subside weeks before the vote. It becomes the opposition’s main charge."},
+  {"date": "2023-12-03", "tag": "Election", "title": "Congress wins the state", "text": "Congress 64, BRS 39, BJP 8, AIMIM 7, CPI 1. Revanth Reddy, a former TDP leader who joined Congress in 2017, is sworn in as CM on 7 December."},
+  {"date": "2024-03-15", "tag": "Probe", "title": "Kavitha arrested in the Delhi liquor case", "text": "The Enforcement Directorate arrests KCR’s daughter. She gets bail from the Supreme Court in August after five months in jail."},
+  {"date": "2024-06-04", "tag": "Election", "title": "BRS wiped out in the Lok Sabha", "text": "BJP 8, Congress 8, AIMIM 1, BRS 0. Congress also wins the Secunderabad Cantonment by-election, caused by a BRS MLA’s death."},
+  {"date": "2024-07-15", "tag": "Party", "title": "BRS MLAs cross over to Congress", "text": "Through 2024, ten BRS MLAs join Congress without resigning their seats. BRS files to have them disqualified under the anti-defection law."},
+  {"date": "2024-08-15", "tag": "Government", "title": "Farm loans waived", "text": "Crop loans up to ₹2 lakh written off in three phases, a key election promise. HYDRAA, a new agency, starts demolishing buildings on Hyderabad’s lakes and drains."},
+  {"date": "2025-02-04", "tag": "Government", "title": "Caste survey tabled", "text": "The state counts castes; Backward Classes come out at about 56% including Muslim BCs. In March the Assembly passes bills for a 42% BC quota, which still need the President’s assent."},
+  {"date": "2025-06-08", "tag": "Government", "title": "Cabinet expanded", "text": "Three new ministers are sworn in; Mohammad Azharuddin follows in October."},
+  {"date": "2025-07-01", "tag": "Party", "title": "BJP changes its state chief", "text": "N. Ramchander Rao takes over. Firebrand MLA T. Raja Singh quits the party in protest but keeps his seat."},
+  {"date": "2025-07-31", "tag": "Courts", "title": "Supreme Court sets a deadline on defections", "text": "It tells the Speaker to decide the ten disqualification cases within three months."},
+  {"date": "2025-09-01", "tag": "Probe", "title": "Kaleshwaram handed to the CBI", "text": "A judicial commission under Justice P. C. Ghose blames the KCR government for negligence and irregularities, and the state asks the CBI to investigate."},
+  {"date": "2025-09-02", "tag": "Party", "title": "KCR suspends his own daughter", "text": "Kavitha had publicly blamed Harish Rao and others in the family for the Kaleshwaram mess. She quits as MLC the next day."},
+  {"date": "2025-10-09", "tag": "Courts", "title": "High Court blocks the 42% BC quota", "text": "Local polls go ahead under the old quota instead."},
+  {"date": "2025-11-14", "tag": "Election", "title": "Congress takes Jubilee Hills", "text": "Congress’s Naveen Yadav wins a by-election in a Hyderabad seat BRS had held, by 24,729 votes. The BJP loses its deposit."},
+  {"date": "2025-12-17", "tag": "Election", "title": "Village polls go to Congress", "text": "Congress-backed candidates win over 60% of about 12,700 gram panchayats. The Speaker dismisses defection petitions against five BRS MLAs, then two more in January, citing no proof they left the party."},
+  {"date": "2026-02-13", "tag": "Election", "title": "Congress sweeps the towns", "text": "Municipal wards: Congress 1,347, BRS 716, BJP 261. Greater Hyderabad’s council term ends, and the city is split into three corporations (Hyderabad, Cyberabad, Malkajgiri) that have not voted yet."},
+  {"date": "2026-03-11", "tag": "Government", "title": "New Governor", "text": "Shiv Pratap Shukla replaces Jishnu Dev Varma, who moves to Maharashtra."},
+  {"date": "2026-04-15", "tag": "Courts", "title": "High Court shields KCR from the Ghose report", "text": "It orders no coercive action based on the commission’s findings, saying due procedure wasn’t followed. The state keeps pressing the CBI."},
+  {"date": "2026-04-25", "tag": "Party", "title": "Kavitha launches her own party", "text": "It is aimed squarely at BRS, and at the 2028 election."},
+  {"date": "2026-05-14", "tag": "Probe", "title": "KTR goes on trial in the Formula E case", "text": "A court takes up the Anti-Corruption Bureau’s chargesheet naming KTR the main accused. The charge is that he approved payments for a 2023 Hyderabad car race without Cabinet or Finance approval."},
+  {"date": "2026-09-18", "tag": "Courts", "title": "First MLA disqualified in Telangana’s history", "text": "The High Court overturns the Speaker and disqualifies Danam Nagender, a BRS MLA who had contested the 2024 Lok Sabha election for Congress. His Khairatabad seat falls vacant."},
+  {"date": "2026-10-28", "tag": "Government", "title": "Drought", "text": "365 mandals have been declared drought-hit, and reservoirs hold less than half their normal storage. Reports say police are preparing a phone-tapping chargesheet that names KCR as the main accused."},
+  {"date": "2026-10-30", "tag": "Election", "title": "Danam is Congress’s pick for Khairatabad", "text": "The CM confirms him as the candidate in the coming by-election. No date has been set, and a separate election petition is pending in court."}
+ ],
+ "faultLines": [
+  ["Family", "BRS is a family business: KCR, his son KTR, his nephew Harish Rao, and until 2025 his daughter Kavitha. Who succeeds KCR is the party’s biggest unanswered question, and Kavitha’s exit shows how sharp it is."],
+  ["Caste", "Reddys dominate the top of Congress, including the CM. KCR’s family is Velama. Backward Classes, roughly half the people, are the prize everyone is chasing, which is why the caste survey and the 42% quota matter so much."],
+  ["Region", "Rural Telangana voted Congress in 2023; Hyderabad stayed with BRS, and the Old City belongs to AIMIM. The BJP’s base is the north (Karimnagar, Nizamabad, Adilabad), which is why it won 8 Lok Sabha seats but only 8 Assembly seats."],
+  ["Defections", "The Speaker decides when an MLA has switched parties, and Speakers usually protect the ruling side. The courts stepping in, first the Supreme Court’s deadline and then Danam Nagender’s disqualification, is the key check."],
+  ["Money and water", "Kaleshwaram is both the state’s biggest asset and its biggest scandal. Repaying its loans, while paying for the six election guarantees, squeezes the budget."]
+ ],
+ "watch": [
+  ["Khairatabad by-election", "Date not yet set. It tests whether a defector can win his seat back on a Congress ticket."],
+  ["Greater Hyderabad polls", "The three new corporations: BRS’s and the BJP’s best chance to beat Congress in a big city."],
+  ["Phone-tapping chargesheet", "If it names KCR, both of BRS’s top leaders will face criminal cases at once."],
+  ["Kaleshwaram and the CBI", "Whether the CBI registers a case, given the High Court’s ruling."],
+  ["The 42% BC quota", "Still waiting on the President’s assent and the courts."],
+  ["Kavitha’s party", "Whether it pulls BRS voters, which would mainly help Congress."],
+  ["Next Assembly election", "Due late 2028. KTR says KCR will be back as CM; the polls since 2023 say otherwise."]
+ ]
+}
